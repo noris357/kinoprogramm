@@ -1,0 +1,18 @@
+# Titel, die auf eines dieser Muster passen, werden nicht uebernommen (Konzerte, Opern und Buehnenuebertragungen).
+# Ein Muster pro Zeile, regulaere Ausdruecke, Gross- und Kleinschreibung egal.
+# Musikfilme bitte nicht pauschal ausschliessen, nur echte Konzert-, Opern- und Ballettuebertragungen.
+(?i)\bMet Opera\b
+(?i)\bOper live\b
+(?i)\bLive aus der MET\b
+(?i)\bBerliner Philharmoniker\b
+(?i)konzert
+(?i)\bOp[eé]ra de Paris\b
+(?i)\bRoyal Opera\b
+(?i)\bRoyal Ballet\b
+(?i)^RB&O Live:
+(?i)\((Oper|Ballett)\)
+(?i)\bBolschoi\b
+(?i)\bOpern?übertragung\b
+(?i)\b(live )?in concert\b
+(?i)\bLIVE VIEWING\b
+(?i)\s-\s*Live in\b

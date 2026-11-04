@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kinoprogramm Nürnberg</title>
+  <meta name="description" content="Welche Filme laufen wann in den Kinos in Nürnberg, Fürth und Erlangen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Italiana&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="kopf">
+    <div class="wrap">
+      <div class="augenbraue" id="augenbraue">Nürnberg <i></i> Fürth <i></i> Erlangen</div>
+      <h1>Kinoprogramm</h1>
+      <div class="kennzahlen" id="kennzahlen"></div>
+    </div>
+    <div class="teppich"></div>
+  </header>
+
+  <div class="reiter-band">
+    <nav class="reiter wrap" role="tablist" aria-label="Ansichten">
+      <button role="tab" data-ansicht="programm" aria-selected="true">Programm</button>
+      <button role="tab" data-ansicht="chance" aria-selected="false">Letzte Chance</button>
+      <button role="tab" data-ansicht="kalender" aria-selected="false">Kalender</button>
+      <button role="tab" data-ansicht="filme" aria-selected="false">Filme</button>
+      <button role="tab" data-ansicht="statistik" aria-selected="false">Statistik</button>
+      <button role="tab" data-ansicht="kinos" aria-selected="false">Kinos</button>
+    </nav>
+  </div>
+
+  <section class="filter wrap" aria-label="Filter" id="filter">
+    <label>Stadt
+      <select id="f-stadt">
+        <option value="">Alle Städte</option>
+        <option>Nürnberg</option>
+        <option>Fürth</option>
+        <option>Erlangen</option>
+      </select>
+    </label>
+    <label>Kino
+      <select id="f-kino"><option value="">Alle Kinos</option></select>
+    </label>
+    <label>Land
+      <select id="f-land"><option value="">Alle Länder</option></select>
+    </label>
+    <label>Jahrzehnt
+      <select id="f-jahrzehnt"><option value="">Alle Jahrzehnte</option></select>
+    </label>
+    <label class="suche">Suche
+      <input id="f-suche" type="search" placeholder="Titel oder Regie">
+    </label>
+    <button class="zuruecksetzen" id="f-reset" hidden>Filter zurücksetzen</button>
+  </section>
+
+  <main class="wrap">
+    <section id="v-programm" class="ansicht"></section>
+    <section id="v-chance" class="ansicht" hidden></section>
+    <section id="v-kalender" class="ansicht" hidden></section>
+    <section id="v-filme" class="ansicht" hidden></section>
+    <section id="v-statistik" class="ansicht" hidden></section>
+    <section id="v-kinos" class="ansicht" hidden></section>
+    <section id="v-impressum" class="ansicht" hidden></section>
+  </main>
+
+  <footer class="wrap fuss" id="fuss"></footer>
+
+  <dialog id="film-dialog" aria-labelledby="fd-titel">
+    <form method="dialog"><button class="schliessen" aria-label="Schließen">×</button></form>
+    <div id="fd-inhalt"></div>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

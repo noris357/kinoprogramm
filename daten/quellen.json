@@ -1,0 +1,90 @@
+{
+  "identifiziert_am": "2026-11-04",
+  "hinweis": "Offizielle Einstiegspunkte für die nächste Recherche. Die Suche nach diesen Quellen ist keine erneute vollständige Prüfung der Programmtermine in der Exceldatei. URLs und Verfügbarkeit beim tatsächlichen Abruf prüfen.",
+  "kinos": [
+    {
+      "bezeichnung_in_excel": "Admiral Kino Nürnberg",
+      "programm_url": "https://www.cineplex.de/nuernberg/programm",
+      "hinweis": "Admiral Boutique Kino. Bestandsbezeichnung erhalten.",
+      "bestandszeilen": 410
+    },
+    {
+      "bezeichnung_in_excel": "Babylon Fürth",
+      "programm_url": "https://www.babylon-kino-fuerth.de/de",
+      "hinweis": "",
+      "bestandszeilen": 398
+    },
+    {
+      "bezeichnung_in_excel": "Casablanca Nürnberg",
+      "programm_url": "https://www.casablanca-nuernberg.de/filme/programmtabelle",
+      "hinweis": "Auch Gesamtprogramm und einzelne Sondertermine prüfen.",
+      "bestandszeilen": 507
+    },
+    {
+      "bezeichnung_in_excel": "CineStar Erlangen",
+      "programm_url": "https://www.cinestar.de/kino-erlangen",
+      "hinweis": "Auch Vorverkauf und Sondervorstellungen prüfen.",
+      "bestandszeilen": 713
+    },
+    {
+      "bezeichnung_in_excel": "Cinecitta Nürnberg",
+      "programm_url": "https://www.cinecitta.de/programm/",
+      "hinweis": "Mehrere Standorte können über dieselbe Betreiberseite angeboten werden. Tatsächlichen Vorstellungsort zuordnen.",
+      "bestandszeilen": 2482
+    },
+    {
+      "bezeichnung_in_excel": "Cineplex Fürth",
+      "programm_url": "https://www.cineplex.de/fuerth/programm",
+      "hinweis": "",
+      "bestandszeilen": 798
+    },
+    {
+      "bezeichnung_in_excel": "Filmhaus Nürnberg",
+      "programm_url": "https://www.kunstkulturquartier.de/filmhaus/programm/programmuebersicht",
+      "hinweis": "Auch Monatsprogramme und PDFs prüfen. KommKino getrennt behandeln.",
+      "bestandszeilen": 238
+    },
+    {
+      "bezeichnung_in_excel": "KommKino Nürnberg",
+      "programm_url": "https://www.kommkino.de/spielzeiten",
+      "hinweis": "Getrennt von Filmhaus führen, obwohl derselbe Gebäudestandort vorkommt.",
+      "bestandszeilen": 49
+    },
+    {
+      "bezeichnung_in_excel": "Lamm-Lichtspiele Erlangen",
+      "programm_url": "https://www.lamm-lichtspiele.de/",
+      "hinweis": "",
+      "bestandszeilen": 340
+    },
+    {
+      "bezeichnung_in_excel": "Manhatten Deluxe Erlangen",
+      "programm_url": "https://www.cinecitta.de/programm/manhattan/",
+      "hinweis": "Die Quelldatei schreibt Manhatten. Die offizielle Schreibweise lautet Manhattan. Bestehenden Schlüssel erhalten oder eine ausdrücklich dokumentierte vollständige Zuordnung verwenden.",
+      "bestandszeilen": 200
+    },
+    {
+      "bezeichnung_in_excel": "Meisengeige Nürnberg",
+      "programm_url": "https://www.cinecitta.de/programm/meisengeige/",
+      "hinweis": "Eigenes Kino. Nicht pauschal Cinecitta zuordnen.",
+      "bestandszeilen": 496
+    },
+    {
+      "bezeichnung_in_excel": "Metropolis Nürnberg",
+      "programm_url": "https://www.cinecitta.de/programm/metropolis/",
+      "hinweis": "Eigenes Kino innerhalb derselben Betreiberwebsite.",
+      "bestandszeilen": 233
+    },
+    {
+      "bezeichnung_in_excel": "SommerNachtFilmFestival",
+      "programm_url": "https://www.sommernachtfilmfestival.de/",
+      "hinweis": "Veranstalter mit mehreren Spielorten. Bestehende Bezeichnung erhalten. Kein dauerhaftes einzelnes Kinogebäude.",
+      "bestandszeilen": 12
+    },
+    {
+      "bezeichnung_in_excel": "Uferpalast Fürth",
+      "programm_url": "https://www.uferpalast.de/",
+      "hinweis": "Auch Monatsübersichten als PDF prüfen.",
+      "bestandszeilen": 101
+    }
+  ]
+}
