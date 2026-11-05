@@ -552,7 +552,8 @@
         <h3>Kinos und Marken</h3>
         <p>Die Namen der Kinos gehören den jeweiligen Betreibern. Diese Seite steht in keiner Verbindung zu den Kinos.</p>
         <h3>Datenschutz</h3>
-        <p>Diese Seite setzt keine Cookies und verwendet kein Tracking. Beim Aufruf verarbeitet der Hoster ${p('Name des Hosters, z. B. GitHub Pages')} technisch notwendige Zugriffsdaten wie die IP-Adresse. ${p('Hinweis zu Schriftarten anpassen, sobald sie lokal eingebunden sind')}</p>
+        <p>Diese Seite setzt keine Cookies und verwendet kein Tracking. Sie wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc. (USA). Beim Aufruf verarbeitet GitHub technisch notwendige Zugriffsdaten wie die IP-Adresse, um die Seite auszuliefern und vor Missbrauch zu schützen. Näheres steht in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+        <p>Schriftarten werden direkt von dieser Seite geladen. Es werden dabei keine Daten an Dritte wie Google übertragen. Links zu den Kinos führen auf deren eigene Seiten, für die deren Datenschutzbestimmungen gelten.</p>
         <p class="meta">Rot markierte Stellen sind Platzhalter und müssen vor der Veröffentlichung ersetzt werden.</p>
       </div>`;
   }
