@@ -19,3 +19,4 @@
 # Keine Filme: Quiz und Lesung im Casablanca
 (?i)\bQuizz+amerie\b
 (?i)\bVorlese-Nachmittag\b
+(?i)\bKinoquiz\b

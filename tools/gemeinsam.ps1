@@ -51,7 +51,7 @@ function Get-BereinigterTitel([string]$Titel) {
     '\s+[-–]\s*(?:Best of Cinema|Seniorenkino|CineSpecial|Anime Nights(?: \d{4})?|Das Kinoerlebnis)\s*$'
   )
   # Reihen und Sonderformate davor, z. B. "CineSpecial: ", "Preview: ", "Mein erster Kinobesuch: "
-  $vorne = '^\s*(?:CineSpecial|CineLady(?: Preview| Special)?|Happy Family[- ]Preview|Preview|Vorpremiere|Premiere|Mein erster Kinobesuch|Sneak Preview|Stummfilmmatinee|Jonathans Retroflimmern)\s*:\s+'
+  $vorne = '^\s*(?:CineSpecial|CineLady(?: Preview| Special)?|Happy Family[- ]Preview|Preview|Vorpremiere|Premiere|Mein erster Kinobesuch|Sneak Preview|Stummfilmmatinee|Jonathans Retroflimmern)\s*:\s+|^\s*\([A-Za-z]{2,3}\)\s+'   # auch Sprachkuerzel wie "(Hi) " bei Cineplex
   do {
     $vorher = $t
     foreach ($m in $hinten) { $t = [regex]::Replace($t, $m, '', 'IgnoreCase').Trim() }

@@ -81,6 +81,8 @@ $roh += @(Get-UferpalastProgramm)
 $roh += @(Get-CasablancaProgramm)   # Sondertermine aus dem eingebetteten Gesamtprogramm
 $roh += @(Get-CasablancaFlyer)       # Tagesprogramm aus Wochenflyer und Monatsprogramm (PDF)
 $roh += @(Get-CineStarProgramm)
+$roh += @(Get-AdmiralProgramm)       # eigene Website des Admiral
+$roh += @(Get-CineplexAusEingang)    # Cineplex Fuerth aus gespeicherter Seite in eingang/ (nur lokal)
 
 # Mehrere Quellen fuer dasselbe Kino zusammenfuehren
 $ergebnisse = foreach ($g in $roh | Group-Object Kino) {
