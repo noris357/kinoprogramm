@@ -1,0 +1,62 @@
+# Aktualisiert das Kinoprogramm jeden Mittwochabend und veroeffentlicht die Website auf GitHub Pages.
+# Manuell starten: im Repository unter "Actions" > "Kinoprogramm aktualisieren" > "Run workflow".
+# Bei jedem Hochladen von Aenderungen (push) wird die Website ohne neuen Abruf veroeffentlicht.
+
+name: Kinoprogramm aktualisieren
+
+on:
+  schedule:
+    # 18:00 UTC = 19:00 Uhr Winterzeit, 20:00 Uhr Sommerzeit. GitHub startet geplante Laeufe oft etwas spaeter.
+    - cron: '0 18 * * 3'
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: kinoprogramm
+  cancel-in-progress: false
+
+jobs:
+  aktualisieren:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.veroeffentlichen.outputs.page_url }}
+    steps:
+      - name: Repository holen
+        uses: actions/checkout@v4
+
+      - name: Kinoseiten auslesen und Daten abgleichen
+        if: github.event_name != 'push'
+        shell: pwsh
+        run: ./tools/aktualisieren.ps1
+
+      - name: Neue Daten speichern
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.js daten/programm.json daten/letzter-lauf.json
+          if git diff --cached --quiet; then
+            echo "Keine Aenderungen im Programm."
+          else
+            git commit -m "Kinoprogramm aktualisiert $(TZ=Europe/Berlin date +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: GitHub Pages vorbereiten
+        uses: actions/configure-pages@v5
+
+      - name: Website bündeln
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Website veröffentlichen
+        id: veroeffentlichen
+        uses: actions/deploy-pages@v4

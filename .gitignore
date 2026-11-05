@@ -1,0 +1,6 @@
+# Persoenliche Schluessel nie veroeffentlichen
+tools/tmdb.key
+*.key
+
+# Nur fuer die Claude-Vorschau, gehoert nicht auf die Website
+artifact.html
