@@ -549,6 +549,8 @@
         <p>Ein privates, nicht kommerzielles Hobbyprojekt. Die Seite sammelt, welche Filme an welchen Tagen in Kinos in Nürnberg, Fürth und Erlangen laufen. Grundlage sind die öffentlich veröffentlichten Programme der Kinos. Uhrzeiten, Säle und Fassungen werden nicht erfasst.</p>
         <h3>Ohne Gewähr</h3>
         <p>Die Daten werden mit Sorgfalt gepflegt, können aber unvollständig oder veraltet sein. Verbindlich sind allein die Programme und Ticketseiten der Kinos. Für Inhalte verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        <h3>Filmdaten und Plakate</h3>
+        <p>Plakate, Bewertungen sowie fehlende Angaben zu Land, Regie und Jahr stammen von <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. This product uses the TMDB API but is not endorsed or certified by TMDB. Die Rechte an den Plakaten liegen bei den jeweiligen Filmverleihen und Studios.</p>
         <h3>Kinos und Marken</h3>
         <p>Die Namen der Kinos gehören den jeweiligen Betreibern. Diese Seite steht in keiner Verbindung zu den Kinos.</p>
         <h3>Datenschutz</h3>
@@ -568,7 +570,10 @@
       const chips = ds.map((d) => `<span class="chip ${d >= HEUTE ? 'kommend' : 'vorbei'}" title="${datum(d)}">${datumKurz(d)}</span>`).join('');
       return `<div class="termin-gruppe"><h4>${esc(kinos[k].name)} <span class="meta">· ${ds.length} ${ds.length === 1 ? 'Tag' : 'Tage'}</span></h4><div class="chips">${chips}</div></div>`;
     }).join('');
-    const imdb = f.info.imdb ? `<p><a href="https://www.imdb.com/title/${esc(f.info.imdb)}/" target="_blank" rel="noopener">Auf IMDb ansehen ↗</a></p>` : '';
+    const links = [
+      f.info.tmdb && ['Auf TMDB ansehen', `https://www.themoviedb.org/movie/${encodeURIComponent(f.info.tmdb)}`],
+    ].filter(Boolean);
+    const imdb = links.length ? `<p class="filmlinks">${links.map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</p>` : '';
     $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${wertung(f)}<div class="meta">${filmMeta(f)}</div>${imdb}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${gruppen}`;
     $('#film-dialog').showModal();
   }
@@ -655,7 +660,7 @@
     warte = setTimeout(() => { if (zustand.ansicht === 'statistik') zeichne(); }, 150);
   });
 
-  $('#fuss').innerHTML = `<p>Datenstand ${datum(D.stand)} · ${zahl(termine.length)} Einträge von ${datum(ERSTER)} bis ${datum(LETZTER)}. Angaben ohne Gewähr, verbindlich sind die Programme der Kinos.</p><button data-impressum>Impressum und Datenschutz</button>`;
+  $('#fuss').innerHTML = `<p>Datenstand ${datum(D.stand)} · ${zahl(termine.length)} Einträge von ${datum(ERSTER)} bis ${datum(LETZTER)}. Angaben ohne Gewähr, verbindlich sind die Programme der Kinos. Filmdaten und Plakate: TMDB.</p><button data-impressum>Impressum und Datenschutz</button>`;
 
   fuelleAuswahl();
   zeigeKopf();

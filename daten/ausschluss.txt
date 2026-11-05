@@ -16,3 +16,6 @@
 (?i)\b(live )?in concert\b
 (?i)\bLIVE VIEWING\b
 (?i)\s-\s*Live in\b
+# Keine Filme: Quiz und Lesung im Casablanca
+(?i)\bQuizz+amerie\b
+(?i)\bVorlese-Nachmittag\b

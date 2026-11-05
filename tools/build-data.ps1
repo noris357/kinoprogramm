@@ -52,8 +52,20 @@ foreach ($z in $json.zeilen) {
     # Produktionsjahr bleibt Text, es kommen auch Angaben wie 1974/1975 vor
     $jahr = $null
     if ($z.Produktionsjahr) { $jahr = [string]$z.Produktionsjahr }
-    $eintrag = @($z.Titel, $z.Land, $z.'Regisseur:in', $jahr)
-    if ($infos.ContainsKey($schluessel)) { $eintrag += , $infos[$schluessel] }
+    $land = $z.Land; $regie = $z.'Regisseur:in'
+    $info = $infos[$schluessel]
+    $zusatz = $null
+    if ($info -and -not $info.nichtGefunden) {
+      # Eigene Angaben haben Vorrang. TMDB fuellt nur Luecken.
+      if (-not $land -or $land -eq '?') { $land = $info.land }
+      if (-not $regie -or $regie -eq '?') { $regie = $info.regie }
+      if (-not $jahr) { $jahr = $info.jahr }
+      $zusatz = [ordered]@{}
+      # Die IMDb-Nummer bleibt in filminfos.json, wird aber vorerst nicht auf der Website genutzt
+      foreach ($f in 'poster', 'bewertung', 'tmdb') { if ($info.$f) { $zusatz[$f] = $info.$f } }
+    }
+    $eintrag = @($z.Titel, $land, $regie, $jahr)
+    if ($zusatz) { $eintrag += , $zusatz }
     $filme.Add($eintrag)
   }
 
@@ -73,4 +85,5 @@ $inhalt = "window.KINO_DATA = " + ($daten | ConvertTo-Json -Depth 5 -Compress) +
 $zielPfad = Join-Path (Resolve-Path (Split-Path $Ziel)).Path (Split-Path $Ziel -Leaf)
 [System.IO.File]::WriteAllText($zielPfad, $inhalt, (New-Object System.Text.UTF8Encoding $false))
 
-"$($termine.Count) Termine, $($filme.Count) Filme ($($infos.Count) mit Zusatzinfos), $($kinos.Count) Kinos -> $zielPfad"
+$mitInfo = @($filme | Where-Object { $_.Count -gt 4 }).Count
+"$($termine.Count) Termine, $($filme.Count) Filme ($mitInfo mit TMDB-Angaben), $($kinos.Count) Kinos -> $zielPfad"

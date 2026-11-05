@@ -78,7 +78,8 @@ $roh += @(Get-KommKinoProgramm)      # ergaenzt das KommKino fuer den laufenden 
 $roh += @(Get-BabylonProgramm)
 $roh += @(Get-LammProgramm)
 $roh += @(Get-UferpalastProgramm)
-$roh += @(Get-CasablancaProgramm)
+$roh += @(Get-CasablancaProgramm)   # Sondertermine aus dem eingebetteten Gesamtprogramm
+$roh += @(Get-CasablancaFlyer)       # Tagesprogramm aus Wochenflyer und Monatsprogramm (PDF)
 $roh += @(Get-CineStarProgramm)
 
 # Mehrere Quellen fuer dasselbe Kino zusammenfuehren
@@ -91,6 +92,8 @@ $ergebnisse = foreach ($g in $roh | Group-Object Kino) {
     $ok | ForEach-Object { $_.Termine } | ForEach-Object { $e.Termine.Add($_) }
     $e.Von = ($ok | ForEach-Object Von | Sort-Object)[0]
     $e.Bis = ($ok | ForEach-Object Bis | Sort-Object)[-1]
+    # Ist eine der Quellen ausgefallen, nur ergaenzen: sonst fielen deren Termine im Zeitfenster weg
+    if ($ok.Count -lt $g.Count) { $e.Von = (Get-Heute).ToString('yyyy-MM-dd'); $e.Bis = $e.Von }
     $e.Ok = $true
   }
   $e
