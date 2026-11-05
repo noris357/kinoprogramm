@@ -25,7 +25,10 @@ function Get-CasablancaProgramm {
       }
       if ($titel) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $datum; Jahr = $jahr; Regie = $regie }) }
     }
-    if (-not $erg.Termine.Count) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
+    if (-not $erg.Termine.Count) {
+      $seitentitel = ConvertFrom-Html ([regex]::Match($html, '(?s)<title>(.*?)</title>').Groups[1].Value)
+      throw "Keine Vorstellungen gefunden (Seite: $($html.Length) Zeichen, Titel: '$seitentitel'). Hat sich der Aufbau der Seite geaendert?"
+    }
     # Das Gesamtprogramm fuehrt nicht jede Vorstellung der laufenden Filme. Deshalb nur ergaenzen, nichts entfernen:
     # Ein Fenster, das nur den Abfragetag umfasst, schuetzt alle spaeteren Bestandstermine.
     $heute = (Get-Heute).ToString('yyyy-MM-dd')
