@@ -9,16 +9,16 @@
       "bis": "2026-11-15",
       "bestaetigt": 43,
       "neu": 7,
-      "entfernt": 1
+      "entfernt": 0
     },
     {
       "kino": "Casablanca Nürnberg",
-      "ok": false,
-      "fehler": "Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?",
-      "von": null,
-      "bis": null,
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-05",
+      "bis": "2026-11-05",
       "bestaetigt": 0,
-      "neu": 0,
+      "neu": 82,
       "entfernt": 0
     },
     {
@@ -29,7 +29,7 @@
       "bis": "2027-06-24",
       "bestaetigt": 397,
       "neu": 34,
-      "entfernt": 2
+      "entfernt": 0
     },
     {
       "kino": "CineStar Erlangen",
@@ -112,7 +112,9 @@
       "entfernt": 0
     }
   ],
-  "neueFilme": [],
+  "neueFilme": [
+    "Das Zeugenhaus"
+  ],
   "ausgeschlossen": [
     "André Rieu's Weihnachtskonzert 2026: Let it Snow - CineSpecial",
     "Berliner Philharmoniker: Silvesterkonzert 2026",
