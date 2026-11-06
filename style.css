@@ -169,7 +169,7 @@ h1, h2, h3 { text-wrap: balance; }
 .chip { font-size: 12px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); white-space: nowrap; }
 .abzeichen { display: inline-block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; padding: 2px 7px; border-radius: 4px; vertical-align: 2px; margin-left: 6px; }
 .abzeichen.chance { background: var(--rot); color: #fff; }
-.abzeichen.wertung { background: var(--gold); color: #140f05; }
+.abzeichen.wertung { background: none; color: var(--gold-hell); border: 1px solid var(--line-strong); font-weight: 600; letter-spacing: 0; padding: 1px 6px; font-variant-numeric: tabular-nums; }
 
 .kinoblock { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 0; }
 .kinoblock h3 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 10px; }

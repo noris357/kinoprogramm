@@ -145,7 +145,8 @@
     const bild = f.info.poster ? `<img src="${esc(f.info.poster)}" alt="" loading="lazy">` : '';
     return `<div class="plakat ${groesse}" aria-hidden="true">${bild}<span class="pt">${esc(f.titel)}</span><span class="pj">${esc(f.jahr || '')}</span></div>`;
   }
-  const wertung = (f) => (f.bewertung != null ? `<span class="abzeichen wertung" title="Eigener Score aus mehreren Filmwertungen, 0 bis 100">Score ${f.bewertung}</span>` : '');
+  // Nur die Zahl, dezent umrandet. Die Erklärung steckt im Tooltip.
+  const wertung = (f) => (f.bewertung != null ? `<span class="abzeichen wertung" title="Score ${f.bewertung} von 100, aus mehreren Filmwertungen" aria-label="Score ${f.bewertung} von 100">${f.bewertung}</span>` : '');
 
   // Filme, die in den nächsten 7 Tagen zum letzten Mal laufen.
   // Sicher ist das nur, wenn jedes betroffene Kino schon weiter in die Zukunft veröffentlicht hat.
