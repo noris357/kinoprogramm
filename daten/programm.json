@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-05",
+  "stand": "2026-11-06",
   "zeilen": [
     {
       "Titel": "Ach, diese Lücke, diese entsetzliche Lücke",
@@ -52802,6 +52802,14 @@
       "Datum": "2026-11-06"
     },
     {
+      "Titel": "Frauenlager der Ninja",
+      "Kino": "KommKino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Godfrey Ho",
+      "Produktionsjahr": 1986,
+      "Datum": "2026-11-06"
+    },
+    {
       "Titel": "Alte Liebe",
       "Kino": "Lamm-Lichtspiele Erlangen",
       "Land": "Deutschland",
@@ -58874,6 +58882,22 @@
       "Datum": "2026-11-11"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-12"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-12"
+    },
+    {
       "Titel": "Leica - Ein Jahrhundert in Bildern",
       "Kino": "Casablanca Nürnberg",
       "Land": "Deutschland",
@@ -58968,6 +58992,14 @@
       "Regisseur:in": "John Woo",
       "Produktionsjahr": 1992,
       "Datum": "2026-11-12"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-13"
     },
     {
       "Titel": "Das Geheimnis der gestohlenen Maske",
