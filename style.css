@@ -264,6 +264,14 @@ table.liste { border-collapse: collapse; width: 100%; font-size: 14px; }
 }
 .tooltip b { color: var(--gold-hell); font-variant-numeric: tabular-nums; }
 .flagge { margin-right: 4px; font-size: 1.05em; }
+/* Preissymbole hinter dem Filmtitel, nebeneinander bei mehreren Preisen */
+.pokale { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: -2px; }
+.pokal { display: inline-flex; align-items: center; color: #e0b84a; cursor: default; }
+.pokal svg { width: 18px; height: 18px; fill: currentColor; }
+.pokal b { font-size: 11px; font-weight: 600; color: var(--gold-hell); margin-left: 1px; font-variant-numeric: tabular-nums; }
+.preisliste { list-style: none; margin: 10px 0 4px; padding: 0; display: grid; gap: 4px; font-size: 13px; color: var(--text-2); }
+.preisliste li { display: flex; gap: 8px; align-items: flex-start; }
+.preisliste .pokal svg { width: 18px; height: 18px; }
 .tafel.abstand { margin-top: 16px; }
 .steuerung { display: flex; flex-wrap: wrap; gap: 8px; }
 .legende-laender { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--text-2); margin: 0 4px 12px; }

@@ -138,6 +138,40 @@
     return teile.join(' · ') || 'Keine Angaben';
   }
   const filmLink = (f) => `<button class="film-link" data-film="${f.id}">${esc(f.titel)}</button>`;
+  // Gewonnene Hauptpreise als kleine goldene Symbole, selbst gezeichnet (keine Original-Logos)
+  const PREISE = {
+    oscar: { name: 'Oscar', svg: '<circle cx="12" cy="3.4" r="2.5"/><path d="M8.6 6.6h6.8l-1 4 .8 1.6-1.4 6H10.2l-1.4-6 .8-1.6z"/><rect x="7.4" y="18.6" width="9.2" height="1.8" rx=".4"/><rect x="6" y="20.8" width="12" height="2.4" rx=".5"/>' },
+    palme: { name: 'Goldene Palme', svg: '<path d="M12 21c0-6 .4-11 3-16-1.4 1-2.4 2.4-3 4-.6-1.6-1.6-3-3-4 2.6 5 3 10 3 16z"/><path d="M12 12c2-2 5-3 8-2.5-2.6.2-5 1.6-8 4.5zM12 12c-2-2-5-3-8-2.5 2.6.2 5 1.6 8 4.5zM12 16c2.2-1.4 5-1.6 7-.6-2.4-.2-4.6.6-7 2.4zM12 16c-2.2-1.4-5-1.6-7-.6 2.4-.2 4.6.6 7 2.4z"/>' },
+    baer: { name: 'Goldener Bär', svg: '<circle cx="9" cy="3.6" r="1.4"/><circle cx="14.6" cy="3.6" r="1.4"/><circle cx="11.8" cy="6" r="3"/><path d="M8 9.5c1-.8 2.4-1.2 3.8-1.2s2.8.4 3.8 1.2l1.8-1.6.8.8-1.8 2c.4 1.2.4 2.8 0 4.3l-.8 6h-2.2l-.4-5h-2.4l-.4 5H8l-.8-6c-.4-1.5-.4-3.1 0-4.3l-1.8-2 .8-.8z"/>' },
+    loewe: { name: 'Goldener Löwe', svg: '<circle cx="12" cy="10" r="7.5"/><circle cx="12" cy="10.6" r="4.2" style="fill:var(--surface)"/><circle cx="12" cy="10.6" r="3.1"/><path d="M4 18c2 1.4 5 2.4 8 2.4s6-1 8-2.4l-1 3H5z"/><path d="M2.5 7 6 9.5 4.5 5.5zM21.5 7 18 9.5l1.5-4z"/>' },
+    tokio: { name: 'Tokyo Grand Prix', svg: '<g transform="translate(12 12)"><ellipse cy="-6" rx="3.2" ry="5"/><ellipse cy="-6" rx="3.2" ry="5" transform="rotate(72)"/><ellipse cy="-6" rx="3.2" ry="5" transform="rotate(144)"/><ellipse cy="-6" rx="3.2" ry="5" transform="rotate(216)"/><ellipse cy="-6" rx="3.2" ry="5" transform="rotate(288)"/><circle r="2.2" style="fill:var(--surface)"/></g>' },
+  };
+  // Preise eines Films nach Art gruppiert, in der Reihenfolge aus build-data (Oscar, Palme, Bär, Löwe, Tokio)
+  function preisGruppen(f) {
+    const g = new Map();
+    [].concat(f.info.preise || []).forEach((p) => { if (PREISE[p.p]) { if (!g.has(p.p)) g.set(p.p, []); g.get(p.p).push(p); } });
+    return [...g];
+  }
+  function preisText(art, liste) {
+    if (art !== 'oscar') return liste.map((p) => `${p.k}${p.j ? ` ${p.j}` : ''}`).join(', ');
+    const jahre = new Map();
+    liste.forEach((p) => { if (!jahre.has(p.j)) jahre.set(p.j, []); jahre.get(p.j).push(p.k); });
+    return [...jahre].map(([j, k]) => `Oscar${j ? ` ${j}` : ''}: ${k.join(', ')}`).join(' · ');
+  }
+  function pokale(f) {
+    const gruppen = preisGruppen(f);
+    if (!gruppen.length) return '';
+    return `<span class="pokale">${gruppen.map(([art, liste]) => {
+      const text = preisText(art, liste);
+      return `<span class="pokal" title="${esc(text)}" aria-label="${esc(text)}"><svg viewBox="0 0 24 24" aria-hidden="true">${PREISE[art].svg}</svg>${liste.length > 1 ? `<b>${liste.length}</b>` : ''}</span>`;
+    }).join('')}</span>`;
+  }
+  function preisListe(f) {
+    const gruppen = preisGruppen(f);
+    if (!gruppen.length) return '';
+    return `<ul class="preisliste">${gruppen.map(([art, liste]) => `<li><span class="pokal"><svg viewBox="0 0 24 24" aria-hidden="true">${PREISE[art].svg}</svg></span>${esc(preisText(art, liste))}</li>`).join('')}</ul>`;
+  }
+
   // Überraschungsfilme (Sneak Preview, Kult Sneak) bekommen ein Fragezeichen statt Plakat
   function istSneak(f) { return /^(Sneak Preview|Kult Sneak)$/.test(f.titel); }
   function plakat(f, groesse = '') {
@@ -214,7 +248,7 @@
         const f = filme[fid];
         const chips = [...ks].map((k) => kinos[k].name).sort().map((n) => `<span class="chip">${esc(n)}</span>`).join('');
         const badge = chanceIds.has(fid) ? '<span class="abzeichen chance">Letzte Chance</span>' : '';
-        return `<article class="filmkarte">${plakat(f)}<div>${filmLink(f)}${badge}${wertung(f)}<div class="meta">${filmMeta(f)}</div><div class="chips">${chips}</div></div></article>`;
+        return `<article class="filmkarte">${plakat(f)}<div>${filmLink(f)}${pokale(f)}${badge}${wertung(f)}<div class="meta">${filmMeta(f)}</div><div class="chips">${chips}</div></div></article>`;
       }).join('')}</div>`;
     } else {
       const nachKino = new Map();
@@ -223,7 +257,7 @@
       inhalt = `<div class="karten">${liste.map(([kid, fs]) => {
         const k = kinos[kid];
         const zeilen = [...fs].map((f) => filme[f]).sort(filmOrdnung)
-          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${wertung(f)}<div class="meta">${filmMeta(f)}</div></div></li>`).join('');
+          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${pokale(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${wertung(f)}<div class="meta">${filmMeta(f)}</div></div></li>`).join('');
         return `<article class="kinoblock"><h3><span class="monogramm klein">${esc(k.mono)}</span>${esc(k.name)}</h3><div class="meta">${fs.size} ${fs.size === 1 ? 'Film' : 'Filme'}</div><ul>${zeilen}</ul></article>`;
       }).join('')}</div>`;
     }
@@ -253,7 +287,7 @@
     const wann = e.rest === 0 ? 'heute' : e.rest === 1 ? 'morgen' : fmtVoll.format(parse(e.letzter));
     const wo = e.kinos.map((k) => esc(k.name)).join(', ');
     const zaehler = e.rest === 0 ? '<b>Heute</b><span>letzter Tag</span>' : `<b>${e.rest}</b><span>${e.rest === 1 ? 'Tag' : 'Tage'} übrig</span>`;
-    return `<article class="chance-zeile">${plakat(e.f)}<div class="text">${filmLink(e.f)}${wertung(e.f)}<div class="meta">${filmMeta(e.f)}</div><div class="zuletzt">Zum letzten Mal ${wann} im ${wo}</div></div><div class="countdown">${zaehler}</div></article>`;
+    return `<article class="chance-zeile">${plakat(e.f)}<div class="text">${filmLink(e.f)}${pokale(e.f)}${wertung(e.f)}<div class="meta">${filmMeta(e.f)}</div><div class="zuletzt">Zum letzten Mal ${wann} im ${wo}</div></div><div class="countdown">${zaehler}</div></article>`;
   }
   function zeigeChance(daten) {
     const { sicher, offen } = letzteChance(daten);
@@ -392,7 +426,7 @@
     }).join('') + '<th>Status</th>';
 
     const zeilen = liste.map((s) => `<tr>
-      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${wertung(s.f)}</div></div></td>
+      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${wertung(s.f)}</div></div></td>
       <td class="umbruch">${istSneak(s.f) ? '?' : esc(s.f.regie || '–')}</td>
       <td class="umbruch schmal">${istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
       <td class="zahl">${istSneak(s.f) ? '?' : esc(s.f.jahr || '–')}</td>
@@ -747,7 +781,7 @@
       f.info.tmdb && ['Auf TMDB ansehen', `https://www.themoviedb.org/movie/${encodeURIComponent(f.info.tmdb)}`],
     ].filter(Boolean);
     const imdb = links.length ? `<p class="filmlinks">${links.map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</p>` : '';
-    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${wertung(f)}<div class="meta">${filmMeta(f)}</div>${imdb}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${gruppen}`;
+    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${preisListe(f)}${imdb}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${gruppen}`;
     $('#film-dialog').showModal();
   }
 

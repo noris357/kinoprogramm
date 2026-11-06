@@ -158,6 +158,16 @@ if (Test-Path $scoreDatei) {
   $sg.gewichte.PSObject.Properties | ForEach-Object { $gewichte[$_.Name] = [double]$_.Value }
   $sg.daempfung.PSObject.Properties | ForEach-Object { $daempfung[$_.Name] = [double]$_.Value }
 }
+# Gewonnene Hauptpreise je TMDB-ID (tools/preise.ps1), in fester Reihenfolge fuer die Anzeige
+$preisDatei = "$PSScriptRoot/../daten/preise.json"
+$preisReihenfolge = @{ oscar = 1; palme = 2; baer = 3; loewe = 4; tokio = 5 }
+$preise = @{}
+if (Test-Path $preisDatei) {
+  (Get-Content $preisDatei -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object {
+    # Als Objekte, nicht als verschachtelte Listen: Windows PowerShell 5.1 schreibt diese sonst mit "value"/"Count" ins JSON
+    $preise[$_.Name] = @($_.Value | Sort-Object { $preisReihenfolge[$_.preis] }, jahr | ForEach-Object { [pscustomobject][ordered]@{ p = $_.preis; k = $_.kategorie; j = $_.jahr } })
+  }
+}
 $mdb = @{}
 if (Test-Path $wertungsDatei) { (Get-Content $wertungsDatei -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $mdb[$_.Name] = $_.Value } }
 
@@ -241,6 +251,7 @@ foreach ($g in $gruppen.Values) {
     $zusatz = [ordered]@{}
     foreach ($f in 'poster', 'tmdb') { if ($i.$f) { $zusatz[$f] = $i.$f } }
     if ($scores.ContainsKey($g.Id)) { $zusatz.score = $scores[$g.Id] }
+    if ($i.tmdb -and $preise.ContainsKey([string]$i.tmdb)) { $zusatz.preise = $preise[[string]$i.tmdb] }
     if ($zusatz.Count) { $eintrag += , $zusatz }
   }
   $filmIndex[$g.Id] = $filme.Count

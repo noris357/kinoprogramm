@@ -1,0 +1,211 @@
+{
+    "103":  [
+                {
+                    "preis":  "palme",
+                    "kategorie":  "Goldene Palme",
+                    "jahr":  1976
+                }
+            ],
+    "120":  [
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Beste Kamera",
+                    "jahr":  2002
+                }
+            ],
+    "122":  [
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Beste Regie",
+                    "jahr":  2004
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Bestes adaptiertes Drehbuch",
+                    "jahr":  2004
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Bester Film",
+                    "jahr":  2004
+                }
+            ],
+    "129":  [
+                {
+                    "preis":  "baer",
+                    "kategorie":  "Goldener Bär",
+                    "jahr":  2002
+                }
+            ],
+    "581":  [
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Beste Kamera",
+                    "jahr":  1991
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Bestes adaptiertes Drehbuch",
+                    "jahr":  1991
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Bester Film",
+                    "jahr":  1991
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Beste Regie",
+                    "jahr":  1991
+                }
+            ],
+    "606":  [
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Bestes adaptiertes Drehbuch",
+                    "jahr":  1986
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Beste Regie",
+                    "jahr":  1986
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Bester Film",
+                    "jahr":  1986
+                },
+                {
+                    "preis":  "oscar",
+                    "kategorie":  "Beste Kamera",
+                    "jahr":  1986
+                }
+            ],
+    "1366":  [
+                 {
+                     "preis":  "oscar",
+                     "kategorie":  "Beste Regie",
+                     "jahr":  1977
+                 },
+                 {
+                     "preis":  "oscar",
+                     "kategorie":  "Bester Film",
+                     "jahr":  1977
+                 }
+             ],
+    "1417":  [
+                 {
+                     "preis":  "oscar",
+                     "kategorie":  "Beste Kamera",
+                     "jahr":  2007
+                 }
+             ],
+    "1541":  [
+                 {
+                     "preis":  "oscar",
+                     "kategorie":  "Bestes Originaldrehbuch",
+                     "jahr":  1992
+                 }
+             ],
+    "2034":  [
+                 {
+                     "preis":  "oscar",
+                     "kategorie":  "Bester Hauptdarsteller",
+                     "jahr":  2002
+                 }
+             ],
+    "9281":  [
+                 {
+                     "preis":  "oscar",
+                     "kategorie":  "Bestes Originaldrehbuch",
+                     "jahr":  1986
+                 }
+             ],
+    "44018":  [
+                  {
+                      "preis":  "loewe",
+                      "kategorie":  "Goldener Löwe",
+                      "jahr":  1985
+                  }
+              ],
+    "438631":  [
+                   {
+                       "preis":  "oscar",
+                       "kategorie":  "Beste Kamera",
+                       "jahr":  2022
+                   }
+               ],
+    "618245":  [
+                   {
+                       "preis":  "tokio",
+                       "kategorie":  "Tokyo Grand Prix",
+                       "jahr":  2019
+                   }
+               ],
+    "848685":  [
+                   {
+                       "preis":  "tokio",
+                       "kategorie":  "Tokyo Grand Prix",
+                       "jahr":  2022
+                   }
+               ],
+    "878976":  [
+                   {
+                       "preis":  "tokio",
+                       "kategorie":  "Tokyo Grand Prix",
+                       "jahr":  2021
+                   }
+               ],
+    "996584":  [
+                   {
+                       "preis":  "tokio",
+                       "kategorie":  "Tokyo Grand Prix",
+                       "jahr":  2023
+                   }
+               ],
+    "1054867":  [
+                    {
+                        "preis":  "oscar",
+                        "kategorie":  "Beste Regie",
+                        "jahr":  2026
+                    },
+                    {
+                        "preis":  "oscar",
+                        "kategorie":  "Bestes adaptiertes Drehbuch",
+                        "jahr":  2026
+                    },
+                    {
+                        "preis":  "oscar",
+                        "kategorie":  "Bester Film",
+                        "jahr":  2026
+                    }
+                ],
+    "1159206":  [
+                    {
+                        "preis":  "loewe",
+                        "kategorie":  "Goldener Löwe",
+                        "jahr":  2025
+                    }
+                ],
+    "1361934":  [
+                    {
+                        "preis":  "tokio",
+                        "kategorie":  "Tokyo Grand Prix",
+                        "jahr":  2024
+                    }
+                ],
+    "1432596":  [
+                    {
+                        "preis":  "tokio",
+                        "kategorie":  "Tokyo Grand Prix",
+                        "jahr":  2025
+                    }
+                ],
+    "1511834":  [
+                    {
+                        "preis":  "tokio",
+                        "kategorie":  "Tokyo Grand Prix",
+                        "jahr":  2026
+                    }
+                ]
+}

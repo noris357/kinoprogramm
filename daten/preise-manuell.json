@@ -1,0 +1,12 @@
+{
+  "hinweis": "Preise, die Wikidata nicht zuverlaessig fuehrt. Schluessel ist die TMDB-ID des Films. Tokyo Grand Prix laut offiziellen Gewinnerlisten, 2020 ohne Wettbewerb.",
+  "preise": {
+    "618245": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2019, "titel": "Atlantis" }],
+    "878976": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2021, "titel": "Just Remembering" }],
+    "848685": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2022, "titel": "As Bestas" }],
+    "996584": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2023, "titel": "Snow Leopard" }],
+    "1361934": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2024, "titel": "Teki Cometh" }],
+    "1432596": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2025, "titel": "Palestine 36" }],
+    "1511834": [{ "preis": "tokio", "kategorie": "Tokyo Grand Prix", "jahr": 2026, "titel": "Sister Brother Manhole Cover" }]
+  }
+}
