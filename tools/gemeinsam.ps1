@@ -59,10 +59,10 @@ function Get-BereinigterTitel([string]$Titel) {
 
 function Get-BereinigterTitelOhneKorrektur([string]$Titel) {
   $t = $Titel.Trim()
-  # Ueberraschungsfilme einheitlich: alte Filme (Review, Kult, Retro) -> "Sneak Review", neue Filme -> "Sneak Preview"
+  # Ueberraschungsfilme einheitlich: alte Filme (Review, Kult, Retro) -> "Kult Sneak", neue Filme -> "Sneak Preview"
   if ($t -match '(?i)\bsneak\b|überraschungs(film|preview)') {
     # Ganzes Wort pruefen: "Preview" enthaelt sonst auch "review"
-    if ($t -match '(?i)\b(review|kult|retro)') { return 'Sneak Review' } else { return 'Sneak Preview' }
+    if ($t -match '(?i)\b(review|kult|retro)') { return 'Kult Sneak' } else { return 'Sneak Preview' }
   }
   # Fassungen am Ende, z. B. "(OV)", " - OmU", "(jap.OmU)", "(Hindi OmU/OmeU)", "(Extended)"
   # Reihenfolge wichtig: zuerst ganze Klammern mit Sprachangabe, sonst bleibt "(jap." stehen

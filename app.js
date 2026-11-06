@@ -72,7 +72,7 @@
   const leerWert = (v) => (v == null || v === '' || v === '?' ? null : v);
   const filme = D.filme.map(([titel, land, regie, jahr, info], id) => {
     // Überraschungsfilme: Regie, Land und Jahr sind unbekannt, auch für Filter und Statistik
-    if (/^Sneak (Preview|Review)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
+    if (/^(Sneak Preview|Kult Sneak)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
     const laender = (leerWert(land) || '').split(/\s*,\s*/).filter(Boolean);
     const j = parseInt(String(jahr || '').slice(0, 4), 10);
     // Eigener Score 0-100 aus mehreren Wertungsquellen (siehe tools/build-data.ps1 und Impressum)
@@ -138,8 +138,8 @@
     return teile.join(' · ') || 'Keine Angaben';
   }
   const filmLink = (f) => `<button class="film-link" data-film="${f.id}">${esc(f.titel)}</button>`;
-  // Überraschungsfilme (Sneak Preview, Sneak Review) bekommen ein Fragezeichen statt Plakat
-  function istSneak(f) { return /^Sneak (Preview|Review)$/.test(f.titel); }
+  // Überraschungsfilme (Sneak Preview, Kult Sneak) bekommen ein Fragezeichen statt Plakat
+  function istSneak(f) { return /^(Sneak Preview|Kult Sneak)$/.test(f.titel); }
   function plakat(f, groesse = '') {
     if (istSneak(f)) return `<div class="plakat raetsel ${groesse}" aria-hidden="true"><span class="fz">?</span></div>`;
     const bild = f.info.poster ? `<img src="${esc(f.info.poster)}" alt="" loading="lazy">` : '';
