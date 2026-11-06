@@ -168,7 +168,13 @@ foreach ($g in $gruppen.Values) {
   $q = @{}
   $m = $mdb[[string]$g.Info.tmdb]
   if ($m -and $m.quellen) {
-    foreach ($p in $m.quellen.PSObject.Properties) { if ($gewichte.ContainsKey($p.Name)) { $q[$p.Name] = @{ wert = [double]$p.Value.wert; stimmen = $(if ($p.Value.stimmen) { [double]$p.Value.stimmen } else { $null }) } } }
+    foreach ($p in $m.quellen.PSObject.Properties) {
+      if (-not $gewichte.ContainsKey($p.Name)) { continue }
+      $wert = [double]$p.Value.wert
+      # Absicherung: Werte ausserhalb von 0-100 (z. B. doppelt umgerechnet) nicht verwenden
+      if ($wert -le 0 -or $wert -gt 100) { continue }
+      $q[$p.Name] = @{ wert = $wert; stimmen = $(if ($p.Value.stimmen) { [double]$p.Value.stimmen } else { $null }) }
+    }
   }
   # TMDB-Wertung aus filminfos.json, falls MDBList sie nicht liefert
   if (-not $q.ContainsKey('tmdb') -and $g.Info.bewertung) {

@@ -53,7 +53,11 @@ function ConvertFrom-Wertungen($Obj) {
     $q = ([string]$r.source).ToLowerInvariant()
     if (-not $umrechnung.ContainsKey($q)) { continue }
     $wert = $null
-    if ($null -ne $r.value -and "$($r.value)" -ne '') { $wert = [double]$r.value * $umrechnung[$q] }
+    if ($null -ne $r.value -and "$($r.value)" -ne '') {
+      $wert = [double]$r.value
+      # Nur hochrechnen, wenn der Wert noch auf der Ursprungsskala liegt (MDBList liefert TMDB z. B. schon als 0-100)
+      if ($wert -le (100 / $umrechnung[$q])) { $wert *= $umrechnung[$q] }
+    }
     elseif ($null -ne $r.score -and "$($r.score)" -ne '') { $wert = [double]$r.score }
     if ($null -eq $wert -or $wert -le 0) { continue }
     $eintrag = [ordered]@{ wert = [math]::Round($wert, 1) }

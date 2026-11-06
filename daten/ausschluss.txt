@@ -20,3 +20,6 @@
 (?i)\bQuizz+amerie\b
 (?i)\bVorlese-Nachmittag\b
 (?i)\bKinoquiz\b
+# Keine Filme: Zaubershows im Babylon
+(?i)zauberkeller
+(?i)zaubershow

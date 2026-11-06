@@ -147,6 +147,10 @@ h1, h2, h3 { text-wrap: balance; }
   display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; word-break: break-word;
 }
 .plakat .pj { font-size: 9px; letter-spacing: .14em; color: var(--muted); }
+.plakat.raetsel { align-items: center; justify-content: center; background: radial-gradient(circle at 50% 40%, #2a2214, #0f0d0a 75%); border-color: var(--line-strong); }
+.plakat.raetsel .fz { font-family: var(--font-display); color: var(--gold-hell); font-size: 40px; line-height: 1; }
+.plakat.mini.raetsel .fz { font-size: 22px; }
+.plakat.gross.raetsel .fz { font-size: 72px; }
 .plakat.gross { width: 120px; padding: 10px; }
 .plakat.gross .pt { font-size: 17px; -webkit-line-clamp: 6; }
 .plakat.gross .pj { font-size: 11px; }

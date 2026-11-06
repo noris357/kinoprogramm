@@ -39,8 +39,31 @@ function ConvertTo-IsoDatum([int]$Tag, [int]$Monat, [Nullable[int]]$Jahr = $null
 }
 
 # Fassungen und Formate gehoeren nicht zum Filmtitel (Vorgabe: keine eigenen Termine je Fassung)
+# Feste Titelkorrekturen aus daten/titel-korrekturen.json, z. B. "Persepolis von Marjane Satrapi" -> "Persepolis".
+# Gilt nach der allgemeinen Bereinigung, Gross- und Kleinschreibung egal.
+$script:Titelkorrekturen = @{}
+$korrekturDatei = Join-Path $PSScriptRoot '../daten/titel-korrekturen.json'
+if (Test-Path $korrekturDatei) {
+  (Get-Content $korrekturDatei -Raw -Encoding UTF8 | ConvertFrom-Json).korrekturen.PSObject.Properties | ForEach-Object { $script:Titelkorrekturen[$_.Name.ToLowerInvariant()] = $_.Value }
+}
+
 function Get-BereinigterTitel([string]$Titel) {
+  # Korrektur zuerst fuer den unveraenderten Titel, dann fuer den bereinigten
+  $roh = $Titel.Trim().ToLowerInvariant()
+  if ($script:Titelkorrekturen.ContainsKey($roh)) { return $script:Titelkorrekturen[$roh] }
+  $t = Get-BereinigterTitelOhneKorrektur $Titel
+  $k = $t.ToLowerInvariant()
+  if ($script:Titelkorrekturen.ContainsKey($k)) { return $script:Titelkorrekturen[$k] }
+  return $t
+}
+
+function Get-BereinigterTitelOhneKorrektur([string]$Titel) {
   $t = $Titel.Trim()
+  # Ueberraschungsfilme einheitlich: alte Filme (Review, Kult, Retro) -> "Sneak Review", neue Filme -> "Sneak Preview"
+  if ($t -match '(?i)\bsneak\b|überraschungs(film|preview)') {
+    # Ganzes Wort pruefen: "Preview" enthaelt sonst auch "review"
+    if ($t -match '(?i)\b(review|kult|retro)') { return 'Sneak Review' } else { return 'Sneak Preview' }
+  }
   # Fassungen am Ende, z. B. "(OV)", " - OmU", "(jap.OmU)", "(Hindi OmU/OmeU)", "(Extended)"
   # Reihenfolge wichtig: zuerst ganze Klammern mit Sprachangabe, sonst bleibt "(jap." stehen
   $hinten = @(

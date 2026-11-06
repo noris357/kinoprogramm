@@ -70,6 +70,11 @@ $ausschluss = @()
 if (Test-Path $ausschlussDatei) { $ausschluss = @(Get-Content $ausschlussDatei -Encoding UTF8 | Where-Object { $_ -and -not $_.StartsWith('#') }) }
 function Test-Ausgeschlossen([string]$Titel) { foreach ($m in $ausschluss) { if ($Titel -match $m) { return $true } }; return $false }
 
+# Die Ausschlussliste gilt auch fuer den Bestand: so verschwinden nachtraeglich eingetragene Muster ueberall
+$vorherBestand = $bestand.Count
+$bestand = @($bestand | Where-Object { -not (Test-Ausgeschlossen $_.Titel) })
+$ausDemBestand = $vorherBestand - $bestand.Count
+
 # ---------- Kinoseiten auslesen ----------
 $roh = @()
 $roh += @(Get-CinecittaProgramme)
@@ -164,6 +169,7 @@ foreach ($b in $bericht) {
 }
 "Nicht abgefragt: " + ((@($bestand | ForEach-Object Kino | Sort-Object -Unique) | Where-Object { $_ -notin $ergebnisse.Kino }) -join ', ')
 "Zeilen vorher $($bestand.Count), nachher $($ergebnis.Count)"
+if ($ausDemBestand) { "Aus dem Bestand entfernt (Ausschlussliste): $ausDemBestand Zeilen" }
 if ($neueFilme.Count) { "Neue Filme ohne Land, Regie und Jahr ($($neueFilme.Count)): " + (($neueFilme.Keys | Sort-Object) -join ' | ') }
 if ($ausgeschlossen.Count) { "Ausgeschlossen als Konzert oder Oper: " + (($ausgeschlossen.Keys | Sort-Object) -join ' | ') }
 

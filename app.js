@@ -71,6 +71,8 @@
   const mitFlagge = (land) => `${flagge(land) ? `<span class="flagge" aria-hidden="true">${flagge(land)}</span>` : ''}${esc(land)}`;
   const leerWert = (v) => (v == null || v === '' || v === '?' ? null : v);
   const filme = D.filme.map(([titel, land, regie, jahr, info], id) => {
+    // Überraschungsfilme: Regie, Land und Jahr sind unbekannt, auch für Filter und Statistik
+    if (/^Sneak (Preview|Review)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
     const laender = (leerWert(land) || '').split(/\s*,\s*/).filter(Boolean);
     const j = parseInt(String(jahr || '').slice(0, 4), 10);
     // Eigener Score 0-100 aus mehreren Wertungsquellen (siehe tools/build-data.ps1 und Impressum)
@@ -131,11 +133,15 @@
 
   // ---------- Bausteine ----------
   function filmMeta(f) {
+    if (istSneak(f)) return '? · ? · ?';   // Regie, Land, Jahr sind bei Überraschungsfilmen unbekannt
     const teile = [f.regie && esc(f.regie), f.laender.length && f.laender.map(mitFlagge).join(', '), f.jahr && esc(f.jahr)].filter(Boolean);
     return teile.join(' · ') || 'Keine Angaben';
   }
   const filmLink = (f) => `<button class="film-link" data-film="${f.id}">${esc(f.titel)}</button>`;
+  // Überraschungsfilme (Sneak Preview, Sneak Review) bekommen ein Fragezeichen statt Plakat
+  function istSneak(f) { return /^Sneak (Preview|Review)$/.test(f.titel); }
   function plakat(f, groesse = '') {
+    if (istSneak(f)) return `<div class="plakat raetsel ${groesse}" aria-hidden="true"><span class="fz">?</span></div>`;
     const bild = f.info.poster ? `<img src="${esc(f.info.poster)}" alt="" loading="lazy">` : '';
     return `<div class="plakat ${groesse}" aria-hidden="true">${bild}<span class="pt">${esc(f.titel)}</span><span class="pj">${esc(f.jahr || '')}</span></div>`;
   }
@@ -387,9 +393,9 @@
 
     const zeilen = liste.map((s) => `<tr>
       <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${wertung(s.f)}</div></div></td>
-      <td class="umbruch">${esc(s.f.regie || '–')}</td>
-      <td class="umbruch schmal">${s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
-      <td class="zahl">${esc(s.f.jahr || '–')}</td>
+      <td class="umbruch">${istSneak(s.f) ? '?' : esc(s.f.regie || '–')}</td>
+      <td class="umbruch schmal">${istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
+      <td class="zahl">${istSneak(s.f) ? '?' : esc(s.f.jahr || '–')}</td>
       <td class="zahl">${s.nKinos}</td>
       <td class="zahl">${s.nTage}</td>
       <td>${s.naechster ? datumKurz(s.naechster) : '–'}</td>
