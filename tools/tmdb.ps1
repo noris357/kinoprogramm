@@ -9,7 +9,8 @@
 # Bereits gepruefte Filme werden nicht erneut abgefragt. Nicht gefundene Filme erst nach 30 Tagen wieder.
 # Manuelle Zuordnung: daten/tmdb-zuordnung.json, z. B. { "Titel|2024": 12345 } oder { "Titel|": null } zum Unterdruecken.
 
-param([int]$Hoechstens = 0)
+# -Alle prueft alle Filme erneut, auch bereits gefundene (z. B. nach Verbesserungen an der Suche).
+param([int]$Hoechstens = 0, [switch]$Alle)
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
@@ -29,7 +30,8 @@ if (-not $schluessel) { 'Kein TMDB-Schluessel gefunden (TMDB_API_KEY oder tools/
 # v3-Schluessel (32 Zeichen) als Parameter, v4-Lesezugriffstoken (lang) als Bearer-Kopfzeile
 $istToken = $schluessel.Length -gt 40
 function Invoke-Tmdb([string]$Pfad, [hashtable]$Parameter = @{}) {
-  $p = @{ language = 'de-DE' } + $Parameter
+  $p = @{ language = 'de-DE' }
+  foreach ($k in $Parameter.Keys) { $p[$k] = $Parameter[$k] }
   if (-not $istToken) { $p.api_key = $schluessel }
   $abfrage = ($p.Keys | ForEach-Object { "$_=" + [uri]::EscapeDataString([string]$p[$_]) }) -join '&'
   $kopf = @{ Accept = 'application/json' }
@@ -68,6 +70,7 @@ foreach ($l in @(Invoke-Tmdb 'configuration/countries' | ForEach-Object { $_ }))
 $heute = (Get-Heute).ToString('yyyy-MM-dd')
 $offen = @($filme.Keys | Where-Object {
   $i = $infos[$_]
+  if ($Alle) { return $true }
   if ($zuordnung.ContainsKey($_)) { return -not $i -or $i.tmdb -ne $zuordnung[$_] }
   if (-not $i) { return $true }
   if ($i.nichtGefunden) { return ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $i.geprueft), 'yyyy-MM-dd', $null)).TotalDays -gt 30 }
@@ -76,11 +79,14 @@ $offen = @($filme.Keys | Where-Object {
 if ($Hoechstens -gt 0) { $offen = @($offen | Select-Object -First $Hoechstens) }
 "TMDB: $($filme.Count) Filme, davon $($offen.Count) neu zu pruefen"
 
+# Lockerer Vergleichsschluessel: "&", "and" und "und" zaehlen nicht ("Mandalorian & Grogu" = "Mandalorian and Grogu")
+function Get-LockererSchluessel([string]$Text) { Get-TitelSchluessel ([regex]::Replace($Text, '(?i)\s*&\s*|\b(and|und)\b', ' ')) }
+
 # Passt ein Suchtreffer zum Titel? Vergleich der Titelschluessel, bei bekanntem Jahr +-1 Jahr Toleranz.
 function Test-Treffer($Treffer, [string]$Titel, [int]$Jahr) {
-  $soll = Get-TitelSchluessel $Titel
-  $namen = @($Treffer.title, $Treffer.original_title) | Where-Object { $_ } | ForEach-Object { Get-TitelSchluessel $_ }
-  $haupt = Get-TitelSchluessel (($Titel -split '\s+[-–]\s+|:\s+')[0])
+  $soll = Get-LockererSchluessel $Titel
+  $namen = @($Treffer.title, $Treffer.original_title) | Where-Object { $_ } | ForEach-Object { Get-LockererSchluessel $_ }
+  $haupt = Get-LockererSchluessel (($Titel -split '\s+[-–]\s+|:\s+')[0])
   # In PowerShell haben -and und -or den gleichen Rang, daher ausdruecklich geklammert
   $titelPasst = $namen -contains $soll
   if (-not $titelPasst) {
@@ -94,6 +100,14 @@ function Test-Treffer($Treffer, [string]$Titel, [int]$Jahr) {
   return $true
 }
 
+# Zwischendurch speichern, damit ein Abbruch (z. B. Ruhezustand) nicht alles verwirft.
+# Eintraege fuer Filme, die nicht mehr im Bestand sind, bleiben erhalten: sie sparen spaetere Abfragen.
+function Save-Infos {
+  $sortiert = [ordered]@{}
+  foreach ($k in ($infos.Keys | Sort-Object)) { $sortiert[$k] = $infos[$k] }
+  [IO.File]::WriteAllText($infoDatei, ($sortiert | ConvertTo-Json -Depth 4), $utf8)
+}
+
 $neu = 0; $gefunden = 0
 foreach ($k in $offen) {
   $z = $filme[$k]
@@ -102,15 +116,27 @@ foreach ($k in $offen) {
   $id = $null
   if ($zuordnung.ContainsKey($k)) { $id = $zuordnung[$k] }
   else {
+    # Suchvarianten: mit Jahr, ohne Jahr, ohne Doppelpunkt ("Der Herr der Ringe: ..." heisst bei TMDB "... - ..."),
+    # nur Haupttitel, und auf Englisch (manche Filme kennt TMDB auf Deutsch nur unter dem Originaltitel)
     $versuche = @()
     if ($jahr) { $versuche += , @{ query = $titel; year = $jahr } }
     $versuche += , @{ query = $titel }
+    $ohneDoppelpunkt = ($titel -replace ':\s+', ' ')
+    if ($ohneDoppelpunkt -ne $titel) { $versuche += , @{ query = $ohneDoppelpunkt } }
     $kurz = ($titel -split '\s+[-–]\s+')[0]
     if ($kurz -ne $titel) { $versuche += , @{ query = $kurz } }
+    $versuche += , @{ query = $titel; language = 'en-US' }
+    $alleTreffer = New-Object System.Collections.Generic.List[object]
     foreach ($v in $versuche) {
       $suche = Invoke-Tmdb 'search/movie' $v
+      @($suche.results) | Where-Object { $_ } | ForEach-Object { $alleTreffer.Add($_) }
       $treffer = @($suche.results) | Where-Object { Test-Treffer $_ $titel $jahr } | Select-Object -First 1
       if ($treffer) { $id = $treffer.id; break }
+    }
+    # Gleicher Titel, aber anderes Jahr (z. B. falsches Jahr im Bestand): nur wenn genau ein solcher Film existiert
+    if (-not $id) {
+      $exakt = @($alleTreffer | Where-Object { Test-Treffer $_ $titel 0 } | Where-Object { (Get-LockererSchluessel $_.title) -eq (Get-LockererSchluessel $titel) -or (Get-LockererSchluessel $_.original_title) -eq (Get-LockererSchluessel $titel) } | ForEach-Object id | Select-Object -Unique)
+      if ($exakt.Count -eq 1) { $id = $exakt[0] }
     }
   }
 
@@ -122,14 +148,15 @@ foreach ($k in $offen) {
   $f = Invoke-Tmdb "movie/$id" @{ append_to_response = 'credits,external_ids' }
   if (-not $f) { $infos[$k] = [ordered]@{ nichtGefunden = $true; geprueft = $heute }; $neu++; continue }
 
-  $eintrag = [ordered]@{ tmdb = $f.id; geprueft = $heute }
+  $eintrag = [ordered]@{ tmdb = $f.id; titel = $f.title; geprueft = $heute; stimmen = [int]$f.vote_count }
   if ($f.poster_path) {
     $datei = "$($f.id).jpg"
     $ziel = Join-Path $plakatOrdner $datei
     if (-not (Test-Path $ziel)) { Invoke-WebRequest "https://image.tmdb.org/t/p/w185$($f.poster_path)" -OutFile $ziel -UseBasicParsing -TimeoutSec 30 }
     $eintrag.poster = "plakate/$datei"
   }
-  if ($f.vote_count -ge 20) { $eintrag.bewertung = ([math]::Round([double]$f.vote_average, 1)).ToString('0.0', [Globalization.CultureInfo]::GetCultureInfo('de-DE')) }
+  # Ab 5 Stimmen anzeigen. Bei sehr wenigen Stimmen ist der Wert zu zufaellig.
+  if ($f.vote_count -ge 5) { $eintrag.bewertung = ([math]::Round([double]$f.vote_average, 1)).ToString('0.0', [Globalization.CultureInfo]::GetCultureInfo('de-DE')) }
   if ($f.external_ids.imdb_id) { $eintrag.imdb = $f.external_ids.imdb_id }
   # Angaben von TMDB als Ersatz, falls im Bestand nichts steht
   $l = @($f.production_countries | ForEach-Object { if ($laender[$_.iso_3166_1]) { $laender[$_.iso_3166_1] } else { $_.name } })
@@ -140,15 +167,12 @@ foreach ($k in $offen) {
   if ($start -match '^\d{4}') { $eintrag.jahr = $start.Substring(0, 4) }
   $infos[$k] = $eintrag
   $neu++; $gefunden++
-  if ($neu % 25 -eq 0) { "  $neu von $($offen.Count) geprueft" }
+  if ($neu % 25 -eq 0) { "  $neu von $($offen.Count) geprueft"; Save-Infos }
 }
+Save-Infos
 
-# Eintraege fuer Filme, die nicht mehr im Bestand sind, bleiben erhalten: sie schaden nicht und sparen spaetere Abfragen
-$sortiert = [ordered]@{}
-foreach ($k in ($infos.Keys | Sort-Object)) { $sortiert[$k] = $infos[$k] }
-[IO.File]::WriteAllText($infoDatei, ($sortiert | ConvertTo-Json -Depth 4), $utf8)
-
-$alle = @($filme.Keys | Where-Object { $infos[$_] -and -not $infos[$_].nichtGefunden }).Count
-"TMDB: $gefunden von $neu neu gepruefte Filme gefunden. Insgesamt $alle von $($filme.Count) Filmen mit TMDB-Angaben."
+# Nicht $alle nennen: PowerShell unterscheidet nicht nach Gross- und Kleinschreibung, das waere der Schalter -Alle
+$mitAngaben = @($filme.Keys | Where-Object { $infos[$_] -and -not $infos[$_].nichtGefunden }).Count
+"TMDB: $gefunden von $neu neu gepruefte Filme gefunden. Insgesamt $mitAngaben von $($filme.Count) Filmen mit TMDB-Angaben."
 $fehlend = @($filme.Keys | Where-Object { $infos[$_].nichtGefunden })
 if ($fehlend.Count) { "Ohne TMDB-Treffer ($($fehlend.Count)): " + (($fehlend | ForEach-Object { $_.TrimEnd('|') }) -join ' | ') }

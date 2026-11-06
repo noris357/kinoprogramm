@@ -62,15 +62,22 @@
     return { id, roh, name, stadt: stadtVon(roh), mono: monogrammVon(name), link: (D.kinoLinks || [])[id] };
   });
 
-  // Länderschreibweisen vereinheitlichen, nur für Filter und Anzeige
-  const LAND_ALIAS = { 'Vereinigte Staaten': 'USA', 'Vereinigtes Königreich': 'Großbritannien', UK: 'Großbritannien', It: 'Italien', Turkey: 'Türkei', BRD: 'Deutschland', IE: 'Irland' };
+  // Länder sind in build-data.ps1 schon vereinheitlicht. Die ISO-Codes liefern die Flaggen.
+  const LAND_CODE = D.laenderCodes || {};
+  const flagge = (land) => {
+    const c = LAND_CODE[land];
+    return c ? String.fromCodePoint(...[...c].map((z) => 0x1F1E6 + z.charCodeAt(0) - 65)) : '';
+  };
+  const mitFlagge = (land) => `${flagge(land) ? `<span class="flagge" aria-hidden="true">${flagge(land)}</span>` : ''}${esc(land)}`;
   const leerWert = (v) => (v == null || v === '' || v === '?' ? null : v);
   const filme = D.filme.map(([titel, land, regie, jahr, info], id) => {
-    const laender = (leerWert(land) || '').split(/\s*[,/]\s*/).map((l) => LAND_ALIAS[l] || l).filter((l) => l && l !== '?');
+    const laender = (leerWert(land) || '').split(/\s*,\s*/).filter(Boolean);
     const j = parseInt(String(jahr || '').slice(0, 4), 10);
+    const b = info && info.bewertung ? parseFloat(String(info.bewertung).replace(',', '.')) : NaN;
     return {
       id, titel, regie: leerWert(regie), jahr: leerWert(jahr), info: info || {},
       laender: [...new Set(laender)],
+      bewertung: Number.isFinite(b) ? b : null,
       jahrzehnt: j > 1880 && j <= new Date().getFullYear() + 1 ? `${Math.floor(j / 10) * 10}er` : null,
     };
   });
@@ -99,7 +106,7 @@
   // ---------- Zustand und Filter ----------
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
-    ansicht: 'programm', tag: HEUTE, gruppe: 'film',
+    ansicht: 'programm', tag: HEUTE, gruppe: 'film', reihenfolge: 'kinos',
     sort: { feld: 'naechster', auf: true }, nurKommend: true,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
@@ -123,7 +130,8 @@
 
   // ---------- Bausteine ----------
   function filmMeta(f) {
-    return [f.regie, f.laender.join(', '), f.jahr].filter(Boolean).map(esc).join(' · ') || 'Keine Angaben';
+    const teile = [f.regie && esc(f.regie), f.laender.length && f.laender.map(mitFlagge).join(', '), f.jahr && esc(f.jahr)].filter(Boolean);
+    return teile.join(' · ') || 'Keine Angaben';
   }
   const filmLink = (f) => `<button class="film-link" data-film="${f.id}">${esc(f.titel)}</button>`;
   function plakat(f, groesse = '') {
@@ -188,7 +196,12 @@
     } else if (zustand.gruppe === 'film') {
       const nachFilm = new Map();
       amTag.forEach((t) => { if (!nachFilm.has(t.f)) nachFilm.set(t.f, new Set()); nachFilm.get(t.f).add(t.k); });
-      const liste = [...nachFilm].sort((a, b) => b[1].size - a[1].size || filme[a[0]].titel.localeCompare(filme[b[0]].titel, 'de'));
+      const nachTitel = (a, b) => filme[a[0]].titel.localeCompare(filme[b[0]].titel, 'de');
+      const nachKinos = (a, b) => b[1].size - a[1].size;
+      // Filme ohne Bewertung stehen bei der Sortierung nach Bewertung am Ende
+      const nachWertung = (a, b) => (filme[b[0]].bewertung ?? -1) - (filme[a[0]].bewertung ?? -1);
+      const ordnung = { kinos: [nachKinos, nachTitel], bewertung: [nachWertung, nachKinos, nachTitel], titel: [nachTitel] }[zustand.reihenfolge];
+      const liste = [...nachFilm].sort((a, b) => { for (const o of ordnung) { const r = o(a, b); if (r) return r; } return 0; });
       inhalt = `<div class="karten">${liste.map(([fid, ks]) => {
         const f = filme[fid];
         const chips = [...ks].map((k) => kinos[k].name).sort().map((n) => `<span class="chip">${esc(n)}</span>`).join('');
@@ -213,9 +226,16 @@
       </div>
       <div class="ansicht-kopf">
         <h2>${fmtVoll.format(parse(zustand.tag))}</h2>
-        <div class="umschalter" role="group" aria-label="Gruppierung">
-          <button data-gruppe="film" aria-pressed="${zustand.gruppe === 'film'}">Nach Film</button>
-          <button data-gruppe="kino" aria-pressed="${zustand.gruppe === 'kino'}">Nach Kino</button>
+        <div class="steuerung">
+          ${zustand.gruppe === 'film' ? `<div class="umschalter" role="group" aria-label="Sortierung">
+            <button data-reihenfolge="kinos" aria-pressed="${zustand.reihenfolge === 'kinos'}">Meiste Kinos</button>
+            <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">★ Bewertung</button>
+            <button data-reihenfolge="titel" aria-pressed="${zustand.reihenfolge === 'titel'}">A–Z</button>
+          </div>` : ''}
+          <div class="umschalter" role="group" aria-label="Gruppierung">
+            <button data-gruppe="film" aria-pressed="${zustand.gruppe === 'film'}">Nach Film</button>
+            <button data-gruppe="kino" aria-pressed="${zustand.gruppe === 'kino'}">Nach Kino</button>
+          </div>
         </div>
       </div>
       ${inhalt}`;
@@ -367,7 +387,7 @@
     const zeilen = liste.map((s) => `<tr>
       <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${wertung(s.f)}</div></div></td>
       <td class="umbruch">${esc(s.f.regie || '–')}</td>
-      <td class="umbruch schmal">${esc(s.f.laender.join(', ') || '–')}</td>
+      <td class="umbruch schmal">${s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
       <td class="zahl">${esc(s.f.jahr || '–')}</td>
       <td class="zahl">${s.nKinos}</td>
       <td class="zahl">${s.nTage}</td>
@@ -397,12 +417,58 @@
   }
   function balken(eintraege, filterArt) {
     const max = Math.max(1, ...eintraege.map((e) => e[1]));
-    return `<div class="balkenliste">${eintraege.map(([name, n]) => `<button class="balkenzeile" data-setze="${filterArt}" data-wert="${esc(name)}" title="Nach ${esc(name)} filtern">
-      <span>${esc(name)}</span><span class="bahn"><i style="width:${(n / max) * 100}%"></i></span><span class="wert">${n}</span></button>`).join('')}</div>`;
+    const name = (n) => (filterArt === 'land' ? mitFlagge(n) : esc(n));
+    return `<div class="balkenliste">${eintraege.map(([n, z]) => `<button class="balkenzeile" data-setze="${filterArt}" data-wert="${esc(n)}" title="Nach ${esc(n)} filtern">
+      <span>${name(n)}</span><span class="bahn"><i style="width:${(z / max) * 100}%"></i></span><span class="wert">${z}</span></button>`).join('')}</div>`;
+  }
+
+  // Durchschnittliche TMDB-Bewertung je Tag: jeder Film zählt pro Tag nur einmal, nur Filme mit Bewertung
+  function bewertungsreihe(daten) {
+    const proTag = new Map();
+    daten.forEach((t) => {
+      if (filme[t.f].bewertung == null) return;
+      if (!proTag.has(t.d)) proTag.set(t.d, new Set());
+      proTag.get(t.d).add(t.f);
+    });
+    const reihe = [];
+    for (let d = ERSTER; d <= LETZTER; d = plusTage(d, 1)) {
+      const s = proTag.get(d);
+      const werte = s ? [...s].map((f) => filme[f].bewertung) : [];
+      reihe.push({ d, n: werte.length ? werte.reduce((a, b) => a + b, 0) / werte.length : null, anzahl: werte.length });
+    }
+    return reihe;
+  }
+
+  // Filme pro Monat nach erstgenanntem Produktionsland: jeder Film zählt pro Monat einmal
+  const LANDFARBEN = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9'];
+  const FARBE_ANDERE = '#6b6760';
+  function laenderJeMonat(daten) {
+    const monate = new Map();
+    daten.forEach((t) => {
+      const land = filme[t.f].laender[0];
+      if (!land) return;
+      const m = t.d.slice(0, 7);
+      if (!monate.has(m)) monate.set(m, new Map());
+      monate.get(m).set(t.f, land);
+    });
+    const summe = new Map();
+    monate.forEach((fs) => fs.forEach((land) => summe.set(land, (summe.get(land) || 0) + 1)));
+    const spitze = [...summe].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')).slice(0, LANDFARBEN.length).map(([l]) => l);
+    const reihen = [...spitze, 'Andere'];
+    const liste = [...monate.keys()].sort().map((m) => {
+      const z = new Map(reihen.map((r) => [r, 0]));
+      monate.get(m).forEach((land) => { const r = spitze.includes(land) ? land : 'Andere'; z.set(r, z.get(r) + 1); });
+      return { m, werte: reihen.map((r) => z.get(r)), gesamt: monate.get(m).size };
+    });
+    const gesamt = reihen.map((r, i) => liste.reduce((s, e) => s + e.werte[i], 0));
+    return { reihen, liste, gesamt, farben: [...LANDFARBEN.slice(0, spitze.length), FARBE_ANDERE] };
   }
 
   function zeigeStatistik(daten) {
     const reihe = tagesreihe(daten);
+    const wertungen = bewertungsreihe(daten);
+    const laenderMonat = laenderJeMonat(daten);
+    const mitWert = wertungen.filter((p) => p.n != null).map((p) => p.n);
     const kommende = new Set(daten.filter((t) => t.d >= HEUTE).map((t) => t.f));
     const basis = kommende.size ? [...kommende].map((id) => filme[id]) : [];
     const jz = new Map(), la = new Map();
@@ -415,18 +481,110 @@
     const laender = [...la].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')).slice(0, 12);
 
     $('#v-statistik').innerHTML = `
-      <div class="tafel diagramm" id="diagramm">
+      <div class="tafel diagramm" id="d-filme">
         <h3>Verschiedene Filme pro Tag</h3>
         <p class="hinweis">Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Tage auf 0 sind meist Lücken in der Datenerfassung. Ein Klick auf einen Tag öffnet das Programm.</p>
-        <div id="diagramm-flaeche"></div>
-        <div class="tooltip" id="tooltip" hidden></div>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-wertung">
+        <h3>Ø Bewertung pro Tag</h3>
+        <p class="hinweis">Durchschnitt der TMDB-Bewertungen aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Bewertung bleiben außen vor.${mitWert.length ? ` Über den ganzen Zeitraum liegt der Tagesschnitt zwischen ${Math.min(...mitWert).toLocaleString('de-DE', { maximumFractionDigits: 1 })} und ${Math.max(...mitWert).toLocaleString('de-DE', { maximumFractionDigits: 1 })}.` : ''}</p>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-laender">
+        <h3>Filme pro Monat nach Land</h3>
+        <p class="hinweis">Jeder Film zählt pro Monat einmal, und zwar für das erstgenannte Produktionsland. Eine deutsch-französische Koproduktion mit Deutschland an erster Stelle zählt also als deutscher Film.</p>
+        <div class="legende-laender">${laenderMonat.reihen.map((r, i) => `<span><i style="background:${laenderMonat.farben[i]}"></i>${r === 'Andere' ? 'Andere' : mitFlagge(r)} <b>${laenderMonat.gesamt[i]}</b></span>`).join('')}</div>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
       </div>
       <div class="raster-2">
         <div class="tafel"><h3>Nach Jahrzehnt</h3><p class="hinweis">Filme mit kommenden Terminen nach Produktionsjahr. Ein Klick filtert.</p>${jahrzehnte.length ? balken(jahrzehnte, 'jahrzehnt') : '<p class="leer">Keine Daten.</p>'}</div>
         <div class="tafel"><h3>Nach Land</h3><p class="hinweis">Die zwölf häufigsten Produktionsländer. Koproduktionen zählen für jedes Land.</p>${laender.length ? balken(laender, 'land') : '<p class="leer">Keine Daten.</p>'}</div>
       </div>
-      <details><summary>Verlauf als Tabelle anzeigen (pro Monat)</summary>${monatsTabelle(reihe)}</details>`;
-    zeichneLinie(reihe);
+      <details><summary>Verlauf als Tabelle anzeigen (pro Monat)</summary>${monatsTabelle(reihe)}</details>
+      <details><summary>Länder als Tabelle anzeigen (pro Monat)</summary>${laenderTabelle(laenderMonat)}</details>`;
+
+    const maxFilme = Math.max(1, ...reihe.map((p) => p.n));
+    const stF = schritt(maxFilme);
+    linienDiagramm('d-filme', reihe, {
+      yMin: 0, yMax: Math.ceil(maxFilme / stF) * stF, schritt: stF, flaeche: true,
+      tipp: (p) => `${datum(p.d)}<br><b>${p.n}</b> ${p.n === 1 ? 'Film' : 'Filme'}`,
+      beschreibung: 'Liniendiagramm: verschiedene Filme pro Tag',
+    });
+    const unten = mitWert.length ? Math.max(0, Math.floor(Math.min(...mitWert)) - 0.5) : 0;
+    const oben = mitWert.length ? Math.min(10, Math.ceil(Math.max(...mitWert)) + 0.5) : 10;
+    linienDiagramm('d-wertung', wertungen, {
+      yMin: unten, yMax: oben, schritt: 0.5, flaeche: false,
+      zahl: (v) => v.toLocaleString('de-DE', { minimumFractionDigits: 1 }),
+      tipp: (p) => (p.n == null ? `${datum(p.d)}<br>keine bewerteten Filme` : `${datum(p.d)}<br>Ø <b>${p.n.toLocaleString('de-DE', { maximumFractionDigits: 2 })}</b> aus ${p.anzahl} ${p.anzahl === 1 ? 'Film' : 'Filmen'}`),
+      beschreibung: 'Liniendiagramm: durchschnittliche TMDB-Bewertung pro Tag',
+    });
+    saeulenDiagramm('d-laender', laenderMonat);
+  }
+
+  function laenderTabelle({ reihen, liste }) {
+    const kopf = reihen.map((r) => `<th class="zahl">${r === 'Andere' ? 'Andere' : mitFlagge(r)}</th>`).join('');
+    const zeilen = liste.map((e) => `<tr><td>${fmtMonatLang.format(parse(e.m + '-01'))}</td>${e.werte.map((w) => `<td class="zahl">${w || '–'}</td>`).join('')}<td class="zahl"><b>${e.gesamt}</b></td></tr>`).join('');
+    return `<div class="tabelle-wrap"><table class="liste"><thead><tr><th>Monat</th>${kopf}<th class="zahl">Gesamt</th></tr></thead><tbody>${zeilen}</tbody></table></div>`;
+  }
+
+  // Tooltip relativ zum Diagrammrahmen setzen (SVG-Elemente kennen kein offsetLeft)
+  function setzeTipp(rahmen, tip, svg, B, xPunkt, yPunkt, html) {
+    const sr = svg.getBoundingClientRect(), dr = rahmen.getBoundingClientRect();
+    const skala = sr.width / B;
+    tip.hidden = false;
+    tip.innerHTML = html;
+    const links = Math.max(80, Math.min(sr.width - 80, xPunkt * skala));
+    tip.style.left = `${links + sr.left - dr.left}px`;
+    tip.style.top = `${yPunkt * skala + sr.top - dr.top - 10}px`;
+  }
+
+  function saeulenDiagramm(id, { reihen, liste, farben }) {
+    const rahmen = document.getElementById(id);
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    if (!liste.length) { ziel.innerHTML = '<p class="leer">Keine Filme mit Länderangabe.</p>'; return; }
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 240 : 300;
+    const r = { l: 34, o: 12, u: 26, re: 8 };
+    const max = Math.max(1, ...liste.map((e) => e.gesamt));
+    const st = schritt(max), yMax = Math.ceil(max / st) * st;
+    const y = (n) => r.o + (1 - n / yMax) * (H - r.o - r.u);
+    const breite = (B - r.l - r.re) / liste.length;
+    const saeule = Math.min(56, breite * 0.62);
+    let gitter = '', ticksY = '', ticksX = '', segmente = '';
+    for (let v = 0; v <= yMax; v += st) {
+      gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(v)}" y2="${y(v)}"/>`;
+      ticksY += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+    }
+    liste.forEach((e, i) => {
+      const xm = r.l + breite * (i + 0.5), x0 = xm - saeule / 2;
+      // Januar mit Jahreszahl, weil die Daten über den Jahreswechsel reichen
+      const kurz = fmtMonat.format(parse(e.m + '-01')) + (e.m.endsWith('-01') && i > 0 ? ` ’${e.m.slice(2, 4)}` : '');
+      if (!(B < 500 && liste.length > 8 && i % 2)) ticksX += `<text x="${xm}" y="${H - 6}" text-anchor="middle">${kurz}</text>`;
+      let unten = 0;
+      e.werte.forEach((w, j) => {
+        if (!w) return;
+        // 2px Abstand in Flächenfarbe zwischen gestapelten Segmenten
+        const y1 = y(unten + w), y0 = y(unten);
+        segmente += `<rect class="segment" x="${x0.toFixed(1)}" y="${y1.toFixed(1)}" width="${saeule.toFixed(1)}" height="${Math.max(1, y0 - y1 - 2).toFixed(1)}" fill="${farben[j]}" data-i="${i}" data-j="${j}"/>`;
+        unten += w;
+      });
+    });
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Gestapeltes Säulendiagramm: Filme pro Monat nach erstgenanntem Produktionsland">
+      <g class="gitter">${gitter}</g>${segmente}
+      <line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(0)}" y2="${y(0)}"/>
+      <g class="achse">${ticksY}${ticksX}</g></svg>`;
+    const svg = ziel.querySelector('svg');
+    svg.addEventListener('pointermove', (ev) => {
+      const s = ev.target.closest('.segment');
+      if (!s) { tip.hidden = true; return; }
+      const e = liste[+s.dataset.i], j = +s.dataset.j, land = reihen[j];
+      setzeTipp(rahmen, tip, svg, B, +s.getAttribute('x') + saeule / 2, +s.getAttribute('y'),
+        `${fmtMonatLang.format(parse(e.m + '-01'))}<br>${land === 'Andere' ? 'Andere Länder' : mitFlagge(land)}: <b>${e.werte[j]}</b> von ${e.gesamt} Filmen`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; });
   }
 
   function monatsTabelle(reihe) {
@@ -442,20 +600,20 @@
     return `<div class="tabelle-wrap"><table class="liste"><thead><tr><th>Monat</th><th class="zahl">Tage mit Daten</th><th class="zahl">Ø Filme pro Tag</th><th class="zahl">Höchstwert</th></tr></thead><tbody>${zeilen}</tbody></table></div>`;
   }
 
-  function zeichneLinie(reihe) {
-    const flaeche = $('#diagramm-flaeche');
-    if (!flaeche) return;
-    const B = Math.max(flaeche.clientWidth, 280), H = B < 500 ? 220 : 300;
-    const r = { l: 34, o: 20, u: 26, re: 8 };
-    const max = Math.max(1, ...reihe.map((p) => p.n));
-    const st = schritt(max), yMax = Math.ceil(max / st) * st;
+  // Liniendiagramm über alle Tage. Werte null erzeugen eine Lücke in der Linie.
+  function linienDiagramm(id, reihe, opt) {
+    const rahmen = document.getElementById(id);
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 220 : 280;
+    const r = { l: 38, o: 20, u: 26, re: 8 };
+    const zahl = opt.zahl || ((v) => String(v));
     const x = (i) => r.l + (i / Math.max(1, reihe.length - 1)) * (B - r.l - r.re);
-    const y = (n) => r.o + (1 - n / yMax) * (H - r.o - r.u);
+    const y = (n) => r.o + (1 - (n - opt.yMin) / (opt.yMax - opt.yMin)) * (H - r.o - r.u);
 
     let gitter = '', ticksY = '';
-    for (let v = 0; v <= yMax; v += st) {
+    for (let v = opt.yMin; v <= opt.yMax + 1e-9; v += opt.schritt) {
       gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(v)}" y2="${y(v)}"/>`;
-      ticksY += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+      ticksY += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${zahl(v)}</text>`;
     }
     let ticksX = '';
     reihe.forEach((p, i) => {
@@ -463,46 +621,45 @@
         ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(p.d))}</text>`;
       }
     });
-    const pfad = reihe.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.n).toFixed(1)}`).join('');
-    const flaechePfad = `${pfad}L${x(reihe.length - 1)},${y(0)}L${x(0)},${y(0)}Z`;
+    let pfad = '', offen = false;
+    reihe.forEach((p, i) => {
+      if (p.n == null) { offen = false; return; }
+      pfad += `${offen ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.n).toFixed(1)}`;
+      offen = true;
+    });
+    const flaechePfad = opt.flaeche ? `<path class="flaeche" d="${pfad}L${x(reihe.length - 1)},${y(opt.yMin)}L${x(0)},${y(opt.yMin)}Z"/>` : '';
     const hi = reihe.findIndex((p) => p.d === HEUTE);
-    const heute = hi >= 0 ? `<g class="heute"><line x1="${x(hi)}" x2="${x(hi)}" y1="${r.o - 6}" y2="${y(0)}"/><text x="${x(hi) + 5}" y="${r.o + 4}">Heute</text></g>` : '';
+    const heute = hi >= 0 ? `<g class="heute"><line x1="${x(hi)}" x2="${x(hi)}" y1="${r.o - 6}" y2="${y(opt.yMin)}"/><text x="${x(hi) + 5}" y="${r.o + 4}">Heute</text></g>` : '';
 
-    flaeche.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Liniendiagramm: verschiedene Filme pro Tag von ${datum(ERSTER)} bis ${datum(LETZTER)}">
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="${esc(opt.beschreibung)} von ${datum(ERSTER)} bis ${datum(LETZTER)}">
       <defs><linearGradient id="goldverlauf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c9a24a" stop-opacity=".28"/><stop offset="1" stop-color="#c9a24a" stop-opacity="0"/></linearGradient></defs>
       <g class="gitter">${gitter}</g>
-      <path class="flaeche" d="${flaechePfad}"/>
+      ${flaechePfad}
       <path class="linie" d="${pfad}"/>
-      <line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(0)}" y2="${y(0)}"/>
+      <line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(opt.yMin)}" y2="${y(opt.yMin)}"/>
       <g class="achse">${ticksY}${ticksX}</g>
       ${heute}
-      <g class="fadenkreuz" id="fk" visibility="hidden"><line id="fk-l" y1="${r.o}" y2="${y(0)}"/><circle id="fk-p" r="4.5"/></g>
-      <rect id="treffer" x="${r.l}" y="0" width="${B - r.l - r.re}" height="${H}" fill="transparent" style="cursor:crosshair"/>
+      <g class="fadenkreuz" visibility="hidden"><line y1="${r.o}" y2="${y(opt.yMin)}"/><circle r="4.5"/></g>
+      <rect class="treffer" x="${r.l}" y="0" width="${B - r.l - r.re}" height="${H}" fill="transparent" style="cursor:crosshair"/>
     </svg>`;
 
-    const svg = flaeche.querySelector('svg');
-    const tip = $('#tooltip');
+    const svg = ziel.querySelector('svg');
+    const fk = svg.querySelector('.fadenkreuz'), fkL = fk.querySelector('line'), fkP = fk.querySelector('circle');
     const index = (ev) => {
       const pt = svg.getBoundingClientRect();
       const px = ((ev.clientX - pt.left) / pt.width) * B;
       return Math.max(0, Math.min(reihe.length - 1, Math.round(((px - r.l) / (B - r.l - r.re)) * (reihe.length - 1))));
     };
-    const treffer = $('#treffer');
+    const treffer = svg.querySelector('.treffer');
     treffer.addEventListener('pointermove', (ev) => {
       const i = index(ev), p = reihe[i];
-      $('#fk').setAttribute('visibility', 'visible');
-      $('#fk-l').setAttribute('x1', x(i)); $('#fk-l').setAttribute('x2', x(i));
-      $('#fk-p').setAttribute('cx', x(i)); $('#fk-p').setAttribute('cy', y(p.n));
-      // SVG-Elemente kennen kein offsetLeft, daher Lage relativ zum Diagrammrahmen berechnen
-      const sr = svg.getBoundingClientRect(), dr = $('#diagramm').getBoundingClientRect();
-      const skala = sr.width / B;
-      tip.hidden = false;
-      tip.innerHTML = `${datum(p.d)}<br><b>${p.n}</b> ${p.n === 1 ? 'Film' : 'Filme'}`;
-      const links = Math.max(70, Math.min(sr.width - 70, x(i) * skala));
-      tip.style.left = `${links + sr.left - dr.left}px`;
-      tip.style.top = `${y(p.n) * skala + sr.top - dr.top - 10}px`;
+      fk.setAttribute('visibility', 'visible');
+      fkL.setAttribute('x1', x(i)); fkL.setAttribute('x2', x(i));
+      fkP.setAttribute('visibility', p.n == null ? 'hidden' : 'visible');
+      if (p.n != null) { fkP.setAttribute('cx', x(i)); fkP.setAttribute('cy', y(p.n)); }
+      setzeTipp(rahmen, tip, svg, B, x(i), p.n == null ? r.o + 20 : y(p.n), opt.tipp(p));
     });
-    treffer.addEventListener('pointerleave', () => { $('#fk').setAttribute('visibility', 'hidden'); tip.hidden = true; });
+    treffer.addEventListener('pointerleave', () => { fk.setAttribute('visibility', 'hidden'); tip.hidden = true; });
     treffer.addEventListener('click', (ev) => { zustand.tag = reihe[index(ev)].d; wechsleAnsicht('programm'); });
   }
 
@@ -551,6 +708,7 @@
         <p>Die Daten werden mit Sorgfalt gepflegt, können aber unvollständig oder veraltet sein. Verbindlich sind allein die Programme und Ticketseiten der Kinos. Für Inhalte verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
         <h3>Filmdaten und Plakate</h3>
         <p>Plakate, Bewertungen sowie fehlende Angaben zu Land, Regie und Jahr stammen von <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. This product uses the TMDB API but is not endorsed or certified by TMDB. Die Rechte an den Plakaten liegen bei den jeweiligen Filmverleihen und Studios.</p>
+        <p>Flaggen: Twemoji von Twitter, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY 4.0</a>. Schriften Figtree und Italiana unter der SIL Open Font License.</p>
         <h3>Kinos und Marken</h3>
         <p>Die Namen der Kinos gehören den jeweiligen Betreibern. Diese Seite steht in keiner Verbindung zu den Kinos.</p>
         <h3>Datenschutz</h3>
@@ -633,6 +791,7 @@
     if ((el = ziel('[data-tag]'))) { zustand.tag = el.dataset.tag; return zeichne(); }
     if ((el = ziel('[data-tag-sprung]'))) { zustand.tag = el.dataset.tagSprung; return wechsleAnsicht('programm'); }
     if ((el = ziel('[data-gruppe]'))) { zustand.gruppe = el.dataset.gruppe; return zeichne(); }
+    if ((el = ziel('[data-reihenfolge]'))) { zustand.reihenfolge = el.dataset.reihenfolge; return zeichne(); }
     if ((el = ziel('[data-kal]'))) { zustand.kalModus = el.dataset.kal; return zeichne(); }
     if ((el = ziel('[data-monat]'))) { zustand.kalMonat = el.dataset.monat; return zeichne(); }
     if ((el = ziel('[data-matrix]'))) { zustand.matrixStart = el.dataset.matrix; return zeichne(); }

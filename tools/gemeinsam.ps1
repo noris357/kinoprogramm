@@ -49,9 +49,13 @@ function Get-BereinigterTitel([string]$Titel) {
     '\s*\((?:Extended|Extended Edition|Director.s Cut)\)\s*$'
     # Reihenzusaetze der Kinos am Ende
     '\s+[-–]\s*(?:Best of Cinema|Seniorenkino|CineSpecial|Anime Nights(?: \d{4})?|Das Kinoerlebnis)\s*$'
+    # Anlaesse und Wiederauffuehrungen: "(Eroeffnungsfilm)", "(35-jaehriges Jubilaeum)", "(WA: 2026)", "(1990)"
+    '\s*\((?:Er(?:ö|oe)ffnungsfilm|Abschlussfilm|\d+[-.\s]*j(?:ä|ae)hriges Jubil(?:ä|ae)um|Jubil(?:ä|ae)umsfassung|WA:?\s*\d{4}|\d{4})\)\s*$'
+    # Vorprogramm: "Astero | Vorprogramm: Die Abenteuer des Villar" -> "Astero"
+    '\s*\|\s*Vorprogramm:.*$'
   )
   # Reihen und Sonderformate davor, z. B. "CineSpecial: ", "Preview: ", "Mein erster Kinobesuch: "
-  $vorne = '^\s*(?:CineSpecial|CineLady(?: Preview| Special)?|Happy Family[- ]Preview|Preview|Vorpremiere|Premiere|Mein erster Kinobesuch|Sneak Preview|Stummfilmmatinee|Jonathans Retroflimmern)\s*:\s+|^\s*\([A-Za-z]{2,3}\)\s+'   # auch Sprachkuerzel wie "(Hi) " bei Cineplex
+  $vorne = '^\s*(?:CineSpecial|CineLady(?: Preview| Special)?|Happy Family[- ]Preview|Preview|Vorpremiere|Premiere|Mein erster Kinobesuch|Sneak Preview|Stummfilmmatinee|Jonathans Retroflimmern)\s*:\s+|^\s*\([A-Za-z]{2,3}\)\s+|^\s*(?:Er(?:ö|oe)ffnungsfilm|Abschlussfilm)\s*:?\s+'   # auch Sprachkuerzel wie "(Hi) " und "Eroeffnungsfilm Predator"
   do {
     $vorher = $t
     foreach ($m in $hinten) { $t = [regex]::Replace($t, $m, '', 'IgnoreCase').Trim() }
