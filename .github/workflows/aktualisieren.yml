@@ -46,7 +46,7 @@ jobs:
         env:
           # Im Repository unter Settings > Secrets and variables > Actions hinterlegen
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-          MDBLIST_API_KEY: ${{ secrets.MDBLIST_API_KEY }}
+          MDBLIST_API_KEY: ${{ secrets.MDBL_API_KEY }}
         run: |
           ./tools/tmdb.ps1
           ./tools/mdblist.ps1

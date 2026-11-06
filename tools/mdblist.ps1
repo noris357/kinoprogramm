@@ -91,6 +91,10 @@ $n = 0; $mitWerten = 0
 try {
   foreach ($id in $offen) {
     $obj = Get-MdbList ([int]$id)
+    if ($obj -and $n -eq 0) {
+      # Einmal pro Lauf zeigen, was MDBList liefert, damit Aenderungen am Antwortformat auffallen
+      "  Adresse: $script:adresse | Felder: $((@($obj.PSObject.Properties.Name) | Select-Object -First 15) -join ', ') | Wertungsquellen: $((@($obj.ratings) | ForEach-Object { "$($_.source)=$($_.value)" }) -join ', ')"
+    }
     $quellen = if ($obj) { ConvertFrom-Wertungen $obj } else { [ordered]@{} }
     $wertungen[$id] = [ordered]@{ geprueft = $heute; quellen = $quellen }
     $n++; if ($quellen.Count) { $mitWerten++ }
