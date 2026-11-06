@@ -5,6 +5,10 @@
 # Tokyo Grand Prix ist in Wikidata kaum gepflegt, dafuer gibt es daten/preise-manuell.json.
 # Aufruf aus dem Ordner website:  powershell -ExecutionPolicy Bypass -File tools\preise.ps1
 # Ergebnis: daten/preise.json je TMDB-ID. Nur Gewinne, keine Nominierungen.
+# Neue Filme werden sofort geprueft, alle Filme einmal jaehrlich ab 15. April (daten/preise-geprueft.json).
+# -Vollstaendig erzwingt eine Pruefung aller Filme.
+
+param([switch]$Vollstaendig)
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
@@ -33,14 +37,35 @@ $imdbZuTmdb = @{}
   Where-Object { $_.Value.imdb -and $_.Value.tmdb } | ForEach-Object { $imdbZuTmdb[$_.Value.imdb] = [string]$_.Value.tmdb }
 "Preise: $($imdbZuTmdb.Count) Filme mit IMDb-Nummer"
 
+# Wann wurde was geprueft? Neue Filme sofort, alle Filme einmal im Jahr ab Mitte April
+# (nach Berlinale und Oscars, mit etwas Vorlauf fuer die Eintraege in Wikidata).
+$geprueftDatei = Join-Path $daten 'preise-geprueft.json'
+$geprueft = @{}; $letzteVolle = ''
+if (Test-Path $geprueftDatei) {
+  $g = Get-Content $geprueftDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  $letzteVolle = [string]$g.vollstaendig
+  $g.filme | ForEach-Object { $geprueft[[string]$_] = $true }
+}
+$heute = Get-Heute
+$stichtag = (New-Object DateTime $heute.Year, 4, 15).ToString('yyyy-MM-dd')
+$voll = $Vollstaendig -or ($heute.ToString('yyyy-MM-dd') -ge $stichtag -and $letzteVolle -lt $stichtag)
+
 $ergebnis = @{}
 function Add-Preis([string]$Tmdb, $Eintrag) {
   if (-not $ergebnis.ContainsKey($Tmdb)) { $ergebnis[$Tmdb] = New-Object System.Collections.Generic.List[object] }
   if (-not ($ergebnis[$Tmdb] | Where-Object { $_.preis -eq $Eintrag.preis -and $_.kategorie -eq $Eintrag.kategorie })) { $ergebnis[$Tmdb].Add($Eintrag) }
 }
+# Bei einer Teilpruefung bleiben die bekannten Preise erhalten, nur neue Filme kommen dazu
+$preisDatei = Join-Path $daten 'preise.json'
+if (-not $voll -and (Test-Path $preisDatei)) {
+  (Get-Content $preisDatei -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object {
+    foreach ($e in $_.Value) { Add-Preis $_.Name ([ordered]@{ preis = $e.preis; kategorie = $e.kategorie; jahr = $e.jahr }) }
+  }
+}
 
 $auszeichnungen = ($preise.Keys | ForEach-Object { "wd:$_" }) -join ' '
-$ids = @($imdbZuTmdb.Keys)
+$ids = if ($voll) { @($imdbZuTmdb.Keys) } else { @($imdbZuTmdb.Keys | Where-Object { -not $geprueft.ContainsKey($_) }) }
+"Preise: " + $(if ($voll) { "jaehrliche Pruefung aller $($ids.Count) Filme" } else { "$($ids.Count) neue Filme zu pruefen" })
 $fehler = $null
 for ($i = 0; $i -lt $ids.Count; $i += 80) {
   $teil = $ids[$i..([math]::Min($i + 79, $ids.Count - 1))]
@@ -83,5 +108,11 @@ if ($fehler) {
 }
 $sortiert = [ordered]@{}
 foreach ($k in (@($ergebnis.Keys) | Where-Object { $_ } | Sort-Object { [int]$_ })) { $sortiert.Add([string]$k, $ergebnis[$k].ToArray()) }
-[IO.File]::WriteAllText((Join-Path $daten 'preise.json'), ($sortiert | ConvertTo-Json -Depth 4), $utf8)
+[IO.File]::WriteAllText($preisDatei, ($sortiert | ConvertTo-Json -Depth 4), $utf8)
+foreach ($id in $ids) { $geprueft[$id] = $true }
+$stand = [ordered]@{
+  vollstaendig = $(if ($voll) { $heute.ToString('yyyy-MM-dd') } else { $letzteVolle })
+  filme = @($geprueft.Keys | Sort-Object)
+}
+[IO.File]::WriteAllText($geprueftDatei, ($stand | ConvertTo-Json -Depth 3), $utf8)
 "Preise: $($ergebnis.Count) Filme mit mindestens einem Hauptpreis"
