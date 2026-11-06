@@ -1,5 +1,7 @@
 {
-  "hinweis": "Gewichte fuer den eigenen Score in Prozent. Fehlt eine Quelle, verteilt sich ihr Gewicht auf die uebrigen. Daempfung: so viele Stimmen braucht eine Wertung, damit sie halb zaehlt, darunter wird sie zum Durchschnitt gezogen.",
+  "hinweis": "Gewichte fuer den eigenen Score in Prozent. Fehlt eine Quelle, verteilt sich der Anteil 'umverteilung' ihres Gewichts auf die uebrigen, der Rest zaehlt als Durchschnitt. Daempfung: so viele Stimmen braucht eine Wertung, damit sie halb zaehlt, darunter wird sie zum Durchschnitt gezogen. Mindeststreuung: untere Grenze der Streuung je Quelle in Punkten, damit eng streuende Quellen wie IMDb nicht zu stark ausschlagen. Der Score liegt zudem nie ueber dem hoechsten Einzelwert eines Films.",
+  "umverteilung": 0.5,
+  "mindeststreuung": 8,
   "gewichte": {
     "letterboxd": 30,
     "metacritic": 22,
