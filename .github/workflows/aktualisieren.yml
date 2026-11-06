@@ -40,14 +40,16 @@ jobs:
         shell: pwsh
         run: ./tools/aktualisieren.ps1
 
-      - name: Plakate und Filmangaben von TMDB ergaenzen
+      - name: Plakate, Filmangaben und Wertungen ergaenzen, Score berechnen
         if: github.event_name != 'push'
         shell: pwsh
         env:
-          # Im Repository unter Settings > Secrets and variables > Actions als TMDB_API_KEY hinterlegen
+          # Im Repository unter Settings > Secrets and variables > Actions hinterlegen
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          MDBLIST_API_KEY: ${{ secrets.MDBLIST_API_KEY }}
         run: |
           ./tools/tmdb.ps1
+          ./tools/mdblist.ps1
           ./tools/build-data.ps1
 
       - name: Neue Daten speichern
@@ -56,7 +58,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data.js daten/programm.json daten/letzter-lauf.json
-          git add daten/filminfos.json plakate 2>/dev/null || true
+          git add daten/filminfos.json daten/wertungen.json plakate 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Keine Aenderungen im Programm."
           else

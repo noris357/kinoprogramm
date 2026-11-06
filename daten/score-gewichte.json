@@ -1,0 +1,18 @@
+{
+  "hinweis": "Gewichte fuer den eigenen Score in Prozent. Fehlt eine Quelle, verteilt sich ihr Gewicht auf die uebrigen. Daempfung: so viele Stimmen braucht eine Wertung, damit sie halb zaehlt, darunter wird sie zum Durchschnitt gezogen.",
+  "gewichte": {
+    "letterboxd": 30,
+    "metacritic": 22,
+    "imdb": 15,
+    "tomatoes": 13,
+    "tmdb": 8,
+    "popcorn": 8,
+    "metacriticuser": 4
+  },
+  "daempfung": {
+    "letterboxd": 200,
+    "imdb": 500,
+    "tmdb": 50,
+    "metacriticuser": 20
+  }
+}

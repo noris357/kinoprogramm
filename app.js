@@ -73,7 +73,8 @@
   const filme = D.filme.map(([titel, land, regie, jahr, info], id) => {
     const laender = (leerWert(land) || '').split(/\s*,\s*/).filter(Boolean);
     const j = parseInt(String(jahr || '').slice(0, 4), 10);
-    const b = info && info.bewertung ? parseFloat(String(info.bewertung).replace(',', '.')) : NaN;
+    // Eigener Score 0-100 aus mehreren Wertungsquellen (siehe tools/build-data.ps1 und Impressum)
+    const b = info && info.score != null ? Number(info.score) : NaN;
     return {
       id, titel, regie: leerWert(regie), jahr: leerWert(jahr), info: info || {},
       laender: [...new Set(laender)],
@@ -138,7 +139,7 @@
     const bild = f.info.poster ? `<img src="${esc(f.info.poster)}" alt="" loading="lazy">` : '';
     return `<div class="plakat ${groesse}" aria-hidden="true">${bild}<span class="pt">${esc(f.titel)}</span><span class="pj">${esc(f.jahr || '')}</span></div>`;
   }
-  const wertung = (f) => (f.info.bewertung ? `<span class="abzeichen wertung" title="Bewertung">★ ${esc(f.info.bewertung)}</span>` : '');
+  const wertung = (f) => (f.bewertung != null ? `<span class="abzeichen wertung" title="Eigener Score aus mehreren Filmwertungen, 0 bis 100">Score ${f.bewertung}</span>` : '');
 
   // Filme, die in den nächsten 7 Tagen zum letzten Mal laufen.
   // Sicher ist das nur, wenn jedes betroffene Kino schon weiter in die Zukunft veröffentlicht hat.
@@ -229,7 +230,7 @@
         <div class="steuerung">
           ${zustand.gruppe === 'film' ? `<div class="umschalter" role="group" aria-label="Sortierung">
             <button data-reihenfolge="kinos" aria-pressed="${zustand.reihenfolge === 'kinos'}">Meiste Kinos</button>
-            <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">★ Bewertung</button>
+            <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">Score</button>
             <button data-reihenfolge="titel" aria-pressed="${zustand.reihenfolge === 'titel'}">A–Z</button>
           </div>` : ''}
           <div class="umschalter" role="group" aria-label="Gruppierung">
@@ -422,7 +423,7 @@
       <span>${name(n)}</span><span class="bahn"><i style="width:${(z / max) * 100}%"></i></span><span class="wert">${z}</span></button>`).join('')}</div>`;
   }
 
-  // Durchschnittliche TMDB-Bewertung je Tag: jeder Film zählt pro Tag nur einmal, nur Filme mit Bewertung
+  // Durchschnittlicher Score je Tag: jeder Film zählt pro Tag nur einmal, nur Filme mit Score
   function bewertungsreihe(daten) {
     const proTag = new Map();
     daten.forEach((t) => {
@@ -488,8 +489,8 @@
         <div class="tooltip" hidden></div>
       </div>
       <div class="tafel diagramm abstand" id="d-wertung">
-        <h3>Ø Bewertung pro Tag</h3>
-        <p class="hinweis">Durchschnitt der TMDB-Bewertungen aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Bewertung bleiben außen vor.${mitWert.length ? ` Über den ganzen Zeitraum liegt der Tagesschnitt zwischen ${Math.min(...mitWert).toLocaleString('de-DE', { maximumFractionDigits: 1 })} und ${Math.max(...mitWert).toLocaleString('de-DE', { maximumFractionDigits: 1 })}.` : ''}</p>
+        <h3>Ø Score pro Tag</h3>
+        <p class="hinweis">Durchschnittlicher Score aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Score bleiben außen vor.${mitWert.length ? ` Über den ganzen Zeitraum liegt der Tagesschnitt zwischen ${Math.round(Math.min(...mitWert))} und ${Math.round(Math.max(...mitWert))}.` : ''}</p>
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
@@ -514,13 +515,13 @@
       tipp: (p) => `${datum(p.d)}<br><b>${p.n}</b> ${p.n === 1 ? 'Film' : 'Filme'}`,
       beschreibung: 'Liniendiagramm: verschiedene Filme pro Tag',
     });
-    const unten = mitWert.length ? Math.max(0, Math.floor(Math.min(...mitWert)) - 0.5) : 0;
-    const oben = mitWert.length ? Math.min(10, Math.ceil(Math.max(...mitWert)) + 0.5) : 10;
+    // Score-Achse in 5er-Schritten, knapp um die tatsächlichen Werte
+    const unten = mitWert.length ? Math.max(0, Math.floor(Math.min(...mitWert) / 5) * 5 - 5) : 0;
+    const oben = mitWert.length ? Math.min(100, Math.ceil(Math.max(...mitWert) / 5) * 5 + 5) : 100;
     linienDiagramm('d-wertung', wertungen, {
-      yMin: unten, yMax: oben, schritt: 0.5, flaeche: false,
-      zahl: (v) => v.toLocaleString('de-DE', { minimumFractionDigits: 1 }),
-      tipp: (p) => (p.n == null ? `${datum(p.d)}<br>keine bewerteten Filme` : `${datum(p.d)}<br>Ø <b>${p.n.toLocaleString('de-DE', { maximumFractionDigits: 2 })}</b> aus ${p.anzahl} ${p.anzahl === 1 ? 'Film' : 'Filmen'}`),
-      beschreibung: 'Liniendiagramm: durchschnittliche TMDB-Bewertung pro Tag',
+      yMin: unten, yMax: oben, schritt: 5, flaeche: false,
+      tipp: (p) => (p.n == null ? `${datum(p.d)}<br>keine Filme mit Score` : `${datum(p.d)}<br>Ø Score <b>${p.n.toLocaleString('de-DE', { maximumFractionDigits: 1 })}</b> aus ${p.anzahl} ${p.anzahl === 1 ? 'Film' : 'Filmen'}`),
+      beschreibung: 'Liniendiagramm: durchschnittlicher Score pro Tag',
     });
     saeulenDiagramm('d-laender', laenderMonat);
   }
@@ -707,7 +708,15 @@
         <h3>Ohne Gewähr</h3>
         <p>Die Daten werden mit Sorgfalt gepflegt, können aber unvollständig oder veraltet sein. Verbindlich sind allein die Programme und Ticketseiten der Kinos. Für Inhalte verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
         <h3>Filmdaten und Plakate</h3>
-        <p>Plakate, Bewertungen sowie fehlende Angaben zu Land, Regie und Jahr stammen von <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. This product uses the TMDB API but is not endorsed or certified by TMDB. Die Rechte an den Plakaten liegen bei den jeweiligen Filmverleihen und Studios.</p>
+        <p>Plakate sowie fehlende Angaben zu Land, Regie und Jahr stammen von <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. This product uses the TMDB API but is not endorsed or certified by TMDB. Die Rechte an den Plakaten liegen bei den jeweiligen Filmverleihen und Studios. Wertungen weiterer Quellen bezieht diese Seite über <a href="https://mdblist.com/" target="_blank" rel="noopener">MDBList</a>.</p>
+        <details class="score-erklaerung">
+          <summary>Wie der Score entsteht</summary>
+          <p>Der Score ist eine eigene Zahl von 0 bis 100. Er fasst Wertungen aus Letterboxd, Metacritic (Kritik und Publikum), IMDb, Rotten Tomatoes (Tomatometer und Popcornmeter) und TMDB zusammen. Einzelwerte werden hier nicht angezeigt.</p>
+          <p><strong>1. Wenige Stimmen dämpfen.</strong> Hat ein Film bei einer Quelle nur wenige Stimmen, wird sein Wert zum Durchschnitt dieser Quelle gezogen. Ein Film mit 12 Stimmen und einem Schnitt von 9,1 gilt so nicht automatisch als besser als einer mit 200.000 Stimmen und 8,2.</p>
+          <p><strong>2. Quellen vergleichbar machen.</strong> Für jede Quelle zählt, wie weit ein Film über oder unter dem Durchschnitt aller Filme dieser Quelle liegt. Das gleicht unterschiedliche Skalen aus. Der Tomatometer misst zum Beispiel nur den Anteil positiver Kritiken und liegt deshalb oft sehr hoch.</p>
+          <p><strong>3. Gewichten.</strong> Letterboxd 30 %, Metacritic Kritik 22 %, IMDb 15 %, Tomatometer 13 %, TMDB 8 %, Popcornmeter 8 %, Metacritic Publikum 4 %. Fehlt eine Quelle, verteilt sich ihr Gewicht auf die übrigen.</p>
+          <p><strong>4. Zurückrechnen.</strong> Das gewichtete Ergebnis wird auf eine Skala von 0 bis 100 übertragen, deren Mitte dem gewichteten Durchschnitt der Quellen entspricht.</p>
+        </details>
         <p>Flaggen: Twemoji von Twitter, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY 4.0</a>. Schriften Figtree und Italiana unter der SIL Open Font License.</p>
         <h3>Kinos und Marken</h3>
         <p>Die Namen der Kinos gehören den jeweiligen Betreibern. Diese Seite steht in keiner Verbindung zu den Kinos.</p>

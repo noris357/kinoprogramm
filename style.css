@@ -313,6 +313,9 @@ dialog h2 { margin: 0 32px 6px 0; font-family: var(--font-display); font-weight:
 .textseite { max-width: 72ch; }
 .textseite h3 { font-family: var(--font-display); font-weight: 400; font-size: 22px; margin: 26px 0 6px; color: var(--gold-hell); }
 .textseite p { color: var(--text-2); margin: 0 0 10px; }
+.score-erklaerung { margin-top: 18px; }
+.score-erklaerung summary { color: var(--muted); font-size: 13px; }
+.score-erklaerung p { font-size: 14px; }
 .platzhalter { color: var(--rot-hell); border-bottom: 1px dashed var(--rot-hell); }
 
 .fuss { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-block: 18px 36px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }

@@ -145,6 +145,73 @@ foreach ($z in $zeilen) {
   if (-not $g.Info) { $i = $infos["$($z.Titel)|$($z.Produktionsjahr)"]; if ($i -and -not $i.nichtGefunden) { $g.Info = $i } }
 }
 
+# ---------- Eigener Score ----------
+# Je Quelle (0-100): 1. wenige Stimmen zum Durchschnitt der Quelle ziehen (Daempfung),
+# 2. auf Abstand vom Mittelwert umrechnen (z-Wert), damit z. B. ein Tomatometer von 95 % nicht automatisch
+#    mehr zaehlt als ein IMDb-Wert von 7,5, 3. gewichtet mitteln, 4. zurueck auf eine Skala von 0 bis 100.
+# Gewichte und Daempfung stehen in daten/score-gewichte.json. Einzelwerte erscheinen nicht auf der Website.
+$scoreDatei = "$PSScriptRoot/../daten/score-gewichte.json"
+$wertungsDatei = "$PSScriptRoot/../daten/wertungen.json"
+$gewichte = @{}; $daempfung = @{}
+if (Test-Path $scoreDatei) {
+  $sg = Get-Content $scoreDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  $sg.gewichte.PSObject.Properties | ForEach-Object { $gewichte[$_.Name] = [double]$_.Value }
+  $sg.daempfung.PSObject.Properties | ForEach-Object { $daempfung[$_.Name] = [double]$_.Value }
+}
+$mdb = @{}
+if (Test-Path $wertungsDatei) { (Get-Content $wertungsDatei -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $mdb[$_.Name] = $_.Value } }
+
+# Rohwerte je Film sammeln
+$wertRoh = @{}   # Gruppen-ID -> @{ quelle = @{ wert; stimmen } }
+foreach ($g in $gruppen.Values) {
+  if (-not $g.Info -or -not $g.Info.tmdb) { continue }
+  $q = @{}
+  $m = $mdb[[string]$g.Info.tmdb]
+  if ($m -and $m.quellen) {
+    foreach ($p in $m.quellen.PSObject.Properties) { if ($gewichte.ContainsKey($p.Name)) { $q[$p.Name] = @{ wert = [double]$p.Value.wert; stimmen = $(if ($p.Value.stimmen) { [double]$p.Value.stimmen } else { $null }) } } }
+  }
+  # TMDB-Wertung aus filminfos.json, falls MDBList sie nicht liefert
+  if (-not $q.ContainsKey('tmdb') -and $g.Info.bewertung) {
+    $q['tmdb'] = @{ wert = 10 * [double](([string]$g.Info.bewertung).Replace(',', '.')); stimmen = $(if ($g.Info.stimmen) { [double]$g.Info.stimmen } else { $null }) }
+  }
+  if ($q.Count) { $wertRoh[$g.Id] = $q }
+}
+
+# Kennzahlen je Quelle ueber alle Filme
+$statistik = @{}
+foreach ($quelle in $gewichte.Keys) {
+  $werte = @($wertRoh.Values | Where-Object { $_.ContainsKey($quelle) } | ForEach-Object { $_[$quelle].wert })
+  if ($werte.Count -lt 10) { continue }   # zu wenige Filme fuer eine verlaessliche Verteilung
+  $mittel = ($werte | Measure-Object -Average).Average
+  # Daempfung: (Stimmen * Wert + k * Mittel) / (Stimmen + k)
+  $k = $daempfung[$quelle]
+  foreach ($film in $wertRoh.Values) {
+    if (-not $film.ContainsKey($quelle)) { continue }
+    $e = $film[$quelle]
+    $e.angepasst = if ($k -and $null -ne $e.stimmen) { ($e.stimmen * $e.wert + $k * $mittel) / ($e.stimmen + $k) } else { $e.wert }
+  }
+  $angepasst = @($wertRoh.Values | Where-Object { $_.ContainsKey($quelle) } | ForEach-Object { $_[$quelle].angepasst })
+  $m2 = ($angepasst | Measure-Object -Average).Average
+  $sd = [math]::Sqrt((($angepasst | ForEach-Object { ($_ - $m2) * ($_ - $m2) } | Measure-Object -Sum).Sum) / [math]::Max(1, $angepasst.Count - 1))
+  if ($sd -lt 1) { $sd = 1 }
+  $statistik[$quelle] = @{ mittel = $m2; sd = $sd }
+}
+# Bezugsskala: gewichtetes Mittel der Quellen, damit der Score wie eine gewohnte 0-100-Wertung aussieht
+$summeG = ($statistik.Keys | ForEach-Object { $gewichte[$_] } | Measure-Object -Sum).Sum
+$bezugMittel = if ($summeG) { ($statistik.Keys | ForEach-Object { $gewichte[$_] * $statistik[$_].mittel } | Measure-Object -Sum).Sum / $summeG } else { 0 }
+$bezugSd = if ($summeG) { ($statistik.Keys | ForEach-Object { $gewichte[$_] * $statistik[$_].sd } | Measure-Object -Sum).Sum / $summeG } else { 0 }
+
+$scores = @{}
+foreach ($id in $wertRoh.Keys) {
+  $sz = 0.0; $sw = 0.0
+  foreach ($quelle in $statistik.Keys) {
+    if (-not $wertRoh[$id].ContainsKey($quelle)) { continue }
+    $z = ($wertRoh[$id][$quelle].angepasst - $statistik[$quelle].mittel) / $statistik[$quelle].sd
+    $sz += $gewichte[$quelle] * $z; $sw += $gewichte[$quelle]
+  }
+  if ($sw -gt 0) { $scores[$id] = [int][math]::Max(1, [math]::Min(99, [math]::Round($bezugMittel + $bezugSd * $sz / $sw))) }
+}
+
 # ---------- Ausgabe aufbauen ----------
 $kinos = New-Object System.Collections.Generic.List[string]
 $kinoLinks = New-Object System.Collections.Generic.List[object]
@@ -164,8 +231,10 @@ foreach ($g in $gruppen.Values) {
   if ($land) { $land.Split(',') | ForEach-Object { $genutzteLaender[$_.Trim()] = $true } }
   $eintrag = @($titel, $land, $regie, $jahr)
   if ($i) {
+    # Nur Plakat, TMDB-ID und eigener Score gehen auf die Website, keine Einzelwertungen
     $zusatz = [ordered]@{}
-    foreach ($f in 'poster', 'bewertung', 'tmdb') { if ($i.$f) { $zusatz[$f] = $i.$f } }
+    foreach ($f in 'poster', 'tmdb') { if ($i.$f) { $zusatz[$f] = $i.$f } }
+    if ($scores.ContainsKey($g.Id)) { $zusatz.score = $scores[$g.Id] }
     if ($zusatz.Count) { $eintrag += , $zusatz }
   }
   $filmIndex[$g.Id] = $filme.Count
@@ -208,5 +277,6 @@ $zielPfad = Join-Path (Resolve-Path (Split-Path $Ziel)).Path (Split-Path $Ziel -
 $mitInfo = @($filme | Where-Object { $_.Count -gt 4 }).Count
 $zusammen = @($roh).Count - $filme.Count
 "$($termine.Count) Termine, $($filme.Count) Filme ($mitInfo mit TMDB-Angaben, $zusammen Varianten zusammengefuehrt), $($kinos.Count) Kinos -> $zielPfad"
+"Score: $($scores.Count) Filme, Quellen im Score: " + (($statistik.Keys | Sort-Object | ForEach-Object { "$_ (Mittel $([math]::Round($statistik[$_].mittel)), Streuung $([math]::Round($statistik[$_].sd)))" }) -join ', ')
 $ohneFlagge = @($unbekannteLaender.Keys | Sort-Object)
 if ($ohneFlagge.Count) { "Unbekannte Laenderangaben (bitte in build-data.ps1 ergaenzen): " + ($ohneFlagge -join ', ') }
