@@ -109,7 +109,7 @@
   // ---------- Zustand und Filter ----------
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
-    ansicht: 'programm', tag: HEUTE, gruppe: 'film', reihenfolge: 'kinos',
+    ansicht: 'programm', tag: HEUTE, gruppe: 'film', reihenfolge: 'bewertung',
     sort: { feld: 'naechster', auf: true }, nurKommend: true,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
@@ -198,18 +198,18 @@
     }).join('');
 
     const amTag = daten.filter((t) => t.d === zustand.tag);
+    // Sortierung für beide Ansichten: nach Score (Filme ohne Score am Ende) oder alphabetisch
+    const nachTitel = (a, b) => a.titel.localeCompare(b.titel, 'de');
+    const filmOrdnung = zustand.reihenfolge === 'titel'
+      ? nachTitel
+      : (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || nachTitel(a, b);
     let inhalt;
     if (!amTag.length) {
       inhalt = `<p class="leer">Für ${datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
     } else if (zustand.gruppe === 'film') {
       const nachFilm = new Map();
       amTag.forEach((t) => { if (!nachFilm.has(t.f)) nachFilm.set(t.f, new Set()); nachFilm.get(t.f).add(t.k); });
-      const nachTitel = (a, b) => filme[a[0]].titel.localeCompare(filme[b[0]].titel, 'de');
-      const nachKinos = (a, b) => b[1].size - a[1].size;
-      // Filme ohne Bewertung stehen bei der Sortierung nach Bewertung am Ende
-      const nachWertung = (a, b) => (filme[b[0]].bewertung ?? -1) - (filme[a[0]].bewertung ?? -1);
-      const ordnung = { kinos: [nachKinos, nachTitel], bewertung: [nachWertung, nachKinos, nachTitel], titel: [nachTitel] }[zustand.reihenfolge];
-      const liste = [...nachFilm].sort((a, b) => { for (const o of ordnung) { const r = o(a, b); if (r) return r; } return 0; });
+      const liste = [...nachFilm].sort((a, b) => filmOrdnung(filme[a[0]], filme[b[0]]));
       inhalt = `<div class="karten">${liste.map(([fid, ks]) => {
         const f = filme[fid];
         const chips = [...ks].map((k) => kinos[k].name).sort().map((n) => `<span class="chip">${esc(n)}</span>`).join('');
@@ -222,8 +222,8 @@
       const liste = [...nachKino].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de'));
       inhalt = `<div class="karten">${liste.map(([kid, fs]) => {
         const k = kinos[kid];
-        const zeilen = [...fs].map((f) => filme[f]).sort((a, b) => a.titel.localeCompare(b.titel, 'de'))
-          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}<div class="meta">${filmMeta(f)}</div></div></li>`).join('');
+        const zeilen = [...fs].map((f) => filme[f]).sort(filmOrdnung)
+          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${wertung(f)}<div class="meta">${filmMeta(f)}</div></div></li>`).join('');
         return `<article class="kinoblock"><h3><span class="monogramm klein">${esc(k.mono)}</span>${esc(k.name)}</h3><div class="meta">${fs.size} ${fs.size === 1 ? 'Film' : 'Filme'}</div><ul>${zeilen}</ul></article>`;
       }).join('')}</div>`;
     }
@@ -235,11 +235,10 @@
       <div class="ansicht-kopf">
         <h2>${fmtVoll.format(parse(zustand.tag))}</h2>
         <div class="steuerung">
-          ${zustand.gruppe === 'film' ? `<div class="umschalter" role="group" aria-label="Sortierung">
-            <button data-reihenfolge="kinos" aria-pressed="${zustand.reihenfolge === 'kinos'}">Meiste Kinos</button>
+          <div class="umschalter" role="group" aria-label="Sortierung">
             <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">Score</button>
             <button data-reihenfolge="titel" aria-pressed="${zustand.reihenfolge === 'titel'}">A–Z</button>
-          </div>` : ''}
+          </div>
           <div class="umschalter" role="group" aria-label="Gruppierung">
             <button data-gruppe="film" aria-pressed="${zustand.gruppe === 'film'}">Nach Film</button>
             <button data-gruppe="kino" aria-pressed="${zustand.gruppe === 'kino'}">Nach Kino</button>
