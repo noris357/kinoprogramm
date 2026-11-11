@@ -77,7 +77,8 @@
   const leerWert = (v) => (v == null || v === '' || v === '?' ? null : v);
   const filme = D.filme.map(([titel, land, regie, jahr, info], id) => {
     // Überraschungsfilme: Regie, Land und Jahr sind unbekannt, auch für Filter und Statistik
-    if (/^(Sneak Preview|Kult Sneak)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
+    // Kurzfilmprogramme bestehen aus mehreren Filmen, auch dort gibt es keine einheitlichen Angaben
+    if (/^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
     const laender = (leerWert(land) || '').split(/\s*,\s*/).filter(Boolean);
     const j = parseInt(String(jahr || '').slice(0, 4), 10);
     // Eigener Score 0-100 aus mehreren Wertungsquellen (siehe tools/build-data.ps1 und Impressum)
@@ -139,6 +140,7 @@
   // ---------- Bausteine ----------
   function filmMeta(f) {
     if (istSneak(f)) return '? · ? · ?';   // Regie, Land, Jahr sind bei Überraschungsfilmen unbekannt
+    if (istKurzfilm(f)) return '– · – · –';   // mehrere Filme, keine einheitlichen Angaben
     const teile = [f.regie && esc(f.regie), f.laender.length && f.laender.map(mitFlagge).join(', '), f.jahr && esc(f.jahr)].filter(Boolean);
     return teile.join(' · ') || 'Keine Angaben';
   }
@@ -179,8 +181,12 @@
 
   // Überraschungsfilme (Sneak Preview, Kult Sneak) bekommen ein Fragezeichen statt Plakat
   function istSneak(f) { return /^(Sneak Preview|Kult Sneak)$/.test(f.titel); }
+  // Kurzfilmprogramme bekommen einen Filmstreifen statt Plakat
+  function istKurzfilm(f) { return f.titel === 'Kurzfilmprogramm'; }
+  const FILMSTREIFEN = '<svg class="streifen" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 2v20M15.5 2v20" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg>';
   function plakat(f, groesse = '') {
     if (istSneak(f)) return `<div class="plakat raetsel ${groesse}" aria-hidden="true"><span class="fz">?</span></div>`;
+    if (istKurzfilm(f)) return `<div class="plakat raetsel ${groesse}" aria-hidden="true"><span class="fz">${FILMSTREIFEN}</span></div>`;
     const bild = f.info.poster ? `<img src="${esc(f.info.poster)}" alt="" loading="lazy">` : '';
     return `<div class="plakat ${groesse}" aria-hidden="true">${bild}<span class="pt">${esc(f.titel)}</span><span class="pj">${esc(f.jahr || '')}</span></div>`;
   }

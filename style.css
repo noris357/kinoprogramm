@@ -151,6 +151,7 @@ h1, h2, h3 { text-wrap: balance; }
 .plakat.raetsel .fz { font-family: var(--font-display); color: var(--gold-hell); font-size: 52px; line-height: 1; }
 .plakat.mini.raetsel .fz { font-size: 28px; }
 .plakat.gross.raetsel .fz { font-size: 72px; }
+.plakat.raetsel .streifen { width: 1em; height: 1em; display: block; }
 .plakat.gross { width: 120px; padding: 10px; }
 .plakat.gross .pt { font-size: 17px; -webkit-line-clamp: 6; }
 .plakat.gross .pj { font-size: 11px; }
