@@ -170,6 +170,9 @@ h1, h2, h3 { text-wrap: balance; }
 .abzeichen { display: inline-block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; padding: 2px 7px; border-radius: 4px; vertical-align: 2px; margin-left: 6px; }
 .abzeichen.chance { background: var(--rot); color: #fff; }
 .abzeichen.wertung { background: none; color: var(--gold-hell); border: 1px solid var(--line-strong); font-weight: 600; letter-spacing: 0; padding: 1px 6px; font-variant-numeric: tabular-nums; }
+.abzeichen.wertung.gold { background: linear-gradient(135deg, #f0d98f, #c9a24a); color: #1a1405; border-color: #e8cf8a; }
+.abzeichen.wertung.silber { background: linear-gradient(135deg, #e6e8ec, #aeb3bb); color: #15171a; border-color: #d4d7dc; }
+.abzeichen.wertung.bronze { background: linear-gradient(135deg, #dba06a, #a86a35); color: #1f1106; border-color: #c98a55; }
 
 .kinoblock { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 0; }
 .kinoblock h3 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 10px; }
