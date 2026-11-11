@@ -42,9 +42,12 @@ function ConvertTo-IsoDatum([int]$Tag, [int]$Monat, [Nullable[int]]$Jahr = $null
 # Feste Titelkorrekturen aus daten/titel-korrekturen.json, z. B. "Persepolis von Marjane Satrapi" -> "Persepolis".
 # Gilt nach der allgemeinen Bereinigung, Gross- und Kleinschreibung egal.
 $script:Titelkorrekturen = @{}
+$script:KurzfilmAusnahmen = @()   # Programme einzelner Regisseur:innen, die nicht zum "Kurzfilmprogramm" zaehlen
 $korrekturDatei = Join-Path $PSScriptRoot '../daten/titel-korrekturen.json'
 if (Test-Path $korrekturDatei) {
-  (Get-Content $korrekturDatei -Raw -Encoding UTF8 | ConvertFrom-Json).korrekturen.PSObject.Properties | ForEach-Object { $script:Titelkorrekturen[$_.Name.ToLowerInvariant()] = $_.Value }
+  $korrekturJson = Get-Content $korrekturDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  $korrekturJson.korrekturen.PSObject.Properties | ForEach-Object { $script:Titelkorrekturen[$_.Name.ToLowerInvariant()] = $_.Value }
+  if ($korrekturJson.kurzfilmAusnahmen) { $script:KurzfilmAusnahmen = @($korrekturJson.kurzfilmAusnahmen | ForEach-Object { $_.ToLowerInvariant() }) }
 }
 
 # Enthaelt der Text Buchstaben ausserhalb der lateinischen Schrift (japanisch, kyrillisch, griechisch, arabisch ...)?
@@ -70,6 +73,11 @@ function Get-BereinigterTitelOhneKorrektur([string]$Titel) {
   if ($t -match '(?i)\bsneak\b|überraschungs(film|preview)') {
     # Ganzes Wort pruefen: "Preview" enthaelt sonst auch "review"
     if ($t -match '(?i)\b(review|kult|retro)') { return 'Kult Sneak' } else { return 'Sneak Preview' }
+  }
+  # Kurzfilm-Vorstellungen einheitlich "Kurzfilmprogramm", ausser Programme einzelner Regisseur:innen (kurzfilmAusnahmen)
+  # "Shorts" als ganzes Wort oder am Wortende ("OHMshorts"), nicht das einzelne Wort "Short"
+  if ($t -match '(?i)kurz\.?\s?film|shorts\s+attack|shorts\b') {
+    if ($script:KurzfilmAusnahmen -notcontains $t.ToLowerInvariant()) { return 'Kurzfilmprogramm' }
   }
   # Fassungen am Ende, z. B. "(OV)", " - OmU", "(jap.OmU)", "(Hindi OmU/OmeU)", "(Extended)"
   # Reihenfolge wichtig: zuerst ganze Klammern mit Sprachangabe, sonst bleibt "(jap." stehen
