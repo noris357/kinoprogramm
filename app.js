@@ -6,6 +6,11 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const zahl = (n) => n.toLocaleString('de-DE');
 
+  // Score-Stufen für die farbige Hinterlegung der Score-Zahl (ab diesem Score)
+  const SCORE_GOLD = 90;
+  const SCORE_SILBER = 85;
+  const SCORE_BRONZE = 80;
+
   // ---------- Datumshilfen (alle Daten als ISO-Text JJJJ-MM-TT in lokaler Zeit) ----------
   const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const parse = (s) => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d || 1); };
@@ -180,7 +185,13 @@
     return `<div class="plakat ${groesse}" aria-hidden="true">${bild}<span class="pt">${esc(f.titel)}</span><span class="pj">${esc(f.jahr || '')}</span></div>`;
   }
   // Nur die Zahl, dezent umrandet. Die Erklärung steckt im Tooltip.
-  const wertung = (f) => (f.bewertung != null ? `<span class="abzeichen wertung" title="Score ${f.bewertung} von 100, aus mehreren Filmwertungen" aria-label="Score ${f.bewertung} von 100">${f.bewertung}</span>` : '');
+  const scoreStufe = (b) => (b >= SCORE_GOLD ? ['gold', 'Gold'] : b >= SCORE_SILBER ? ['silber', 'Silber'] : b >= SCORE_BRONZE ? ['bronze', 'Bronze'] : null);
+  const wertung = (f) => {
+    if (f.bewertung == null) return '';
+    const stufe = scoreStufe(f.bewertung);
+    const text = `Score ${f.bewertung} von 100${stufe ? ` · ${stufe[1]}` : ''}`;
+    return `<span class="abzeichen wertung${stufe ? ` ${stufe[0]}` : ''}" title="${text}, aus mehreren Filmwertungen" aria-label="${text}">${f.bewertung}</span>`;
+  };
 
   // Filme, die in den nächsten 7 Tagen zum letzten Mal laufen.
   // Sicher ist das nur, wenn jedes betroffene Kino schon weiter in die Zukunft veröffentlicht hat.
