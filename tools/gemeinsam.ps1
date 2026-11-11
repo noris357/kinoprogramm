@@ -50,6 +50,13 @@ if (Test-Path $korrekturDatei) {
   if ($korrekturJson.kurzfilmAusnahmen) { $script:KurzfilmAusnahmen = @($korrekturJson.kurzfilmAusnahmen | ForEach-Object { $_.ToLowerInvariant() }) }
 }
 
+# Enthaelt der Text Buchstaben ausserhalb der lateinischen Schrift (japanisch, kyrillisch, griechisch, arabisch ...)?
+# Lateinische Buchstaben mit Akzent (Ö, é, ł, ő ...) zaehlen als lateinisch.
+function Test-FremdeSchrift([string]$Text) {
+  if (-not $Text) { return $false }
+  return [regex]::IsMatch($Text, '(?![\p{IsBasicLatin}\p{IsLatin-1Supplement}\p{IsLatinExtended-A}\p{IsLatinExtended-B}\p{IsLatinExtendedAdditional}])\p{L}')
+}
+
 function Get-BereinigterTitel([string]$Titel) {
   # Korrektur zuerst fuer den unveraenderten Titel, dann fuer den bereinigten
   $roh = $Titel.Trim().ToLowerInvariant()

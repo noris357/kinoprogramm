@@ -74,6 +74,11 @@ $offen = @($filme.Keys | Where-Object {
   if ($zuordnung.ContainsKey($_)) { return -not $i -or $i.tmdb -ne $zuordnung[$_] }
   if (-not $i) { return $true }
   if ($i.nichtGefunden) { return ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $i.geprueft), 'yyyy-MM-dd', $null)).TotalDays -gt 30 }
+  # Regie oder Titel in fremder Schrift: neu pruefen, nach erfolglosem Versuch aber erst nach 30 Tagen wieder
+  if ((Test-FremdeSchrift $i.regie) -or (Test-FremdeSchrift $i.titel)) {
+    if (-not $i.schriftGeprueft) { return $true }
+    return ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $i.schriftGeprueft), 'yyyy-MM-dd', $null)).TotalDays -gt 30
+  }
   return $false
 })
 if ($Hoechstens -gt 0) { $offen = @($offen | Select-Object -First $Hoechstens) }
@@ -148,7 +153,13 @@ foreach ($k in $offen) {
   $f = Invoke-Tmdb "movie/$id" @{ append_to_response = 'credits,external_ids' }
   if (-not $f) { $infos[$k] = [ordered]@{ nichtGefunden = $true; geprueft = $heute }; $neu++; continue }
 
-  $eintrag = [ordered]@{ tmdb = $f.id; titel = $f.title; geprueft = $heute; stimmen = [int]$f.vote_count }
+  # Titel in fremder Schrift: englischen Titel nehmen, sofern er lateinisch ist (keine Umschrift von Hand)
+  $filmTitel = $f.title
+  if (Test-FremdeSchrift $filmTitel) {
+    $en = Invoke-Tmdb "movie/$id" @{ language = 'en-US' }
+    if ($en -and $en.title -and -not (Test-FremdeSchrift $en.title)) { $filmTitel = $en.title }
+  }
+  $eintrag = [ordered]@{ tmdb = $f.id; titel = $filmTitel; geprueft = $heute; stimmen = [int]$f.vote_count }
   if ($f.poster_path) {
     $datei = "$($f.id).jpg"
     $ziel = Join-Path $plakatOrdner $datei
@@ -161,8 +172,26 @@ foreach ($k in $offen) {
   # Angaben von TMDB als Ersatz, falls im Bestand nichts steht
   $l = @($f.production_countries | ForEach-Object { if ($laender[$_.iso_3166_1]) { $laender[$_.iso_3166_1] } else { $_.name } })
   if ($l.Count) { $eintrag.land = $l -join ', ' }
-  $r = @($f.credits.crew | Where-Object { $_.job -eq 'Director' } | ForEach-Object name | Select-Object -Unique)
+  # Regienamen in fremder Schrift: lateinischen Namen von TMDB nachschlagen (person/{id} auf Englisch),
+  # sonst ersten lateinischen Eintrag aus also_known_as, sonst bleibt der Originalname
+  $r = @()
+  foreach ($p in @($f.credits.crew | Where-Object { $_.job -eq 'Director' })) {
+    $name = $p.name
+    if (Test-FremdeSchrift $name) {
+      $person = Invoke-Tmdb "person/$($p.id)" @{ language = 'en-US' }
+      if ($person) {
+        if ($person.name -and -not (Test-FremdeSchrift $person.name)) { $name = $person.name }
+        else {
+          $latein = @($person.also_known_as | Where-Object { $_ -and -not (Test-FremdeSchrift $_) }) | Select-Object -First 1
+          if ($latein) { $name = $latein }
+        }
+      }
+    }
+    if ($r -notcontains $name) { $r += $name }
+  }
   if ($r.Count) { $eintrag.regie = $r -join ', ' }
+  # Bleibt fremde Schrift uebrig, den Versuch vermerken (sonst wuerde jeder Lauf erneut abfragen)
+  if ((Test-FremdeSchrift $eintrag.regie) -or (Test-FremdeSchrift $eintrag.titel)) { $eintrag.schriftGeprueft = $heute }
   $start = ConvertTo-IsoText $f.release_date
   if ($start -match '^\d{4}') { $eintrag.jahr = $start.Substring(0, 4) }
   $infos[$k] = $eintrag
