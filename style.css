@@ -348,3 +348,7 @@ dialog h2 { margin: 0 32px 6px 0; font-family: var(--font-display); font-weight:
   .dialog-kopf { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+.termin-gruppe a.chip { text-decoration: none; }
+.termin-gruppe a.chip:hover { background: var(--gold); color: var(--bg); }
+.vorbei-knopf { margin-top: 14px; padding: 4px 12px; font: inherit; font-size: 13px; color: var(--text-2); background: none; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
+.vorbei-knopf:hover { color: var(--text); }

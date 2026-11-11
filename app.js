@@ -768,20 +768,63 @@
   }
 
   // ---------- Filmdetails ----------
+  // Kinowoche läuft von Donnerstag bis Mittwoch, Rückgabe ist der Donnerstag
+  const kinowocheVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7));
+
+  // Zeile "Im Kino seit ..." mit der Zahl zusammenhängender Kinowochen (leer bei Überraschungsfilmen)
+  function laufzeitZeile(f, tage) {
+    if (/^(Sneak Preview|Kult Sneak)$/.test(f.titel) || !tage.length) return '';
+    const erster = tage[0];
+    if (erster > HEUTE) return '';
+    const wochen = new Set(tage.map(kinowocheVon));
+    const jetzt = kinowocheVon(HEUTE);
+    const laeuft = wochen.has(jetzt);
+    // Rückwärts ab aktueller Woche, sonst ab der letzten Woche mit Termin bis heute
+    let w = jetzt;
+    if (!laeuft) w = [...wochen].filter((x) => x < jetzt).sort().pop();
+    let n = 0;
+    while (wochen.has(w)) { n++; w = plusTage(w, -7); }
+    const einheit = n === 1 ? 'Woche' : 'Wochen';
+    return `<div class="meta">Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
+  }
+
   function zeigeFilm(fid) {
     const f = filme[fid];
     const nachKino = new Map();
-    termine.filter((t) => t.f === fid).forEach((t) => { if (!nachKino.has(t.k)) nachKino.set(t.k, []); nachKino.get(t.k).push(t.d); });
-    const gruppen = [...nachKino].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de')).map(([k, ds]) => {
+    const alleTage = [];
+    termine.filter((t) => t.f === fid).forEach((t) => { alleTage.push(t.d); if (!nachKino.has(t.k)) nachKino.set(t.k, []); nachKino.get(t.k).push(t.d); });
+    alleTage.sort();
+    const anzahlVorbei = alleTage.filter((d) => d < HEUTE).length;
+    const hatKommend = alleTage.some((d) => d >= HEUTE);
+    // Vergangene Termine sind versteckt, außer der Film hat keine kommenden
+    let vorbeiSichtbar = !hatKommend;
+    const sortiert = [...nachKino].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de'));
+    const gruppenHtml = () => sortiert.map(([k, ds]) => {
       ds.sort();
-      const chips = ds.map((d) => `<span class="chip ${d >= HEUTE ? 'kommend' : 'vorbei'}" title="${datum(d)}">${datumKurz(d)}</span>`).join('');
-      return `<div class="termin-gruppe"><h4>${esc(kinos[k].name)} <span class="meta">· ${ds.length} ${ds.length === 1 ? 'Tag' : 'Tage'}</span></h4><div class="chips">${chips}</div></div>`;
+      const sicht = ds.filter((d) => vorbeiSichtbar || d >= HEUTE);
+      if (!sicht.length) return '';
+      const link = kinos[k].link;
+      const chips = sicht.map((d) => {
+        const klasse = d >= HEUTE ? 'kommend' : 'vorbei';
+        // Kommende Spieltage führen zur Programmseite des Kinos, sofern bekannt
+        return d >= HEUTE && link
+          ? `<a class="chip ${klasse}" href="${esc(link)}" target="_blank" rel="noopener" title="${datum(d)}, Programm im Kino ansehen">${datumKurz(d)}</a>`
+          : `<span class="chip ${klasse}" title="${datum(d)}">${datumKurz(d)}</span>`;
+      }).join('');
+      return `<div class="termin-gruppe"><h4>${esc(kinos[k].name)} <span class="meta">· ${sicht.length} ${sicht.length === 1 ? 'Tag' : 'Tage'}</span></h4><div class="chips">${chips}</div></div>`;
     }).join('');
-    const links = [
-      f.info.tmdb && ['Auf TMDB ansehen', `https://www.themoviedb.org/movie/${encodeURIComponent(f.info.tmdb)}`],
-    ].filter(Boolean);
-    const imdb = links.length ? `<p class="filmlinks">${links.map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</p>` : '';
-    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${preisListe(f)}${imdb}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${gruppen}`;
+    const knopfText = () => (vorbeiSichtbar ? `Vergangene Termine ausblenden (${anzahlVorbei})` : `Vergangene Termine anzeigen (${anzahlVorbei})`);
+    const knopf = hatKommend && anzahlVorbei ? `<button type="button" class="vorbei-knopf" aria-expanded="${vorbeiSichtbar}">${knopfText()}</button>` : '';
+    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${laufzeitZeile(f, alleTage)}${preisListe(f)}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
+    const knopfEl = $('#fd-inhalt .vorbei-knopf');
+    if (knopfEl) {
+      knopfEl.addEventListener('click', () => {
+        vorbeiSichtbar = !vorbeiSichtbar;
+        knopfEl.textContent = knopfText();
+        knopfEl.setAttribute('aria-expanded', String(vorbeiSichtbar));
+        $('#fd-termine').innerHTML = gruppenHtml();
+      });
+    }
     $('#film-dialog').showModal();
   }
 
