@@ -19,9 +19,9 @@
   const wochentag = (s) => (parse(s).getDay() + 6) % 7; // Montag = 0
   const montagVon = (s) => plusTage(s, -wochentag(s));
   const fmt = (o) => new Intl.DateTimeFormat('de-DE', o);
-  const fmtKurz = fmt({ day: '2-digit', month: '2-digit' });
+  const fmtKurz = fmt({ day: '2-digit', month: '2-digit', year: '2-digit' });
   const fmtLang = fmt({ weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
-  const fmtVoll = fmt({ weekday: 'long', day: 'numeric', month: 'long' });
+  const fmtVoll = fmt({ weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   const fmtWt = fmt({ weekday: 'short' });
   const fmtMonat = fmt({ month: 'short' });
   const fmtMonatLang = fmt({ month: 'long', year: 'numeric' });
@@ -677,7 +677,7 @@
     let ticksX = '';
     reihe.forEach((p, i) => {
       if (p.d.endsWith('-01') && !(B < 500 && Number(p.d.slice(5, 7)) % 2 === 0)) {
-        ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(p.d))}</text>`;
+        ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(p.d))}${p.d.endsWith('-01-01') ? ` ’${p.d.slice(2, 4)}` : ''}</text>`;
       }
     });
     let pfad = '', offen = false;
