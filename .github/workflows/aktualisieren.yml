@@ -1,4 +1,4 @@
-# Aktualisiert das Kinoprogramm jeden Mittwochabend und veroeffentlicht die Website auf GitHub Pages.
+# Aktualisiert das Kinoprogramm jeden Mittwochvormittag und veroeffentlicht die Website auf GitHub Pages.
 # Manuell starten: im Repository unter "Actions" > "Kinoprogramm aktualisieren" > "Run workflow".
 # Bei jedem Hochladen von Aenderungen (push) wird die Website ohne neuen Abruf veroeffentlicht.
 
@@ -6,8 +6,8 @@ name: Kinoprogramm aktualisieren
 
 on:
   schedule:
-    # 18:00 UTC = 19:00 Uhr Winterzeit, 20:00 Uhr Sommerzeit. GitHub startet geplante Laeufe oft etwas spaeter.
-    - cron: '0 18 * * 3'
+    # Mittwoch 09:00 UTC = 10:00 Uhr Winterzeit, 11:00 Uhr Sommerzeit. GitHub startet geplante Laeufe oft etwas spaeter.
+    - cron: '0 9 * * 3'
   workflow_dispatch:
   push:
     branches: [main]
