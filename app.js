@@ -200,7 +200,14 @@
       const bestaetigt = [...m].every(([k, d]) => programmDanach(k, d));
       (bestaetigt ? sicher : offen).push(eintrag);
     });
-    const ordnung = (a, b) => a.letzter.localeCompare(b.letzter) || a.f.titel.localeCompare(b.f.titel, 'de');
+    // Erst letzter Spieltag, am selben Tag nach Score (höchster zuerst), ohne Score am Tagesende, dann alphabetisch
+    const ordnung = (a, b) => {
+      if (a.letzter !== b.letzter) return a.letzter.localeCompare(b.letzter);
+      const sa = a.f.bewertung, sb = b.f.bewertung;
+      if (sa != null && sb != null && sa !== sb) return sb - sa;
+      if ((sa != null) !== (sb != null)) return sa != null ? -1 : 1;
+      return a.f.titel.localeCompare(b.f.titel, 'de');
+    };
     return { sicher: sicher.sort(ordnung), offen: offen.sort(ordnung) };
   }
 
