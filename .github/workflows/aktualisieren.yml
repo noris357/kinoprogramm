@@ -23,7 +23,8 @@ concurrency:
 
 jobs:
   aktualisieren:
-    runs-on: ubuntu-latest
+    # Fest auf Ubuntu 24.04, weil ubuntu-latest waehrend der Umstellung auf Ubuntu 26.04 keine Runner bekam (11.11.2026)
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.veroeffentlichen.outputs.page_url }}
