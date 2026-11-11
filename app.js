@@ -115,7 +115,7 @@
   // ---------- Zustand und Filter ----------
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
-    ansicht: 'programm', tag: HEUTE, gruppe: 'film', reihenfolge: 'bewertung',
+    ansicht: 'programm', tag: 'woche', gruppe: 'film', reihenfolge: 'bewertung',
     sort: { feld: 'bewertung', auf: false }, nurKommend: false,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
@@ -249,13 +249,20 @@
     daten.forEach((t) => { if (!proTag.has(t.d)) proTag.set(t.d, new Set()); proTag.get(t.d).add(t.f); });
     const chanceIds = new Set(letzteChance(daten).sicher.map((e) => e.f.id));
 
-    const knoepfe = Array.from({ length: 8 }, (_, i) => plusTage(HEUTE, i)).map((d, i) => {
+    // Ganze Woche: heute bis einschließlich Sonntag der aktuellen ISO-Woche (vergangene Tage zählen nicht)
+    const sonntag = plusTage(montagVon(HEUTE), 6);
+    const ganzeWoche = zustand.tag === 'woche';
+    const wochenFilme = new Set();
+    daten.forEach((t) => { if (t.d >= HEUTE && t.d <= sonntag) wochenFilme.add(t.f); });
+    const wochenKnopf = `<button class="tag" data-tag="woche" aria-pressed="${ganzeWoche}"><small>KW ${kalenderwoche(HEUTE)}</small><b>${wochenFilme.size} ${wochenFilme.size === 1 ? 'Film' : 'Filme'}</b></button>`;
+
+    const knoepfe = wochenKnopf + Array.from({ length: 8 }, (_, i) => plusTage(HEUTE, i)).map((d, i) => {
       const n = proTag.get(d)?.size || 0;
       const oben = i === 0 ? 'Heute' : i === 1 ? 'Morgen' : fmtWt.format(parse(d));
       return `<button class="tag" data-tag="${d}" aria-pressed="${d === zustand.tag}"><small>${oben} · ${datumKurz(d)}</small><b>${n} ${n === 1 ? 'Film' : 'Filme'}</b></button>`;
     }).join('');
 
-    const amTag = daten.filter((t) => t.d === zustand.tag);
+    const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= sonntag) : daten.filter((t) => t.d === zustand.tag);
     // Sortierung für beide Ansichten: nach Score (Filme ohne Score am Ende) oder alphabetisch
     const nachTitel = (a, b) => a.titel.localeCompare(b.titel, 'de');
     const filmOrdnung = zustand.reihenfolge === 'titel'
@@ -263,7 +270,7 @@
       : (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || nachTitel(a, b);
     let inhalt;
     if (!amTag.length) {
-      inhalt = `<p class="leer">Für ${datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
+      inhalt = `<p class="leer">Für ${ganzeWoche ? 'diese Woche' : datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
     } else if (zustand.gruppe === 'film') {
       const nachFilm = new Map();
       amTag.forEach((t) => { if (!nachFilm.has(t.f)) nachFilm.set(t.f, new Set()); nachFilm.get(t.f).add(t.k); });
@@ -288,10 +295,10 @@
 
     $('#v-programm').innerHTML = `
       <div class="tage">${knoepfe}
-        <label class="tag-wahl">Anderer Tag<input type="date" id="tag-wahl" value="${zustand.tag}" min="${ERSTER}" max="${LETZTER}"></label>
+        <label class="tag-wahl">Anderer Tag<input type="date" id="tag-wahl" value="${ganzeWoche ? HEUTE : zustand.tag}" min="${ERSTER}" max="${LETZTER}"></label>
       </div>
       <div class="ansicht-kopf">
-        <h2>${fmtVoll.format(parse(zustand.tag))}</h2>
+        <h2>${ganzeWoche ? `KW ${kalenderwoche(HEUTE)} · ${datumKurz(HEUTE)} bis ${datumKurz(sonntag)}` : fmtVoll.format(parse(zustand.tag))}</h2>
         <div class="steuerung">
           <div class="umschalter" role="group" aria-label="Sortierung">
             <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">Score</button>
