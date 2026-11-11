@@ -115,7 +115,7 @@
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
     ansicht: 'programm', tag: HEUTE, gruppe: 'film', reihenfolge: 'bewertung',
-    sort: { feld: 'naechster', auf: true }, nurKommend: true,
+    sort: { feld: 'bewertung', auf: false }, nurKommend: false,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
 
@@ -418,13 +418,14 @@
 
   const SPALTEN = [
     { feld: 'titel', titel: 'Titel', wert: (s) => s.f.titel.toLocaleLowerCase('de') },
+    { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.bewertung, zahl: true },
+    { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter },
     { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de') },
     { feld: 'land', titel: 'Land', wert: (s) => (s.f.laender[0] || '￿').toLocaleLowerCase('de') },
     { feld: 'jahr', titel: 'Jahr', wert: (s) => s.f.jahr || '0000', zahl: true },
     { feld: 'kinos', titel: 'Kinos', wert: (s) => s.nKinos, zahl: true },
     { feld: 'tage', titel: 'Spieltage', wert: (s) => s.nTage, zahl: true },
     { feld: 'naechster', titel: 'Nächster Tag', wert: (s) => s.naechster || '9999' },
-    { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter },
   ];
 
   function zeigeFilme(daten) {
@@ -433,6 +434,8 @@
     const sp = SPALTEN.find((s) => s.feld === zustand.sort.feld);
     liste.sort((a, b) => {
       const x = sp.wert(a), y = sp.wert(b);
+      // Filme ohne Score stehen immer am Ende, egal in welcher Richtung
+      if (x == null || y == null) return (x == null) - (y == null) || a.f.titel.localeCompare(b.f.titel, 'de');
       const r = typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'de');
       return (zustand.sort.auf ? r : -r) || a.f.titel.localeCompare(b.f.titel, 'de');
     });
@@ -444,14 +447,15 @@
     }).join('') + '<th>Status</th>';
 
     const zeilen = liste.map((s) => `<tr>
-      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${wertung(s.f)}</div></div></td>
+      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}</div></div></td>
+      <td class="zahl">${s.f.bewertung != null ? wertung(s.f) : '–'}</td>
+      <td>${datumKurz(s.letzter)}</td>
       <td class="umbruch">${istSneak(s.f) ? '?' : esc(s.f.regie || '–')}</td>
       <td class="umbruch schmal">${istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
       <td class="zahl">${istSneak(s.f) ? '?' : esc(s.f.jahr || '–')}</td>
       <td class="zahl">${s.nKinos}</td>
       <td class="zahl">${s.nTage}</td>
       <td>${s.naechster ? datumKurz(s.naechster) : '–'}</td>
-      <td>${datumKurz(s.letzter)}</td>
       <td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td>
     </tr>`).join('');
 
