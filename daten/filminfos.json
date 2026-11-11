@@ -149,6 +149,10 @@
     "regie": "Andreas Dresen",
     "jahr": "2026"
   },
+  "Alter, was geht? – Filme aus dem Deutschen Generationenfilmpreis|": {
+    "nichtGefunden": true,
+    "geprueft": "2026-11-11"
+  },
   "Amore und Basta|": {
     "tmdb": 1397055,
     "titel": "Amore und Basta!",
@@ -432,6 +436,18 @@
     "regie": "Girish A D",
     "jahr": "2026"
   },
+  "Beware Boiúna|": {
+    "tmdb": 1244523,
+    "titel": "Beware Boiúna",
+    "geprueft": "2026-11-11",
+    "stimmen": 49,
+    "poster": "plakate/1244523.jpg",
+    "bewertung": "6,2",
+    "imdb": "tt10377864",
+    "land": "Vereinigte Staaten, Deutschland, Kolumbien",
+    "regie": "Mike P. Nelson",
+    "jahr": "2026"
+  },
   "Bibi Blocksberg - Die total verhexte Zeitreise|2026": {
     "tmdb": 1492574,
     "titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
@@ -661,6 +677,17 @@
     "land": "Kanada, Vereinigte Staaten",
     "regie": "Nia DaCosta",
     "jahr": "2021"
+  },
+  "Carlo Acutis - Der Millennial-Heilige|": {
+    "tmdb": 1634864,
+    "titel": "Carlo Acutis - Der Millennial-Heilige",
+    "geprueft": "2026-11-11",
+    "stimmen": 0,
+    "poster": "plakate/1634864.jpg",
+    "imdb": "tt49639968",
+    "land": "Italien",
+    "regie": "Luca Salmaso",
+    "jahr": "2026"
   },
   "Cars|": {
     "tmdb": 920,
@@ -1381,6 +1408,18 @@
     "regie": "Yann Samuell",
     "jahr": "2026"
   },
+  "Die Frau Des Nobelpreisträgers|": {
+    "tmdb": 340613,
+    "titel": "Die Frau des Nobelpreisträgers",
+    "geprueft": "2026-11-11",
+    "stimmen": 1148,
+    "poster": "plakate/340613.jpg",
+    "bewertung": "7,1",
+    "imdb": "tt3750872",
+    "land": "Schweden, Schweiz, Vereinigtes Königreich, Vereinigte Staaten",
+    "regie": "Björn Runge",
+    "jahr": "2017"
+  },
   "Die guten und die besseren Tage|2025": {
     "tmdb": 1178518,
     "titel": "Die guten und die besseren Tage",
@@ -1603,6 +1642,10 @@
     "regie": "Alejandro G. Iñárritu",
     "jahr": "2026"
   },
+  "Dirigenten des Bodens|2025": {
+    "nichtGefunden": true,
+    "geprueft": "2026-11-11"
+  },
   "Dirty Dancing|": {
     "tmdb": 88,
     "titel": "Dirty Dancing",
@@ -1793,6 +1836,17 @@
     "poster": "plakate/1202205.jpg",
     "regie": "François Narboux",
     "jahr": "2023"
+  },
+  "Eetha|": {
+    "tmdb": 1489396,
+    "titel": "Eetha",
+    "geprueft": "2026-11-11",
+    "stimmen": 0,
+    "poster": "plakate/1489396.jpg",
+    "imdb": "tt38840418",
+    "land": "Indien",
+    "regie": "Laxman Utekar",
+    "jahr": "2026"
   },
   "Ein Talent fürs Morden|": {
     "tmdb": 1084409,
@@ -2475,6 +2529,18 @@
     "regie": "Maria Wischnewski",
     "jahr": "2026"
   },
+  "Her Private Hell|": {
+    "tmdb": 1469342,
+    "titel": "Her Private Hell",
+    "geprueft": "2026-11-11",
+    "stimmen": 118,
+    "poster": "plakate/1469342.jpg",
+    "bewertung": "5,4",
+    "imdb": "tt36629665",
+    "land": "Vereinigte Staaten, Dänemark, Vereinigtes Königreich",
+    "regie": "Nicolas Winding Refn",
+    "jahr": "2026"
+  },
   "Herr der Ringe Ext. Trilogie|2018": {
     "nichtGefunden": true,
     "geprueft": "2026-11-06"
@@ -2584,6 +2650,17 @@
     "regie": "Mauro Bolognini",
     "jahr": "1962"
   },
+  "How to Rob a Bank|": {
+    "tmdb": 1437511,
+    "titel": "How to Rob a Bank",
+    "geprueft": "2026-11-11",
+    "stimmen": 2,
+    "poster": "plakate/1437511.jpg",
+    "imdb": "tt35866986",
+    "land": "Vereinigte Staaten",
+    "regie": "David Leitch",
+    "jahr": "2026"
+  },
   "I Am Martin Parr|2024": {
     "tmdb": 1371557,
     "titel": "I Am Martin Parr",
@@ -2630,6 +2707,17 @@
     "imdb": "tt36893729",
     "land": "Vereinigte Staaten, Vereinigtes Königreich, Frankreich, Japan",
     "regie": "Eli Roth",
+    "jahr": "2026"
+  },
+  "Identitti|": {
+    "tmdb": 1466007,
+    "titel": "Identitti",
+    "geprueft": "2026-11-11",
+    "stimmen": 0,
+    "poster": "plakate/1466007.jpg",
+    "imdb": "tt36290176",
+    "land": "Deutschland",
+    "regie": "Randa Chahoud",
     "jahr": "2026"
   },
   "If Pigeons Turned to Gold|2026": {
@@ -2838,6 +2926,17 @@
     "land": "Deutschland, Niederlande, Schweden",
     "regie": "Michael Ekbladh",
     "jahr": "2022"
+  },
+  "Kein Land Für Niemand|": {
+    "tmdb": 1486097,
+    "titel": "Kein Land für Niemand - Abschottung eines Einwanderungslandes",
+    "geprueft": "2026-11-11",
+    "stimmen": 1,
+    "poster": "plakate/1486097.jpg",
+    "imdb": "tt36987365",
+    "land": "Deutschland",
+    "regie": "Maik Lüdemann, Maximilian Ahrens",
+    "jahr": "2025"
   },
   "Kinderzaubershow|": {
     "nichtGefunden": true,
@@ -3489,6 +3588,22 @@
     "land": "Frankreich",
     "regie": "Julien Hervé",
     "jahr": "2026"
+  },
+  "OHMshorts 2026|": {
+    "nichtGefunden": true,
+    "geprueft": "2026-11-11"
+  },
+  "OM|": {
+    "tmdb": 8079,
+    "titel": "Om Shanti Om",
+    "geprueft": "2026-11-11",
+    "stimmen": 435,
+    "poster": "plakate/8079.jpg",
+    "bewertung": "7,1",
+    "imdb": "tt1024943",
+    "land": "Indien",
+    "regie": "Farah Khan",
+    "jahr": "2007"
   },
   "On the Sea|2025": {
     "tmdb": 1507796,
@@ -4182,6 +4297,17 @@
     "regie": "George Jaques",
     "jahr": "2026"
   },
+  "Superbuhei|": {
+    "tmdb": 1293947,
+    "titel": "Superbuhei",
+    "geprueft": "2026-11-11",
+    "stimmen": 0,
+    "poster": "plakate/1293947.jpg",
+    "imdb": "tt38754957",
+    "land": "Deutschland",
+    "regie": "Josef Brandl",
+    "jahr": "2026"
+  },
   "Tally Brown, New York|1977 bis 1979": {
     "tmdb": 344096,
     "titel": "Tally Brown, New York",
@@ -4364,6 +4490,17 @@
     "land": "Neuseeland, Vereinigte Staaten",
     "regie": "Peter Jackson",
     "jahr": "2002"
+  },
+  "The Mad Dog of Europe|": {
+    "tmdb": 1446080,
+    "titel": "The Mad Dog of Europe",
+    "geprueft": "2026-11-11",
+    "stimmen": 1,
+    "poster": "plakate/1446080.jpg",
+    "imdb": "tt38236278",
+    "land": "Frankreich, Deutschland",
+    "regie": "Rubika Shah",
+    "jahr": "2026"
   },
   "The Mastermind|2025": {
     "tmdb": 1352624,
@@ -4822,6 +4959,18 @@
     "regie": "Florian Gaag",
     "jahr": "2006"
   },
+  "Wicked: Teil 2|2025": {
+    "tmdb": 967941,
+    "titel": "Wicked: Teil 2",
+    "geprueft": "2026-11-11",
+    "stimmen": 1222,
+    "poster": "plakate/967941.jpg",
+    "bewertung": "6,6",
+    "imdb": "tt19847976",
+    "land": "Vereinigte Staaten",
+    "regie": "Jon M. Chu",
+    "jahr": "2025"
+  },
   "Wicked|2024": {
     "tmdb": 402431,
     "titel": "Wicked",
@@ -4880,6 +5029,18 @@
     "land": "Vereinigte Staaten",
     "regie": "Travis Knight",
     "jahr": "2026"
+  },
+  "Wir Kinder Aus Bullerbü|": {
+    "tmdb": 21394,
+    "titel": "Wir Kinder aus Bullerbü",
+    "geprueft": "2026-11-11",
+    "stimmen": 50,
+    "poster": "plakate/21394.jpg",
+    "bewertung": "6,3",
+    "imdb": "tt0090610",
+    "land": "Schweden",
+    "regie": "Lasse Hallström",
+    "jahr": "1986"
   },
   "Wir, das Orchester|2025": {
     "tmdb": 1459622,
