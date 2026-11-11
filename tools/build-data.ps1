@@ -77,6 +77,13 @@ $links = @{}
 if (Test-Path $Quellen) {
   (Get-Content $Quellen -Raw -Encoding UTF8 | ConvertFrom-Json).kinos | ForEach-Object { $links[$_.bezeichnung_in_excel] = $_.programm_url }
 }
+# Handliste fuer Regienamen ohne lateinischen Namen bei TMDB: Originalname -> gewuenschter Name
+$regieKorrekturen = @{}
+$korrekturDatei = "$PSScriptRoot/../daten/titel-korrekturen.json"
+if (Test-Path $korrekturDatei) {
+  $rk = (Get-Content $korrekturDatei -Raw -Encoding UTF8 | ConvertFrom-Json).regieKorrekturen
+  if ($rk) { $rk.PSObject.Properties | ForEach-Object { $regieKorrekturen[$_.Name] = $_.Value } }
+}
 $infos = @{}
 if (Test-Path $FilmInfos) {
   (Get-Content $FilmInfos -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $infos[$_.Name] = $_.Value }
@@ -243,6 +250,9 @@ foreach ($g in $gruppen.Values) {
   $i = $g.Info
   $land = Get-EinheitlicheLaender $(if ($g.Land) { $g.Land } elseif ($i) { $i.land } else { $null })
   $regie = if ($g.Regie) { $g.Regie } elseif ($i) { $i.regie } else { $null }
+  if ($regie -and $regieKorrekturen.Count) {
+    $regie = (@($regie -split '\s*,\s*' | ForEach-Object { if ($regieKorrekturen.ContainsKey($_)) { $regieKorrekturen[$_] } else { $_ } }) | Select-Object -Unique) -join ', '
+  }
   $jahr = if ($g.Jahr) { $g.Jahr } elseif ($i) { $i.jahr } else { $null }
   if ($land) { $land.Split(',') | ForEach-Object { $genutzteLaender[$_.Trim()] = $true } }
   $eintrag = @($titel, $land, $regie, $jahr)

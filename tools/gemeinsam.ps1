@@ -47,6 +47,13 @@ if (Test-Path $korrekturDatei) {
   (Get-Content $korrekturDatei -Raw -Encoding UTF8 | ConvertFrom-Json).korrekturen.PSObject.Properties | ForEach-Object { $script:Titelkorrekturen[$_.Name.ToLowerInvariant()] = $_.Value }
 }
 
+# Enthaelt der Text Buchstaben ausserhalb der lateinischen Schrift (japanisch, kyrillisch, griechisch, arabisch ...)?
+# Lateinische Buchstaben mit Akzent (Ö, é, ł, ő ...) zaehlen als lateinisch.
+function Test-FremdeSchrift([string]$Text) {
+  if (-not $Text) { return $false }
+  return [regex]::IsMatch($Text, '(?![\p{IsBasicLatin}\p{IsLatin-1Supplement}\p{IsLatinExtended-A}\p{IsLatinExtended-B}\p{IsLatinExtendedAdditional}])\p{L}')
+}
+
 function Get-BereinigterTitel([string]$Titel) {
   # Korrektur zuerst fuer den unveraenderten Titel, dann fuer den bereinigten
   $roh = $Titel.Trim().ToLowerInvariant()

@@ -3,5 +3,9 @@
   "korrekturen": {
     "Persepolis von Marjane Satrapi": "Persepolis",
     "Warm-Up: Digitaler Überraschungsfilm": "Kult Sneak"
+  },
+  "regieHinweis": "Regienamen in fremder Schrift, fuer die TMDB keinen lateinischen Namen kennt: links der Originalname, rechts der gewuenschte Name. Wird beim Erzeugen von data.js angewendet.",
+  "regieKorrekturen": {
+    "四宮義俊": "Yoshitoshi Shinomiya"
   }
 }
