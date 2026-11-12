@@ -25,3 +25,6 @@
 (?i)zaubershow
 # Konzertfilme, die nicht ins Programm sollen
 (?i)^George Michael\b.*\bFaith Tour\b
+# Keine Filme: Gaming und E-Sport-Uebertragungen
+(?i)^Gaming im Kino\b
+(?i)\bLeague of Legends\b
