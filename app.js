@@ -9,7 +9,8 @@
   const NUR_EINMAL_SCORE = 70;       // Mindest-Score für "Nur einmal"
   const DAUERBRENNER_WOCHEN = 6;     // mindestens so viele Kinowochen am Stück
   const FILME_JE_RUBRIK = 3;         // höchstens so viele Filme je Rubrik
-  const NEU_TAGE_ZURUECK = 6;        // "neu": frühester Termin ab heute minus so viele Tage
+  const NEU_WOCHE_BEGINNT = 2;       // "neu": Woche läuft ab diesem Wochentag sieben Tage (0 = Montag, 2 = Mittwoch, also Mittwoch bis Dienstag)
+  const NEU_HOECHSTALTER = 1;        // "neu": Produktionsjahr höchstens so viele Jahre zurück, damit Wiederaufführungen nicht als Neustart zählen
   const OHNE_HIGHLIGHT = /^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/;
 
   const D = window.KINO_DATA;
@@ -256,11 +257,16 @@
       e.wochen.add(donnerstagVon(t.d));
     });
     // Kinowochen am Stück, rückwärts ab der aktuellen Kinowoche
-    m.forEach((e) => {
+    // Neu: erster Termin überhaupt liegt in der laufenden Woche und der Film ist kein alter Film in Wiederaufführung
+    const neuAb = plusTage(HEUTE, -((wochentag(HEUTE) + 7 - NEU_WOCHE_BEGINNT) % 7));
+    const neuBis = plusTage(neuAb, 6);
+    const diesesJahr = Number(HEUTE.slice(0, 4));
+    m.forEach((e, id) => {
       let w = donnerstagVon(HEUTE), n = 0;
       while (e.wochen.has(w)) { n++; w = plusTage(w, -7); }
       e.serie = n;
-      e.neu = e.erster >= plusTage(HEUTE, -NEU_TAGE_ZURUECK) && e.erster <= ende;
+      const jahr = parseInt(filme[id].jahr, 10);
+      e.neu = e.erster >= neuAb && e.erster <= neuBis && (!jahr || diesesJahr - jahr <= NEU_HOECHSTALTER);
     });
     faktenCache = m;
     return m;
@@ -345,11 +351,12 @@
     };
     const mitScore = (h) => h.f.bewertung != null;
     const neu = alle.filter((h) => fk.get(h.f.id).neu && mitScore(h));
-    const film = neu[0] || alle.find(mitScore) || null;
+    // Film der Woche ist immer ein Neustart. Gibt es keinen, entfällt die Rubrik.
+    const film = neu[0] || null;
     if (film) belegt.add(film.f.id);
     const hatPreis = (h) => preisGruppen(h.f).length > 0;
     const rubriken = [
-      ['Neu diese Woche', 'Die besten Neustarts nach dem Film der Woche.', nimm(neu)],
+      ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', nimm(neu)],
       ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
         const j = parseInt(h.f.jahr, 10);
         return j && jetzt - j >= KLASSIKER_ALTER && ((h.f.bewertung ?? -1) >= KLASSIKER_SCORE || hatPreis(h));
@@ -371,7 +378,7 @@
       <p class="hinweis">Besondere Filme der nächsten sieben Tage. Jeder Film erscheint nur einmal.</p>
       ${film ? `<section class="hl-rubrik"><h3 class="hl-titel">Film der Woche</h3>${highlightKarte(film, true)}</section>` : ''}
       ${rubriken.map(([name, text, liste]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => highlightKarte(h, false)).join('')}</div></section>`).join('')}
-      ${film ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
+      ${film || rubriken.length ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
       <p class="hl-fuss"><button class="film-link" data-zu="programm">Zum ganzen Programm →</button></p>`;
   }
 
