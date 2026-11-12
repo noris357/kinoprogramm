@@ -32,3 +32,9 @@ Der Probelauf zeigt nur an, was sich ändern würde. Der Testserver läuft unter
 - Spätere Termine eines Kinos werden nur ersetzt, wenn dessen Seite erfolgreich und vollständig gelesen wurde, und nur im gelesenen Zeitraum.
 - Casablanca und Uferpalast zeigen online nicht ihr ganzes Programm. Dort werden Termine nur ergänzt.
 - Cineplex Fürth und Admiral sperren automatische Abrufe und werden nicht ausgelesen.
+
+## Aufgaben für Claude
+
+Änderungswünsche lassen sich als Issue mit der Vorlage „Aufgabe für Claude" anlegen. Die Vorlage setzt das Label `claude`. Claude schaut jeden Abend gegen 21 Uhr nach offenen Issues mit diesem Label und legt für jedes einen Pull Request an. Bei Unklarheiten stellt Claude eine Rückfrage im Issue und setzt das Label `claude-frage`.
+
+Die Änderung ist erst online, nachdem der Pull Request geprüft und gemergt wurde.
