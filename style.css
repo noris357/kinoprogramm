@@ -190,8 +190,7 @@ h1, h2, h3 { text-wrap: balance; }
 .hl-gross { border-color: var(--gold); padding: 16px; gap: 20px; margin-top: 10px; }
 .hl-gross .film-link { font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.15; }
 .hl-gross .grund { font-size: 15px; }
-.hl-kinos { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
-.hl-kinos li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.hl-kinos { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .hl-fuss { margin-top: 28px; }
 
 /* ---------- Letzte Chance ---------- */
