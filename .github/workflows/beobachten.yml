@@ -1,0 +1,41 @@
+# Beobachtet viermal am Tag, wann die Kinos ihr Programm veroeffentlichen (daten/beobachtung.csv).
+# Aendert weder den Bestand noch die Website. Kann nach einigen Wochen Auswertung wieder abgeschaltet werden:
+# im Repository unter "Actions" > "Kinoseiten beobachten" > "..." > "Disable workflow".
+
+name: Kinoseiten beobachten
+
+on:
+  schedule:
+    # 05, 11, 17 und 23 Uhr UTC = 6, 12, 18 und 24 Uhr Winterzeit
+    - cron: '0 5,11,17,23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kinoprogramm
+  cancel-in-progress: false
+
+jobs:
+  beobachten:
+    # Fest auf Ubuntu 24.04, weil ubuntu-latest waehrend der Umstellung auf Ubuntu 26.04 keine Runner bekam (11.11.2026)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Repository holen
+        uses: actions/checkout@v4
+
+      - name: pdftotext fuer die Casablanca-Flyer installieren
+        run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
+
+      - name: Kinoseiten auslesen und Stand notieren
+        shell: pwsh
+        run: ./tools/beobachten.ps1
+
+      - name: Beobachtung speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daten/beobachtung.csv
+          git commit -m "Beobachtung $(TZ=Europe/Berlin date '+%Y-%m-%d %H:%M')" || exit 0
+          git pull --rebase -q && git push

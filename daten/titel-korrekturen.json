@@ -1,7 +1,15 @@
 {
-  "hinweis": "Feste Titelkorrekturen: links der Titel, wie er nach der allgemeinen Bereinigung aussieht, rechts der gewuenschte Titel. Gross- und Kleinschreibung links egal.",
+  "hinweis": "Feste Titelkorrekturen: links der Titel, wie er nach der allgemeinen Bereinigung aussieht, rechts der gewuenschte Titel. Gross- und Kleinschreibung links egal. kurzfilmAusnahmen: Titel einzelner Regisseur:innen, die nicht zu Kurzfilmprogramm zusammengefasst werden.",
   "korrekturen": {
     "Persepolis von Marjane Satrapi": "Persepolis",
-    "Warm-Up: Digitaler Überraschungsfilm": "Kult Sneak"
+    "Warm-Up: Digitaler Überraschungsfilm": "Kult Sneak",
+    "Dem Glück ganz nah": "Kurzfilmprogramm"
+  },
+  "kurzfilmAusnahmen": [
+    "Buster Keaton Shorts"
+  ],
+  "regieHinweis": "Regienamen in fremder Schrift, fuer die TMDB keinen lateinischen Namen kennt: links der Originalname, rechts der gewuenschte Name. Wird beim Erzeugen von data.js angewendet.",
+  "regieKorrekturen": {
+    "四宮義俊": "Yoshitoshi Shinomiya"
   }
 }

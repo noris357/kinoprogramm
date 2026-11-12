@@ -19,9 +19,12 @@
 
   <div class="reiter-band">
     <nav class="reiter wrap" role="tablist" aria-label="Ansichten">
-      <button role="tab" data-ansicht="programm" aria-selected="true">Programm</button>
+      <button role="tab" data-ansicht="highlights" aria-selected="true">Highlights</button>
+      <button role="tab" data-ansicht="programm" aria-selected="false">Programm</button>
       <button role="tab" data-ansicht="chance" aria-selected="false">Letzte Chance</button>
+      <!-- Reiter Kalender ausgeblendet, der Code der Ansicht bleibt in app.js
       <button role="tab" data-ansicht="kalender" aria-selected="false">Kalender</button>
+      -->
       <button role="tab" data-ansicht="filme" aria-selected="false">Filme</button>
       <button role="tab" data-ansicht="statistik" aria-selected="false">Statistik</button>
       <button role="tab" data-ansicht="kinos" aria-selected="false">Kinos</button>
@@ -53,7 +56,8 @@
   </section>
 
   <main class="wrap">
-    <section id="v-programm" class="ansicht"></section>
+    <section id="v-highlights" class="ansicht"></section>
+    <section id="v-programm" class="ansicht" hidden></section>
     <section id="v-chance" class="ansicht" hidden></section>
     <section id="v-kalender" class="ansicht" hidden></section>
     <section id="v-filme" class="ansicht" hidden></section>

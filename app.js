@@ -1,10 +1,26 @@
 (function () {
   'use strict';
 
+  // ---------- Schwellen der Highlights (hier anpassen) ----------
+  const KLASSIKER_ALTER = 20;        // Jahre seit der Produktion
+  const KLASSIKER_SCORE = 75;        // Score ab dem ein älterer Film als Klassiker gilt (oder Hauptpreis)
+  const GEHEIMTIPP_SCORE = 80;       // Mindest-Score für den Geheimtipp
+  const GEHEIMTIPP_MAX_TAGE = 3;     // höchstens so viele Spieltage in der Woche, in nur einem Kino
+  const NUR_EINMAL_SCORE = 70;       // Mindest-Score für "Nur einmal"
+  const DAUERBRENNER_WOCHEN = 6;     // mindestens so viele Kinowochen am Stück
+  const FILME_JE_RUBRIK = 3;         // höchstens so viele Filme je Rubrik
+  const NEU_TAGE_ZURUECK = 6;        // "neu": frühester Termin ab heute minus so viele Tage
+  const OHNE_HIGHLIGHT = /^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/;
+
   const D = window.KINO_DATA;
   const $ = (sel) => document.querySelector(sel);
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const zahl = (n) => n.toLocaleString('de-DE');
+
+  // Score-Stufen für die farbige Hinterlegung der Score-Zahl (ab diesem Score)
+  const SCORE_GOLD = 90;
+  const SCORE_SILBER = 85;
+  const SCORE_BRONZE = 80;
 
   // ---------- Datumshilfen (alle Daten als ISO-Text JJJJ-MM-TT in lokaler Zeit) ----------
   const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -14,9 +30,9 @@
   const wochentag = (s) => (parse(s).getDay() + 6) % 7; // Montag = 0
   const montagVon = (s) => plusTage(s, -wochentag(s));
   const fmt = (o) => new Intl.DateTimeFormat('de-DE', o);
-  const fmtKurz = fmt({ day: '2-digit', month: '2-digit' });
+  const fmtKurz = fmt({ day: '2-digit', month: '2-digit', year: '2-digit' });
   const fmtLang = fmt({ weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
-  const fmtVoll = fmt({ weekday: 'long', day: 'numeric', month: 'long' });
+  const fmtVoll = fmt({ weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   const fmtWt = fmt({ weekday: 'short' });
   const fmtMonat = fmt({ month: 'short' });
   const fmtMonatLang = fmt({ month: 'long', year: 'numeric' });
@@ -72,7 +88,8 @@
   const leerWert = (v) => (v == null || v === '' || v === '?' ? null : v);
   const filme = D.filme.map(([titel, land, regie, jahr, info], id) => {
     // Überraschungsfilme: Regie, Land und Jahr sind unbekannt, auch für Filter und Statistik
-    if (/^(Sneak Preview|Kult Sneak)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
+    // Kurzfilmprogramme bestehen aus mehreren Filmen, auch dort gibt es keine einheitlichen Angaben
+    if (/^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/.test(titel)) { land = null; regie = null; jahr = null; info = {}; }
     const laender = (leerWert(land) || '').split(/\s*,\s*/).filter(Boolean);
     const j = parseInt(String(jahr || '').slice(0, 4), 10);
     // Eigener Score 0-100 aus mehreren Wertungsquellen (siehe tools/build-data.ps1 und Impressum)
@@ -109,8 +126,8 @@
   // ---------- Zustand und Filter ----------
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
-    ansicht: 'programm', tag: HEUTE, gruppe: 'film', reihenfolge: 'bewertung',
-    sort: { feld: 'naechster', auf: true }, nurKommend: true,
+    ansicht: 'highlights', tag: 'woche', gruppe: 'film', reihenfolge: 'bewertung',
+    sort: { feld: 'bewertung', auf: false }, nurKommend: false,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
 
@@ -134,6 +151,7 @@
   // ---------- Bausteine ----------
   function filmMeta(f) {
     if (istSneak(f)) return '? · ? · ?';   // Regie, Land, Jahr sind bei Überraschungsfilmen unbekannt
+    if (istKurzfilm(f)) return '– · – · –';   // mehrere Filme, keine einheitlichen Angaben
     const teile = [f.regie && esc(f.regie), f.laender.length && f.laender.map(mitFlagge).join(', '), f.jahr && esc(f.jahr)].filter(Boolean);
     return teile.join(' · ') || 'Keine Angaben';
   }
@@ -174,13 +192,23 @@
 
   // Überraschungsfilme (Sneak Preview, Kult Sneak) bekommen ein Fragezeichen statt Plakat
   function istSneak(f) { return /^(Sneak Preview|Kult Sneak)$/.test(f.titel); }
+  // Kurzfilmprogramme bekommen einen Filmstreifen statt Plakat
+  function istKurzfilm(f) { return f.titel === 'Kurzfilmprogramm'; }
+  const FILMSTREIFEN = '<svg class="streifen" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 2v20M15.5 2v20" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg>';
   function plakat(f, groesse = '') {
     if (istSneak(f)) return `<div class="plakat raetsel ${groesse}" aria-hidden="true"><span class="fz">?</span></div>`;
+    if (istKurzfilm(f)) return `<div class="plakat raetsel ${groesse}" aria-hidden="true"><span class="fz">${FILMSTREIFEN}</span></div>`;
     const bild = f.info.poster ? `<img src="${esc(f.info.poster)}" alt="" loading="lazy">` : '';
     return `<div class="plakat ${groesse}" aria-hidden="true">${bild}<span class="pt">${esc(f.titel)}</span><span class="pj">${esc(f.jahr || '')}</span></div>`;
   }
   // Nur die Zahl, dezent umrandet. Die Erklärung steckt im Tooltip.
-  const wertung = (f) => (f.bewertung != null ? `<span class="abzeichen wertung" title="Score ${f.bewertung} von 100, aus mehreren Filmwertungen" aria-label="Score ${f.bewertung} von 100">${f.bewertung}</span>` : '');
+  const scoreStufe = (b) => (b >= SCORE_GOLD ? ['gold', 'Gold'] : b >= SCORE_SILBER ? ['silber', 'Silber'] : b >= SCORE_BRONZE ? ['bronze', 'Bronze'] : null);
+  const wertung = (f) => {
+    if (f.bewertung == null) return '';
+    const stufe = scoreStufe(f.bewertung);
+    const text = `Score ${f.bewertung} von 100${stufe ? ` · ${stufe[1]}` : ''}`;
+    return `<span class="abzeichen wertung${stufe ? ` ${stufe[0]}` : ''}" title="${text}, aus mehreren Filmwertungen" aria-label="${text}">${f.bewertung}</span>`;
+  };
 
   // Filme, die in den nächsten 7 Tagen zum letzten Mal laufen.
   // Sicher ist das nur, wenn jedes betroffene Kino schon weiter in die Zukunft veröffentlicht hat.
@@ -200,8 +228,72 @@
       const bestaetigt = [...m].every(([k, d]) => programmDanach(k, d));
       (bestaetigt ? sicher : offen).push(eintrag);
     });
-    const ordnung = (a, b) => a.letzter.localeCompare(b.letzter) || a.f.titel.localeCompare(b.f.titel, 'de');
+    // Erst letzter Spieltag, am selben Tag nach Score (höchster zuerst), ohne Score am Tagesende, dann alphabetisch
+    const ordnung = (a, b) => {
+      if (a.letzter !== b.letzter) return a.letzter.localeCompare(b.letzter);
+      const sa = a.f.bewertung, sb = b.f.bewertung;
+      if (sa != null && sb != null && sa !== sb) return sb - sa;
+      if ((sa != null) !== (sb != null)) return sa != null ? -1 : 1;
+      return a.f.titel.localeCompare(b.f.titel, 'de');
+    };
     return { sicher: sicher.sort(ordnung), offen: offen.sort(ordnung) };
+  }
+
+  // ---------- Fakten je Film und Grund-Zeile ----------
+  const donnerstagVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7)); // Kinowoche läuft Donnerstag bis Mittwoch
+  let faktenCache = null;
+  let chanceCache = null;
+  function fakten() {
+    if (faktenCache) return faktenCache;
+    const ende = plusTage(HEUTE, 7);
+    const m = new Map();
+    termine.forEach((t) => {
+      let e = m.get(t.f);
+      if (!e) { e = { erster: t.d, tage: new Set(), kinos: new Set(), spaeter: false, wochen: new Set() }; m.set(t.f, e); }
+      if (t.d < e.erster) e.erster = t.d;
+      if (t.d >= HEUTE && t.d <= ende) { e.tage.add(t.d); e.kinos.add(t.k); }
+      if (t.d > ende) e.spaeter = true;
+      e.wochen.add(donnerstagVon(t.d));
+    });
+    // Kinowochen am Stück, rückwärts ab der aktuellen Kinowoche
+    m.forEach((e) => {
+      let w = donnerstagVon(HEUTE), n = 0;
+      while (e.wochen.has(w)) { n++; w = plusTage(w, -7); }
+      e.serie = n;
+      e.neu = e.erster >= plusTage(HEUTE, -NEU_TAGE_ZURUECK) && e.erster <= ende;
+    });
+    faktenCache = m;
+    return m;
+  }
+  function chanceFilme() {
+    if (!chanceCache) chanceCache = new Map(letzteChance(termine).sicher.map((e) => [e.f.id, e]));
+    return chanceCache;
+  }
+  const wochentagDatum = (d) => `${fmtWt.format(parse(d)).replace('.', '')} ${datumKurz(d)}`;
+  // Bis zu zwei Gründe, warum ein Film besonders ist. Wird überall gleich gebildet.
+  function gruende(f) {
+    const e = fakten().get(f.id);
+    if (!e || OHNE_HIGHLIGHT.test(f.titel)) return [];
+    const liste = [];
+    const gruppen = preisGruppen(f);
+    if (gruppen.length) {
+      const [art, pl] = gruppen[0];
+      const jahr = Math.max(0, ...pl.map((p) => Number(p.j) || 0)) || '';
+      liste.push(art === 'oscar' ? `${pl.length > 1 ? `${pl.length} Oscars` : 'Oscar'}${jahr ? ` ${jahr}` : ''}` : `${PREISE[art].name}${jahr ? ` ${jahr}` : ''}`);
+    }
+    const imKino = (ks) => [...ks].map((k) => kinos[k].name).sort().join(', ');
+    const einmal = e.tage.size === 1 && !e.spaeter;
+    if (einmal) liste.push(`Nur eine Vorstellung: ${wochentagDatum([...e.tage][0])} im ${imKino(e.kinos)}`);
+    const chance = chanceFilme().get(f.id);
+    if (chance && !einmal) liste.push(`Zum letzten Mal am ${wochentagDatum(chance.letzter)}`);
+    if (e.neu) liste.push('Neu diese Woche');
+    if (e.kinos.size === 1 && !einmal) liste.push(`Nur in einem Kino: ${imKino(e.kinos)}`);
+    if (e.serie >= DAUERBRENNER_WOCHEN) liste.push(`Seit ${e.serie} Wochen im Programm`);
+    return liste.slice(0, 2);
+  }
+  function grundZeile(f) {
+    const g = gruende(f);
+    return g.length ? `<div class="grund">${g.map(esc).join(' · ')}</div>` : '';
   }
 
   // ---------- Kopf ----------
@@ -219,19 +311,90 @@
     ].map(([z, t]) => `<div class="kennzahl"><b>${zahl(z)}</b><span>${t}</span></div>`).join('');
   }
 
+  // ---------- Ansicht Highlights ----------
+  const nachScore = (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || a.titel.localeCompare(b.titel, 'de');
+  function highlightKarte(h, gross) {
+    const f = h.f;
+    // Kinos mit den nächsten Terminen dieser Woche
+    const zeilen = [...h.kinos].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de')).map(([k, ds]) => {
+      const tage = [...ds].sort();
+      const text = tage.slice(0, 4).map(wochentagDatum).join(', ') + (tage.length > 4 ? ' …' : '');
+      return `<li><span class="chip">${esc(kinos[k].name)}</span><span class="meta">${text}</span></li>`;
+    }).join('');
+    return `<article class="filmkarte hl-karte${gross ? ' hl-gross' : ''}">${plakat(f, gross ? 'gross' : 'mittel')}<div>${filmLink(f)}${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}${h.hinweis ? `<div class="zuletzt">${esc(h.hinweis)}</div>` : ''}<ul class="hl-kinos">${zeilen}</ul></div></article>`;
+  }
+  function zeigeHighlights(daten) {
+    const ende = plusTage(HEUTE, 7);
+    const fk = fakten();
+    const jetzt = Number(HEUTE.slice(0, 4));
+    // Kandidaten: Filme mit Terminen in dieser Woche (unter den gewählten Filtern)
+    const kand = new Map();
+    daten.forEach((t) => {
+      if (t.d < HEUTE || t.d > ende || OHNE_HIGHLIGHT.test(filme[t.f].titel)) return;
+      if (!kand.has(t.f)) kand.set(t.f, { f: filme[t.f], kinos: new Map(), hinweis: '' });
+      const h = kand.get(t.f);
+      if (!h.kinos.has(t.k)) h.kinos.set(t.k, new Set());
+      h.kinos.get(t.k).add(t.d);
+    });
+    const alle = [...kand.values()].sort((a, b) => nachScore(a.f, b.f));
+    const belegt = new Set();
+    const nimm = (liste, n = FILME_JE_RUBRIK) => {
+      const r = liste.filter((h) => !belegt.has(h.f.id)).slice(0, n);
+      r.forEach((h) => belegt.add(h.f.id));
+      return r;
+    };
+    const mitScore = (h) => h.f.bewertung != null;
+    const neu = alle.filter((h) => fk.get(h.f.id).neu && mitScore(h));
+    const film = neu[0] || alle.find(mitScore) || null;
+    if (film) belegt.add(film.f.id);
+    const hatPreis = (h) => preisGruppen(h.f).length > 0;
+    const rubriken = [
+      ['Neu diese Woche', 'Die besten Neustarts nach dem Film der Woche.', nimm(neu)],
+      ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
+        const j = parseInt(h.f.jahr, 10);
+        return j && jetzt - j >= KLASSIKER_ALTER && ((h.f.bewertung ?? -1) >= KLASSIKER_SCORE || hatPreis(h));
+      }))],
+      ['Letzte Chance', 'Diese Filme laufen in den nächsten Tagen zum letzten Mal.', nimm(alle.filter((h) => chanceFilme().has(h.f.id)).map((h) => {
+        const c = chanceFilme().get(h.f.id);
+        return { ...h, hinweis: `Zum letzten Mal ${wochentagDatum(c.letzter)} im ${c.kinos.map((k) => k.name).join(', ')}` };
+      }))],
+      ['Geheimtipp', 'Hoher Score, aber nur in einem Kino und an wenigen Tagen.', nimm(alle.filter((h) => (h.f.bewertung ?? -1) >= GEHEIMTIPP_SCORE && fk.get(h.f.id).kinos.size === 1 && fk.get(h.f.id).tage.size <= GEHEIMTIPP_MAX_TAGE))],
+      ['Nur einmal', 'Nur ein Spieltag in dieser Woche und danach kein Termin mehr.', nimm(alle.filter((h) => (h.f.bewertung ?? -1) >= NUR_EINMAL_SCORE && fk.get(h.f.id).tage.size === 1 && !fk.get(h.f.id).spaeter))],
+      ['Ausgezeichnet', 'Laufende Filme mit einem Hauptpreis.', nimm(alle.filter(hatPreis))],
+      ['Dauerbrenner', 'Seit vielen Kinowochen am Stück im Programm.', nimm(alle.filter((h) => fk.get(h.f.id).serie >= DAUERBRENNER_WOCHEN)
+        .sort((a, b) => fk.get(b.f.id).serie - fk.get(a.f.id).serie || nachScore(a.f, b.f))
+        .map((h) => ({ ...h, hinweis: `${fk.get(h.f.id).serie} Kinowochen am Stück` })))],
+    ].filter(([, , liste]) => liste.length);
+
+    $('#v-highlights').innerHTML = `
+      <div class="ansicht-kopf"><h2>Highlights</h2></div>
+      <p class="hinweis">Besondere Filme der nächsten sieben Tage. Jeder Film erscheint nur einmal.</p>
+      ${film ? `<section class="hl-rubrik"><h3 class="hl-titel">Film der Woche</h3>${highlightKarte(film, true)}</section>` : ''}
+      ${rubriken.map(([name, text, liste]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => highlightKarte(h, false)).join('')}</div></section>`).join('')}
+      ${film ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
+      <p class="hl-fuss"><button class="film-link" data-zu="programm">Zum ganzen Programm →</button></p>`;
+  }
+
   // ---------- Ansicht Programm ----------
   function zeigeProgramm(daten) {
     const proTag = new Map();
     daten.forEach((t) => { if (!proTag.has(t.d)) proTag.set(t.d, new Set()); proTag.get(t.d).add(t.f); });
     const chanceIds = new Set(letzteChance(daten).sicher.map((e) => e.f.id));
 
-    const knoepfe = Array.from({ length: 8 }, (_, i) => plusTage(HEUTE, i)).map((d, i) => {
+    // Ganze Woche: heute bis einschließlich Sonntag der aktuellen ISO-Woche (vergangene Tage zählen nicht)
+    const sonntag = plusTage(montagVon(HEUTE), 6);
+    const ganzeWoche = zustand.tag === 'woche';
+    const wochenFilme = new Set();
+    daten.forEach((t) => { if (t.d >= HEUTE && t.d <= sonntag) wochenFilme.add(t.f); });
+    const wochenKnopf = `<button class="tag" data-tag="woche" aria-pressed="${ganzeWoche}"><small>KW ${kalenderwoche(HEUTE)}</small><b>${wochenFilme.size} ${wochenFilme.size === 1 ? 'Film' : 'Filme'}</b></button>`;
+
+    const knoepfe = wochenKnopf + Array.from({ length: 8 }, (_, i) => plusTage(HEUTE, i)).map((d, i) => {
       const n = proTag.get(d)?.size || 0;
       const oben = i === 0 ? 'Heute' : i === 1 ? 'Morgen' : fmtWt.format(parse(d));
       return `<button class="tag" data-tag="${d}" aria-pressed="${d === zustand.tag}"><small>${oben} · ${datumKurz(d)}</small><b>${n} ${n === 1 ? 'Film' : 'Filme'}</b></button>`;
     }).join('');
 
-    const amTag = daten.filter((t) => t.d === zustand.tag);
+    const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= sonntag) : daten.filter((t) => t.d === zustand.tag);
     // Sortierung für beide Ansichten: nach Score (Filme ohne Score am Ende) oder alphabetisch
     const nachTitel = (a, b) => a.titel.localeCompare(b.titel, 'de');
     const filmOrdnung = zustand.reihenfolge === 'titel'
@@ -239,7 +402,7 @@
       : (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || nachTitel(a, b);
     let inhalt;
     if (!amTag.length) {
-      inhalt = `<p class="leer">Für ${datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
+      inhalt = `<p class="leer">Für ${ganzeWoche ? 'diese Woche' : datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
     } else if (zustand.gruppe === 'film') {
       const nachFilm = new Map();
       amTag.forEach((t) => { if (!nachFilm.has(t.f)) nachFilm.set(t.f, new Set()); nachFilm.get(t.f).add(t.k); });
@@ -248,7 +411,7 @@
         const f = filme[fid];
         const chips = [...ks].map((k) => kinos[k].name).sort().map((n) => `<span class="chip">${esc(n)}</span>`).join('');
         const badge = chanceIds.has(fid) ? '<span class="abzeichen chance">Letzte Chance</span>' : '';
-        return `<article class="filmkarte">${plakat(f)}<div>${filmLink(f)}${pokale(f)}${badge}${wertung(f)}<div class="meta">${filmMeta(f)}</div><div class="chips">${chips}</div></div></article>`;
+        return `<article class="filmkarte">${plakat(f)}<div>${filmLink(f)}${pokale(f)}${badge}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}<div class="chips">${chips}</div></div></article>`;
       }).join('')}</div>`;
     } else {
       const nachKino = new Map();
@@ -257,17 +420,17 @@
       inhalt = `<div class="karten">${liste.map(([kid, fs]) => {
         const k = kinos[kid];
         const zeilen = [...fs].map((f) => filme[f]).sort(filmOrdnung)
-          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${pokale(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${wertung(f)}<div class="meta">${filmMeta(f)}</div></div></li>`).join('');
+          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${pokale(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}</div></li>`).join('');
         return `<article class="kinoblock"><h3><span class="monogramm klein">${esc(k.mono)}</span>${esc(k.name)}</h3><div class="meta">${fs.size} ${fs.size === 1 ? 'Film' : 'Filme'}</div><ul>${zeilen}</ul></article>`;
       }).join('')}</div>`;
     }
 
     $('#v-programm').innerHTML = `
       <div class="tage">${knoepfe}
-        <label class="tag-wahl">Anderer Tag<input type="date" id="tag-wahl" value="${zustand.tag}" min="${ERSTER}" max="${LETZTER}"></label>
+        <label class="tag-wahl">Anderer Tag<input type="date" id="tag-wahl" value="${ganzeWoche ? HEUTE : zustand.tag}" min="${ERSTER}" max="${LETZTER}"></label>
       </div>
       <div class="ansicht-kopf">
-        <h2>${fmtVoll.format(parse(zustand.tag))}</h2>
+        <h2>${ganzeWoche ? `KW ${kalenderwoche(HEUTE)} · ${datumKurz(HEUTE)} bis ${datumKurz(sonntag)}` : fmtVoll.format(parse(zustand.tag))}</h2>
         <div class="steuerung">
           <div class="umschalter" role="group" aria-label="Sortierung">
             <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">Score</button>
@@ -287,7 +450,7 @@
     const wann = e.rest === 0 ? 'heute' : e.rest === 1 ? 'morgen' : fmtVoll.format(parse(e.letzter));
     const wo = e.kinos.map((k) => esc(k.name)).join(', ');
     const zaehler = e.rest === 0 ? '<b>Heute</b><span>letzter Tag</span>' : `<b>${e.rest}</b><span>${e.rest === 1 ? 'Tag' : 'Tage'} übrig</span>`;
-    return `<article class="chance-zeile">${plakat(e.f)}<div class="text">${filmLink(e.f)}${pokale(e.f)}${wertung(e.f)}<div class="meta">${filmMeta(e.f)}</div><div class="zuletzt">Zum letzten Mal ${wann} im ${wo}</div></div><div class="countdown">${zaehler}</div></article>`;
+    return `<article class="chance-zeile">${plakat(e.f)}<div class="text">${filmLink(e.f)}${pokale(e.f)}${wertung(e.f)}<div class="meta">${filmMeta(e.f)}</div>${grundZeile(e.f)}<div class="zuletzt">Zum letzten Mal ${wann} im ${wo}</div></div><div class="countdown">${zaehler}</div></article>`;
   }
   function zeigeChance(daten) {
     const { sicher, offen } = letzteChance(daten);
@@ -400,13 +563,14 @@
 
   const SPALTEN = [
     { feld: 'titel', titel: 'Titel', wert: (s) => s.f.titel.toLocaleLowerCase('de') },
+    { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.bewertung, zahl: true },
+    { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter },
     { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de') },
     { feld: 'land', titel: 'Land', wert: (s) => (s.f.laender[0] || '￿').toLocaleLowerCase('de') },
     { feld: 'jahr', titel: 'Jahr', wert: (s) => s.f.jahr || '0000', zahl: true },
     { feld: 'kinos', titel: 'Kinos', wert: (s) => s.nKinos, zahl: true },
     { feld: 'tage', titel: 'Spieltage', wert: (s) => s.nTage, zahl: true },
     { feld: 'naechster', titel: 'Nächster Tag', wert: (s) => s.naechster || '9999' },
-    { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter },
   ];
 
   function zeigeFilme(daten) {
@@ -415,6 +579,8 @@
     const sp = SPALTEN.find((s) => s.feld === zustand.sort.feld);
     liste.sort((a, b) => {
       const x = sp.wert(a), y = sp.wert(b);
+      // Filme ohne Score stehen immer am Ende, egal in welcher Richtung
+      if (x == null || y == null) return (x == null) - (y == null) || a.f.titel.localeCompare(b.f.titel, 'de');
       const r = typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'de');
       return (zustand.sort.auf ? r : -r) || a.f.titel.localeCompare(b.f.titel, 'de');
     });
@@ -426,14 +592,15 @@
     }).join('') + '<th>Status</th>';
 
     const zeilen = liste.map((s) => `<tr>
-      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${wertung(s.f)}</div></div></td>
+      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}</div></div></td>
+      <td class="zahl">${s.f.bewertung != null ? wertung(s.f) : '–'}</td>
+      <td>${datumKurz(s.letzter)}</td>
       <td class="umbruch">${istSneak(s.f) ? '?' : esc(s.f.regie || '–')}</td>
       <td class="umbruch schmal">${istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
       <td class="zahl">${istSneak(s.f) ? '?' : esc(s.f.jahr || '–')}</td>
       <td class="zahl">${s.nKinos}</td>
       <td class="zahl">${s.nTage}</td>
       <td>${s.naechster ? datumKurz(s.naechster) : '–'}</td>
-      <td>${datumKurz(s.letzter)}</td>
       <td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td>
     </tr>`).join('');
 
@@ -659,7 +826,7 @@
     let ticksX = '';
     reihe.forEach((p, i) => {
       if (p.d.endsWith('-01') && !(B < 500 && Number(p.d.slice(5, 7)) % 2 === 0)) {
-        ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(p.d))}</text>`;
+        ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(p.d))}${p.d.endsWith('-01-01') ? ` ’${p.d.slice(2, 4)}` : ''}</text>`;
       }
     });
     let pfad = '', offen = false;
@@ -768,25 +935,68 @@
   }
 
   // ---------- Filmdetails ----------
+  // Kinowoche läuft von Donnerstag bis Mittwoch, Rückgabe ist der Donnerstag
+  const kinowocheVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7));
+
+  // Zeile "Im Kino seit ..." mit der Zahl zusammenhängender Kinowochen (leer bei Überraschungsfilmen)
+  function laufzeitZeile(f, tage) {
+    if (/^(Sneak Preview|Kult Sneak)$/.test(f.titel) || !tage.length) return '';
+    const erster = tage[0];
+    if (erster > HEUTE) return '';
+    const wochen = new Set(tage.map(kinowocheVon));
+    const jetzt = kinowocheVon(HEUTE);
+    const laeuft = wochen.has(jetzt);
+    // Rückwärts ab aktueller Woche, sonst ab der letzten Woche mit Termin bis heute
+    let w = jetzt;
+    if (!laeuft) w = [...wochen].filter((x) => x < jetzt).sort().pop();
+    let n = 0;
+    while (wochen.has(w)) { n++; w = plusTage(w, -7); }
+    const einheit = n === 1 ? 'Woche' : 'Wochen';
+    return `<div class="meta">Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
+  }
+
   function zeigeFilm(fid) {
     const f = filme[fid];
     const nachKino = new Map();
-    termine.filter((t) => t.f === fid).forEach((t) => { if (!nachKino.has(t.k)) nachKino.set(t.k, []); nachKino.get(t.k).push(t.d); });
-    const gruppen = [...nachKino].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de')).map(([k, ds]) => {
+    const alleTage = [];
+    termine.filter((t) => t.f === fid).forEach((t) => { alleTage.push(t.d); if (!nachKino.has(t.k)) nachKino.set(t.k, []); nachKino.get(t.k).push(t.d); });
+    alleTage.sort();
+    const anzahlVorbei = alleTage.filter((d) => d < HEUTE).length;
+    const hatKommend = alleTage.some((d) => d >= HEUTE);
+    // Vergangene Termine sind versteckt, außer der Film hat keine kommenden
+    let vorbeiSichtbar = !hatKommend;
+    const sortiert = [...nachKino].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de'));
+    const gruppenHtml = () => sortiert.map(([k, ds]) => {
       ds.sort();
-      const chips = ds.map((d) => `<span class="chip ${d >= HEUTE ? 'kommend' : 'vorbei'}" title="${datum(d)}">${datumKurz(d)}</span>`).join('');
-      return `<div class="termin-gruppe"><h4>${esc(kinos[k].name)} <span class="meta">· ${ds.length} ${ds.length === 1 ? 'Tag' : 'Tage'}</span></h4><div class="chips">${chips}</div></div>`;
+      const sicht = ds.filter((d) => vorbeiSichtbar || d >= HEUTE);
+      if (!sicht.length) return '';
+      const link = kinos[k].link;
+      const chips = sicht.map((d) => {
+        const klasse = d >= HEUTE ? 'kommend' : 'vorbei';
+        // Kommende Spieltage führen zur Programmseite des Kinos, sofern bekannt
+        return d >= HEUTE && link
+          ? `<a class="chip ${klasse}" href="${esc(link)}" target="_blank" rel="noopener" title="${datum(d)}, Programm im Kino ansehen">${datumKurz(d)}</a>`
+          : `<span class="chip ${klasse}" title="${datum(d)}">${datumKurz(d)}</span>`;
+      }).join('');
+      return `<div class="termin-gruppe"><h4>${esc(kinos[k].name)} <span class="meta">· ${sicht.length} ${sicht.length === 1 ? 'Tag' : 'Tage'}</span></h4><div class="chips">${chips}</div></div>`;
     }).join('');
-    const links = [
-      f.info.tmdb && ['Auf TMDB ansehen', `https://www.themoviedb.org/movie/${encodeURIComponent(f.info.tmdb)}`],
-    ].filter(Boolean);
-    const imdb = links.length ? `<p class="filmlinks">${links.map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}</p>` : '';
-    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${preisListe(f)}${imdb}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${gruppen}`;
+    const knopfText = () => (vorbeiSichtbar ? `Vergangene Termine ausblenden (${anzahlVorbei})` : `Vergangene Termine anzeigen (${anzahlVorbei})`);
+    const knopf = hatKommend && anzahlVorbei ? `<button type="button" class="vorbei-knopf" aria-expanded="${vorbeiSichtbar}">${knopfText()}</button>` : '';
+    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
+    const knopfEl = $('#fd-inhalt .vorbei-knopf');
+    if (knopfEl) {
+      knopfEl.addEventListener('click', () => {
+        vorbeiSichtbar = !vorbeiSichtbar;
+        knopfEl.textContent = knopfText();
+        knopfEl.setAttribute('aria-expanded', String(vorbeiSichtbar));
+        $('#fd-termine').innerHTML = gruppenHtml();
+      });
+    }
     $('#film-dialog').showModal();
   }
 
   // ---------- Steuerung ----------
-  const ANSICHTEN = { programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, statistik: zeigeStatistik, kinos: zeigeKinos, impressum: zeigeImpressum };
+  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, statistik: zeigeStatistik, kinos: zeigeKinos, impressum: zeigeImpressum };
 
   function zeichne() {
     $('#f-reset').hidden = !filterAktiv();
@@ -836,6 +1046,7 @@
   document.querySelector('main').addEventListener('click', (e) => {
     const ziel = (sel) => e.target.closest(sel);
     let el;
+    if ((el = ziel('[data-zu]'))) { wechsleAnsicht(el.dataset.zu); return scrollTo(0, 0); }
     if ((el = ziel('[data-film]'))) return zeigeFilm(Number(el.dataset.film));
     if ((el = ziel('[data-tag]'))) { zustand.tag = el.dataset.tag; return zeichne(); }
     if ((el = ziel('[data-tag-sprung]'))) { zustand.tag = el.dataset.tagSprung; return wechsleAnsicht('programm'); }
@@ -873,5 +1084,5 @@
   fuelleAuswahl();
   zeigeKopf();
   const start = location.hash.slice(1);
-  wechsleAnsicht(ANSICHTEN[start] ? start : 'programm');
+  wechsleAnsicht(ANSICHTEN[start] ? start : 'highlights');
 })();
