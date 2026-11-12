@@ -8,7 +8,9 @@
 # Das kostenlose Kontingent liegt bei etwa 1000 Abfragen pro Tag. Neue Filme zuerst, dann die aeltesten Eintraege
 # von Filmen mit kommenden Terminen (Wertungen aendern sich bei neuen Filmen noch).
 
-param([int]$Hoechstens = 800, [int]$AlterTage = 14)
+# Wertungen laufender Filme werden jede Woche aufgefrischt: 6 statt 7 Tage, damit ein etwas frueherer Lauf
+# (z. B. von Hand am Dienstag oder ein spaet gestarteter Lauf in der Vorwoche) keine Woche auslaesst.
+param([int]$Hoechstens = 800, [int]$AlterTage = 6)
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
