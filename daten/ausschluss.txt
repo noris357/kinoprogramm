@@ -31,3 +31,5 @@
 # Keine Filme: Festival als Sammeltermin und Puppentheater
 (?i)^KARACHO\b.*\bFestival\b
 (?i)\bPuppenbühne\b
+(?i)^Purzeltraumtheater\b
+(?i)^Freeride Filmfestival\b
