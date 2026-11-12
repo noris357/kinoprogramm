@@ -17,8 +17,8 @@
       "fehler": null,
       "von": "2026-11-12",
       "bis": "2026-11-22",
-      "bestaetigt": 40,
-      "neu": 7,
+      "bestaetigt": 42,
+      "neu": 5,
       "entfernt": 0
     },
     {
@@ -37,8 +37,8 @@
       "fehler": null,
       "von": "2026-11-12",
       "bis": "2027-06-24",
-      "bestaetigt": 400,
-      "neu": 61,
+      "bestaetigt": 403,
+      "neu": 58,
       "entfernt": 0
     },
     {
@@ -132,11 +132,7 @@
       "entfernt": 0
     }
   ],
-  "neueFilme": [
-    "Dune Double Feature",
-    "Krowis Puppenbühne: Gespenster Gibt´s Doch Gar Nicht",
-    "Purzeltraumtheater: Fli Fla Flockenzauber"
-  ],
+  "neueFilme": [],
   "ausgeschlossen": [
     "André Rieu's Weihnachtskonzert 2026: Let it Snow - CineSpecial",
     "Berliner Philharmoniker LIVE: Das Silvesterkonzert 2026-27",
