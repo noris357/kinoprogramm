@@ -28,3 +28,6 @@
 # Keine Filme: Gaming und E-Sport-Uebertragungen
 (?i)^Gaming im Kino\b
 (?i)\bLeague of Legends\b
+# Keine Filme: Festival als Sammeltermin und Puppentheater
+(?i)^KARACHO\b.*\bFestival\b
+(?i)\bPuppenbühne\b
