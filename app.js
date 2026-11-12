@@ -321,12 +321,9 @@
   const nachScore = (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || a.titel.localeCompare(b.titel, 'de');
   function highlightKarte(h, gross) {
     const f = h.f;
-    // Kinos mit den nächsten Terminen dieser Woche
-    const zeilen = [...h.kinos].sort((a, b) => kinos[a[0]].name.localeCompare(kinos[b[0]].name, 'de')).map(([k, ds]) => {
-      const tage = [...ds].sort();
-      const text = tage.slice(0, 4).map(wochentagDatum).join(', ') + (tage.length > 4 ? ' …' : '');
-      return `<li><span class="chip">${esc(kinos[k].name)}</span><span class="meta">${text}</span></li>`;
-    }).join('');
+    // Nur die Kinos dieser Woche. Die einzelnen Tage stehen in der Filmansicht, hier wären sie zu unübersichtlich.
+    const zeilen = [...h.kinos.keys()].sort((a, b) => kinos[a].name.localeCompare(kinos[b].name, 'de'))
+      .map((k) => `<li><span class="chip">${esc(kinos[k].name)}</span></li>`).join('');
     return `<article class="filmkarte hl-karte${gross ? ' hl-gross' : ''}">${plakat(f, gross ? 'gross' : 'mittel')}<div>${filmLink(f)}${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}${h.hinweis ? `<div class="zuletzt">${esc(h.hinweis)}</div>` : ''}<ul class="hl-kinos">${zeilen}</ul></div></article>`;
   }
   function zeigeHighlights(daten) {
