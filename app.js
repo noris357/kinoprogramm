@@ -921,8 +921,9 @@
           <p>Der Score ist eine eigene Zahl von 0 bis 100. Er fasst Wertungen aus Letterboxd, Metacritic (Kritik und Publikum), IMDb, Rotten Tomatoes (Tomatometer und Popcornmeter) und TMDB zusammen. Einzelwerte werden hier nicht angezeigt.</p>
           <p><strong>1. Wenige Stimmen dämpfen.</strong> Hat ein Film bei einer Quelle nur wenige Stimmen, wird sein Wert zum Durchschnitt dieser Quelle gezogen. Ein Film mit 12 Stimmen und einem Schnitt von 9,1 gilt so nicht automatisch als besser als einer mit 200.000 Stimmen und 8,2.</p>
           <p><strong>2. Quellen vergleichbar machen.</strong> Für jede Quelle zählt, wie weit ein Film über oder unter dem Durchschnitt aller Filme dieser Quelle liegt. Das gleicht unterschiedliche Skalen aus. Der Tomatometer misst zum Beispiel nur den Anteil positiver Kritiken und liegt deshalb oft sehr hoch.</p>
-          <p><strong>3. Gewichten.</strong> Letterboxd 30 %, Metacritic Kritik 22 %, IMDb 15 %, Tomatometer 13 %, TMDB 8 %, Popcornmeter 8 %, Metacritic Publikum 4 %. Fehlt eine Quelle, verteilt sich ihr Gewicht auf die übrigen.</p>
+          <p><strong>3. Gewichten.</strong> Letterboxd 50 %, Metacritic Kritik 15,7 %, IMDb 10,7 %, Tomatometer 9,3 %, TMDB 5,7 %, Popcornmeter 5,7 %, Metacritic Publikum 2,9 %. Fehlt eine Quelle, geht die Hälfte ihres Gewichts an die übrigen. Die andere Hälfte zählt wie ein durchschnittlicher Wert.</p>
           <p><strong>4. Zurückrechnen.</strong> Das gewichtete Ergebnis wird auf eine Skala von 0 bis 100 übertragen, deren Mitte dem gewichteten Durchschnitt der Quellen entspricht.</p>
+          <p><strong>5. Begrenzen.</strong> Der Score liegt nie über der besten Einzelwertung eines Films.</p>
         </details>
         <p>Flaggen: Twemoji von Twitter, Lizenz <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY 4.0</a>. Schriften Figtree und Italiana unter der SIL Open Font License.</p>
         <h3>Kinos und Marken</h3>

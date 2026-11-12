@@ -155,13 +155,17 @@ foreach ($z in $zeilen) {
 # ---------- Eigener Score ----------
 # Je Quelle (0-100): 1. wenige Stimmen zum Durchschnitt der Quelle ziehen (Daempfung),
 # 2. auf Abstand vom Mittelwert umrechnen (z-Wert), damit z. B. ein Tomatometer von 95 % nicht automatisch
-#    mehr zaehlt als ein IMDb-Wert von 7,5, 3. gewichtet mitteln, 4. zurueck auf eine Skala von 0 bis 100.
-# Gewichte und Daempfung stehen in daten/score-gewichte.json. Einzelwerte erscheinen nicht auf der Website.
+#    mehr zaehlt als ein IMDb-Wert von 7,5, 3. gewichtet mitteln, 4. zurueck auf eine Skala von 0 bis 100,
+# 5. nach oben auf den hoechsten Einzelwert des Films begrenzen.
+# Gewichte, Daempfung, Umverteilung und Mindeststreuung stehen in daten/score-gewichte.json. Einzelwerte erscheinen nicht auf der Website.
 $scoreDatei = "$PSScriptRoot/../daten/score-gewichte.json"
 $wertungsDatei = "$PSScriptRoot/../daten/wertungen.json"
 $gewichte = @{}; $daempfung = @{}
+$umverteilung = 1.0; $mindestStreuung = 1.0
 if (Test-Path $scoreDatei) {
   $sg = Get-Content $scoreDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  if ($null -ne $sg.umverteilung) { $umverteilung = [double]$sg.umverteilung }
+  if ($null -ne $sg.mindeststreuung) { $mindestStreuung = [double]$sg.mindeststreuung }
   $sg.gewichte.PSObject.Properties | ForEach-Object { $gewichte[$_.Name] = [double]$_.Value }
   $sg.daempfung.PSObject.Properties | ForEach-Object { $daempfung[$_.Name] = [double]$_.Value }
 }
@@ -216,7 +220,8 @@ foreach ($quelle in $gewichte.Keys) {
   $angepasst = @($wertRoh.Values | Where-Object { $_.ContainsKey($quelle) } | ForEach-Object { $_[$quelle].angepasst })
   $m2 = ($angepasst | Measure-Object -Average).Average
   $sd = [math]::Sqrt((($angepasst | ForEach-Object { ($_ - $m2) * ($_ - $m2) } | Measure-Object -Sum).Sum) / [math]::Max(1, $angepasst.Count - 1))
-  if ($sd -lt 1) { $sd = 1 }
+  # Mindeststreuung: bei eng streuenden Quellen wuerden kleine Unterschiede sonst zu grossen z-Werten
+  if ($sd -lt $mindestStreuung) { $sd = $mindestStreuung }
   $statistik[$quelle] = @{ mittel = $m2; sd = $sd }
 }
 # Bezugsskala: gewichtetes Mittel der Quellen, damit der Score wie eine gewohnte 0-100-Wertung aussieht
@@ -226,13 +231,21 @@ $bezugSd = if ($summeG) { ($statistik.Keys | ForEach-Object { $gewichte[$_] * $s
 
 $scores = @{}
 foreach ($id in $wertRoh.Keys) {
-  $sz = 0.0; $sw = 0.0
+  $sz = 0.0; $sw = 0.0; $roh = @()
   foreach ($quelle in $statistik.Keys) {
     if (-not $wertRoh[$id].ContainsKey($quelle)) { continue }
     $z = ($wertRoh[$id][$quelle].angepasst - $statistik[$quelle].mittel) / $statistik[$quelle].sd
-    $sz += $gewichte[$quelle] * $z; $sw += $gewichte[$quelle]
+    $sz += $gewichte[$quelle] * $z; $sw += $gewichte[$quelle]; $roh += $wertRoh[$id][$quelle].angepasst
   }
-  if ($sw -gt 0) { $scores[$id] = [int][math]::Max(1, [math]::Min(99, [math]::Round($bezugMittel + $bezugSd * $sz / $sw))) }
+  if ($sw -gt 0) {
+    # Fehlende Quellen: nur der Anteil $umverteilung ihres Gewichts geht an die uebrigen, der Rest zaehlt wie ein Durchschnittswert (z = 0)
+    $nenner = $sw + (1 - $umverteilung) * ($summeG - $sw)
+    $wert = $bezugMittel + $bezugSd * $sz / $nenner
+    # Nie ueber dem hoechsten Einzelwert des Films (nach Daempfung, sonst wuerden Wertungen mit wenigen Stimmen den Score festlegen).
+    # Bewusst keine Untergrenze: bei nur einer Quelle wuerde sie den Score auf deren Rohwert festlegen.
+    $wert = [math]::Min($wert, ($roh | Measure-Object -Maximum).Maximum)
+    $scores[$id] = [int][math]::Max(1, [math]::Min(99, [math]::Round($wert)))
+  }
 }
 
 # ---------- Ausgabe aufbauen ----------

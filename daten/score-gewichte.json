@@ -1,13 +1,15 @@
 {
-  "hinweis": "Gewichte fuer den eigenen Score in Prozent. Fehlt eine Quelle, verteilt sich ihr Gewicht auf die uebrigen. Daempfung: so viele Stimmen braucht eine Wertung, damit sie halb zaehlt, darunter wird sie zum Durchschnitt gezogen.",
+  "hinweis": "Gewichte fuer den eigenen Score in Prozent. Fehlt eine Quelle, verteilt sich der Anteil 'umverteilung' ihres Gewichts auf die uebrigen, der Rest zaehlt als Durchschnitt. Daempfung: so viele Stimmen braucht eine Wertung, damit sie halb zaehlt, darunter wird sie zum Durchschnitt gezogen. Mindeststreuung: untere Grenze der Streuung je Quelle in Punkten, damit eng streuende Quellen wie IMDb nicht zu stark ausschlagen. Der Score liegt zudem nie ueber dem hoechsten Einzelwert eines Films.",
+  "umverteilung": 0.5,
+  "mindeststreuung": 8,
   "gewichte": {
-    "letterboxd": 30,
-    "metacritic": 22,
-    "imdb": 15,
-    "tomatoes": 13,
-    "tmdb": 8,
-    "popcorn": 8,
-    "metacriticuser": 4
+    "letterboxd": 50,
+    "metacritic": 15.7,
+    "imdb": 10.7,
+    "tomatoes": 9.3,
+    "tmdb": 5.7,
+    "popcorn": 5.7,
+    "metacriticuser": 2.9
   },
   "daempfung": {
     "letterboxd": 200,
