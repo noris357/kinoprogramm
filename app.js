@@ -340,6 +340,16 @@
       h.kinos.get(t.k).add(t.d);
     });
     const alle = [...kand.values()].sort((a, b) => nachScore(a.f, b.f));
+    // Sneak und Kurzfilmprogramm sind keine Highlights, stehen aber mit ihren Terminen am Ende der Seite
+    const sonder = new Map();
+    daten.forEach((t) => {
+      if (t.d < HEUTE || t.d > ende || !OHNE_HIGHLIGHT.test(filme[t.f].titel)) return;
+      const s = `${t.f}|${t.k}`;
+      if (!sonder.has(s)) sonder.set(s, { f: filme[t.f], k: t.k, tage: new Set() });
+      sonder.get(s).tage.add(t.d);
+    });
+    const sonderZeilen = [...sonder.values()].map((e) => ({ ...e, tage: [...e.tage].sort() }))
+      .sort((a, b) => a.tage[0].localeCompare(b.tage[0]) || a.f.titel.localeCompare(b.f.titel, 'de') || kinos[a.k].name.localeCompare(kinos[b.k].name, 'de'));
     const belegt = new Set();
     const nimm = (liste, n = FILME_JE_RUBRIK) => {
       const r = liste.filter((h) => !belegt.has(h.f.id)).slice(0, n);
@@ -376,6 +386,7 @@
       ${film ? `<section class="hl-rubrik"><h3 class="hl-titel">Film der Woche</h3>${highlightKarte(film, true)}</section>` : ''}
       ${rubriken.map(([name, text, liste]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => highlightKarte(h, false)).join('')}</div></section>`).join('')}
       ${film || rubriken.length ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
+      ${sonderZeilen.length ? `<section class="hl-rubrik"><h3 class="hl-titel">Sneak und Kurzfilme</h3><p class="meta">Überraschungsfilme und Kurzfilmprogramme der nächsten sieben Tage.</p><ul class="hl-termine">${sonderZeilen.map((e) => `<li>${filmLink(e.f)}<span class="chip">${esc(kinos[e.k].name)}</span><span class="meta">${e.tage.map(wochentagDatum).join(', ')}</span></li>`).join('')}</ul></section>` : ''}
       <p class="hl-fuss"><button class="film-link" data-zu="programm">Zum ganzen Programm →</button></p>`;
   }
 
