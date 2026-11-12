@@ -7376,6 +7376,19 @@
       }
     }
   },
+  "1396056": {
+    "geprueft": "2026-11-12",
+    "quellen": {
+      "imdb": {
+        "wert": 65.0,
+        "stimmen": 26
+      },
+      "letterboxd": {
+        "wert": 68.0,
+        "stimmen": 252
+      }
+    }
+  },
   "1397055": {
     "geprueft": "2026-11-06",
     "quellen": {
