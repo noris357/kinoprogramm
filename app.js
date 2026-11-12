@@ -128,7 +128,7 @@
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
     ansicht: 'highlights', tag: 'woche', gruppe: 'film', reihenfolge: 'bewertung',
-    sort: { feld: 'bewertung', auf: false }, nurKommend: false,
+    sort: { feld: 'bewertung', auf: false }, nurKommend: false, nurNeu: false,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
 
@@ -392,6 +392,8 @@
 
   // ---------- Ansicht Programm ----------
   function zeigeProgramm(daten) {
+    // Haken "Start diese Woche": nur Neustarts, nach derselben Regel wie in den Highlights
+    if (zustand.nurNeu) { const fk = fakten(); daten = daten.filter((t) => fk.get(t.f)?.neu); }
     const proTag = new Map();
     daten.forEach((t) => { if (!proTag.has(t.d)) proTag.set(t.d, new Set()); proTag.get(t.d).add(t.f); });
     const chanceIds = new Set(letzteChance(daten).sicher.map((e) => e.f.id));
@@ -417,7 +419,9 @@
       : (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || nachTitel(a, b);
     let inhalt;
     if (!amTag.length) {
-      inhalt = `<p class="leer">Für ${ganzeWoche ? 'diese Woche' : datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
+      inhalt = zustand.nurNeu
+        ? `<p class="leer">Für ${ganzeWoche ? 'diese Woche' : datum(zustand.tag)} gibt es keine Neustarts in dieser Auswahl.</p>`
+        : `<p class="leer">Für ${ganzeWoche ? 'diese Woche' : datum(zustand.tag)} sind keine Vorstellungen eingetragen.<br>Viele Kinos veröffentlichen ihr Programm erst kurzfristig.</p>`;
     } else if (zustand.gruppe === 'film') {
       const nachFilm = new Map();
       amTag.forEach((t) => { if (!nachFilm.has(t.f)) nachFilm.set(t.f, new Set()); nachFilm.get(t.f).add(t.k); });
@@ -447,6 +451,7 @@
       <div class="ansicht-kopf">
         <h2>${ganzeWoche ? `KW ${kalenderwoche(HEUTE)} · ${datumKurz(HEUTE)} bis ${datumKurz(sonntag)}` : fmtVoll.format(parse(zustand.tag))}</h2>
         <div class="steuerung">
+          <label class="haken"><input type="checkbox" id="nur-neu" ${zustand.nurNeu ? 'checked' : ''}> Start diese Woche</label>
           <div class="umschalter" role="group" aria-label="Sortierung">
             <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">Score</button>
             <button data-reihenfolge="titel" aria-pressed="${zustand.reihenfolge === 'titel'}">A–Z</button>
@@ -1085,6 +1090,7 @@
   document.querySelector('main').addEventListener('change', (e) => {
     if (e.target.id === 'tag-wahl' && e.target.value) { zustand.tag = e.target.value; zeichne(); }
     if (e.target.id === 'nur-kommend') { zustand.nurKommend = e.target.checked; zeichne(); }
+    if (e.target.id === 'nur-neu') { zustand.nurNeu = e.target.checked; zeichne(); }
   });
   $('#film-dialog').addEventListener('click', (e) => { if (e.target.id === 'film-dialog') e.target.close(); });
   $('#fuss').addEventListener('click', (e) => { if (e.target.closest('[data-impressum]')) { wechsleAnsicht('impressum'); scrollTo(0, 0); } });
