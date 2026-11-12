@@ -1,6 +1,9 @@
 ﻿# Ausleser fuer die Programmseiten der Cinecitta-Gruppe.
 # Cinecitta, Meisengeige, Metropolis und Manhattan teilen die Betreiberseite, sind aber getrennte Kinos.
 # Aufbau je Film: Link "Filminfos zu <Titel>", darunter Tabellen mit Tagen als Spalten und Saelen als Zeilen.
+# Die Hauptseite /programm/ zeigt das Programm der ganzen Gruppe. Die Saalnamen sind nicht eindeutig
+# ("Kino 1" gibt es in mehreren Haeusern). Eindeutig ist die Kennung des Hauses im Ticket-Link (center=...).
+# Deshalb zaehlen fuer das Cinecitta nur Vorstellungen, deren Kennung nicht zu einem der drei anderen Haeuser gehoert.
 
 $script:CinecittaKinos = [ordered]@{
   'Cinecitta Nürnberg'        = 'https://www.cinecitta.de/programm/'
@@ -27,10 +30,13 @@ function Read-CinecittaSeite([string]$Html) {
       foreach ($zeile in [regex]::Matches($koerper, '(?s)<tr.*?</tr>')) {
         $zellen = [regex]::Split($zeile.Value, '<td[\s>]') | Select-Object -Skip 1
         for ($j = 0; $j -lt $zellen.Count -and $j -lt $tage.Count; $j++) {
-          if ($zellen[$j] -match 'performance-link') { $termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j] }) }
+          if ($zellen[$j] -notmatch 'performance-link') { continue }
+          # Kennung des Hauses aus dem Ticket-Link. Fehlt sie, bleibt sie leer und der Termin zaehlt fuer die gelesene Seite.
+          $center = [regex]::Match($zellen[$j], '[?&;]center=([A-Za-z0-9]+)').Groups[1].Value
+          $termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j]; Center = $center })
         }
       }
-      foreach ($d in $tage) { $termine.Add([pscustomobject]@{ Titel = $null; Datum = $d }) } # nur fuer das Abfragefenster
+      foreach ($d in $tage) { $termine.Add([pscustomobject]@{ Titel = $null; Datum = $d; Center = $null }) } # nur fuer das Abfragefenster
     }
   }
   return $termine
@@ -66,14 +72,32 @@ function Get-CinecittaVollstaendig([string]$Url) {
 }
 
 function Get-CinecittaProgramme {
+  # Erst alle Seiten lesen: die Kennungen der drei kleineren Haeuser werden fuer die Hauptseite gebraucht
+  $gelesen = [ordered]@{}
+  foreach ($kino in $script:CinecittaKinos.Keys) {
+    try { $gelesen[$kino] = @{ Alle = @(Read-CinecittaSeite (Get-CinecittaVollstaendig $script:CinecittaKinos[$kino])); Fehler = $null } }
+    catch { $gelesen[$kino] = @{ Alle = @(); Fehler = $_.Exception.Message } }
+  }
+  # Kennungen der anderen Haeuser. Nur uebernehmen, wenn die Unterseite genau ein Haus zeigt,
+  # sonst wuerde eine geaenderte Seite dem Cinecitta alle Termine nehmen.
+  $haupt = @($script:CinecittaKinos.Keys)[0]
+  $fremd = @{}
+  foreach ($kino in $script:CinecittaKinos.Keys) {
+    if ($kino -eq $haupt) { continue }
+    $ids = @($gelesen[$kino].Alle | Where-Object { $_.Center } | ForEach-Object { $_.Center } | Sort-Object -Unique)
+    if ($ids.Count -eq 1) { $fremd[$ids[0]] = $kino }
+  }
   foreach ($kino in $script:CinecittaKinos.Keys) {
     $erg = New-KinoErgebnis $kino $script:CinecittaKinos[$kino]
     try {
-      $alle = Read-CinecittaSeite (Get-CinecittaVollstaendig $erg.Url)
+      if ($gelesen[$kino].Fehler) { throw $gelesen[$kino].Fehler }
+      $alle = $gelesen[$kino].Alle
       $fenster = $alle | ForEach-Object { $_.Datum } | Sort-Object -Unique
-      $echt = $alle | Where-Object { $_.Titel } | Sort-Object Titel, Datum -Unique
+      $echt = $alle | Where-Object { $_.Titel }
+      if ($kino -eq $haupt) { $echt = $echt | Where-Object { -not ($_.Center -and $fremd.ContainsKey($_.Center)) } }
+      $echt = $echt | Sort-Object Titel, Datum -Unique
       if (-not $echt) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
-      foreach ($e in $echt) { $erg.Termine.Add($e) }
+      foreach ($e in $echt) { $erg.Termine.Add([pscustomobject]@{ Titel = $e.Titel; Datum = $e.Datum }) }
       $erg.Von = $fenster | Select-Object -First 1
       $erg.Bis = $fenster | Select-Object -Last 1
       $erg.Ok = $true
