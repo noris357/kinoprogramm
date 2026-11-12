@@ -37,9 +37,9 @@
       "fehler": null,
       "von": "2026-11-12",
       "bis": "2027-06-24",
-      "bestaetigt": 403,
-      "neu": 58,
-      "entfernt": 0
+      "bestaetigt": 369,
+      "neu": 53,
+      "entfernt": 28
     },
     {
       "kino": "Cineplex Fürth",
@@ -97,8 +97,8 @@
       "fehler": null,
       "von": "2026-11-12",
       "bis": "2027-01-04",
-      "bestaetigt": 59,
-      "neu": 6,
+      "bestaetigt": 54,
+      "neu": 5,
       "entfernt": 0
     },
     {
@@ -141,6 +141,7 @@
     "BTS World Tour Arirang Jakarta: Live Viewing",
     "BTS World Tour Arirang Kaohsiung: Live Viewing",
     "CineSpecial: Rammstein - Live in Mexico City",
+    "George Michael - The Faith Tour",
     "Live aus der MET: Massenet: Manon",
     "Live aus der MET: Puccini: La Fanciulla del West",
     "Live aus der MET: Saint-Saëns: Samson et Dalila",
