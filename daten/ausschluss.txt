@@ -23,3 +23,5 @@
 # Keine Filme: Zaubershows im Babylon
 (?i)zauberkeller
 (?i)zaubershow
+# Konzertfilme, die nicht ins Programm sollen
+(?i)^George Michael\b.*\bFaith Tour\b
