@@ -3,13 +3,13 @@
   "umverteilung": 0.5,
   "mindeststreuung": 8,
   "gewichte": {
-    "letterboxd": 30,
-    "metacritic": 22,
-    "imdb": 15,
-    "tomatoes": 13,
-    "tmdb": 8,
-    "popcorn": 8,
-    "metacriticuser": 4
+    "letterboxd": 50,
+    "metacritic": 15.7,
+    "imdb": 10.7,
+    "tomatoes": 9.3,
+    "tmdb": 5.7,
+    "popcorn": 5.7,
+    "metacriticuser": 2.9
   },
   "daempfung": {
     "letterboxd": 200,
