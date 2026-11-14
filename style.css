@@ -274,7 +274,8 @@ table.liste { border-collapse: collapse; width: 100%; font-size: 14px; }
 .regie-foto img { width: 100%; height: 100%; object-fit: cover; }
 .regie-foto.klein { width: 28px; height: 28px; font-size: 10px; }
 .regie-foto.gross { width: 72px; height: 72px; font-size: 20px; }
-.regie-kopf { display: flex; align-items: center; gap: 14px; padding: 10px 12px 6px; }
+/* Bleibt beim seitlichen Scrollen der Tabelle stehen und bricht um, damit auf dem Handy nichts abgeschnitten wird */
+.regie-kopf { display: flex; align-items: center; gap: 14px; padding: 10px 12px 6px; position: sticky; left: 0; max-width: min(640px, calc(100vw - 60px)); white-space: normal; }
 .regie-kopf b { font-size: 16px; }
 .regie-name .pfeil { display: inline-block; width: 1.1em; color: var(--gold); }
 .liste tr.regie-filme > td { padding: 4px 0 14px 18px; background: var(--surface); }
