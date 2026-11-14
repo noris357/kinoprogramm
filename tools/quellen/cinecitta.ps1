@@ -33,7 +33,15 @@ function Read-CinecittaSeite([string]$Html) {
           if ($zellen[$j] -notmatch 'performance-link') { continue }
           # Kennung des Hauses aus dem Ticket-Link. Fehlt sie, bleibt sie leer und der Termin zaehlt fuer die gelesene Seite.
           $center = [regex]::Match($zellen[$j], '[?&;]center=([A-Za-z0-9]+)').Groups[1].Value
-          $termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j]; Center = $center })
+          # Je Vorstellung: Uhrzeit, Auslastung (steht im aria-label, z. B. "18:00 hohe Auslastung") und Link zur Sitzplatzwahl.
+          # Eine Zelle kann mehrere Vorstellungen enthalten, gezaehlt wird der Tag trotzdem nur einmal.
+          $vorstellungen = @(foreach ($a in [regex]::Matches($zellen[$j], '(?s)<a[^>]*href="([^"]*)"[^>]*performance-link[^>]*aria-label="\s*(\d{1,2}:\d\d)\s+(.*?)-\s*Sitzplatzauswahl')) {
+            $info = ([regex]::Replace($a.Groups[3].Value, '\s+', ' ')).Trim()
+            $stufe = if ($info -match '(?i)ausverkauft') { 'ausverkauft' } elseif ($info -match '(?i)wenige Pl') { 'wenige' } elseif ($info -match '(?i)hohe Auslastung') { 'hoch' } elseif ($info -match '(?i)mittlere Auslastung') { 'mittel' } else { '' }
+            $performance = [regex]::Match($a.Groups[1].Value, 'performance=([A-Za-z0-9]+)').Groups[1].Value
+            [pscustomobject]@{ Zeit = $a.Groups[2].Value; Stufe = $stufe; Performance = $performance }
+          })
+          $termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j]; Center = $center; Vorstellungen = $vorstellungen })
         }
       }
       foreach ($d in $tage) { $termine.Add([pscustomobject]@{ Titel = $null; Datum = $d; Center = $null }) } # nur fuer das Abfragefenster
@@ -95,6 +103,10 @@ function Get-CinecittaProgramme {
       $fenster = $alle | ForEach-Object { $_.Datum } | Sort-Object -Unique
       $echt = $alle | Where-Object { $_.Titel }
       if ($kino -eq $haupt) { $echt = $echt | Where-Object { -not ($_.Center -and $fremd.ContainsKey($_.Center)) } }
+      # Einzelne Vorstellungen mit Uhrzeit und Auslastung (fuer tools/auslastung.ps1), vor dem Zusammenfassen je Tag
+      $einzeln = New-Object System.Collections.Generic.List[object]
+      foreach ($e in $echt) { foreach ($v in @($e.Vorstellungen)) { $einzeln.Add([pscustomobject]@{ Titel = $e.Titel; Datum = $e.Datum; Zeit = $v.Zeit; Stufe = $v.Stufe; Performance = $v.Performance; Center = $e.Center }) } }
+      $erg | Add-Member -NotePropertyName Vorstellungen -NotePropertyValue $einzeln
       $echt = $echt | Sort-Object Titel, Datum -Unique
       if (-not $echt) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
       foreach ($e in $echt) { $erg.Termine.Add([pscustomobject]@{ Titel = $e.Titel; Datum = $e.Datum }) }

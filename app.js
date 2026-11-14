@@ -276,6 +276,34 @@
     return chanceCache;
   }
   const wochentagDatum = (d) => `${fmtWt.format(parse(d)).replace('.', '')} ${datumKurz(d)}`;
+
+  // ---------- Auslastung (nur Cinecitta-Gruppe, siehe tools/auslastung.ps1) ----------
+  // Erst ab dem achten Tag: die nächsten sieben Tage stehen ohnehin im Programm
+  const AUSLASTUNG_AB_TAGEN = 8;
+  const STUFEN = { hoch: 'Hohe Auslastung', wenige: 'Nur wenige Plätze', ausverkauft: 'Ausverkauft' };
+  const auslastung = (D.auslastung || [])
+    .map(([f, k, d, zeit, stufe, link]) => ({ f: filme[f], k, d, zeit, stufe, link }))
+    .filter((v) => v.f && STUFEN[v.stufe] && tageZwischen(HEUTE, v.d) >= AUSLASTUNG_AB_TAGEN)
+    .sort((a, b) => a.d.localeCompare(b.d) || a.zeit.localeCompare(b.zeit));
+  const gefragtIds = new Set(auslastung.map((v) => v.f.id));
+  const gefragtAbzeichen = (f) => (gefragtIds.has(f.id) ? '<span class="abzeichen gefragt" title="Einzelne Vorstellungen ab nächster Woche sind schon gut gebucht">Vorverkauf gefragt</span>' : '');
+  function vorverkaufRubrik(daten) {
+    // Nur Filme und Kinos, die unter den gewählten Filtern vorkommen
+    const sichtbar = new Set(daten.map((t) => `${t.f}|${t.k}`));
+    const proFilm = new Map();
+    auslastung.filter((v) => sichtbar.has(`${v.f.id}|${v.k}`)).forEach((v) => {
+      if (!proFilm.has(v.f.id)) proFilm.set(v.f.id, []);
+      proFilm.get(v.f.id).push(v);
+    });
+    if (!proFilm.size) return '';
+    const zeilen = [...proFilm.values()].map((vs) => {
+      const f = vs[0].f;
+      const termine = vs.map((v) => `<a class="vv vv-${v.stufe}" href="${esc(v.link)}" target="_blank" rel="noopener" title="Zur Sitzplatzwahl beim Kino"><span class="punkt" aria-hidden="true"></span>${fmtWt.format(parse(v.d)).replace('.', '')} ${v.d.slice(8, 10)}.${v.d.slice(5, 7)}. ${esc(v.zeit)} · ${esc(kinos[v.k].name.replace(/\s+(Nürnberg|Fürth|Erlangen)$/, ''))} · ${STUFEN[v.stufe]}</a>`).join('');
+      return `<li>${plakat(f, 'mini')}<div class="vv-text">${filmLink(f)}${wertung(f)}<div class="vv-liste">${termine}</div></div></li>`;
+    }).join('');
+    const stand = D.auslastungStand ? ` Stand ${datumKurz(D.auslastungStand)}.` : '';
+    return `<section class="hl-rubrik"><h3 class="hl-titel">Schnell vergriffen</h3><p class="meta">Vorstellungen ab nächster Woche, die schon gut gebucht sind. Nur Cinecitta, Meisengeige, Metropolis und Manhattan.${stand}</p><ul class="hl-termine vorverkauf">${zeilen}</ul></section>`;
+  }
   // Bis zu zwei Gründe, warum ein Film besonders ist. Wird überall gleich gebildet.
   function gruende(f) {
     const e = fakten().get(f.id);
@@ -384,6 +412,7 @@
       <div class="ansicht-kopf"><h2>Highlights</h2></div>
       <p class="hinweis">Besondere Filme der nächsten sieben Tage. Jeder Film erscheint nur einmal.</p>
       ${film ? `<section class="hl-rubrik"><h3 class="hl-titel">Film der Woche</h3>${highlightKarte(film, true)}</section>` : ''}
+      ${vorverkaufRubrik(daten)}
       ${rubriken.map(([name, text, liste]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => highlightKarte(h, false)).join('')}</div></section>`).join('')}
       ${film || rubriken.length ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
       ${sonderZeilen.length ? `<section class="hl-rubrik"><h3 class="hl-titel">Sneak und Kurzfilme</h3><p class="meta">Überraschungsfilme und Kurzfilmprogramme der nächsten sieben Tage.</p><ul class="hl-termine">${sonderZeilen.map((e) => `<li>${filmLink(e.f)}<span class="chip">${esc(kinos[e.k].name)}</span><span class="meta">${e.tage.map(wochentagDatum).join(', ')}</span></li>`).join('')}</ul></section>` : ''}
@@ -605,7 +634,7 @@
     }).join('') + '<th>Status</th>';
 
     const zeilen = liste.map((s) => `<tr>
-      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}</div></div></td>
+      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${gefragtAbzeichen(s.f)}</div></div></td>
       <td class="zahl">${s.f.bewertung != null ? wertung(s.f) : '–'}</td>
       <td>${datumKurz(s.letzter)}</td>
       <td class="umbruch">${istSneak(s.f) ? '?' : esc(s.f.regie || '–')}</td>
@@ -925,6 +954,7 @@
         <p>E-Mail: ${p('name@example.de')}</p>
         <h3>Über dieses Projekt</h3>
         <p>Ein privates, nicht kommerzielles Hobbyprojekt. Die Seite sammelt, welche Filme an welchen Tagen in Kinos in Nürnberg, Fürth und Erlangen laufen. Grundlage sind die öffentlich veröffentlichten Programme der Kinos. Uhrzeiten, Säle und Fassungen werden nicht erfasst.</p>
+        <p>Ausnahme ist die Rubrik „Schnell vergriffen“: Cinecitta, Meisengeige, Metropolis und Manhattan zeigen auf ihrer Programmseite zu jeder Vorstellung eine Auslastungsstufe. Diese Stufen werden einmal täglich übernommen, für gut gebuchte Vorstellungen mit Uhrzeit. Eigene Berechnungen gibt es dazu nicht.</p>
         <h3>Ohne Gewähr</h3>
         <p>Die Daten werden mit Sorgfalt gepflegt, können aber unvollständig oder veraltet sein. Verbindlich sind allein die Programme und Ticketseiten der Kinos. Für Inhalte verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
         <h3>Filmdaten und Plakate</h3>

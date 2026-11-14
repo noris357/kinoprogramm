@@ -297,6 +297,25 @@ foreach ($z in $zeilen) {
   $termine.Add(@($f, $kinoIndex[$z.Kino], $d))
 }
 
+# ---------- Auslastung (tools/auslastung.ps1, nur Cinecitta-Gruppe) ----------
+# Zuordnung zum Film ueber einen Termin desselben Kinos am selben Tag mit gleichem Titelschluessel.
+# Vorstellungen ohne passenden Termin (z. B. ausgeschlossene Veranstaltungen) entfallen.
+$auslastung = New-Object System.Collections.Generic.List[object]
+$auslastungStand = $null
+$auslastungDatei = "$PSScriptRoot/../daten/auslastung.json"
+if (Test-Path $auslastungDatei) {
+  $aj = Get-Content $auslastungDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  $auslastungStand = ConvertTo-IsoText $aj.stand
+  $terminFilm = @{}
+  foreach ($z in $zeilen) { $terminFilm["$($z.Kino)|$(ConvertTo-IsoText $z.Datum)|$(Get-TitelSchluessel $z.Titel)"] = $filmIndex[$rohZuGruppe["$($z.Titel)|$($z.Produktionsjahr)"]] }
+  foreach ($v in @($aj.vorstellungen)) {
+    $d = ConvertTo-IsoText $v.Datum
+    $f = $terminFilm["$($v.Kino)|$d|$(Get-TitelSchluessel $v.Titel)"]
+    if ($null -eq $f -or -not $kinoIndex.ContainsKey($v.Kino)) { continue }
+    $auslastung.Add(@($f, $kinoIndex[$v.Kino], $d, $v.Zeit, $v.Stufe, $v.Link))
+  }
+}
+
 $codes = [ordered]@{}
 foreach ($l in ($genutzteLaender.Keys | Sort-Object)) { if ($landCode[$l]) { $codes[$l] = $landCode[$l] } }
 
@@ -308,6 +327,8 @@ $daten = [ordered]@{
   laenderCodes = $codes
   filme        = $filme
   termine      = $termine
+  auslastungStand = $auslastungStand
+  auslastung   = $auslastung
 }
 
 $inhalt = "window.KINO_DATA = " + ($daten | ConvertTo-Json -Depth 5 -Compress) + ";"

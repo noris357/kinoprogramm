@@ -1,0 +1,133 @@
+{
+    "stand":  "2026-11-14",
+    "vorstellungen":  [
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Der Perfekte Urlaub",
+                              "Datum":  "2026-11-14",
+                              "Zeit":  "19:30",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=3ACCA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Manhatten Deluxe Erlangen",
+                              "Titel":  "Der Perfekte Urlaub",
+                              "Datum":  "2026-11-14",
+                              "Zeit":  "19:30",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=70000000014CPICFBA\u0026page=seatingplan\u0026performance=83ECA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "League of Legends Worlds 26 - Finals in Cinema",
+                              "Datum":  "2026-11-14",
+                              "Zeit":  "20:00",
+                              "Stufe":  "ausverkauft",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=37ABA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                              "Datum":  "2026-11-14",
+                              "Zeit":  "20:30",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=25DCA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Meisengeige Nürnberg",
+                              "Titel":  "Nürnberg",
+                              "Datum":  "2026-11-14",
+                              "Zeit":  "20:45",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=40000000014CPICFBA\u0026page=seatingplan\u0026performance=ADDCA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Leica - Ein Jahrhundert in Bildern",
+                              "Datum":  "2026-11-15",
+                              "Zeit":  "18:00",
+                              "Stufe":  "ausverkauft",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=FA2CA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Kurzfilmprogramm",
+                              "Datum":  "2026-11-17",
+                              "Zeit":  "19:00",
+                              "Stufe":  "wenige",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=E9ACA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Kurzfilmprogramm",
+                              "Datum":  "2026-11-17",
+                              "Zeit":  "19:00",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=F9ACA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Manhatten Deluxe Erlangen",
+                              "Titel":  "Die Tribute von Panem  - Sunrise on the Reaping",
+                              "Datum":  "2026-11-18",
+                              "Zeit":  "19:00",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=70000000014CPICFBA\u0026page=seatingplan\u0026performance=6C6CA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Die Tribute von Panem  - Sunrise on the Reaping",
+                              "Datum":  "2026-11-25",
+                              "Zeit":  "19:00",
+                              "Stufe":  "wenige",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=6AACA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "You Can See Everything",
+                              "Datum":  "2026-12-02",
+                              "Zeit":  "19:00",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=0C6CA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "RB\u0026O Live: Der Nussknacker (Ballett)",
+                              "Datum":  "2026-12-06",
+                              "Zeit":  "11:00",
+                              "Stufe":  "wenige",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=F467A000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Dune: Part Three",
+                              "Datum":  "2026-12-15",
+                              "Zeit":  "19:00",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=73BAA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Avengers: Doomsday",
+                              "Datum":  "2026-12-16",
+                              "Zeit":  "17:20",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=076BA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "Avengers: Doomsday",
+                              "Datum":  "2026-12-16",
+                              "Zeit":  "20:10",
+                              "Stufe":  "hoch",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=396BA000023CPICFBA\u0026language=de"
+                          },
+                          {
+                              "Kino":  "Cinecitta Nürnberg",
+                              "Titel":  "BTS World Tour Arirang Jakarta: Live Viewing",
+                              "Datum":  "2026-12-29",
+                              "Zeit":  "12:45",
+                              "Stufe":  "wenige",
+                              "Link":  "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA\u0026page=seatingplan\u0026performance=56ECA000023CPICFBA\u0026language=de"
+                          }
+                      ]
+}

@@ -12,7 +12,8 @@ Live unter https://noris357.github.io/kinoprogramm/ (GitHub Pages, öffentlich).
 - `daten/score-gewichte.json`, `daten/titel-korrekturen.json`, `daten/ausschluss.txt`, `daten/preise-manuell.json`: von Hand gepflegte Einstellungen
 - `tools/aktualisieren.ps1`: liest die Kinoseiten aus (`tools/quellen/*.ps1`) und gleicht mit dem Bestand ab
 - `tools/tmdb.ps1`, `tools/mdblist.ps1`, `tools/preise.ps1`: Zusatzdaten
-- `.github/workflows/aktualisieren.yml`: wöchentlicher Lauf mittwochs am Abend und Veröffentlichung
+- `tools/auslastung.ps1`: Auslastungsstufen der Cinecitta-Gruppe nach `daten/auslastung.json` (Rubrik „Schnell vergriffen“)
+- `.github/workflows/aktualisieren.yml`: wöchentlicher Lauf mittwochs, täglicher Lauf nur für die Auslastung, Veröffentlichung
 
 ## Regeln
 

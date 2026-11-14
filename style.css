@@ -174,6 +174,18 @@ h1, h2, h3 { text-wrap: balance; }
 .chip { font-size: 12px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); white-space: nowrap; }
 .abzeichen { display: inline-block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; padding: 2px 7px; border-radius: 4px; vertical-align: 2px; margin-left: 6px; }
 .abzeichen.chance { background: var(--rot); color: #fff; }
+.abzeichen.gefragt { background: var(--rot-wash); color: var(--rot-hell); border: 1px solid var(--rot-hell); padding: 1px 6px; }
+/* Rubrik "Schnell vergriffen": je Film die gut gebuchten Vorstellungen, Punktfarbe nach Auslastung */
+.hl-termine.vorverkauf li { flex-wrap: nowrap; align-items: flex-start; gap: 12px; }
+.vv-text { min-width: 0; flex: 1; }
+.vv-liste { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.vv { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; padding: 4px 11px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--text-2); text-decoration: none; }
+.vv:hover { border-color: var(--gold); color: var(--text); }
+.vv .punkt { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.vv-hoch .punkt { background: var(--gold); }
+.vv-wenige .punkt { background: #e2873a; }
+.vv-ausverkauft .punkt { background: var(--rot-hell); }
+.vv-ausverkauft { color: var(--muted); }
 .abzeichen.wertung { background: none; color: var(--gold-hell); border: 1px solid var(--line-strong); font-weight: 600; letter-spacing: 0; padding: 1px 6px; font-variant-numeric: tabular-nums; }
 .abzeichen.wertung.gold { background: linear-gradient(135deg, #f0d98f, #c9a24a); color: #1a1405; border-color: #e8cf8a; }
 .abzeichen.wertung.silber { background: linear-gradient(135deg, #e6e8ec, #aeb3bb); color: #15171a; border-color: #d4d7dc; }
