@@ -608,18 +608,18 @@
     });
   }
 
-  // Reihenfolge der Spalten. "Kinostart" ist der erste Spieltag seit Beginn der Erfassung.
+  // Reihenfolge der Spalten. "Kinostart": deutscher Start laut TMDB, sonst der erste erfasste Spieltag.
   // Der Rang folgt immer dem Score der angezeigten Filme (gleicher Score, gleicher Rang), auch bei anderer Sortierung.
   const SPALTEN = [
     { feld: 'rang', titel: '#', wert: (s) => s.rang, zahl: true, zelle: (s) => (s.rang ? `<span class="rang">${s.rang}</span>` : '–') },
     { feld: 'titel', titel: 'Titel', wert: (s) => s.f.titel.toLocaleLowerCase('de'), klasse: 'umbruch',
       zelle: (s) => `<div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${gefragtAbzeichen(s.f)}</div></div>` },
     { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.bewertung, zahl: true, zelle: (s) => (s.f.bewertung != null ? wertung(s.f) : '–') },
+    { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de'), klasse: 'umbruch', zelle: (s) => (istSneak(s.f) ? '?' : regieLinks(s.f) || '–') },
     { feld: 'erster', titel: 'Kinostart', wert: (s) => kinostart(s).d, hinweis: 'Deutscher Kinostart laut TMDB, sonst der erste erfasste Spieltag', zelle: kinostartZelle },
     { feld: 'naechster', titel: 'Nächster Tag', wert: (s) => s.naechster || '9999', zelle: (s) => (s.naechster ? datumKurz(s.naechster) : '–') },
     { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter, zelle: (s) => datumKurz(s.letzter) },
-    { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de'), klasse: 'umbruch', zelle: (s) => (istSneak(s.f) ? '?' : regieLinks(s.f) || '–') },
-    { feld: 'jahr', titel: 'Jahr', wert: (s) => s.f.jahr || '0000', zahl: true, zelle: (s) => (istSneak(s.f) ? '?' : esc(s.f.jahr || '–')) },
+    { feld: 'jahr', titel: 'Produktionsjahr', wert: (s) => s.f.jahr || '0000', zahl: true, zelle: (s) => (istSneak(s.f) ? '?' : esc(s.f.jahr || '–')) },
     { feld: 'land', titel: 'Land', wert: (s) => (s.f.laender[0] || '￿').toLocaleLowerCase('de'), klasse: 'umbruch schmal', zelle: (s) => (istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–') },
     { feld: 'kinos', titel: 'Kinos', wert: (s) => s.nKinos, zahl: true, zelle: (s) => s.nKinos },
     { feld: 'tage', titel: 'Spieltage', wert: (s) => s.nTage, zahl: true, zelle: (s) => s.nTage },
@@ -732,7 +732,7 @@
       <td class="zahl">${s.nTage}</td>
       <td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td>
     </tr>`).join('');
-    return `<table class="liste innen"><thead><tr><th>Titel</th><th class="zahl">Score</th><th title="Deutscher Kinostart laut TMDB, sonst der erste erfasste Spieltag">Kinostart</th><th>Nächster Tag</th><th>Letzter Tag</th><th class="zahl">Jahr</th><th>Land</th><th class="zahl">Kinos</th><th class="zahl">Spieltage</th><th>Status</th></tr></thead><tbody>${zeilen}</tbody></table>`;
+    return `<table class="liste innen"><thead><tr><th>Titel</th><th class="zahl">Score</th><th title="Deutscher Kinostart laut TMDB, sonst der erste erfasste Spieltag">Kinostart</th><th>Nächster Tag</th><th>Letzter Tag</th><th class="zahl">Produktionsjahr</th><th>Land</th><th class="zahl">Kinos</th><th class="zahl">Spieltage</th><th>Status</th></tr></thead><tbody>${zeilen}</tbody></table>`;
   }
   function zeigeRegie(daten) {
     const liste = regieStatistik(daten);
