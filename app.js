@@ -129,6 +129,7 @@
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
     ansicht: 'highlights', tag: 'woche', gruppe: 'film',
     sort: { feld: 'bewertung', auf: false }, nurKommend: false, nurNeu: false,
+    regieSort: { feld: 'schnitt', auf: false }, regieOffen: '',
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
 
@@ -150,10 +151,10 @@
   const filterAktiv = () => Boolean(zustand.stadt || zustand.kino || zustand.land || zustand.jahrzehnt || zustand.suche);
 
   // ---------- Bausteine ----------
-  function filmMeta(f) {
+  function filmMeta(f, mitRegieLinks = false) {
     if (istSneak(f)) return '? · ? · ?';   // Regie, Land, Jahr sind bei Überraschungsfilmen unbekannt
     if (istKurzfilm(f)) return '– · – · –';   // mehrere Filme, keine einheitlichen Angaben
-    const teile = [f.regie && esc(f.regie), f.laender.length && f.laender.map(mitFlagge).join(', '), f.jahr && esc(f.jahr)].filter(Boolean);
+    const teile = [f.regie && (mitRegieLinks ? regieLinks(f) : esc(f.regie)), f.laender.length && f.laender.map(mitFlagge).join(', '), f.jahr && esc(f.jahr)].filter(Boolean);
     return teile.join(' · ') || 'Keine Angaben';
   }
   const filmLink = (f) => `<button class="film-link" data-film="${f.id}">${esc(f.titel)}</button>`;
@@ -593,9 +594,10 @@
     const m = new Map();
     daten.forEach((t) => {
       let s = m.get(t.f);
-      if (!s) { s = { f: filme[t.f], kinos: new Set(), tage: new Set(), letzter: t.d }; m.set(t.f, s); }
+      if (!s) { s = { f: filme[t.f], kinos: new Set(), tage: new Set(), erster: t.d, letzter: t.d }; m.set(t.f, s); }
       s.kinos.add(t.k); s.tage.add(t.d);
       if (t.d > s.letzter) s.letzter = t.d;
+      if (t.d < s.erster) s.erster = t.d;
     });
     const chanceIds = new Set(letzteChance(daten).sicher.map((e) => e.f.id));
     return [...m.values()].map((s) => {
@@ -606,21 +608,42 @@
     });
   }
 
+  // Reihenfolge der Spalten. "Kinostart" ist der erste Spieltag seit Beginn der Erfassung.
+  // Der Rang folgt immer dem Score der angezeigten Filme (gleicher Score, gleicher Rang), auch bei anderer Sortierung.
   const SPALTEN = [
-    { feld: 'titel', titel: 'Titel', wert: (s) => s.f.titel.toLocaleLowerCase('de') },
-    { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.bewertung, zahl: true },
-    { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter },
-    { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de') },
-    { feld: 'land', titel: 'Land', wert: (s) => (s.f.laender[0] || '￿').toLocaleLowerCase('de') },
-    { feld: 'jahr', titel: 'Jahr', wert: (s) => s.f.jahr || '0000', zahl: true },
-    { feld: 'kinos', titel: 'Kinos', wert: (s) => s.nKinos, zahl: true },
-    { feld: 'tage', titel: 'Spieltage', wert: (s) => s.nTage, zahl: true },
-    { feld: 'naechster', titel: 'Nächster Tag', wert: (s) => s.naechster || '9999' },
+    { feld: 'rang', titel: '#', wert: (s) => s.rang, zahl: true, zelle: (s) => (s.rang ? `<span class="rang">${s.rang}</span>` : '–') },
+    { feld: 'titel', titel: 'Titel', wert: (s) => s.f.titel.toLocaleLowerCase('de'), klasse: 'umbruch',
+      zelle: (s) => `<div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${gefragtAbzeichen(s.f)}</div></div>` },
+    { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.bewertung, zahl: true, zelle: (s) => (s.f.bewertung != null ? wertung(s.f) : '–') },
+    { feld: 'erster', titel: 'Kinostart', wert: (s) => kinostart(s).d, hinweis: 'Deutscher Kinostart laut TMDB, sonst der erste erfasste Spieltag', zelle: kinostartZelle },
+    { feld: 'naechster', titel: 'Nächster Tag', wert: (s) => s.naechster || '9999', zelle: (s) => (s.naechster ? datumKurz(s.naechster) : '–') },
+    { feld: 'letzter', titel: 'Letzter Tag', wert: (s) => s.letzter, zelle: (s) => datumKurz(s.letzter) },
+    { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de'), klasse: 'umbruch', zelle: (s) => (istSneak(s.f) ? '?' : regieLinks(s.f) || '–') },
+    { feld: 'jahr', titel: 'Jahr', wert: (s) => s.f.jahr || '0000', zahl: true, zelle: (s) => (istSneak(s.f) ? '?' : esc(s.f.jahr || '–')) },
+    { feld: 'land', titel: 'Land', wert: (s) => (s.f.laender[0] || '￿').toLocaleLowerCase('de'), klasse: 'umbruch schmal', zelle: (s) => (istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–') },
+    { feld: 'kinos', titel: 'Kinos', wert: (s) => s.nKinos, zahl: true, zelle: (s) => s.nKinos },
+    { feld: 'tage', titel: 'Spieltage', wert: (s) => s.nTage, zahl: true, zelle: (s) => s.nTage },
   ];
+  // Kinostart: deutscher Start laut TMDB (Feld kinostart, Issue #37), sonst der erste erfasste Spieltag
+  function kinostart(s) {
+    const k = s.f.info && s.f.info.kinostart;
+    return k ? { d: String(k), echt: true } : { d: s.erster, echt: false };
+  }
+  function kinostartZelle(s) {
+    const k = kinostart(s);
+    return k.echt ? datumKurz(k.d) : `<span class="geschaetzt" title="Kein Kinostart bekannt, erster erfasster Spieltag">${datumKurz(k.d)}</span>`;
+  }
+  // Rang nach Score: 1, 2, 2, 4 ... Filme ohne Score bekommen keinen Rang
+  function setzeRang(liste) {
+    const mitScore = liste.filter((s) => s.f.bewertung != null).sort((a, b) => b.f.bewertung - a.f.bewertung);
+    liste.forEach((s) => { s.rang = null; });
+    mitScore.forEach((s, i) => { s.rang = i > 0 && s.f.bewertung === mitScore[i - 1].f.bewertung ? mitScore[i - 1].rang : i + 1; });
+  }
 
   function zeigeFilme(daten) {
     let liste = filmStatistik(daten);
     if (zustand.nurKommend) liste = liste.filter((s) => s.naechster);
+    setzeRang(liste);
     const sp = SPALTEN.find((s) => s.feld === zustand.sort.feld);
     liste.sort((a, b) => {
       const x = sp.wert(a), y = sp.wert(b);
@@ -633,26 +656,124 @@
     const kopf = SPALTEN.map((s) => {
       const aktiv = s.feld === zustand.sort.feld;
       const r = aktiv ? ` data-richtung="${zustand.sort.auf ? 'auf' : 'ab'}"` : '';
-      return `<th class="${s.zahl ? 'zahl' : ''}" aria-sort="${aktiv ? (zustand.sort.auf ? 'ascending' : 'descending') : 'none'}"><button data-sort="${s.feld}"${r}>${s.titel}</button></th>`;
+      return `<th class="${s.zahl ? 'zahl' : ''}" aria-sort="${aktiv ? (zustand.sort.auf ? 'ascending' : 'descending') : 'none'}"${s.hinweis ? ` title="${s.hinweis}"` : ''}><button data-sort="${s.feld}"${r}>${s.titel}</button></th>`;
     }).join('') + '<th>Status</th>';
 
-    const zeilen = liste.map((s) => `<tr>
-      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${gefragtAbzeichen(s.f)}</div></div></td>
-      <td class="zahl">${s.f.bewertung != null ? wertung(s.f) : '–'}</td>
-      <td>${datumKurz(s.letzter)}</td>
-      <td class="umbruch">${istSneak(s.f) ? '?' : esc(s.f.regie || '–')}</td>
-      <td class="umbruch schmal">${istSneak(s.f) ? '?' : s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
-      <td class="zahl">${istSneak(s.f) ? '?' : esc(s.f.jahr || '–')}</td>
-      <td class="zahl">${s.nKinos}</td>
-      <td class="zahl">${s.nTage}</td>
-      <td>${s.naechster ? datumKurz(s.naechster) : '–'}</td>
-      <td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td>
-    </tr>`).join('');
+    const zeilen = liste.map((s) => `<tr>${SPALTEN.map((sp2) => `<td class="${[sp2.zahl ? 'zahl' : '', sp2.klasse || ''].join(' ').trim()}">${sp2.zelle(s)}</td>`).join('')}<td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td></tr>`).join('');
 
     $('#v-filme').innerHTML = `
       <div class="ansicht-kopf"><h2>${zahl(liste.length)} Filme</h2>
         <label class="meta"><input type="checkbox" id="nur-kommend" ${zustand.nurKommend ? 'checked' : ''}> Nur Filme mit kommenden Terminen</label></div>
       ${liste.length ? `<div class="tabelle-wrap"><table class="liste"><thead><tr>${kopf}</tr></thead><tbody>${zeilen}</tbody></table></div>` : '<p class="leer">Keine Filme für diese Auswahl.</p>'}`;
+  }
+
+  // ---------- Ansicht Regie ----------
+  // Ein Film mit mehreren Regisseur:innen zählt für jede und jeden. Sneaks und Kurzfilmprogramme haben keine Regie.
+  function regieNamen(f) {
+    if (istSneak(f) || istKurzfilm(f) || !f.regie) return [];
+    return [...new Set(f.regie.split(/\s*,\s*/).filter(Boolean))];
+  }
+  function regieLinks(f) {
+    return regieNamen(f).map((n) => `<button class="film-link regie-link" data-regie="${esc(n)}" title="Alle Filme von ${esc(n)}">${esc(n)}</button>`).join(', ');
+  }
+  function regieStatistik(daten) {
+    const m = new Map();
+    filmStatistik(daten).forEach((s) => regieNamen(s.f).forEach((n) => { if (!m.has(n)) m.set(n, []); m.get(n).push(s); }));
+    return [...m].map(([name, fs]) => {
+      const mitScore = fs.filter((s) => s.f.bewertung != null);
+      const tage = new Set();
+      fs.forEach((s) => s.tage.forEach((d) => tage.add(d)));
+      const t = [...tage].sort();
+      return {
+        name, filme: fs, nFilme: fs.length, nTage: tage.size,
+        // Durchschnitt nur über Filme mit Score, ganze Zahl wie beim Film-Score
+        schnitt: mitScore.length ? Math.round(mitScore.reduce((a, s) => a + s.f.bewertung, 0) / mitScore.length) : null,
+        erster: t[0], letzter: t[t.length - 1], naechster: t.find((d) => d >= HEUTE) || null,
+      };
+    });
+  }
+  const REGIE_SPALTEN = [
+    { feld: 'name', titel: 'Regie', wert: (r) => r.name.toLocaleLowerCase('de') },
+    { feld: 'schnitt', titel: 'Ø Score', wert: (r) => r.schnitt, zahl: true },
+    { feld: 'filme', titel: 'Filme', wert: (r) => r.nFilme, zahl: true },
+    { feld: 'tage', titel: 'Spieltage', wert: (r) => r.nTage, zahl: true },
+    { feld: 'erster', titel: 'Erster Tag', wert: (r) => r.erster },
+    { feld: 'letzter', titel: 'Letzter Tag', wert: (r) => r.letzter },
+    { feld: 'naechster', titel: 'Nächster Tag', wert: (r) => r.naechster || '9999' },
+  ];
+  // Angaben von TMDB je Name: [Foto, Geburtsjahr, Todesjahr, Geburtsort, Spielfilme als Regie]
+  const PERSONEN = D.personen || {};
+  function regieFoto(name, klasse) {
+    const p = PERSONEN[name];
+    const initialen = name.split(/\s+/).filter(Boolean).map((t) => t[0]).slice(0, 2).join('').toUpperCase();
+    return p && p[0]
+      ? `<span class="regie-foto ${klasse}" aria-hidden="true"><img src="${esc(p[0])}" alt="" loading="lazy"></span>`
+      : `<span class="regie-foto ${klasse} leer" aria-hidden="true">${esc(initialen)}</span>`;
+  }
+  function regieKopf(r) {
+    const p = PERSONEN[r.name] || [];
+    const [, geboren, gestorben, ort, arbeiten] = p;
+    const leben = geboren ? `* ${geboren}${ort ? ` in ${esc(ort)}` : ''}${gestorben ? ` · † ${gestorben}` : ''}` : (ort ? `Geboren in ${esc(ort)}` : '');
+    const werk = arbeiten ? `${arbeiten} ${arbeiten === 1 ? 'Spielfilm' : 'Spielfilme'} als Regie` : '';
+    const zeilen = [leben, werk].filter(Boolean);
+    return `<div class="regie-kopf">${regieFoto(r.name, 'gross')}<div><b>${esc(r.name)}</b>${zeilen.length ? `<div class="meta">${zeilen.join(' · ')}</div>` : ''}<div class="meta">${r.nFilme} ${r.nFilme === 1 ? 'Film' : 'Filme'} bei uns${r.schnitt != null ? `, Ø Score ${r.schnitt}` : ''}</div></div></div>`;
+  }
+  // Filme einer Person, aufgeklappt unter ihrer Zeile. Spalten wie im Reiter Filme, dazu der erste Tag.
+  function regieFilmTabelle(r) {
+    const zeilen = [...r.filme].sort((a, b) => b.letzter.localeCompare(a.letzter) || a.f.titel.localeCompare(b.f.titel, 'de')).map((s) => `<tr>
+      <td class="umbruch"><div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${gefragtAbzeichen(s.f)}</div></div></td>
+      <td class="zahl">${s.f.bewertung != null ? wertung(s.f) : '–'}</td>
+      <td>${kinostartZelle(s)}</td>
+      <td>${s.naechster ? datumKurz(s.naechster) : '–'}</td>
+      <td>${datumKurz(s.letzter)}</td>
+      <td class="zahl">${esc(s.f.jahr || '–')}</td>
+      <td class="umbruch schmal">${s.f.laender.map(mitFlagge).join(', ') || '–'}</td>
+      <td class="zahl">${s.nKinos}</td>
+      <td class="zahl">${s.nTage}</td>
+      <td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td>
+    </tr>`).join('');
+    return `<table class="liste innen"><thead><tr><th>Titel</th><th class="zahl">Score</th><th title="Deutscher Kinostart laut TMDB, sonst der erste erfasste Spieltag">Kinostart</th><th>Nächster Tag</th><th>Letzter Tag</th><th class="zahl">Jahr</th><th>Land</th><th class="zahl">Kinos</th><th class="zahl">Spieltage</th><th>Status</th></tr></thead><tbody>${zeilen}</tbody></table>`;
+  }
+  function zeigeRegie(daten) {
+    const liste = regieStatistik(daten);
+    const sp = REGIE_SPALTEN.find((s) => s.feld === zustand.regieSort.feld);
+    liste.sort((a, b) => {
+      const x = sp.wert(a), y = sp.wert(b);
+      // Ohne Score immer am Ende
+      if (x == null || y == null) return (x == null) - (y == null) || a.name.localeCompare(b.name, 'de');
+      const r = typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'de');
+      return (zustand.regieSort.auf ? r : -r) || b.nFilme - a.nFilme || a.name.localeCompare(b.name, 'de');
+    });
+    const kopf = REGIE_SPALTEN.map((s) => {
+      const aktiv = s.feld === zustand.regieSort.feld;
+      const r = aktiv ? ` data-richtung="${zustand.regieSort.auf ? 'auf' : 'ab'}"` : '';
+      return `<th class="${s.zahl ? 'zahl' : ''}" aria-sort="${aktiv ? (zustand.regieSort.auf ? 'ascending' : 'descending') : 'none'}"><button data-rsort="${s.feld}"${r}>${s.titel}</button></th>`;
+    }).join('');
+    const zeilen = liste.map((r) => {
+      const offen = r.name === zustand.regieOffen;
+      const zeile = `<tr class="regie-zeile${offen ? ' offen' : ''}" data-regie-auf="${esc(r.name)}" aria-expanded="${offen}">
+        <td class="umbruch"><button class="film-link regie-name" data-regie-auf="${esc(r.name)}"><span class="pfeil" aria-hidden="true">${offen ? '▾' : '▸'}</span>${regieFoto(r.name, 'klein')}${esc(r.name)}</button></td>
+        <td class="zahl">${r.schnitt != null ? wertung({ bewertung: r.schnitt }) : '–'}</td>
+        <td class="zahl">${r.nFilme}</td>
+        <td class="zahl">${r.nTage}</td>
+        <td>${datumKurz(r.erster)}</td>
+        <td>${datumKurz(r.letzter)}</td>
+        <td>${r.naechster ? datumKurz(r.naechster) : '–'}</td>
+      </tr>`;
+      return offen ? `${zeile}<tr class="regie-filme"><td colspan="${REGIE_SPALTEN.length}">${regieKopf(r)}${regieFilmTabelle(r)}</td></tr>` : zeile;
+    }).join('');
+    $('#v-regie').innerHTML = `
+      <div class="ansicht-kopf"><h2>${zahl(liste.length)} Regisseur:innen</h2></div>
+      <p class="hinweis">Ø Score aus allen Filmen mit Score, die seit Beginn der Erfassung in den Kinos liefen. Ein Klick auf den Namen zeigt die Filme.</p>
+      ${liste.length ? `<div class="tabelle-wrap"><table class="liste regie-liste"><thead><tr>${kopf}</tr></thead><tbody>${zeilen}</tbody></table></div>` : '<p class="leer">Keine Regie für diese Auswahl.</p>'}`;
+  }
+  // Sprung aus Film-Dialog oder Filmliste: Reiter Regie, Person aufgeklappt und sichtbar
+  function zeigeRegiePerson(name) {
+    zustand.regieOffen = name;
+    if ($('#film-dialog').open) $('#film-dialog').close();
+    wechsleAnsicht('regie');
+    const zeile = [...document.querySelectorAll('#v-regie tr.regie-zeile')].find((z) => z.dataset.regieAuf === name);
+    if (zeile) zeile.scrollIntoView({ block: 'start' });
   }
 
   // ---------- Ansicht Statistik ----------
@@ -1029,7 +1150,7 @@
     }).join('');
     const knopfText = () => (vorbeiSichtbar ? `Vergangene Termine ausblenden (${anzahlVorbei})` : `Vergangene Termine anzeigen (${anzahlVorbei})`);
     const knopf = hatKommend && anzahlVorbei ? `<button type="button" class="vorbei-knopf" aria-expanded="${vorbeiSichtbar}">${knopfText()}</button>` : '';
-    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
+    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
     const knopfEl = $('#fd-inhalt .vorbei-knopf');
     if (knopfEl) {
       knopfEl.addEventListener('click', () => {
@@ -1043,7 +1164,7 @@
   }
 
   // ---------- Steuerung ----------
-  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, statistik: zeigeStatistik, kinos: zeigeKinos, impressum: zeigeImpressum };
+  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, regie: zeigeRegie, statistik: zeigeStatistik, kinos: zeigeKinos, impressum: zeigeImpressum };
 
   function zeichne() {
     $('#f-reset').hidden = !filterAktiv();
@@ -1095,6 +1216,13 @@
     let el;
     if ((el = ziel('[data-zu]'))) { wechsleAnsicht(el.dataset.zu); return scrollTo(0, 0); }
     if ((el = ziel('[data-film]'))) return zeigeFilm(Number(el.dataset.film));
+    if ((el = ziel('[data-regie]'))) return zeigeRegiePerson(el.dataset.regie);
+    if ((el = ziel('[data-regie-auf]'))) { zustand.regieOffen = zustand.regieOffen === el.dataset.regieAuf ? '' : el.dataset.regieAuf; return zeichne(); }
+    if ((el = ziel('[data-rsort]'))) {
+      const feld = el.dataset.rsort;
+      zustand.regieSort = { feld, auf: zustand.regieSort.feld === feld ? !zustand.regieSort.auf : ['name', 'naechster'].includes(feld) };
+      return zeichne();
+    }
     if ((el = ziel('[data-tag]'))) { zustand.tag = el.dataset.tag; return zeichne(); }
     if ((el = ziel('[data-tag-sprung]'))) { zustand.tag = el.dataset.tagSprung; return wechsleAnsicht('programm'); }
     if ((el = ziel('[data-gruppe]'))) { zustand.gruppe = el.dataset.gruppe; return zeichne(); }
@@ -1108,7 +1236,7 @@
     }
     if ((el = ziel('[data-sort]'))) {
       const feld = el.dataset.sort;
-      zustand.sort = { feld, auf: zustand.sort.feld === feld ? !zustand.sort.auf : ['titel', 'regie', 'land', 'naechster'].includes(feld) };
+      zustand.sort = { feld, auf: zustand.sort.feld === feld ? !zustand.sort.auf : ['rang', 'titel', 'regie', 'land', 'naechster'].includes(feld) };
       return zeichne();
     }
   });
@@ -1117,7 +1245,11 @@
     if (e.target.id === 'nur-kommend') { zustand.nurKommend = e.target.checked; zeichne(); }
     if (e.target.id === 'nur-neu') { zustand.nurNeu = e.target.checked; zeichne(); }
   });
-  $('#film-dialog').addEventListener('click', (e) => { if (e.target.id === 'film-dialog') e.target.close(); });
+  $('#film-dialog').addEventListener('click', (e) => {
+    if (e.target.id === 'film-dialog') return e.target.close();
+    const regie = e.target.closest('[data-regie]');
+    if (regie) zeigeRegiePerson(regie.dataset.regie);
+  });
   $('#fuss').addEventListener('click', (e) => { if (e.target.closest('[data-impressum]')) { wechsleAnsicht('impressum'); scrollTo(0, 0); } });
 
   let warte;

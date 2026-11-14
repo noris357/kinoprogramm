@@ -256,6 +256,22 @@ $filme = New-Object System.Collections.Generic.List[object]
 $filmIndex = @{}
 $genutzteLaender = @{}
 
+# Regie-Angaben von TMDB (tools/personen.ps1): Foto, Geburtsjahr, Geburtsort, Zahl der Spielfilme als Regie
+$filmRegie = @{}
+$personenDaten = @{}
+$personenAusgabe = [ordered]@{}
+$personenDatei = "$PSScriptRoot/../daten/personen.json"
+if (Test-Path $personenDatei) {
+  $pj = Get-Content $personenDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  if ($pj.filmRegie) { $pj.filmRegie.PSObject.Properties | ForEach-Object { $filmRegie[$_.Name] = @($_.Value) } }
+  if ($pj.personen) { $pj.personen.PSObject.Properties | ForEach-Object { $personenDaten[$_.Name] = $_.Value } }
+}
+function Get-NamensSchluessel([string]$Name) {
+  $t = $Name.Normalize([Text.NormalizationForm]::FormD)
+  $t = [regex]::Replace($t, '\p{Mn}', '').ToLowerInvariant().Replace('ß', 'ss').Replace('ø', 'o').Replace('ł', 'l')
+  return [regex]::Replace($t, '[^\p{L}\p{Nd}]', '')
+}
+
 foreach ($g in $gruppen.Values) {
   # Anzeigetitel: die haeufigste Variante, bei Gleichstand die, die dem deutschen TMDB-Titel entspricht
   $tmdbSchluessel = if ($g.Info -and $g.Info.titel) { Get-TitelSchluessel $g.Info.titel } else { '' }
@@ -265,6 +281,22 @@ foreach ($g in $gruppen.Values) {
   $regie = if ($g.Regie) { $g.Regie } elseif ($i) { $i.regie } else { $null }
   if ($regie -and $regieKorrekturen.Count) {
     $regie = (@($regie -split '\s*,\s*' | ForEach-Object { if ($regieKorrekturen.ContainsKey($_)) { $regieKorrekturen[$_] } else { $_ } }) | Select-Object -Unique) -join ', '
+  }
+  # Regie-Personen von TMDB (tools/personen.ps1) dem angezeigten Namen zuordnen:
+  # gleicher Name (ohne Akzente und Zeichen) oder, bei genau einer Person auf beiden Seiten, direkt
+  if ($regie -and $i -and $i.tmdb -and $filmRegie.ContainsKey([string]$i.tmdb)) {
+    $tmdbRegie = @($filmRegie[[string]$i.tmdb])
+    $namen = @($regie -split '\s*,\s*' | Where-Object { $_ })
+    foreach ($n in $namen) {
+      if ($personenAusgabe.Contains($n)) { continue }
+      $treffer = @($tmdbRegie | Where-Object { (Get-NamensSchluessel $_.name) -eq (Get-NamensSchluessel $n) })
+      if (-not $treffer.Count -and $namen.Count -eq 1 -and $tmdbRegie.Count -eq 1) { $treffer = $tmdbRegie }
+      if (-not $treffer.Count) { continue }
+      $p = $personenDaten[[string]$treffer[0].id]
+      if (-not $p) { continue }
+      # Kompakt: [Foto, Geburtsjahr, Todesjahr, Geburtsort, Spielfilme als Regie]
+      $personenAusgabe[$n] = @($p.foto, $p.geboren, $p.gestorben, $p.ort, $p.regiearbeiten)
+    }
   }
   $jahr = if ($g.Jahr) { $g.Jahr } elseif ($i) { $i.jahr } else { $null }
   if ($land) { $land.Split(',') | ForEach-Object { $genutzteLaender[$_.Trim()] = $true } }
@@ -329,6 +361,7 @@ $daten = [ordered]@{
   termine      = $termine
   auslastungStand = $auslastungStand
   auslastung   = $auslastung
+  personen     = $personenAusgabe
 }
 
 $inhalt = "window.KINO_DATA = " + ($daten | ConvertTo-Json -Depth 5 -Compress) + ";"
