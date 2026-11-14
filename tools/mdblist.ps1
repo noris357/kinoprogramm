@@ -5,12 +5,14 @@
 # Schluessel: Umgebungsvariable MDBLIST_API_KEY (GitHub Actions) oder Datei tools/mdblist.key (lokal, nie hochladen).
 # Ergebnis: daten/wertungen.json je TMDB-ID. Die Einzelwerte erscheinen nicht auf der Website,
 # build-data.ps1 berechnet daraus den eigenen Score.
-# Das kostenlose Kontingent liegt bei etwa 1000 Abfragen pro Tag. Neue Filme zuerst, dann die aeltesten Eintraege
-# von Filmen mit kommenden Terminen (Wertungen aendern sich bei neuen Filmen noch).
+# Das kostenlose Kontingent liegt bei etwa 1000 Abfragen pro Tag. Reihenfolge: neue Filme, dann laufende Filme,
+# dann Filme ohne kommende Termine, jeweils die aeltesten Eintraege zuerst.
 
 # Wertungen laufender Filme werden jede Woche aufgefrischt: 6 statt 7 Tage, damit ein etwas frueherer Lauf
 # (z. B. von Hand am Dienstag oder ein spaet gestarteter Lauf in der Vorwoche) keine Woche auslaesst.
-param([int]$Hoechstens = 800, [int]$AlterTage = 6)
+# Filme ohne kommende Termine einmal im Monat: Nach dem Kinostart kommen viele Stimmen aus dem Heimkino dazu,
+# ein kurzer Hype wird so spaeter noch eingeordnet.
+param([int]$Hoechstens = 800, [int]$AlterTage = 6, [int]$AlterTageOhneTermine = 30)
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
@@ -81,11 +83,14 @@ foreach ($p in $infos) { if ($p.Value.tmdb) { $id = [string]$p.Value.tmdb; $ids[
 $wertungen = [ordered]@{}
 if (Test-Path $ziel) { (Get-Content $ziel -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $wertungen[$_.Name] = $_.Value } }
 
+function Get-AlterTage([string]$Id) { ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $wertungen[$Id].geprueft), 'yyyy-MM-dd', $null)).TotalDays }
 $neu = @($ids.Keys | Where-Object { -not $wertungen.Contains($_) })
-$alt = @($ids.Keys | Where-Object { $wertungen.Contains($_) -and $ids[$_] -and ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $wertungen[$_].geprueft), 'yyyy-MM-dd', $null)).TotalDays -gt $AlterTage } |
+$alt = @($ids.Keys | Where-Object { $wertungen.Contains($_) -and $ids[$_] -and (Get-AlterTage $_) -gt $AlterTage } |
   Sort-Object { ConvertTo-IsoText $wertungen[$_].geprueft })
-$offen = @($neu + $alt | Select-Object -First $Hoechstens)
-"MDBList: $($ids.Count) Filme mit TMDB-ID, $($neu.Count) neu, $($alt.Count) zu aktualisieren, $($offen.Count) in diesem Lauf"
+$ruhend = @($ids.Keys | Where-Object { $wertungen.Contains($_) -and -not $ids[$_] -and (Get-AlterTage $_) -gt $AlterTageOhneTermine } |
+  Sort-Object { ConvertTo-IsoText $wertungen[$_].geprueft })
+$offen = @($neu + $alt + $ruhend | Select-Object -First $Hoechstens)
+"MDBList: $($ids.Count) Filme mit TMDB-ID, $($neu.Count) neu, $($alt.Count) laufende und $($ruhend.Count) ohne Termine zu aktualisieren, $($offen.Count) in diesem Lauf"
 
 function Save-Wertungen {
   $s = [ordered]@{}
