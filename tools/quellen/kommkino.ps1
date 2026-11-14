@@ -6,7 +6,9 @@ function Get-KommKinoProgramm {
   $erg = New-KinoErgebnis 'KommKino Nürnberg' 'https://www.kommkino.de/spielzeiten'
   try {
     $html = Get-Seite $erg.Url
-    $termine = [regex]::Matches($html, '(?s)<a href="/spielzeiten/\d+-[^/"]+/(\d{4}-\d\d-\d\d)-\d\d-\d\d">.*?titletip">\s*(.*?)\s*</div>') |
+    # Vergangene Tage verlinken auf /component/icagenda/..., kommende auf /spielzeiten/...
+    # Der Treffer darf nicht ueber den naechsten Link hinausreichen, sonst bekommt ein Film das Datum eines anderen Links
+    $termine = [regex]::Matches($html, '(?s)<a href="/(?:spielzeiten|component/icagenda)/\d+-[^/"]+/(\d{4}-\d\d-\d\d)-\d\d-\d\d">(?:(?!<a\s).)*?titletip">\s*(.*?)\s*</div>') |
       ForEach-Object { [pscustomobject]@{ Titel = ConvertFrom-Html $_.Groups[2].Value; Datum = $_.Groups[1].Value } } |
       Sort-Object Titel, Datum -Unique
     if (-not $termine) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
