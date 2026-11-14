@@ -127,7 +127,7 @@
   // ---------- Zustand und Filter ----------
   const zustand = {
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
-    ansicht: 'highlights', tag: 'woche', gruppe: 'film', reihenfolge: 'bewertung',
+    ansicht: 'highlights', tag: 'woche', gruppe: 'film',
     sort: { feld: 'bewertung', auf: false }, nurKommend: false, nurNeu: false,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
@@ -412,11 +412,8 @@
     }).join('');
 
     const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= sonntag) : daten.filter((t) => t.d === zustand.tag);
-    // Sortierung für beide Ansichten: nach Score (Filme ohne Score am Ende) oder alphabetisch
-    const nachTitel = (a, b) => a.titel.localeCompare(b.titel, 'de');
-    const filmOrdnung = zustand.reihenfolge === 'titel'
-      ? nachTitel
-      : (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || nachTitel(a, b);
+    // Sortierung für beide Ansichten immer nach Score, Filme ohne Score am Ende, bei Gleichstand alphabetisch
+    const filmOrdnung = (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || a.titel.localeCompare(b.titel, 'de');
     let inhalt;
     if (!amTag.length) {
       inhalt = zustand.nurNeu
@@ -452,10 +449,6 @@
         <h2>${ganzeWoche ? `KW ${kalenderwoche(HEUTE)} · ${datumKurz(HEUTE)} bis ${datumKurz(sonntag)}` : fmtVoll.format(parse(zustand.tag))}</h2>
         <div class="steuerung">
           <label class="haken"><input type="checkbox" id="nur-neu" ${zustand.nurNeu ? 'checked' : ''}> Start diese Woche</label>
-          <div class="umschalter" role="group" aria-label="Sortierung">
-            <button data-reihenfolge="bewertung" aria-pressed="${zustand.reihenfolge === 'bewertung'}">Score</button>
-            <button data-reihenfolge="titel" aria-pressed="${zustand.reihenfolge === 'titel'}">A–Z</button>
-          </div>
           <div class="umschalter" role="group" aria-label="Gruppierung">
             <button data-gruppe="film" aria-pressed="${zustand.gruppe === 'film'}">Nach Film</button>
             <button data-gruppe="kino" aria-pressed="${zustand.gruppe === 'kino'}">Nach Kino</button>
@@ -1072,7 +1065,6 @@
     if ((el = ziel('[data-tag]'))) { zustand.tag = el.dataset.tag; return zeichne(); }
     if ((el = ziel('[data-tag-sprung]'))) { zustand.tag = el.dataset.tagSprung; return wechsleAnsicht('programm'); }
     if ((el = ziel('[data-gruppe]'))) { zustand.gruppe = el.dataset.gruppe; return zeichne(); }
-    if ((el = ziel('[data-reihenfolge]'))) { zustand.reihenfolge = el.dataset.reihenfolge; return zeichne(); }
     if ((el = ziel('[data-kal]'))) { zustand.kalModus = el.dataset.kal; return zeichne(); }
     if ((el = ziel('[data-monat]'))) { zustand.kalMonat = el.dataset.monat; return zeichne(); }
     if ((el = ziel('[data-matrix]'))) { zustand.matrixStart = el.dataset.matrix; return zeichne(); }
