@@ -10,6 +10,7 @@
   const DAUERBRENNER_WOCHEN = 6;     // mindestens so viele Kinowochen am Stück
   const FILME_JE_RUBRIK = 3;         // höchstens so viele Filme je Rubrik
   const NEU_WOCHE_BEGINNT = 2;       // "neu": Woche läuft ab diesem Wochentag sieben Tage (0 = Montag, 2 = Mittwoch, also Mittwoch bis Dienstag)
+  const NEU_KINOSTART_TOLERANZ = 14; // "neu": Kinostart liegt mehr Tage vor Wochenbeginn, dann nicht mehr neu
   const NEU_HOECHSTALTER = 1;        // "neu": Produktionsjahr höchstens so viele Jahre zurück, damit Wiederaufführungen nicht als Neustart zählen
   const OHNE_HIGHLIGHT = /^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/;
 
@@ -258,7 +259,8 @@
       e.wochen.add(donnerstagVon(t.d));
     });
     // Kinowochen am Stück, rückwärts ab der aktuellen Kinowoche
-    // Neu: erster Termin überhaupt liegt in der laufenden Woche und der Film ist kein alter Film in Wiederaufführung
+    // Neu: deutscher Kinostart (TMDB) in der laufenden Woche. Ohne Kinostart: erster Termin überhaupt liegt in der laufenden Woche
+    // und der Film ist kein alter Film in Wiederaufführung
     const neuAb = plusTage(HEUTE, -((wochentag(HEUTE) + 7 - NEU_WOCHE_BEGINNT) % 7));
     const neuBis = plusTage(neuAb, 6);
     const diesesJahr = Number(HEUTE.slice(0, 4));
@@ -267,7 +269,15 @@
       while (e.wochen.has(w)) { n++; w = plusTage(w, -7); }
       e.serie = n;
       const jahr = parseInt(filme[id].jahr, 10);
-      e.neu = e.erster >= neuAb && e.erster <= neuBis && (!jahr || diesesJahr - jahr <= NEU_HOECHSTALTER);
+      const ks = filme[id].info && filme[id].info.kinostart;
+      if (ks) {
+        // Deutscher Kinostart laut TMDB: neu, wenn er in der laufenden Woche liegt. Lag er davor, aber höchstens
+        // NEU_KINOSTART_TOLERANZ Tage vor Wochenbeginn, zählt es noch, wenn der erste erfasste Termin in dieser Woche liegt.
+        e.neu = (String(ks) >= neuAb && String(ks) <= neuBis)
+          || (String(ks) < neuAb && String(ks) >= plusTage(neuAb, -NEU_KINOSTART_TOLERANZ) && e.erster >= neuAb && e.erster <= neuBis);
+      } else {
+        e.neu = e.erster >= neuAb && e.erster <= neuBis && (!jahr || diesesJahr - jahr <= NEU_HOECHSTALTER);
+      }
     });
     faktenCache = m;
     return m;
@@ -1120,7 +1130,9 @@
     let n = 0;
     while (wochen.has(w)) { n++; w = plusTage(w, -7); }
     const einheit = n === 1 ? 'Woche' : 'Wochen';
-    return `<div class="meta">Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
+    const ks = f.info && f.info.kinostart;
+    const start = ks ? `Kinostart: ${esc(datumKurz(String(ks)))} · ` : '';
+    return `<div class="meta">${start}Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
   }
 
   function zeigeFilm(fid) {
