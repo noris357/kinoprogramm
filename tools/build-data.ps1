@@ -206,23 +206,23 @@ foreach ($g in $gruppen.Values) {
 
 # Kennzahlen je Quelle ueber alle Filme
 $statistik = @{}
-foreach ($quelle in $gewichte.Keys) {
-  $werte = @($wertRoh.Values | Where-Object { $_.ContainsKey($quelle) } | ForEach-Object { $_[$quelle].wert })
+foreach ($quellName in $gewichte.Keys) {
+  $werte = @($wertRoh.Values | Where-Object { $_.ContainsKey($quellName) } | ForEach-Object { $_[$quellName].wert })
   if ($werte.Count -lt 10) { continue }   # zu wenige Filme fuer eine verlaessliche Verteilung
   $mittel = ($werte | Measure-Object -Average).Average
   # Daempfung: (Stimmen * Wert + k * Mittel) / (Stimmen + k)
-  $k = $daempfung[$quelle]
+  $k = $daempfung[$quellName]
   foreach ($film in $wertRoh.Values) {
-    if (-not $film.ContainsKey($quelle)) { continue }
-    $e = $film[$quelle]
+    if (-not $film.ContainsKey($quellName)) { continue }
+    $e = $film[$quellName]
     $e.angepasst = if ($k -and $null -ne $e.stimmen) { ($e.stimmen * $e.wert + $k * $mittel) / ($e.stimmen + $k) } else { $e.wert }
   }
-  $angepasst = @($wertRoh.Values | Where-Object { $_.ContainsKey($quelle) } | ForEach-Object { $_[$quelle].angepasst })
+  $angepasst = @($wertRoh.Values | Where-Object { $_.ContainsKey($quellName) } | ForEach-Object { $_[$quellName].angepasst })
   $m2 = ($angepasst | Measure-Object -Average).Average
   $sd = [math]::Sqrt((($angepasst | ForEach-Object { ($_ - $m2) * ($_ - $m2) } | Measure-Object -Sum).Sum) / [math]::Max(1, $angepasst.Count - 1))
   # Mindeststreuung: bei eng streuenden Quellen wuerden kleine Unterschiede sonst zu grossen z-Werten
   if ($sd -lt $mindestStreuung) { $sd = $mindestStreuung }
-  $statistik[$quelle] = @{ mittel = $m2; sd = $sd }
+  $statistik[$quellName] = @{ mittel = $m2; sd = $sd }
 }
 # Bezugsskala: gewichtetes Mittel der Quellen, damit der Score wie eine gewohnte 0-100-Wertung aussieht
 $summeG = ($statistik.Keys | ForEach-Object { $gewichte[$_] } | Measure-Object -Sum).Sum
@@ -232,10 +232,10 @@ $bezugSd = if ($summeG) { ($statistik.Keys | ForEach-Object { $gewichte[$_] * $s
 $scores = @{}
 foreach ($id in $wertRoh.Keys) {
   $sz = 0.0; $sw = 0.0; $roh = @()
-  foreach ($quelle in $statistik.Keys) {
-    if (-not $wertRoh[$id].ContainsKey($quelle)) { continue }
-    $z = ($wertRoh[$id][$quelle].angepasst - $statistik[$quelle].mittel) / $statistik[$quelle].sd
-    $sz += $gewichte[$quelle] * $z; $sw += $gewichte[$quelle]; $roh += $wertRoh[$id][$quelle].angepasst
+  foreach ($quellName in $statistik.Keys) {
+    if (-not $wertRoh[$id].ContainsKey($quellName)) { continue }
+    $z = ($wertRoh[$id][$quellName].angepasst - $statistik[$quellName].mittel) / $statistik[$quellName].sd
+    $sz += $gewichte[$quellName] * $z; $sw += $gewichte[$quellName]; $roh += $wertRoh[$id][$quellName].angepasst
   }
   if ($sw -gt 0) {
     # Fehlende Quellen: nur der Anteil $umverteilung ihres Gewichts geht an die uebrigen, der Rest zaehlt wie ein Durchschnittswert (z = 0)
