@@ -280,7 +280,9 @@
   // ---------- Auslastung (nur Cinecitta-Gruppe, siehe tools/auslastung.ps1) ----------
   // Erst ab dem achten Tag: die nächsten sieben Tage stehen ohnehin im Programm
   const AUSLASTUNG_AB_TAGEN = 8;
-  const STUFEN = { hoch: 'Hohe Auslastung', wenige: 'Nur wenige Plätze', ausverkauft: 'Ausverkauft' };
+  // Eigene, strengere Namen: "hohe Auslastung" beim Kino hieß in Stichproben etwa 75 bis 85 % belegt,
+  // "nur wenige Plätze" teils schon praktisch ausverkauft
+  const STUFEN = { hoch: 'Fast voll', wenige: 'Restplätze', ausverkauft: 'Ausverkauft' };
   const auslastung = (D.auslastung || [])
     .map(([f, k, d, zeit, stufe, link]) => ({ f: filme[f], k, d, zeit, stufe, link }))
     .filter((v) => v.f && STUFEN[v.stufe] && tageZwischen(HEUTE, v.d) >= AUSLASTUNG_AB_TAGEN)
@@ -297,7 +299,7 @@
     });
     return [...proFilm.values()];
   }
-  const vorverkaufText = () => `Vorstellungen ab nächster Woche, die schon gut gebucht sind. Nur Cinecitta, Meisengeige, Metropolis und Manhattan.${D.auslastungStand ? ` Stand ${datumKurz(D.auslastungStand)}.` : ''}`;
+  const vorverkaufText = () => `Vorstellungen ab nächster Woche, die schon gut gebucht sind. Freie Plätze gibt es meist nur noch vorne oder am Rand. Nur Cinecitta, Meisengeige, Metropolis und Manhattan.${D.auslastungStand ? ` Stand ${datumKurz(D.auslastungStand)}.` : ''}`;
   // Filmkarte wie in den anderen Rubriken, statt der Kinos die Vorstellungen mit Link zur Sitzplatzwahl
   function vorverkaufKarte(e) {
     const f = e.f;

@@ -180,10 +180,10 @@ h1, h2, h3 { text-wrap: balance; }
 .vv { display: inline-flex; align-items: baseline; gap: 7px; font-size: 13px; line-height: 1.35; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--text-2); text-decoration: none; }
 .vv:hover { border-color: var(--gold); color: var(--text); }
 .vv .punkt { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.vv-hoch .punkt { background: var(--gold); }
-.vv-wenige .punkt { background: #e2873a; }
-.vv-ausverkauft .punkt { background: var(--rot-hell); }
-.vv-ausverkauft { color: var(--muted); }
+.vv-hoch .punkt { background: #e2873a; }
+.vv-wenige .punkt { background: var(--rot-hell); }
+.vv-ausverkauft .punkt { background: var(--muted); }
+.vv-ausverkauft { color: var(--muted); text-decoration: line-through; }
 .abzeichen.wertung { background: none; color: var(--gold-hell); border: 1px solid var(--line-strong); font-weight: 600; letter-spacing: 0; padding: 1px 6px; font-variant-numeric: tabular-nums; }
 .abzeichen.wertung.gold { background: linear-gradient(135deg, #f0d98f, #c9a24a); color: #1a1405; border-color: #e8cf8a; }
 .abzeichen.wertung.silber { background: linear-gradient(135deg, #e6e8ec, #aeb3bb); color: #15171a; border-color: #d4d7dc; }
