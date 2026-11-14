@@ -176,10 +176,8 @@ h1, h2, h3 { text-wrap: balance; }
 .abzeichen.chance { background: var(--rot); color: #fff; }
 .abzeichen.gefragt { background: var(--rot-wash); color: var(--rot-hell); border: 1px solid var(--rot-hell); padding: 1px 6px; }
 /* Rubrik "Schnell vergriffen": je Film die gut gebuchten Vorstellungen, Punktfarbe nach Auslastung */
-.hl-termine.vorverkauf li { flex-wrap: nowrap; align-items: flex-start; gap: 12px; }
-.vv-text { min-width: 0; flex: 1; }
 .vv-liste { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.vv { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; padding: 4px 11px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--text-2); text-decoration: none; }
+.vv { display: inline-flex; align-items: baseline; gap: 7px; font-size: 13px; line-height: 1.35; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--text-2); text-decoration: none; }
 .vv:hover { border-color: var(--gold); color: var(--text); }
 .vv .punkt { width: 8px; height: 8px; border-radius: 50%; flex: none; }
 .vv-hoch .punkt { background: var(--gold); }

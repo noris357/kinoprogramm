@@ -287,22 +287,22 @@
     .sort((a, b) => a.d.localeCompare(b.d) || a.zeit.localeCompare(b.zeit));
   const gefragtIds = new Set(auslastung.map((v) => v.f.id));
   const gefragtAbzeichen = (f) => (gefragtIds.has(f.id) ? '<span class="abzeichen gefragt" title="Einzelne Vorstellungen ab nächster Woche sind schon gut gebucht">Vorverkauf gefragt</span>' : '');
-  function vorverkaufRubrik(daten) {
-    // Nur Filme und Kinos, die unter den gewählten Filtern vorkommen
+  // Je Film die gut gebuchten Vorstellungen, nur Filme und Kinos unter den gewählten Filtern, nach erster Vorstellung sortiert
+  function vorverkaufFilme(daten) {
     const sichtbar = new Set(daten.map((t) => `${t.f}|${t.k}`));
     const proFilm = new Map();
     auslastung.filter((v) => sichtbar.has(`${v.f.id}|${v.k}`)).forEach((v) => {
-      if (!proFilm.has(v.f.id)) proFilm.set(v.f.id, []);
-      proFilm.get(v.f.id).push(v);
+      if (!proFilm.has(v.f.id)) proFilm.set(v.f.id, { f: v.f, vs: [] });
+      proFilm.get(v.f.id).vs.push(v);
     });
-    if (!proFilm.size) return '';
-    const zeilen = [...proFilm.values()].map((vs) => {
-      const f = vs[0].f;
-      const termine = vs.map((v) => `<a class="vv vv-${v.stufe}" href="${esc(v.link)}" target="_blank" rel="noopener" title="Zur Sitzplatzwahl beim Kino"><span class="punkt" aria-hidden="true"></span>${fmtWt.format(parse(v.d)).replace('.', '')} ${v.d.slice(8, 10)}.${v.d.slice(5, 7)}. ${esc(v.zeit)} · ${esc(kinos[v.k].name.replace(/\s+(Nürnberg|Fürth|Erlangen)$/, ''))} · ${STUFEN[v.stufe]}</a>`).join('');
-      return `<li>${plakat(f, 'mini')}<div class="vv-text">${filmLink(f)}${wertung(f)}<div class="vv-liste">${termine}</div></div></li>`;
-    }).join('');
-    const stand = D.auslastungStand ? ` Stand ${datumKurz(D.auslastungStand)}.` : '';
-    return `<section class="hl-rubrik"><h3 class="hl-titel">Schnell vergriffen</h3><p class="meta">Vorstellungen ab nächster Woche, die schon gut gebucht sind. Nur Cinecitta, Meisengeige, Metropolis und Manhattan.${stand}</p><ul class="hl-termine vorverkauf">${zeilen}</ul></section>`;
+    return [...proFilm.values()];
+  }
+  const vorverkaufText = () => `Vorstellungen ab nächster Woche, die schon gut gebucht sind. Nur Cinecitta, Meisengeige, Metropolis und Manhattan.${D.auslastungStand ? ` Stand ${datumKurz(D.auslastungStand)}.` : ''}`;
+  // Filmkarte wie in den anderen Rubriken, statt der Kinos die Vorstellungen mit Link zur Sitzplatzwahl
+  function vorverkaufKarte(e) {
+    const f = e.f;
+    const termine = e.vs.map((v) => `<a class="vv vv-${v.stufe}" href="${esc(v.link)}" target="_blank" rel="noopener" title="Zur Sitzplatzwahl beim Kino"><span class="punkt" aria-hidden="true"></span>${fmtWt.format(parse(v.d)).replace('.', '')} ${v.d.slice(8, 10)}.${v.d.slice(5, 7)}. ${esc(v.zeit)} · ${esc(kinos[v.k].name.replace(/\s+(Nürnberg|Fürth|Erlangen)$/, ''))} · ${STUFEN[v.stufe]}</a>`).join('');
+    return `<article class="filmkarte hl-karte">${plakat(f, 'mittel')}<div>${filmLink(f)}${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}<div class="vv-liste">${termine}</div></div></article>`;
   }
   // Bis zu zwei Gründe, warum ein Film besonders ist. Wird überall gleich gebildet.
   function gruende(f) {
@@ -400,6 +400,8 @@
         const c = chanceFilme().get(h.f.id);
         return { ...h, hinweis: `Zum letzten Mal ${wochentagDatum(c.letzter)} im ${c.kinos.map((k) => k.name).join(', ')}` };
       }))],
+      // Blickt über die sieben Tage hinaus und zeigt deshalb alle betroffenen Filme, unabhängig von den anderen Rubriken
+      ['Schnell vergriffen', vorverkaufText(), vorverkaufFilme(daten), vorverkaufKarte],
       ['Geheimtipp', 'Hoher Score, aber nur in einem Kino und an wenigen Tagen.', nimm(alle.filter((h) => (h.f.bewertung ?? -1) >= GEHEIMTIPP_SCORE && fk.get(h.f.id).kinos.size === 1 && fk.get(h.f.id).tage.size <= GEHEIMTIPP_MAX_TAGE))],
       ['Nur einmal', 'Nur ein Spieltag in dieser Woche und danach kein Termin mehr.', nimm(alle.filter((h) => (h.f.bewertung ?? -1) >= NUR_EINMAL_SCORE && fk.get(h.f.id).tage.size === 1 && !fk.get(h.f.id).spaeter))],
       ['Ausgezeichnet', 'Laufende Filme mit einem Hauptpreis.', nimm(alle.filter(hatPreis))],
@@ -412,8 +414,7 @@
       <div class="ansicht-kopf"><h2>Highlights</h2></div>
       <p class="hinweis">Besondere Filme der nächsten sieben Tage. Jeder Film erscheint nur einmal.</p>
       ${film ? `<section class="hl-rubrik"><h3 class="hl-titel">Film der Woche</h3>${highlightKarte(film, true)}</section>` : ''}
-      ${vorverkaufRubrik(daten)}
-      ${rubriken.map(([name, text, liste]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => highlightKarte(h, false)).join('')}</div></section>`).join('')}
+      ${rubriken.map(([name, text, liste, karte]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => (karte ? karte(h) : highlightKarte(h, false))).join('')}</div></section>`).join('')}
       ${film || rubriken.length ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
       ${sonderZeilen.length ? `<section class="hl-rubrik"><h3 class="hl-titel">Sneak und Kurzfilme</h3><p class="meta">Überraschungsfilme und Kurzfilmprogramme der nächsten sieben Tage.</p><ul class="hl-termine">${sonderZeilen.map((e) => `<li>${filmLink(e.f)}<span class="chip">${esc(kinos[e.k].name)}</span><span class="meta">${e.tage.map(wochentagDatum).join(', ')}</span></li>`).join('')}</ul></section>` : ''}
       <p class="hl-fuss"><button class="film-link" data-zu="programm">Zum ganzen Programm →</button></p>`;
