@@ -1,52 +1,12 @@
 {
-  "stand": "2026-11-14",
+  "stand": "2026-11-15",
   "vorstellungen": [
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Der Perfekte Urlaub",
-      "Datum": "2026-11-14",
-      "Zeit": "19:30",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=3ACCA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Manhatten Deluxe Erlangen",
-      "Titel": "Der Perfekte Urlaub",
-      "Datum": "2026-11-14",
-      "Zeit": "19:30",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=70000000014CPICFBA&page=seatingplan&performance=83ECA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "League of Legends Worlds 26 - Finals in Cinema",
-      "Datum": "2026-11-14",
-      "Zeit": "20:00",
-      "Stufe": "ausverkauft",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=37ABA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
-      "Datum": "2026-11-14",
-      "Zeit": "20:30",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=25DCA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Meisengeige Nürnberg",
-      "Titel": "Nürnberg",
-      "Datum": "2026-11-14",
-      "Zeit": "20:45",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=40000000014CPICFBA&page=seatingplan&performance=ADDCA000023CPICFBA&language=de"
-    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "Leica - Ein Jahrhundert in Bildern",
       "Datum": "2026-11-15",
       "Zeit": "18:00",
-      "Stufe": "ausverkauft",
+      "Stufe": "wenige",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=FA2CA000023CPICFBA&language=de"
     },
     {
