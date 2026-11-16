@@ -1,14 +1,6 @@
 {
-  "stand": "2026-11-15",
+  "stand": "2026-11-16",
   "vorstellungen": [
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Leica - Ein Jahrhundert in Bildern",
-      "Datum": "2026-11-15",
-      "Zeit": "18:00",
-      "Stufe": "wenige",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=FA2CA000023CPICFBA&language=de"
-    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "Kurzfilmprogramm",
