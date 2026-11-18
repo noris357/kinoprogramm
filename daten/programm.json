@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-12",
+  "stand": "2026-11-18",
   "zeilen": [
     {
       "Titel": "Ach, diese Lücke, diese entsetzliche Lücke",
@@ -67138,10 +67138,106 @@
       "Datum": "2026-11-18"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-19"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Aufbruch - Prostitution Überwinden",
+      "Kino": "Babylon Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Helene Weigel - Revolutionärin im Rampenlicht",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Maria Wischnewski",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-19"
     },
@@ -67178,10 +67274,170 @@
       "Datum": "2026-11-19"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Butterfly - Rückkehr nach Gran Canaria",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Edmund und Luzie - Winterabenteuer",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Frankreich",
+      "Regisseur:in": "François Narboux",
+      "Produktionsjahr": 2022,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-19"
     },
@@ -67194,6 +67450,190 @@
       "Datum": "2026-11-19"
     },
     {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Leica - Ein Jahrhundert in Bildern",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Reiner Holzemer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Meine Freundin Conni - Abenteuer mit Kranich Klaus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Raquel Conde Viera Dirk Hampel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cineplex Fürth",
       "Land": "USA",
@@ -67202,10 +67642,82 @@
       "Datum": "2026-11-19"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-19"
     },
@@ -67274,10 +67786,122 @@
       "Datum": "2026-11-19"
     },
     {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-19"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "The Mad Dog of Europe",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "The Only Living Pickpocket In New York",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-19"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-19"
     },
@@ -67298,10 +67922,114 @@
       "Datum": "2026-11-19"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-20"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Geister",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-20"
     },
@@ -67330,10 +68058,346 @@
       "Datum": "2026-11-20"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Butterfly - Rückkehr nach Gran Canaria",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Edmund und Luzie - Winterabenteuer",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Frankreich",
+      "Regisseur:in": "François Narboux",
+      "Produktionsjahr": 2022,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Geister",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Meine Freundin Conni - Abenteuer mit Kranich Klaus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Raquel Conde Viera Dirk Hampel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "OM: Chapter 1 - Udhiram",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-20"
     },
@@ -67346,10 +68410,186 @@
       "Datum": "2026-11-20"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Das Geheimnis der gestohlenen Maske",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Nancy Mac Granaky-Quaye",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "CineStar Erlangen",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CineStar Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-20"
     },
@@ -67418,6 +68658,14 @@
       "Datum": "2026-11-20"
     },
     {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
       "Titel": "Klara und die Sonne",
       "Kino": "Lamm-Lichtspiele Erlangen",
       "Land": "USA",
@@ -67426,10 +68674,122 @@
       "Datum": "2026-11-20"
     },
     {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-20"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Digger",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Mexiko, Großbritannien",
+      "Regisseur:in": "Alejandro González Iñárritu",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "The Only Living Pickpocket In New York",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Alte Liebe",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Andreas Dresen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-20"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-20"
     },
@@ -67450,6 +68810,22 @@
       "Datum": "2026-11-20"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
@@ -67458,6 +68834,230 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Festtagsspaß mit Peppa - Das Kinoerlebnis",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Toy Story 5",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Kenna Harris, Andrew Stanton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Geister",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Helene Weigel - Revolutionärin im Rampenlicht",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Maria Wischnewski",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Butterfly - Rückkehr nach Gran Canaria",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
@@ -67466,10 +69066,250 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Edmund und Luzie - Winterabenteuer",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Frankreich",
+      "Regisseur:in": "François Narboux",
+      "Produktionsjahr": 2022,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Geister",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Leica - Ein Jahrhundert in Bildern",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Reiner Holzemer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Meine Freundin Conni - Abenteuer mit Kranich Klaus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Raquel Conde Viera Dirk Hampel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "OM: Chapter 1 - Udhiram",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "Schöne Seelen",
       "Kino": "Cinecitta Nürnberg",
       "Land": "Deutschland, Österreich, Spanien",
       "Regisseur:in": "Tom Schreiber",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-21"
     },
@@ -67506,10 +69346,90 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Das Geheimnis der gestohlenen Maske",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Nancy Mac Granaky-Quaye",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-21"
     },
@@ -67522,11 +69442,139 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "Geister",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "OM",
       "Kino": "CineStar Erlangen",
       "Land": null,
       "Regisseur:in": null,
       "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "CineStar Erlangen",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CineStar Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Steckerlfischfiasko",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Ed Herzog",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
       "Datum": "2026-11-21"
     },
     {
@@ -67602,6 +69650,14 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "Klara und die Sonne",
       "Kino": "Lamm-Lichtspiele Erlangen",
       "Land": "USA",
@@ -67610,10 +69666,146 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-21"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Digger",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Mexiko, Großbritannien",
+      "Regisseur:in": "Alejandro González Iñárritu",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "The Mad Dog of Europe",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "The Only Living Pickpocket In New York",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Alte Liebe",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Andreas Dresen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-21"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-21"
     },
@@ -67634,10 +69826,170 @@
       "Datum": "2026-11-21"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Festtagsspaß mit Peppa - Das Kinoerlebnis",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Steckerlfischfiasko",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Ed Herzog",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Toy Story 5",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Kenna Harris, Andrew Stanton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Alte Liebe",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Andreas Dresen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Astrid",
+      "Kino": "Babylon Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Biermann",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Jens Meurer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Babylon Fürth",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Ronja Räubertochter",
+      "Kino": "Babylon Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-22"
     },
@@ -67658,6 +70010,126 @@
       "Datum": "2026-11-22"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Butterfly - Rückkehr nach Gran Canaria",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
@@ -67666,10 +70138,242 @@
       "Datum": "2026-11-22"
     },
     {
+      "Titel": "Dzień dziecka księdza Jana Kaczkowskiego",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Edmund und Luzie - Winterabenteuer",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Frankreich",
+      "Regisseur:in": "François Narboux",
+      "Produktionsjahr": 2022,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "GIANT - The Play",
       "Kino": "Cinecitta Nürnberg",
       "Land": "Großbritannien",
       "Regisseur:in": "Nicholas Hytner",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Meine Freundin Conni - Abenteuer mit Kranich Klaus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Raquel Conde Viera Dirk Hampel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Nasza Rewolucja (Our Revolution)",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "OM: Chapter 1 - Udhiram",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-22"
     },
@@ -67706,11 +70410,43 @@
       "Datum": "2026-11-22"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "Carlo Acutis - Der Millennial-Heilige",
       "Kino": "CineStar Erlangen",
       "Land": null,
       "Regisseur:in": null,
       "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Das Geheimnis der gestohlenen Maske",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Nancy Mac Granaky-Quaye",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
       "Datum": "2026-11-22"
     },
     {
@@ -67722,6 +70458,22 @@
       "Datum": "2026-11-22"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
@@ -67730,10 +70482,106 @@
       "Datum": "2026-11-22"
     },
     {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "Festtagsspaß mit Peppa - Das Kinoerlebnis",
       "Kino": "CineStar Erlangen",
       "Land": "Großbritannien",
       "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Hadoota",
+      "Kino": "CineStar Erlangen",
+      "Land": "Ägypten",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Scene",
+      "Kino": "CineStar Erlangen",
+      "Land": "Indien",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CineStar Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-22"
     },
@@ -67850,10 +70698,154 @@
       "Datum": "2026-11-22"
     },
     {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Digger",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Mexiko, Großbritannien",
+      "Regisseur:in": "Alejandro González Iñárritu",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Nürnberg",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Vanderbilt",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "The Only Living Pickpocket In New York",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-22"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-22"
     },
@@ -67882,10 +70874,50 @@
       "Datum": "2026-11-23"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-23"
     },
@@ -67895,6 +70927,38 @@
       "Land": "Deutschland",
       "Regisseur:in": "Bora Dagtekin",
       "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Helene Weigel - Revolutionärin im Rampenlicht",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Maria Wischnewski",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
       "Datum": "2026-11-23"
     },
     {
@@ -67930,10 +70994,354 @@
       "Datum": "2026-11-23"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Edmund und Luzie - Winterabenteuer",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Frankreich",
+      "Regisseur:in": "François Narboux",
+      "Produktionsjahr": 2022,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Geister",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Meine Freundin Conni - Abenteuer mit Kranich Klaus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Raquel Conde Viera Dirk Hampel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "OM: Chapter 1 - Udhiram",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-23"
     },
@@ -67954,10 +71362,106 @@
       "Datum": "2026-11-23"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-23"
     },
@@ -67994,10 +71498,146 @@
       "Datum": "2026-11-23"
     },
     {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "The Mad Dog of Europe",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "The Only Living Pickpocket In New York",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Alte Liebe",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Andreas Dresen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-23"
     },
@@ -68010,6 +71650,14 @@
       "Datum": "2026-11-23"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
@@ -68018,10 +71666,418 @@
       "Datum": "2026-11-24"
     },
     {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Geister",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Fatih Akin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Butterfly - Rückkehr nach Gran Canaria",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Minions & Monster",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Pierre Coffin",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "OM: Chapter 1 - Udhiram",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Puella Magi Madoka Magica Der Film - Walpurgisnacht: Rising",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ramayana: Rise of a Legend",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Indien",
+      "Regisseur:in": "Nitesh Tiwari",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-24"
     },
@@ -68042,6 +72098,54 @@
       "Datum": "2026-11-24"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Das Geheimnis der gestohlenen Maske",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Nancy Mac Granaky-Quaye",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
@@ -68050,10 +72154,98 @@
       "Datum": "2026-11-24"
     },
     {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
       "Titel": "Puella Magi Madoka Magica -Walpurgisnacht: Rising",
       "Kino": "CineStar Erlangen",
       "Land": "Japan",
       "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CineStar Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-24"
     },
@@ -68098,10 +72290,138 @@
       "Datum": "2026-11-24"
     },
     {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Nürnberg",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Vanderbilt",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "The Only Living Pickpocket In New York",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-24"
     },
@@ -68114,10 +72434,74 @@
       "Datum": "2026-11-24"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Admiral Kino Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
       "Titel": "Meine Frau, unsere Schwiegertochter und ich",
       "Kino": "Admiral Kino Nürnberg",
       "Land": "USA",
       "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Astrid",
+      "Kino": "Babylon Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Helene Weigel - Revolutionärin im Rampenlicht",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Maria Wischnewski",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Babylon Fürth",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Babylon Fürth",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-25"
     },
@@ -68130,10 +72514,346 @@
       "Datum": "2026-11-25"
     },
     {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Blood Money",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Butterfly - Rückkehr nach Gran Canaria",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "By Any Means",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Elegance Bratton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Çakallarla Dans 8: Şututgart Çıkarması",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Carlo Acutis - Der Millennial-Heilige",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Clayface",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Watkins",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Coyote vs. Acme",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Dave Green",
+      "Produktionsjahr": 2023,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der frechste Troll der Welt",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan Rahbek",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Blutgräfin",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Österreich, Luxemburg, Deutschland",
+      "Regisseur:in": "Ulrike Ottinger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Odyssee",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Christopher Nolan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Edmund und Luzie - Winterabenteuer",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Frankreich",
+      "Regisseur:in": "François Narboux",
+      "Produktionsjahr": 2022,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ein Talent fürs Morden",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Eternity",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": "David Freyne",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Hokum",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Insidious: Out of the Further",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Jacob Chase",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Minotaurus",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Obsession - Du sollst mich lieben",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Curry Barker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "OM: Chapter 1 - Udhiram",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Paw Patrol: Der Dino Film",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Cal Brunker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Resident Evil",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Sneak Preview",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "?",
+      "Regisseur:in": "?",
+      "Produktionsjahr": 2038,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "The Weight - Im Goldrausch",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Deutschland, USA",
+      "Regisseur:in": "Padraic McKinley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Verity - Dunkle Geheimnisse",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "Michael Showalter",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-25"
     },
@@ -68154,10 +72874,66 @@
       "Datum": "2026-11-25"
     },
     {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "CineStar Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CineStar Erlangen",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CineStar Erlangen",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Kommissar Jennerwein - Hochsaison",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland, Österreich",
+      "Regisseur:in": "Hannu Salonen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-25"
     },
@@ -68170,10 +72946,42 @@
       "Datum": "2026-11-25"
     },
     {
+      "Titel": "Resident Evil",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Zach Cregger",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Sneak Preview",
+      "Kino": "CineStar Erlangen",
+      "Land": "?",
+      "Regisseur:in": "?",
+      "Produktionsjahr": 2038,
+      "Datum": "2026-11-25"
+    },
+    {
       "Titel": "Spaziergang nach Syrakus",
       "Kino": "CineStar Erlangen",
       "Land": "Deutschland",
       "Regisseur:in": "Lars Jessen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Spider-Man: Brand New Day",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA",
+      "Regisseur:in": "Destin Daniel Cretton",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CineStar Erlangen",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-25"
     },
@@ -68234,10 +73042,146 @@
       "Datum": "2026-11-25"
     },
     {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
       "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
       "Kino": "Manhatten Deluxe Erlangen",
       "Land": "USA",
       "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Digger",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Mexiko, Großbritannien",
+      "Regisseur:in": "Alejandro González Iñárritu",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Nürnberg",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "James Vanderbilt",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Meisengeige Nürnberg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Alte Liebe",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Andreas Dresen",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Frau Winkler verlässt das Haus",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Doris Dörrie",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Vaterland",
+      "Kino": "Metropolis Nürnberg",
+      "Land": "Deutschland, Polen, Frankreich",
+      "Regisseur:in": "Paweł Pawlikowski",
       "Produktionsjahr": 2026,
       "Datum": "2026-11-25"
     },
@@ -68802,6 +73746,14 @@
       "Datum": "2026-12-01"
     },
     {
+      "Titel": "20 Jahre Liebe braucht keine Ferien (Best of Cinema)",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-01"
+    },
+    {
       "Titel": "Liebe braucht keine Ferien",
       "Kino": "Cineplex Fürth",
       "Land": "USA",
@@ -69135,6 +74087,14 @@
       "Land": "Deutschland",
       "Regisseur:in": "Asgeir Helgestad",
       "Produktionsjahr": 2022,
+      "Datum": "2026-12-06"
+    },
+    {
+      "Titel": "Kein Land Für Niemand",
+      "Kino": "Casablanca Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-12-06"
     },
     {
@@ -69498,6 +74458,30 @@
       "Datum": "2026-12-12"
     },
     {
+      "Titel": "Dezember - Wunschfilm",
+      "Kino": "Casablanca Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "Glitzerbrunch mit Roxy Gen Love",
+      "Kino": "Casablanca Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "Holy Wood Dust - Das Leben der heiligen Bäume",
+      "Kino": "Casablanca Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Victor Kossakovsky",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-12-13"
+    },
+    {
       "Titel": "Taxi Driver",
       "Kino": "Casablanca Nürnberg",
       "Land": "Vereinigte Staaten",
@@ -69519,6 +74503,22 @@
       "Land": "Estland",
       "Regisseur:in": "Anu Aun",
       "Produktionsjahr": 2022,
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "Einar Schleef - Ich habe kein Deutschland gefunden",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Sandra Prechtel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "Nur geträumt",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Frankreich",
+      "Regisseur:in": "Éric Toledano, Olivier Nakache",
+      "Produktionsjahr": 2026,
       "Datum": "2026-12-13"
     },
     {
@@ -69551,6 +74551,14 @@
       "Land": "Estland",
       "Regisseur:in": "Anu Aun",
       "Produktionsjahr": 2022,
+      "Datum": "2026-12-14"
+    },
+    {
+      "Titel": "Einar Schleef - Ich habe kein Deutschland gefunden",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Sandra Prechtel",
+      "Produktionsjahr": 2026,
       "Datum": "2026-12-14"
     },
     {
@@ -69607,6 +74615,14 @@
       "Land": "Estland",
       "Regisseur:in": "Anu Aun",
       "Produktionsjahr": 2022,
+      "Datum": "2026-12-15"
+    },
+    {
+      "Titel": "Einar Schleef - Ich habe kein Deutschland gefunden",
+      "Kino": "Lamm-Lichtspiele Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Sandra Prechtel",
+      "Produktionsjahr": 2026,
       "Datum": "2026-12-15"
     },
     {
@@ -70578,6 +75594,14 @@
       "Datum": "2026-12-24"
     },
     {
+      "Titel": "Liebe, Tanz & Leidenschaft",
+      "Kino": "Casablanca Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-25"
+    },
+    {
       "Titel": "Shorts Attack: Cannes Competition Shorts",
       "Kino": "Casablanca Nürnberg",
       "Land": null,
@@ -70866,6 +75890,14 @@
       "Datum": "2026-12-31"
     },
     {
+      "Titel": "Silvesterparty 26/27",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-31"
+    },
+    {
       "Titel": "Bildzauber - Projektionskunst aus Nürnberg",
       "Kino": "Filmhaus Nürnberg",
       "Land": null,
@@ -70946,6 +75978,14 @@
       "Datum": "2027-01-10"
     },
     {
+      "Titel": "Oh Boy",
+      "Kino": "Casablanca Nürnberg",
+      "Land": null,
+      "Regisseur:in": "Jan-Ole Gerster",
+      "Produktionsjahr": "2012",
+      "Datum": "2027-01-10"
+    },
+    {
       "Titel": "Bildzauber - Projektionskunst aus Nürnberg",
       "Kino": "Filmhaus Nürnberg",
       "Land": null,
@@ -70978,12 +76018,28 @@
       "Datum": "2027-01-17"
     },
     {
+      "Titel": "Glennkill: Ein Schafskrimi",
+      "Kino": "CineStar Erlangen",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Kyle Balda",
+      "Produktionsjahr": null,
+      "Datum": "2027-01-27"
+    },
+    {
       "Titel": "Dirigenten des Bodens",
       "Kino": "Casablanca Nürnberg",
       "Land": null,
       "Regisseur:in": "Tim Hamelberg und Andreas Heinrich",
       "Produktionsjahr": "2025",
       "Datum": "2027-02-21"
+    },
+    {
+      "Titel": "Alte Liebe",
+      "Kino": "CineStar Erlangen",
+      "Land": "Deutschland",
+      "Regisseur:in": "Andreas Dresen",
+      "Produktionsjahr": 2026,
+      "Datum": "2027-02-24"
     },
     {
       "Titel": "Put Your Soul on Your Hand and Walk",
@@ -71000,6 +76056,14 @@
       "Regisseur:in": "Nicole Scherg",
       "Produktionsjahr": "2026",
       "Datum": "2027-03-14"
+    },
+    {
+      "Titel": "Die Camino-Therapie - Finde deinen Weg",
+      "Kino": "CineStar Erlangen",
+      "Land": "Belgien",
+      "Regisseur:in": "Yann Samuell",
+      "Produktionsjahr": null,
+      "Datum": "2027-03-31"
     }
   ]
 }
