@@ -74,6 +74,8 @@ $offen = @($filme.Keys | Where-Object {
   if ($zuordnung.ContainsKey($_)) { return -not $i -or $i.tmdb -ne $zuordnung[$_] }
   if (-not $i) { return $true }
   if ($i.nichtGefunden) { return ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $i.geprueft), 'yyyy-MM-dd', $null)).TotalDays -gt 30 }
+  # Gefundene Filme ohne Feld kinostart (aus aelteren Laeufen): einmal neu abfragen. Ohne deutschen Eintrag steht kinostart auf leer, nicht fehlend.
+  if ($i.tmdb -and -not $i.PSObject.Properties['kinostart']) { return $true }
   # Regie oder Titel in fremder Schrift: neu pruefen, nach erfolglosem Versuch aber erst nach 30 Tagen wieder
   if ((Test-FremdeSchrift $i.regie) -or (Test-FremdeSchrift $i.titel)) {
     if (-not $i.schriftGeprueft) { return $true }
@@ -150,7 +152,7 @@ foreach ($k in $offen) {
     $neu++; continue
   }
 
-  $f = Invoke-Tmdb "movie/$id" @{ append_to_response = 'credits,external_ids' }
+  $f = Invoke-Tmdb "movie/$id" @{ append_to_response = 'credits,external_ids,release_dates' }
   if (-not $f) { $infos[$k] = [ordered]@{ nichtGefunden = $true; geprueft = $heute }; $neu++; continue }
 
   # Titel in fremder Schrift: englischen Titel nehmen, sofern er lateinisch ist (keine Umschrift von Hand)
@@ -192,6 +194,16 @@ foreach ($k in $offen) {
   if ($r.Count) { $eintrag.regie = $r -join ', ' }
   # Bleibt fremde Schrift uebrig, den Versuch vermerken (sonst wuerde jeder Lauf erneut abfragen)
   if ((Test-FremdeSchrift $eintrag.regie) -or (Test-FremdeSchrift $eintrag.titel)) { $eintrag.schriftGeprueft = $heute }
+  # Deutscher Kinostart: fruehestes Datum vom Typ 3 (Kinostart), ersatzweise Typ 2 (begrenzter Kinostart). Ohne deutschen Eintrag leer.
+  $kinostart = ''
+  $de = @($f.release_dates.results | Where-Object { $_.iso_3166_1 -eq 'DE' }) | Select-Object -First 1
+  if ($de) {
+    foreach ($typ in 3, 2) {
+      $termine = @($de.release_dates | Where-Object { $_.type -eq $typ -and $_.release_date } | ForEach-Object { (ConvertTo-IsoText $_.release_date).Substring(0, 10) } | Sort-Object)
+      if ($termine.Count) { $kinostart = $termine[0]; break }
+    }
+  }
+  $eintrag.kinostart = $kinostart
   $start = ConvertTo-IsoText $f.release_date
   if ($start -match '^\d{4}') { $eintrag.jahr = $start.Substring(0, 4) }
   $infos[$k] = $eintrag

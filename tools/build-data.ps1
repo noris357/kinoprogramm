@@ -304,7 +304,7 @@ foreach ($g in $gruppen.Values) {
   if ($i) {
     # Nur Plakat, TMDB-ID und eigener Score gehen auf die Website, keine Einzelwertungen
     $zusatz = [ordered]@{}
-    foreach ($f in 'poster', 'tmdb') { if ($i.$f) { $zusatz[$f] = $i.$f } }
+    foreach ($f in 'poster', 'tmdb', 'kinostart') { if ($i.$f) { $zusatz[$f] = $i.$f } }
     if ($scores.ContainsKey($g.Id)) { $zusatz.score = $scores[$g.Id] }
     if ($i.tmdb -and $preise.ContainsKey([string]$i.tmdb)) { $zusatz.preise = $preise[[string]$i.tmdb] }
     if ($zusatz.Count) { $eintrag += , $zusatz }
