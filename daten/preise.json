@@ -37,6 +37,23 @@
       "jahr": 2002
     }
   ],
+  "289": [
+    {
+      "preis": "oscar",
+      "kategorie": "Bestes adaptiertes Drehbuch",
+      "jahr": 1944
+    },
+    {
+      "preis": "oscar",
+      "kategorie": "Beste Regie",
+      "jahr": 1944
+    },
+    {
+      "preis": "oscar",
+      "kategorie": "Bester Film",
+      "jahr": 1944
+    }
+  ],
   "581": [
     {
       "preis": "oscar",
@@ -81,6 +98,13 @@
       "jahr": 1986
     }
   ],
+  "875": [
+    {
+      "preis": "oscar",
+      "kategorie": "Beste Kamera",
+      "jahr": 1932
+    }
+  ],
   "1366": [
     {
       "preis": "oscar",
@@ -119,6 +143,20 @@
       "preis": "oscar",
       "kategorie": "Bestes Originaldrehbuch",
       "jahr": 1986
+    }
+  ],
+  "10997": [
+    {
+      "preis": "palme",
+      "kategorie": "Goldene Palme",
+      "jahr": 1993
+    }
+  ],
+  "20532": [
+    {
+      "preis": "loewe",
+      "kategorie": "Goldener Löwe",
+      "jahr": 1954
     }
   ],
   "44018": [

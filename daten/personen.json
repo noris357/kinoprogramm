@@ -72,6 +72,12 @@
         "name": "James Cameron"
       }
     ],
+    "289": [
+      {
+        "id": 4109,
+        "name": "Michael Curtiz"
+      }
+    ],
     "508": [
       {
         "id": 7018,
@@ -118,6 +124,12 @@
       {
         "id": 68,
         "name": "Fritz Lang"
+      }
+    ],
+    "875": [
+      {
+        "id": 2891,
+        "name": "Josef von Sternberg"
       }
     ],
     "920": [
@@ -238,6 +250,12 @@
         "name": "Peter Weir"
       }
     ],
+    "9615": [
+      {
+        "id": 58189,
+        "name": "Justin Lin"
+      }
+    ],
     "9630": [
       {
         "id": 18502,
@@ -280,6 +298,12 @@
         "name": "John Woo"
       }
     ],
+    "10997": [
+      {
+        "id": 20640,
+        "name": "陈凯歌"
+      }
+    ],
     "11681": [
       {
         "id": 25317,
@@ -316,6 +340,12 @@
         "name": "Florian Gaag"
       }
     ],
+    "14243": [
+      {
+        "id": 1048452,
+        "name": "Charlie Ahearn"
+      }
+    ],
     "14267": [
       {
         "id": 10367,
@@ -326,6 +356,12 @@
       {
         "id": 21155,
         "name": "Jim Kouf"
+      }
+    ],
+    "16869": [
+      {
+        "id": 138,
+        "name": "Quentin Tarantino"
       }
     ],
     "17667": [
@@ -348,6 +384,12 @@
       {
         "id": 2428,
         "name": "Ernst Lubitsch"
+      }
+    ],
+    "20532": [
+      {
+        "id": 97202,
+        "name": "Mizoguchi Kenji"
       }
     ],
     "21394": [
@@ -386,6 +428,12 @@
         "name": "Ken Russell"
       }
     ],
+    "32008": [
+      {
+        "id": 108727,
+        "name": "Allen Baron"
+      }
+    ],
     "33954": [
       {
         "id": 5970,
@@ -410,10 +458,34 @@
         "name": "Ferdinando Merighi"
       }
     ],
+    "42170": [
+      {
+        "id": 20025,
+        "name": "Shōhei Imamura"
+      }
+    ],
+    "42641": [
+      {
+        "id": 2891,
+        "name": "Josef von Sternberg"
+      }
+    ],
+    "43828": [
+      {
+        "id": 19093,
+        "name": "George Marshall"
+      }
+    ],
     "44018": [
       {
         "id": 6817,
         "name": "Agnès Varda"
+      }
+    ],
+    "44208": [
+      {
+        "id": 2428,
+        "name": "Ernst Lubitsch"
       }
     ],
     "44721": [
@@ -422,10 +494,22 @@
         "name": "Sidney J. Furie"
       }
     ],
+    "46069": [
+      {
+        "id": 97202,
+        "name": "Mizoguchi Kenji"
+      }
+    ],
     "46195": [
       {
         "id": 5714,
         "name": "Carlos Saldanha"
+      }
+    ],
+    "46913": [
+      {
+        "id": 13899,
+        "name": "G.W. Pabst"
       }
     ],
     "46954": [
@@ -448,6 +532,12 @@
       {
         "id": 100593,
         "name": "Joe May"
+      }
+    ],
+    "56142": [
+      {
+        "id": 15127,
+        "name": "Luchino Visconti"
       }
     ],
     "56340": [
@@ -478,6 +568,12 @@
       {
         "id": 78409,
         "name": "Lena Koppel"
+      }
+    ],
+    "61650": [
+      {
+        "id": 3146,
+        "name": "Billy Wilder"
       }
     ],
     "62560": [
@@ -648,6 +744,12 @@
         "name": "Christian Stahl"
       }
     ],
+    "202986": [
+      {
+        "id": 1198790,
+        "name": "Stephen Brown"
+      }
+    ],
     "209112": [
       {
         "id": 15217,
@@ -694,6 +796,18 @@
         "name": "Uwe Schrader"
       }
     ],
+    "266800": [
+      {
+        "id": 46184,
+        "name": "Eugen York"
+      }
+    ],
+    "283043": [
+      {
+        "id": 1290149,
+        "name": "Ulrich Weiß"
+      }
+    ],
     "305971": [
       {
         "id": 37538,
@@ -724,6 +838,12 @@
         "name": "Lars Kraume"
       }
     ],
+    "368769": [
+      {
+        "id": 2333,
+        "name": "Harun Farocki"
+      }
+    ],
     "371492": [
       {
         "id": 1548355,
@@ -746,6 +866,12 @@
         "name": "Jon M. Chu"
       }
     ],
+    "422821": [
+      {
+        "id": 51534,
+        "name": "Lucky McKee"
+      }
+    ],
     "438631": [
       {
         "id": 137427,
@@ -764,6 +890,12 @@
         "name": "Wolf Gaudlitz"
       }
     ],
+    "530036": [
+      {
+        "id": 1639867,
+        "name": "Dietrich Schubert"
+      }
+    ],
     "539016": [
       {
         "id": 998555,
@@ -774,6 +906,12 @@
       {
         "id": 55075,
         "name": "Jeff Wadlow"
+      }
+    ],
+    "558073": [
+      {
+        "id": 1639867,
+        "name": "Dietrich Schubert"
       }
     ],
     "560716": [
@@ -864,6 +1002,12 @@
         "name": "Taika Waititi"
       }
     ],
+    "884692": [
+      {
+        "id": 1170106,
+        "name": "陳哲藝"
+      }
+    ],
     "891621": [
       {
         "id": 54472,
@@ -874,6 +1018,12 @@
       {
         "id": 3296561,
         "name": "Noemi Schory"
+      }
+    ],
+    "928358": [
+      {
+        "id": 32399,
+        "name": "Isabelle Stever"
       }
     ],
     "936075": [
@@ -1118,6 +1268,16 @@
         "name": "Pawo Choyning Dorji"
       }
     ],
+    "1117898": [
+      {
+        "id": 1229796,
+        "name": "Erica Rivinoja"
+      },
+      {
+        "id": 1262481,
+        "name": "Alessandro Carloni"
+      }
+    ],
     "1119090": [
       {
         "id": 2209558,
@@ -1264,10 +1424,22 @@
         "name": "James Vanderbilt"
       }
     ],
+    "1217602": [
+      {
+        "id": 1297488,
+        "name": "Allan Ungar"
+      }
+    ],
     "1218067": [
       {
         "id": 73098,
         "name": "Karsten Kiilerich"
+      }
+    ],
+    "1223178": [
+      {
+        "id": 2887522,
+        "name": "山本健"
       }
     ],
     "1226863": [
@@ -1278,6 +1450,12 @@
       {
         "id": 1719706,
         "name": "Aaron Horvath"
+      }
+    ],
+    "1227877": [
+      {
+        "id": 930526,
+        "name": "Boots Riley"
       }
     ],
     "1228710": [
@@ -1794,6 +1972,12 @@
         "name": "Genki Kawamura"
       }
     ],
+    "1408589": [
+      {
+        "id": 5144693,
+        "name": "Mehrab Kordbache"
+      }
+    ],
     "1410202": [
       {
         "id": 57763,
@@ -2262,6 +2446,12 @@
         "name": "Marcus O. Rosenmüller"
       }
     ],
+    "1541435": [
+      {
+        "id": 5032502,
+        "name": "Nicholas Marchetti"
+      }
+    ],
     "1550933": [
       {
         "id": 1373892,
@@ -2706,6 +2896,16 @@
         "name": "Sacha Baron Cohen"
       }
     ],
+    "1731354": [
+      {
+        "id": 50376,
+        "name": "Peter Badel"
+      },
+      {
+        "id": 6346380,
+        "name": "Chris Wright"
+      }
+    ],
     "1741242": [
       {
         "id": 5677416,
@@ -2763,6 +2963,12 @@
         "name": "Peter Knoch"
       }
     ],
+    "1786506": [
+      {
+        "id": 2510737,
+        "name": "Michael Venus"
+      }
+    ],
     "1798437": [
       {
         "id": 2414376,
@@ -2796,6 +3002,14 @@
       "ort": "Pukerua Bay, North Island, New Zealand",
       "foto": "fotos/108.jpg",
       "regiearbeiten": 17
+    },
+    "138": {
+      "name": "Quentin Tarantino",
+      "geprueft": "2026-11-18",
+      "geboren": 1963,
+      "ort": "Knoxville, Tennessee, USA",
+      "foto": "fotos/138.jpg",
+      "regiearbeiten": 12
     },
     "223": {
       "name": "Alejandro G. Iñárritu",
@@ -2919,6 +3133,15 @@
       "foto": "fotos/2303.jpg",
       "regiearbeiten": 44
     },
+    "2333": {
+      "name": "Harun Farocki",
+      "geprueft": "2026-11-18",
+      "geboren": 1944,
+      "gestorben": 2014,
+      "ort": "Neutitschein, Sudetenland",
+      "foto": "fotos/2333.jpg",
+      "regiearbeiten": 45
+    },
     "2428": {
       "name": "Ernst Lubitsch",
       "geprueft": "2026-11-14",
@@ -2953,6 +3176,15 @@
       "foto": "fotos/2710.jpg",
       "regiearbeiten": 15
     },
+    "2891": {
+      "name": "Josef von Sternberg",
+      "geprueft": "2026-11-18",
+      "geboren": 1894,
+      "gestorben": 1969,
+      "ort": "Vienna, Austria",
+      "foto": "fotos/2891.jpg",
+      "regiearbeiten": 25
+    },
     "2917": {
       "name": "James Whale",
       "geprueft": "2026-11-14",
@@ -2962,6 +3194,15 @@
       "foto": "fotos/2917.jpg",
       "regiearbeiten": 20
     },
+    "3146": {
+      "name": "Billy Wilder",
+      "geprueft": "2026-11-18",
+      "geboren": 1906,
+      "gestorben": 2002,
+      "ort": "Sucha, Galicia, Austria-Hungary",
+      "foto": "fotos/3146.jpg",
+      "regiearbeiten": 26
+    },
     "3849": {
       "name": "Tage Danielsson",
       "geprueft": "2026-11-18",
@@ -2970,6 +3211,15 @@
       "ort": "Linköping, Östergötlands län, Sweden",
       "foto": "fotos/3849.jpg",
       "regiearbeiten": 22
+    },
+    "4109": {
+      "name": "Michael Curtiz",
+      "geprueft": "2026-11-18",
+      "geboren": 1886,
+      "gestorben": 1962,
+      "ort": "Budapest, Austria-Hungary [now Hungary]",
+      "foto": "fotos/4109.jpg",
+      "regiearbeiten": 119
     },
     "4429": {
       "name": "Jim Jarmusch",
@@ -3243,6 +3493,15 @@
       "foto": "fotos/14502.jpg",
       "regiearbeiten": 2
     },
+    "15127": {
+      "name": "Luchino Visconti",
+      "geprueft": "2026-11-18",
+      "geboren": 1906,
+      "gestorben": 1976,
+      "ort": "Milan, Lombardy, Italy",
+      "foto": "fotos/15127.jpg",
+      "regiearbeiten": 18
+    },
     "15189": {
       "name": "Michelangelo Antonioni",
       "geprueft": "2026-11-14",
@@ -3348,6 +3607,15 @@
       "foto": "fotos/19066.jpg",
       "regiearbeiten": 4
     },
+    "19093": {
+      "name": "George Marshall",
+      "geprueft": "2026-11-18",
+      "geboren": 1891,
+      "gestorben": 1975,
+      "ort": "Chicago, Illinois, USA",
+      "foto": "fotos/19093.jpg",
+      "regiearbeiten": 86
+    },
     "19119": {
       "name": "Mélanie Laurent",
       "geprueft": "2026-11-14",
@@ -3389,6 +3657,15 @@
       "foto": "fotos/19864.jpg",
       "regiearbeiten": 67
     },
+    "20025": {
+      "name": "Shōhei Imamura",
+      "geprueft": "2026-11-18",
+      "geboren": 1926,
+      "gestorben": 2006,
+      "ort": "Tokyo, Japan",
+      "foto": "fotos/20025.jpg",
+      "regiearbeiten": 25
+    },
     "20204": {
       "name": "James Vanderbilt",
       "geprueft": "2026-11-14",
@@ -3404,6 +3681,14 @@
       "ort": "Hagen, Germany",
       "foto": "fotos/20267.jpg",
       "regiearbeiten": 3
+    },
+    "20640": {
+      "name": "陈凯歌",
+      "geprueft": "2026-11-18",
+      "geboren": 1952,
+      "ort": "Beijing, China",
+      "foto": "fotos/20640.jpg",
+      "regiearbeiten": 24
     },
     "20659": {
       "name": "Marjane Satrapi",
@@ -3505,6 +3790,14 @@
       "ort": "Southampton, Hampshire, England, UK",
       "foto": "fotos/32327.jpg",
       "regiearbeiten": 50
+    },
+    "32399": {
+      "name": "Isabelle Stever",
+      "geprueft": "2026-11-18",
+      "geboren": 1963,
+      "ort": "Munich, Germany",
+      "foto": "fotos/32399.jpg",
+      "regiearbeiten": 6
     },
     "32940": {
       "name": "Yves Boisset",
@@ -3638,6 +3931,14 @@
       "foto": "fotos/45572.jpg",
       "regiearbeiten": 26
     },
+    "46184": {
+      "name": "Eugen York",
+      "geprueft": "2026-11-18",
+      "geboren": 1912,
+      "gestorben": 1991,
+      "ort": "Rybinsk, Yaroslavskaya guberniya, Russian Empire",
+      "regiearbeiten": 27
+    },
     "48084": {
       "name": "Harald Sicheritz",
       "geprueft": "2026-11-14",
@@ -3665,6 +3966,12 @@
       "geprueft": "2026-11-14",
       "geboren": 1955,
       "regiearbeiten": 6
+    },
+    "50376": {
+      "name": "Peter Badel",
+      "geprueft": "2026-11-18",
+      "geboren": 1953,
+      "regiearbeiten": 0
     },
     "50583": {
       "name": "Adam Rifkin",
@@ -3697,6 +4004,14 @@
       "ort": "The Bronx, New York, U.S.",
       "foto": "fotos/51373.jpg",
       "regiearbeiten": 36
+    },
+    "51534": {
+      "name": "Lucky McKee",
+      "geprueft": "2026-11-18",
+      "geboren": 1975,
+      "ort": "Jenny Lind, California, USA",
+      "foto": "fotos/51534.jpg",
+      "regiearbeiten": 12
     },
     "52114": {
       "name": "Jon Lucas",
@@ -3826,6 +4141,14 @@
       "ort": "Kiel, Germany",
       "foto": "fotos/57763.jpg",
       "regiearbeiten": 24
+    },
+    "58189": {
+      "name": "Justin Lin",
+      "geprueft": "2026-11-18",
+      "geboren": 1971,
+      "ort": "Taipei, Taiwan",
+      "foto": "fotos/58189.jpg",
+      "regiearbeiten": 11
     },
     "58689": {
       "name": "Neil LaBute",
@@ -4090,6 +4413,15 @@
       "foto": "fotos/96657.jpg",
       "regiearbeiten": 7
     },
+    "97202": {
+      "name": "Mizoguchi Kenji",
+      "geprueft": "2026-11-18",
+      "geboren": 1898,
+      "gestorben": 1956,
+      "ort": "Asakusa, Tokyo, Japan",
+      "foto": "fotos/97202.jpg",
+      "regiearbeiten": 45
+    },
     "100593": {
       "name": "Joe May",
       "geprueft": "2026-11-14",
@@ -4134,6 +4466,14 @@
       "geboren": 1979,
       "foto": "fotos/108678.jpg",
       "regiearbeiten": 4
+    },
+    "108727": {
+      "name": "Allen Baron",
+      "geprueft": "2026-11-18",
+      "geboren": 1927,
+      "ort": "Brooklyn, New York, USA",
+      "foto": "fotos/108727.jpg",
+      "regiearbeiten": 7
     },
     "109140": {
       "name": "Murat Şeker",
@@ -4484,6 +4824,14 @@
       "foto": "fotos/930430.jpg",
       "regiearbeiten": 5
     },
+    "930526": {
+      "name": "Boots Riley",
+      "geprueft": "2026-11-18",
+      "geboren": 1971,
+      "ort": "Chicago, Illinois, USA",
+      "foto": "fotos/930526.jpg",
+      "regiearbeiten": 2
+    },
     "998555": {
       "name": "Victor Kossakovsky",
       "geprueft": "2026-11-14",
@@ -4572,6 +4920,14 @@
       "ort": "Vienna, Austria",
       "foto": "fotos/1046509.jpg",
       "regiearbeiten": 11
+    },
+    "1048452": {
+      "name": "Charlie Ahearn",
+      "geprueft": "2026-11-18",
+      "geboren": 1951,
+      "ort": "Binghamton, New York, USA",
+      "foto": "fotos/1048452.jpg",
+      "regiearbeiten": 5
     },
     "1078358": {
       "name": "Michal Kosakowski",
@@ -4734,6 +5090,14 @@
       "ort": "München, Germany",
       "regiearbeiten": 4
     },
+    "1170106": {
+      "name": "陳哲藝",
+      "geprueft": "2026-11-18",
+      "geboren": 1984,
+      "ort": "Singapore",
+      "foto": "fotos/1170106.jpg",
+      "regiearbeiten": 6
+    },
     "1171674": {
       "name": "Max Hegewald",
       "geprueft": "2026-11-14",
@@ -4786,6 +5150,11 @@
       "foto": "fotos/1196816.jpg",
       "regiearbeiten": 10
     },
+    "1198790": {
+      "name": "Stephen Brown",
+      "geprueft": "2026-11-18",
+      "regiearbeiten": 1
+    },
     "1208063": {
       "name": "Klaus Martens",
       "geprueft": "2026-11-14",
@@ -4806,6 +5175,14 @@
       "ort": "Vancouver, British Columbia, Canada",
       "foto": "fotos/1212667.jpg",
       "regiearbeiten": 2
+    },
+    "1229796": {
+      "name": "Erica Rivinoja",
+      "geprueft": "2026-11-18",
+      "geboren": 1984,
+      "ort": "Hobbs, Nuovo Messico, Stati Uniti",
+      "foto": "fotos/1229796.jpg",
+      "regiearbeiten": 1
     },
     "1238965": {
       "name": "Bora Dağtekin",
@@ -4835,6 +5212,14 @@
       "name": "Marco Nguyen",
       "geprueft": "2026-11-14",
       "regiearbeiten": 1
+    },
+    "1262481": {
+      "name": "Alessandro Carloni",
+      "geprueft": "2026-11-18",
+      "geboren": 1977,
+      "ort": "Bologna, Italy",
+      "foto": "fotos/1262481.jpg",
+      "regiearbeiten": 2
     },
     "1266207": {
       "name": "Γιώργος Τσεμπερόπουλος",
@@ -4902,6 +5287,14 @@
       "foto": "fotos/1285231.jpg",
       "regiearbeiten": 5
     },
+    "1290149": {
+      "name": "Ulrich Weiß",
+      "geprueft": "2026-11-18",
+      "geboren": 1942,
+      "gestorben": 2022,
+      "ort": "Wernigerode, Germany",
+      "regiearbeiten": 5
+    },
     "1291672": {
       "name": "Dieter Reifarth",
       "geprueft": "2026-11-14",
@@ -4921,6 +5314,13 @@
       "ort": "Pennsylvania, USA",
       "foto": "fotos/1295292.jpg",
       "regiearbeiten": 3
+    },
+    "1297488": {
+      "name": "Allan Ungar",
+      "geprueft": "2026-11-18",
+      "ort": "Toronto, Ontario, Canada",
+      "foto": "fotos/1297488.jpg",
+      "regiearbeiten": 4
     },
     "1303917": {
       "name": "Faraz Shariat",
@@ -5226,6 +5626,14 @@
       "name": "Roy Cohen",
       "geprueft": "2026-11-14",
       "regiearbeiten": 2
+    },
+    "1639867": {
+      "name": "Dietrich Schubert",
+      "geprueft": "2026-11-18",
+      "geboren": 1940,
+      "ort": "Görlitz, Germany",
+      "foto": "fotos/1639867.jpg",
+      "regiearbeiten": 14
     },
     "1670044": {
       "name": "Maria Wischnewski",
@@ -5611,6 +6019,14 @@
       "foto": "fotos/2504505.jpg",
       "regiearbeiten": 2
     },
+    "2510737": {
+      "name": "Michael Venus",
+      "geprueft": "2026-11-18",
+      "geboren": 1976,
+      "ort": "Jena, Germany",
+      "foto": "fotos/2510737.jpg",
+      "regiearbeiten": 1
+    },
     "2539340": {
       "name": "Denise Fernandes",
       "geprueft": "2026-11-14",
@@ -5661,6 +6077,14 @@
       "geprueft": "2026-11-14",
       "ort": "Ohio, USA",
       "foto": "fotos/2858959.jpg",
+      "regiearbeiten": 1
+    },
+    "2887522": {
+      "name": "山本健",
+      "geprueft": "2026-11-18",
+      "geboren": 1992,
+      "ort": "Ottawa, Ontario, Canada",
+      "foto": "fotos/2887522.jpg",
       "regiearbeiten": 1
     },
     "2894609": {
@@ -5882,6 +6306,11 @@
       "foto": "fotos/5001622.jpg",
       "regiearbeiten": 1
     },
+    "5032502": {
+      "name": "Nicholas Marchetti",
+      "geprueft": "2026-11-18",
+      "regiearbeiten": 0
+    },
     "5035273": {
       "name": "Florian Karner",
       "geprueft": "2026-11-14",
@@ -5900,6 +6329,11 @@
       "geprueft": "2026-11-14",
       "geboren": 1937,
       "regiearbeiten": 2
+    },
+    "5144693": {
+      "name": "Mehrab Kordbache",
+      "geprueft": "2026-11-18",
+      "regiearbeiten": 0
     },
     "5154535": {
       "name": "Florian Moch",
@@ -5976,6 +6410,11 @@
       "name": "Isabel Schneider",
       "geprueft": "2026-11-14",
       "regiearbeiten": 1
+    },
+    "6346380": {
+      "name": "Chris Wright",
+      "geprueft": "2026-11-18",
+      "regiearbeiten": 0
     },
     "6518324": {
       "name": "Peter Knoch",
