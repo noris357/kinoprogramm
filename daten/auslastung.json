@@ -1,30 +1,6 @@
 {
-  "stand": "2026-11-17",
+  "stand": "2026-11-18",
   "vorstellungen": [
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Kurzfilmprogramm",
-      "Datum": "2026-11-17",
-      "Zeit": "19:00",
-      "Stufe": "wenige",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=E9ACA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Kurzfilmprogramm",
-      "Datum": "2026-11-17",
-      "Zeit": "19:00",
-      "Stufe": "wenige",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=F9ACA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Manhatten Deluxe Erlangen",
-      "Titel": "Die Tribute von Panem  - Sunrise on the Reaping",
-      "Datum": "2026-11-18",
-      "Zeit": "19:00",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=70000000014CPICFBA&page=seatingplan&performance=6C6CA000023CPICFBA&language=de"
-    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "Die Tribute von Panem  - Sunrise on the Reaping",
