@@ -1,13 +1,21 @@
 {
-  "stand": "2026-11-20",
+  "stand": "2026-11-21",
   "vorstellungen": [
     {
       "Kino": "Cinecitta Nürnberg",
+      "Titel": "Ramayana: Rise Of A Legend",
+      "Datum": "2026-11-21",
+      "Zeit": "16:50",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=480DA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
       "Titel": "Die Tribute von Panem  - Sunrise on the Reaping",
-      "Datum": "2026-11-20",
+      "Datum": "2026-11-21",
       "Zeit": "19:45",
       "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=6BACA000023CPICFBA&language=de"
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=7BACA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",
@@ -56,14 +64,6 @@
       "Zeit": "20:10",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=396BA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Avengers: Doomsday",
-      "Datum": "2026-12-20",
-      "Zeit": "14:30",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=256BA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",
