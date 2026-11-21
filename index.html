@@ -10,6 +10,7 @@
 <body>
   <header class="kopf">
     <div class="wrap">
+      <button type="button" class="profil-knopf" id="profil-knopf" aria-haspopup="dialog">Mein Kino</button>
       <div class="augenbraue" id="augenbraue">Nürnberg <i></i> Fürth <i></i> Erlangen</div>
       <h1>Kinoprogramm</h1>
       <div class="kennzahlen" id="kennzahlen"></div>
@@ -73,6 +74,11 @@
   <dialog id="film-dialog" aria-labelledby="fd-titel">
     <form method="dialog"><button class="schliessen" aria-label="Schließen">×</button></form>
     <div id="fd-inhalt"></div>
+  </dialog>
+
+  <dialog id="profil-dialog" aria-labelledby="pd-titel">
+    <form method="dialog"><button class="schliessen" aria-label="Schließen">×</button></form>
+    <div id="pd-inhalt"></div>
   </dialog>
 
   <script src="data.js"></script>

@@ -681,9 +681,11 @@
       const aktiv = s.feld === zustand.sort.feld;
       const r = aktiv ? ` data-richtung="${zustand.sort.auf ? 'auf' : 'ab'}"` : '';
       return `<th class="${s.zahl ? 'zahl' : ''}" aria-sort="${aktiv ? (zustand.sort.auf ? 'ascending' : 'descending') : 'none'}"${s.hinweis ? ` title="${s.hinweis}"` : ''}><button data-sort="${s.feld}"${r}>${s.titel}</button></th>`;
-    }).join('') + '<th>Status</th>';
+    }).join('') + '<th>Status</th><th title="Im Kino gesehen (Mein Kino)">Gesehen</th>';
 
-    const zeilen = liste.map((s) => `<tr>${SPALTEN.map((sp2) => `<td class="${[sp2.zahl ? 'zahl' : '', sp2.klasse || ''].join(' ').trim()}">${sp2.zelle(s)}</td>`).join('')}<td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td></tr>`).join('');
+    // Letzte Spalte: Häkchen für "Mein Kino", direkt in der Liste umschaltbar
+    const haken = (f) => (istSneak(f) || istKurzfilm(f) ? '' : `<button type="button" class="gesehen-haken" data-gesehen-film="${f.id}" aria-pressed="${Boolean(gesehenAm(f))}" aria-label="${esc(f.titel)} im Kino gesehen" title="Im Kino gesehen">✓</button>`);
+    const zeilen = liste.map((s) => `<tr>${SPALTEN.map((sp2) => `<td class="${[sp2.zahl ? 'zahl' : '', sp2.klasse || ''].join(' ').trim()}">${sp2.zelle(s)}</td>`).join('')}<td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td><td class="mitte">${haken(s.f)}</td></tr>`).join('');
 
     $('#v-filme').innerHTML = `
       <div class="ansicht-kopf"><h2>${zahl(liste.length)} Filme</h2>
@@ -1129,6 +1131,7 @@
         <p>Die Namen der Kinos gehören den jeweiligen Betreibern. Diese Seite steht in keiner Verbindung zu den Kinos.</p>
         <h3>Datenschutz</h3>
         <p>Diese Seite setzt keine Cookies und verwendet kein Tracking. Sie wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc. (USA). Beim Aufruf verarbeitet GitHub technisch notwendige Zugriffsdaten wie die IP-Adresse, um die Seite auszuliefern und vor Missbrauch zu schützen. Näheres steht in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+        <p>„Mein Kino“ speichert gesehene Filme und einen frei gewählten Namen nur im Speicher deines Browsers (localStorage). Diese Angaben verlassen dein Gerät nicht. Löschen kannst du sie über die Browsereinstellungen für diese Seite.</p>
         <p>Schriftarten werden direkt von dieser Seite geladen. Es werden dabei keine Daten an Dritte wie Google übertragen. Links zu den Kinos führen auf deren eigene Seiten, für die deren Datenschutzbestimmungen gelten.</p>
         <p class="meta">Rot markierte Stellen sind Platzhalter und müssen vor der Veröffentlichung ersetzt werden.</p>
       </div>`;
@@ -1186,7 +1189,7 @@
     }).join('');
     const knopfText = () => (vorbeiSichtbar ? `Vergangene Termine ausblenden (${anzahlVorbei})` : `Vergangene Termine anzeigen (${anzahlVorbei})`);
     const knopf = hatKommend && anzahlVorbei ? `<button type="button" class="vorbei-knopf" aria-expanded="${vorbeiSichtbar}">${knopfText()}</button>` : '';
-    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
+    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<div id="fd-gesehen">${gesehenKnopf(f)}</div><p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
     const knopfEl = $('#fd-inhalt .vorbei-knopf');
     if (knopfEl) {
       knopfEl.addEventListener('click', () => {
@@ -1199,6 +1202,99 @@
     $('#film-dialog').showModal();
   }
 
+  // ---------- Mein Kino: im Kino gesehene Filme ----------
+  // Gespeichert nur in diesem Browser (localStorage), es geht nichts an einen Server.
+  // Schlüssel je Film: TMDB-Nummer, sonst Titel und Jahr. Die laufende Nummer in data.js ändert sich bei jedem Lauf.
+  const SPEICHER = 'kinoprogramm-meinkino-v1';
+  const filmSchluessel = (f) => (f.info.tmdb ? `t${f.info.tmdb}` : `n${f.titel.toLocaleLowerCase('de')}|${f.jahr || ''}`);
+  let meinKino = { name: '', gesehen: {} };
+  function ladeMeinKino(roh) {
+    const s = roh && typeof roh === 'object' ? roh : {};
+    const gesehen = {};
+    if (s.gesehen && typeof s.gesehen === 'object') Object.entries(s.gesehen).forEach(([k, d]) => { if (/^[tn]/.test(k) && /^\d{4}-\d{2}-\d{2}$/.test(String(d))) gesehen[k] = String(d); });
+    return { name: String(s.name || '').slice(0, 40), gesehen };
+  }
+  try { meinKino = ladeMeinKino(JSON.parse(localStorage.getItem(SPEICHER) || 'null')); } catch (e) { /* privater Modus o. ä. */ }
+  function speichereMeinKino() {
+    try { localStorage.setItem(SPEICHER, JSON.stringify(meinKino)); } catch (e) { /* nicht speicherbar, gilt dann nur bis zum Neuladen */ }
+    profilKnopfText();
+  }
+  const gesehenAm = (f) => meinKino.gesehen[filmSchluessel(f)] || null;
+  function setzeGesehen(f, an) {
+    if (an) meinKino.gesehen[filmSchluessel(f)] = HEUTE; else delete meinKino.gesehen[filmSchluessel(f)];
+    speichereMeinKino();
+  }
+  function gesehenKnopf(f) {
+    const am = gesehenAm(f);
+    return am
+      ? `<button type="button" class="gesehen-knopf an" data-gesehen-film="${f.id}" aria-pressed="true">✓ Im Kino gesehen · ${datumKurz(am)}</button><span class="meta"> Nochmal klicken zum Entfernen</span>`
+      : `<button type="button" class="gesehen-knopf" data-gesehen-film="${f.id}" aria-pressed="false">Im Kino gesehen?</button>`;
+  }
+  // Gesehene Filme überall abschwächen, aber sichtbar lassen: Karten, Tabellenzeilen, Listeneinträge mit Filmlink
+  function markiereGesehene() {
+    document.querySelectorAll('main [data-film]').forEach((b) => {
+      const f = filme[Number(b.dataset.film)];
+      const box = b.closest('.filmkarte, .chance-zeile, tr, li');
+      if (f && box) box.classList.toggle('gesehen', Boolean(gesehenAm(f)));
+    });
+  }
+  function profilKnopfText() {
+    const n = Object.keys(meinKino.gesehen).length;
+    $('#profil-knopf').innerHTML = `${meinKino.name ? esc(meinKino.name) : 'Mein Kino'}${n ? ` <span class="zahl-punkt">${n}</span>` : ''}`;
+  }
+
+  function zeigeProfil() {
+    const alleFilme = filme.filter((f) => !OHNE_HIGHLIGHT.test(f.titel));
+    const meine = alleFilme.filter((f) => gesehenAm(f)).sort((a, b) => gesehenAm(b).localeCompare(gesehenAm(a)) || a.titel.localeCompare(b.titel, 'de'));
+    const schnitt = (l) => { const m = l.filter((f) => f.bewertung != null); return m.length ? Math.round(m.reduce((a, f) => a + f.bewertung, 0) / m.length) : null; };
+    // Noch offen: läuft noch, nicht gesehen, die besten zuerst
+    const kommend = new Set(termine.filter((t) => t.d >= HEUTE).map((t) => t.f));
+    const offen = alleFilme.filter((f) => kommend.has(f.id) && !gesehenAm(f) && f.bewertung != null).sort(nachScore);
+    const zaehle = (werte) => { const m = new Map(); werte.forEach((w) => m.set(w, (m.get(w) || 0) + 1)); return [...m].sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0]), 'de')).slice(0, 5); };
+    const laender = zaehle(meine.flatMap((f) => f.laender));
+    const jz = zaehle(meine.map((f) => f.jahrzehnt).filter(Boolean));
+    const reihe = (liste) => liste.map(([n, z]) => `<span class="chip">${esc(n)} · ${z}</span>`).join('');
+    const sMeine = schnitt(meine), sAlle = schnitt(alleFilme);
+    $('#pd-inhalt').innerHTML = `
+      <h2 id="pd-titel">Mein Kino</h2>
+      <p class="meta">Markiere Filme, die du im Kino gesehen hast. Gesehene Filme erscheinen auf der Seite blasser mit einem Häkchen. Alles bleibt nur in diesem Browser gespeichert, es geht nichts an einen Server.</p>
+      <label class="profil-name">Dein Name <input id="pd-name" type="text" maxlength="40" value="${esc(meinKino.name)}" placeholder="optional" autocomplete="off"></label>
+      <div class="profil-zahlen">
+        <div><b>${meine.length}</b><span>${meine.length === 1 ? 'Film' : 'Filme'} gesehen</span></div>
+        <div><b>${sMeine ?? '–'}</b><span>Ø Score deiner Filme</span></div>
+        <div><b>${sAlle ?? '–'}</b><span>Ø Score aller Filme</span></div>
+        <div><b>${offen.length}</b><span>laufen noch, nicht gesehen</span></div>
+      </div>
+      ${laender.length ? `<h3>Deine Länder</h3><div class="chips">${reihe(laender)}</div>` : ''}
+      ${jz.length ? `<h3>Deine Jahrzehnte</h3><div class="chips">${reihe(jz)}</div>` : ''}
+      ${offen.length ? `<h3>Noch nicht gesehen, läuft noch</h3><ul class="profil-liste">${offen.slice(0, 8).map((f) => `<li>${filmLink(f)} ${wertung(f)}</li>`).join('')}</ul>` : ''}
+      <h3>Gesehen</h3>
+      ${meine.length ? `<ul class="profil-liste">${meine.map((f) => `<li>${filmLink(f)} ${wertung(f)} <span class="meta">${datumKurz(gesehenAm(f))}</span> <button type="button" class="entfernen" data-gesehen-film="${f.id}" aria-label="${esc(f.titel)} entfernen">×</button></li>`).join('')}</ul>` : '<p class="meta">Noch keine Filme markiert. Öffne einen Film und klicke auf „Im Kino gesehen?“.</p>'}
+      <h3>Auf ein anderes Gerät übertragen</h3>
+      <p class="meta">Kopiere den Code und füge ihn auf dem anderen Gerät hier ein. Vorhandene Markierungen bleiben erhalten.</p>
+      <div class="profil-code">
+        <button type="button" class="vorbei-knopf" id="pd-kopieren">Code kopieren</button>
+        <textarea id="pd-code" rows="2" placeholder="Code hier einfügen" spellcheck="false"></textarea>
+        <button type="button" class="vorbei-knopf" id="pd-einfuegen">Code übernehmen</button>
+        <span class="meta" id="pd-meldung" role="status"></span>
+      </div>`;
+    $('#pd-name').addEventListener('input', (e) => { meinKino.name = e.target.value.slice(0, 40); speichereMeinKino(); });
+    $('#pd-kopieren').addEventListener('click', async () => {
+      const code = btoa(unescape(encodeURIComponent(JSON.stringify(meinKino))));
+      $('#pd-code').value = code;
+      try { await navigator.clipboard.writeText(code); $('#pd-meldung').textContent = 'Code kopiert.'; } catch (e) { $('#pd-code').select(); $('#pd-meldung').textContent = 'Code markiert, bitte kopieren.'; }
+    });
+    $('#pd-einfuegen').addEventListener('click', () => {
+      try {
+        const neu = ladeMeinKino(JSON.parse(decodeURIComponent(escape(atob($('#pd-code').value.trim())))));
+        meinKino = { name: meinKino.name || neu.name, gesehen: { ...neu.gesehen, ...meinKino.gesehen } };
+        speichereMeinKino(); zeigeProfil(); zeichne();
+        $('#pd-meldung').textContent = `${Object.keys(neu.gesehen).length} Markierungen übernommen.`;
+      } catch (e) { $('#pd-meldung').textContent = 'Der Code ist ungültig.'; }
+    });
+    if (!$('#profil-dialog').open) $('#profil-dialog').showModal();
+  }
+
   // ---------- Steuerung ----------
   const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, regie: zeigeRegie, statistik: zeigeStatistik, kinos: zeigeKinos, impressum: zeigeImpressum };
 
@@ -1206,6 +1302,7 @@
     $('#f-reset').hidden = !filterAktiv();
     $('#filter').hidden = zustand.ansicht === 'impressum';
     ANSICHTEN[zustand.ansicht](gefiltert());
+    markiereGesehene();
   }
 
   function wechsleAnsicht(name) {
@@ -1252,6 +1349,7 @@
     let el;
     if ((el = ziel('[data-zu]'))) { wechsleAnsicht(el.dataset.zu); return scrollTo(0, 0); }
     if ((el = ziel('[data-film]'))) return zeigeFilm(Number(el.dataset.film));
+    if ((el = ziel('[data-gesehen-film]'))) return umschaltenGesehen(el);
     if ((el = ziel('[data-zurueck-film]'))) {
       const z = zurueck;
       zurueck = null;
@@ -1289,8 +1387,27 @@
     if (e.target.id === 'nur-kommend') { zustand.nurKommend = e.target.checked; zeichne(); }
     if (e.target.id === 'nur-neu') { zustand.nurNeu = e.target.checked; zeichne(); }
   });
+  // Gesehen-Knopf im Film-Dialog und im Profil
+  function umschaltenGesehen(knopf) {
+    const f = filme[Number(knopf.dataset.gesehenFilm)];
+    if (!f) return;
+    setzeGesehen(f, !gesehenAm(f));
+    if ($('#fd-gesehen') && $('#film-dialog').open) $('#fd-gesehen').innerHTML = gesehenKnopf(f);
+    if ($('#profil-dialog').open) zeigeProfil();
+    zeichne();
+  }
+  $('#profil-knopf').addEventListener('click', zeigeProfil);
+  $('#profil-dialog').addEventListener('click', (e) => {
+    if (e.target.id === 'profil-dialog') return e.target.close();
+    const g = e.target.closest('[data-gesehen-film]');
+    if (g) return umschaltenGesehen(g);
+    const film = e.target.closest('[data-film]');
+    if (film) { $('#profil-dialog').close(); zeigeFilm(Number(film.dataset.film)); }
+  });
   $('#film-dialog').addEventListener('click', (e) => {
     if (e.target.id === 'film-dialog') return e.target.close();
+    const g = e.target.closest('[data-gesehen-film]');
+    if (g) return umschaltenGesehen(g);
     const regie = e.target.closest('[data-regie]');
     // Herkunft merken: Film, Reiter und Scrollposition, damit "Zurück zum Film" alles wiederherstellt
     if (regie) zeigeRegiePerson(regie.dataset.regie, { film: offenerFilm, ansicht: zustand.ansicht, y: scrollY });
@@ -1307,6 +1424,7 @@
 
   fuelleAuswahl();
   zeigeKopf();
+  profilKnopfText();
   const start = location.hash.slice(1);
   wechsleAnsicht(ANSICHTEN[start] ? start : 'highlights');
 })();

@@ -409,3 +409,42 @@ dialog h2 { margin: 0 32px 6px 0; font-family: var(--font-display); font-weight:
 .termin-gruppe a.chip:hover { background: var(--gold); color: var(--bg); }
 .vorbei-knopf { margin-top: 14px; padding: 4px 12px; font: inherit; font-size: 13px; color: var(--text-2); background: none; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
 .vorbei-knopf:hover { color: var(--text); }
+
+/* ---------- Mein Kino: gesehene Filme (nur im Browser gespeichert) ---------- */
+.kopf .wrap { position: relative; }
+.profil-knopf { position: absolute; right: 16px; top: -10px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; color: var(--gold-hell); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; max-width: 46vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profil-knopf:hover { border-color: var(--gold); }
+.zahl-punkt { display: inline-block; min-width: 20px; padding: 1px 6px; border-radius: 999px; background: var(--gold); color: #140f05; font-size: 11px; text-align: center; }
+/* Gesehen: blasser, aber sichtbar, mit Häkchen vor dem Titel */
+.gesehen { opacity: .45; transition: opacity .15s; }
+.gesehen:hover { opacity: .85; }
+.gesehen .film-link[data-film]::before { content: "✓ "; color: var(--gold); }
+.gesehen-knopf { margin-top: 12px; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; color: var(--text); background: none; border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; }
+.gesehen-knopf:hover { border-color: var(--gold); }
+.gesehen-knopf.an { background: var(--gold); color: #140f05; border-color: var(--gold); }
+.liste td.mitte { text-align: center; }
+.gesehen-haken { width: 28px; height: 28px; font: inherit; font-size: 14px; line-height: 1; color: var(--line-strong); background: none; border: 1px solid var(--line-strong); border-radius: 6px; cursor: pointer; }
+.gesehen-haken:hover { color: var(--gold); border-color: var(--gold); }
+.gesehen-haken[aria-pressed="true"] { color: #140f05; background: var(--gold); border-color: var(--gold); }
+/* In der Liste bleibt das Häkchen voll sichtbar, auch wenn die Zeile abgeschwächt ist */
+tr.gesehen { opacity: 1; }
+tr.gesehen > td:not(.mitte) { opacity: .45; }
+tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
+#profil-dialog h3 { margin: 20px 0 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.profil-name { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; font-size: 13px; color: var(--text-2); }
+.profil-name input, .profil-code textarea { font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; }
+.profil-zahlen { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 16px; }
+.profil-zahlen div { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+.profil-zahlen b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 30px; color: var(--gold-hell); line-height: 1.1; }
+.profil-zahlen span { font-size: 12px; color: var(--text-2); }
+.profil-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.profil-liste li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.profil-liste .entfernen { margin-left: auto; font: inherit; font-size: 16px; line-height: 1; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 2px 6px; }
+.profil-liste .entfernen:hover { color: var(--rot-hell); }
+.profil-code { display: grid; gap: 8px; }
+.profil-code .vorbei-knopf { margin-top: 0; justify-self: start; }
+.profil-code textarea { width: 100%; box-sizing: border-box; resize: vertical; font-size: 12px; }
+/* Schmale Bildschirme: Knopf in eigener Zeile über der Ortszeile, damit er nichts verdeckt */
+@media (max-width: 640px) {
+  .profil-knopf { position: static; display: flex; margin: -22px 0 12px auto; width: max-content; }
+}
