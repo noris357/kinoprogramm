@@ -352,6 +352,12 @@ if (Test-Path $auslastungDatei) {
   }
 }
 
+# ---------- Festivals (daten/festivals.json) ----------
+# Wird unveraendert weitergegeben, die Zuordnung der Vorstellungen geschieht auf der Website (app.js)
+$festivals = @()
+$festivalDatei = "$PSScriptRoot/../daten/festivals.json"
+if (Test-Path $festivalDatei) { $festivals = @((Get-Content $festivalDatei -Raw -Encoding UTF8 | ConvertFrom-Json).festivals) }
+
 # ---------- Erfassungsluecke (daten/luecke.json) ----------
 # Zeitraum ohne Programmdaten und einzeln gepruefte Filme, deren Serie "Wochen am Stueck" darueber weiterlaeuft
 $luecke = $null
@@ -380,6 +386,7 @@ $daten = [ordered]@{
   auslastung   = $auslastung
   personen     = $personenAusgabe
   luecke       = $luecke
+  festivals    = $festivals
 }
 
 $inhalt = "window.KINO_DATA = " + ($daten | ConvertTo-Json -Depth 5 -Compress) + ";"

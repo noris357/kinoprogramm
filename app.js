@@ -1609,6 +1609,140 @@
     treffer.addEventListener('click', (ev) => { zustand.tag = reihe[index(ev)].d; wechsleAnsicht('programm'); });
   }
 
+  // ---------- Ansicht Festivals ----------
+  // Festivalkalender aus daten/festivals.json. Vorstellungen gehören zu einem Festival, wenn sie im Zeitraum in einem
+  // der genannten Kinos laufen. titel, land und bisJahr schränken das ein (dann reicht eines davon).
+  const FESTIVAL_FARBEN = { 'Länderfokus': '#3987e5', 'Klassiker': '#c98500', 'Open Air': '#199e70', 'Thema': '#d55181', 'Genre': '#d95926', 'Kinder': '#9085e9' };
+  const festivalFarbe = (fe) => FESTIVAL_FARBEN[fe.art] || 'var(--gold)';
+  const normTitel = (s) => String(s || '').toLocaleLowerCase('de').replace(/[^\p{L}\p{N}]/gu, '');
+  const FESTIVALS = (D.festivals || []).map((fe) => ({ ...fe, kinos: fe.kinos || [] }));
+  function festivalTermine(fe, daten) {
+    if (!fe.von || !fe.bis) return [];
+    const mitFilter = (fe.titel && fe.titel.length) || fe.land || fe.bisJahr;
+    return daten.filter((t) => {
+      if (t.d < fe.von || t.d > fe.bis) return false;
+      if (fe.kinos.length && !fe.kinos.includes(kinos[t.k].roh)) return false;
+      if (!mitFilter) return true;
+      const f = filme[t.f], j = parseInt(f.jahr, 10);
+      return Boolean((fe.titel && fe.titel.some((x) => normTitel(f.titel).includes(normTitel(x))))
+        || (fe.land && f.laender.includes(fe.land))
+        || (fe.bisJahr && j && j <= fe.bisJahr));
+    });
+  }
+  function festivalStatus(fe) {
+    if (!fe.von || !fe.bis) return 'offen';
+    if (fe.bis < HEUTE) return 'vorbei';
+    return fe.von <= HEUTE ? 'laeuft' : 'kommt';
+  }
+  function zeitraumText(fe) {
+    if (!fe.von) return 'Termin folgt';
+    if (fe.zeitraumText) return fe.zeitraumText;
+    return fe.von === fe.bis ? datum(fe.von) : `${datumKurz(fe.von)} bis ${datumKurz(fe.bis)}`;
+  }
+  function festivalAuswertung(fe, daten) {
+    const ts = festivalTermine(fe, daten);
+    const ids = [...new Set(ts.map((t) => t.f))].filter((id) => !istSneak(filme[id]));
+    const fs = ids.map((id) => filme[id]);
+    const mitScore = fs.filter((f) => f.bewertung != null);
+    const schnitt = mitScore.length ? mitScore.reduce((a, f) => a + (f.genau ?? f.bewertung), 0) / mitScore.length : null;
+    // Vergleich: übrige Filme, die im gleichen Zeitraum in den Kinos liefen
+    const imZeitraum = new Set(daten.filter((t) => fe.von && t.d >= fe.von && t.d <= fe.bis).map((t) => t.f));
+    const uebrige = [...imZeitraum].filter((id) => !ids.includes(id)).map((id) => filme[id]).filter((f) => f.bewertung != null && !istSneak(f) && !istKurzfilm(f));
+    const schnittUebrig = uebrige.length ? uebrige.reduce((a, f) => a + (f.genau ?? f.bewertung), 0) / uebrige.length : null;
+    const termineFestival = new Set(ts.map((t) => `${t.f}|${t.k}|${t.d}`));
+    const nurHier = fs.filter((f) => termine.every((t) => t.f !== f.id || termineFestival.has(`${t.f}|${t.k}|${t.d}`)));
+    const jetztSchon = fs.filter((f) => f.info.kinostart && String(f.info.kinostart) > fe.bis).sort((a, b) => String(a.info.kinostart).localeCompare(String(b.info.kinostart)));
+    const laender = new Map();
+    fs.forEach((f) => f.laender.forEach((l) => laender.set(l, (laender.get(l) || 0) + 1)));
+    return {
+      fs, ts, schnitt, schnittUebrig, nurHier, jetztSchon,
+      tage: new Set(ts.map((t) => t.d)).size, spielorte: [...new Set(ts.map((t) => kinos[t.k].name))],
+      laender: [...laender].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')),
+      top: mitScore.sort(nachScore).slice(0, 3),
+    };
+  }
+  function festivalKarte(fe, a) {
+    const st = festivalStatus(fe);
+    const statusText = st === 'laeuft' ? 'läuft gerade' : st === 'kommt' ? (fe.sicher === false ? 'voraussichtlich' : 'demnächst') : st === 'vorbei' ? 'vorbei' : 'Termin folgt';
+    const link = fe.link ? `<a href="${esc(fe.link)}" target="_blank" rel="noopener">Zum Festival ↗</a>` : '';
+    const zeile = (titel, liste, extra) => (liste.length ? `<div class="fest-liste"><h4>${titel}</h4><ul>${liste.map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)} ${wertung(f)}${extra ? `<div class="meta">${extra(f)}</div>` : ''}</div></li>`).join('')}</ul></div>` : '');
+    let inhalt;
+    if (a && a.fs.length) {
+      const diff = a.schnitt != null && a.schnittUebrig != null ? Math.round(a.schnitt - a.schnittUebrig) : null;
+      const vergleich = diff == null ? '' : `<span class="meta">${diff === 0 ? 'wie das übrige Programm' : `${diff > 0 ? '+' : ''}${diff} gegenüber dem übrigen Programm`}</span>`;
+      inhalt = `
+        <div class="kino-zahlen fest-zahlen">
+          <div><b>${a.fs.length}</b><span>${a.fs.length === 1 ? 'Film' : 'Filme'}</span></div>
+          <div><b>${a.tage}</b><span>${a.tage === 1 ? 'Tag' : 'Tage'} mit Vorstellungen</span></div>
+          <div><b>${a.schnitt != null ? Math.round(a.schnitt) : '–'}</b><span>Ø Score ${vergleich}</span></div>
+        </div>
+        ${a.laender.length ? `<div class="fest-laender">${a.laender.slice(0, 8).map(([l, n]) => `<span title="${esc(l)}: ${n}">${mitFlagge(l)} <b>${n}</b></span>`).join('')}</div>` : ''}
+        ${zeile('Highlights', a.top)}
+        ${zeile('Jetzt schon sehen, Kinostart erst später', a.jetztSchon.slice(0, 4), (f) => `regulärer Kinostart ${datumKurz(String(f.info.kinostart))}`)}
+        ${a.nurHier.length ? `<p class="meta fest-nurhier"><b>${a.nurHier.length}</b> ${a.nurHier.length === 1 ? 'Film läuft' : 'Filme laufen'} bei uns nur auf diesem Festival: ${a.nurHier.slice(0, 5).map((f) => filmLink(f)).join(', ')}${a.nurHier.length > 5 ? ' …' : ''}</p>` : ''}`;
+    } else {
+      inhalt = `<p class="meta">${st === 'offen' ? 'Sobald die Termine feststehen, erscheinen hier Programm und Highlights.' : st === 'vorbei' ? 'Keine Vorstellungen in unseren Daten.' : 'Das Programm ist noch nicht veröffentlicht. Sobald die Kinos es zeigen, erscheinen hier Filme und Highlights.'}</p>`;
+    }
+    return `<article class="fest-karte ${st}${fe.sicher === false ? ' unsicher' : ''}" id="festival-${esc(fe.id)}" style="--fest-farbe:${festivalFarbe(fe)}">
+      <header><span class="fest-art">${esc(fe.art || 'Festival')}</span><span class="fest-status ${st}">${statusText}</span></header>
+      <h3>${esc(fe.name)}</h3>
+      <div class="meta">${zeitraumText(fe)}${fe.kinos.length ? ` · ${fe.kinos.map((k) => esc(k.replace('Manhatten', 'Manhattan'))).join(', ')}` : ''}</div>
+      ${fe.beschreibung ? `<p class="fest-text">${esc(fe.beschreibung)}</p>` : ''}
+      ${inhalt}
+      ${link ? `<footer>${link}</footer>` : ''}
+    </article>`;
+  }
+  // Zeitleiste über 15 Monate: drei Monate zurück, zwölf nach vorn. Unsichere Termine gestrichelt.
+  function festivalZeitleiste(liste) {
+    const start = `${plusTage(HEUTE.slice(0, 7) + '-01', -80).slice(0, 7)}-01`;
+    const endeMonat = new Date(Number(start.slice(0, 4)), Number(start.slice(5, 7)) - 1 + 15, 1);
+    const ende = iso(endeMonat);
+    const gesamt = tageZwischen(start, ende);
+    const pos = (d) => Math.max(0, Math.min(100, (tageZwischen(start, d) / gesamt) * 100));
+    const sichtbar = liste.filter((fe) => fe.von && fe.bis >= start && fe.von < ende).sort((a, b) => a.von.localeCompare(b.von));
+    const monate = [];
+    for (let m = new Date(Number(start.slice(0, 4)), Number(start.slice(5, 7)) - 1, 1); m < endeMonat; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) monate.push(iso(m));
+    const balken = sichtbar.map((fe) => {
+      const l = pos(fe.von), b = Math.max(0.9, pos(plusTage(fe.bis, 1)) - l);
+      return `<button type="button" class="zeit-balken${fe.sicher === false ? ' unsicher' : ''}${l > 70 ? ' rechts' : ''}" data-festival-sprung="${esc(fe.id)}" style="left:${l}%;width:${b}%;--fest-farbe:${festivalFarbe(fe)}" title="${esc(fe.name)} · ${esc(zeitraumText(fe))}"><span>${esc(fe.name)}</span></button>`;
+    }).join('');
+    return `<div class="zeitleiste">
+      <div class="zeit-monate">${monate.map((m) => `<span style="left:${pos(m)}%">${fmtMonat.format(parse(m))}${m.endsWith('-01-01') ? ` ’${m.slice(2, 4)}` : ''}</span>`).join('')}</div>
+      <div class="zeit-spur">${balken}<i class="zeit-heute" style="left:${pos(HEUTE)}%"><b>Heute</b></i></div>
+    </div>`;
+  }
+  function zeigeFestivals(daten) {
+    const auswertung = new Map(FESTIVALS.map((fe) => [fe.id, festivalAuswertung(fe, daten)]));
+    const nachStatus = (s) => FESTIVALS.filter((fe) => festivalStatus(fe) === s);
+    const laufend = nachStatus('laeuft'), kommend = nachStatus('kommt').sort((a, b) => a.von.localeCompare(b.von));
+    const vorbei = nachStatus('vorbei').sort((a, b) => b.bis.localeCompare(a.bis)), offen = nachStatus('offen');
+    // Oben: was gerade läuft, sonst das nächste Festival mit sicherem Termin
+    const vorne = laufend[0] || kommend.find((fe) => fe.sicher !== false) || kommend[0];
+    let hero = '';
+    if (vorne) {
+      const a = auswertung.get(vorne.id), st = festivalStatus(vorne);
+      const rest = st === 'laeuft' ? tageZwischen(HEUTE, vorne.bis) : tageZwischen(HEUTE, vorne.von);
+      const countdown = st === 'laeuft' ? (rest === 0 ? '<b>Heute</b><span>letzter Tag</span>' : `<b>${rest + 1}</b><span>${rest === 0 ? 'Tag' : 'Tage'} noch</span>`) : `<b>${rest}</b><span>${rest === 1 ? 'Tag' : 'Tage'} bis zum Start</span>`;
+      hero = `<section class="fest-hero" style="--fest-farbe:${festivalFarbe(vorne)}">
+        <div><span class="fest-art">${st === 'laeuft' ? 'Läuft gerade' : 'Als Nächstes'} · ${esc(vorne.art || 'Festival')}</span>
+          <h2>${esc(vorne.name)}</h2><div class="meta">${zeitraumText(vorne)}${vorne.kinos.length ? ` · ${vorne.kinos.map(esc).join(', ')}` : ''}</div>
+          ${vorne.beschreibung ? `<p>${esc(vorne.beschreibung)}</p>` : ''}
+          ${a.top.length ? `<div class="chips">${a.top.map((f) => `<span class="chip">${filmLink(f)} ${wertung(f)}</span>`).join('')}</div>` : ''}
+          <p><button type="button" class="film-link" data-festival-sprung="${esc(vorne.id)}">Zum Festival auf dieser Seite →</button></p></div>
+        <div class="countdown">${countdown}</div>
+      </section>`;
+    }
+    $('#v-festivals').innerHTML = `
+      <div class="ansicht-kopf"><h2>Filmfestivals</h2></div>
+      <p class="hinweis">Filmfestivals in Nürnberg, Fürth und Erlangen. Vorstellungen werden einem Festival über Zeitraum und Spielort zugeordnet. Termine aus den Seiten der Stadt, des KunstKulturQuartiers und der Festivals, ohne Gewähr.</p>
+      ${hero}
+      <div class="tafel abstand"><h3>Festivaljahr</h3><p class="hinweis">Ein Klick auf einen Balken springt zum Festival. Gestrichelt: Termin noch nicht sicher.</p>${festivalZeitleiste(FESTIVALS)}
+        <div class="legende-laender fest-legende">${Object.entries(FESTIVAL_FARBEN).map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join('')}</div></div>
+      ${laufend.length || kommend.length ? `<h2 class="statistik-zwischentitel">Aktuell und demnächst</h2><div class="fest-raster">${[...laufend, ...kommend].map((fe) => festivalKarte(fe, auswertung.get(fe.id))).join('')}</div>` : ''}
+      ${offen.length ? `<h2 class="statistik-zwischentitel">Termine folgen</h2><div class="fest-raster">${offen.map((fe) => festivalKarte(fe, null)).join('')}</div>` : ''}
+      ${vorbei.length ? `<h2 class="statistik-zwischentitel">Rückblick</h2><div class="fest-raster">${vorbei.map((fe) => festivalKarte(fe, auswertung.get(fe.id))).join('')}</div>` : ''}`;
+  }
+
   // ---------- Ansicht Kinos ----------
   // Profil je Kino ab Projektstart (bekannte Termine, auch kommende): Ø Score, Exklusivfilme, Alter, Länder,
   // Kinowochen, Preisträger, Wochenrhythmus. Dazu ein sortierbarer Vergleich, die Überschneidungen als Heatmap,
@@ -2406,7 +2540,7 @@
   }
 
   // ---------- Steuerung ----------
-  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, regie: zeigeRegie, statistik: zeigeStatistik, baukasten: zeigeBaukasten, kinos: zeigeKinos, impressum: zeigeImpressum };
+  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, festivals: zeigeFestivals, kalender: zeigeKalender, filme: zeigeFilme, regie: zeigeRegie, statistik: zeigeStatistik, baukasten: zeigeBaukasten, kinos: zeigeKinos, impressum: zeigeImpressum };
 
   function zeichne() {
     $('#f-reset').hidden = !filterAktiv();
@@ -2466,6 +2600,7 @@
       zustand.kinoSort = { feld, auf: zustand.kinoSort.feld === feld ? !zustand.kinoSort.auf : feld === 'name' };
       return zeichne();
     }
+    if ((el = ziel('[data-festival-sprung]'))) { const k = document.getElementById(`festival-${el.dataset.festivalSprung}`); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if ((el = ziel('[data-kino-sprung]'))) { const k = $(`#kino-${el.dataset.kinoSprung}`); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if ((el = ziel('[data-alle-previews]'))) {
       zustand.allePreviews = !zustand.allePreviews;

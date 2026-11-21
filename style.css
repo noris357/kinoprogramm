@@ -587,3 +587,50 @@ details.monat-ranking[open] > summary { margin-bottom: 6px; }
 #d-kinoscore .kinoname { fill: var(--text-2); font-size: 11px; }
 .kino-vergleich td:first-child { display: flex; align-items: center; gap: 8px; }
 .kino-vergleich td:first-child .monogramm { flex: none; margin: 0; }
+/* ---------- Festivals ---------- */
+.fest-hero { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; margin: 12px 0 8px; padding: 20px; border-radius: var(--radius); border: 1px solid var(--fest-farbe); background: linear-gradient(135deg, color-mix(in srgb, var(--fest-farbe) 22%, var(--surface)), var(--surface) 70%); }
+.fest-hero h2 { font-family: var(--font-display); font-weight: 400; font-size: 32px; margin: 6px 0 4px; }
+.fest-hero p { margin: 10px 0 0; color: var(--text-2); }
+.fest-hero .chips { margin-top: 10px; }
+.fest-hero .countdown { min-width: 110px; }
+@media (max-width: 560px) { .fest-hero { grid-template-columns: 1fr; } .fest-hero h2 { font-size: 26px; } }
+.fest-art { display: inline-block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--fest-farbe, var(--gold)); font-weight: 700; }
+.zeitleiste { position: relative; margin-top: 8px; }
+.zeit-monate { position: relative; height: 18px; border-bottom: 1px solid var(--line); }
+.zeit-monate span { position: absolute; top: 0; font-size: 11px; color: var(--muted); padding-left: 3px; border-left: 1px solid var(--line); height: 18px; }
+.zeit-spur { position: relative; min-height: 120px; }
+.zeit-balken { position: absolute; height: 26px; top: 10px; border: 0; border-radius: 6px; background: var(--fest-farbe); color: #fff; font: inherit; font-size: 11px; font-weight: 600; text-align: left; padding: 0 6px; cursor: pointer; overflow: visible; white-space: nowrap; min-width: 8px; }
+.zeit-balken span { position: absolute; left: 0; top: 30px; color: var(--text-2); font-weight: 500; }
+.zeit-balken:nth-of-type(2n) { top: 64px; }
+.zeit-balken.unsicher { background: repeating-linear-gradient(135deg, var(--fest-farbe) 0 6px, transparent 6px 10px); border: 1.5px dashed var(--fest-farbe); }
+.zeit-heute { position: absolute; top: -18px; bottom: 0; width: 0; border-left: 1.5px solid var(--rot-hell); font-style: normal; }
+.zeit-heute b { position: absolute; top: -2px; left: 4px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--rot-hell); }
+.fest-legende { margin-top: 6px; }
+.fest-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+@media (max-width: 400px) { .fest-raster { grid-template-columns: 1fr; } }
+.fest-karte { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--fest-farbe); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; scroll-margin-top: 110px; }
+.fest-karte.unsicher { border-top-style: dashed; }
+.fest-karte.vorbei { opacity: .85; }
+.fest-karte header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.fest-karte h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 22px; }
+.fest-status { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--text-2); }
+.fest-status.laeuft { background: var(--rot); border-color: var(--rot); color: #fff; }
+.fest-text { margin: 0; font-size: 14px; color: var(--text-2); }
+.fest-zahlen span .meta { display: block; }
+.fest-laender { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 13px; color: var(--text-2); }
+.fest-liste h4 { margin: 4px 0 6px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.fest-liste ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.fest-liste li { display: flex; gap: 10px; align-items: center; }
+.fest-nurhier { margin: 0; }
+.fest-karte footer { border-top: 1px solid var(--line); padding-top: 10px; font-size: 13px; }
+/* Zeitleiste: Beschriftungen am rechten Rand nicht über die Seite hinaus, letzte Balken-Beschriftung rechtsbündig */
+.zeitleiste { overflow: hidden; }
+.zeit-balken.rechts span { left: auto; right: 0; }
+/* Handy: keine Namen unter den Balken (stehen in den Karten), nur jeder zweite Monat, Balken in einer Reihe */
+@media (max-width: 560px) {
+  .zeit-balken span { display: none; }
+  .zeit-balken, .zeit-balken:nth-of-type(2n) { top: 12px; }
+  .zeit-spur { min-height: 50px; }
+  .zeit-monate span:nth-child(2n) { visibility: hidden; }
+  .zeit-heute b { display: none; }
+}

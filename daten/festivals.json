@@ -1,0 +1,72 @@
+{
+  "hinweis": "Festivalkalender, von Hand gepflegt. Termine aus den Seiten von Stadt Nürnberg, Tourismus Nürnberg, KunstKulturQuartier und den Festivals. sicher: false heißt voraussichtlich (z. B. nur Monat bekannt). Ohne von/bis: Termin noch offen. Zuordnung der Vorstellungen: alle Termine im Zeitraum in den genannten Kinos, eingeschränkt durch titel (Liste von Titelteilen), land (erstgenanntes oder beteiligtes Land) oder bisJahr (Produktionsjahr höchstens).",
+  "festivals": [
+    {
+      "id": "griechische-filmtage-2026", "name": "Griechische Filmtage Nürnberg", "art": "Länderfokus",
+      "von": "2026-11-18", "bis": "2026-11-22", "sicher": true,
+      "kinos": ["Filmhaus Nürnberg"], "land": "Griechenland", "titel": ["Black Box Poem", "Kiki Kolympari", "griechischen Bürgerkrieg", "Astero"],
+      "link": "https://www.kunstkulturquartier.de/programm/festivals",
+      "beschreibung": "Aktuelles Kino aus Griechenland im Filmhaus, mit Gästen, Ausstellung und Musik."
+    },
+    {
+      "id": "stummfilmmusiktage-2026", "name": "28. Stummfilmmusiktage", "art": "Klassiker",
+      "von": "2026-11-06", "bis": "2026-11-08", "sicher": true,
+      "kinos": ["Filmhaus Nürnberg"], "bisJahr": 1930,
+      "link": "https://www.kunstkulturquartier.de/programm/festivals",
+      "beschreibung": "Ein Wochenende im Zeichen des frühen Kinos: Filmklassiker mit Livemusik."
+    },
+    {
+      "id": "sommernachtfilmfestival-2026", "name": "SommerNachtFilmFestival", "art": "Open Air",
+      "von": "2026-07-01", "bis": "2026-08-31", "sicher": true,
+      "kinos": ["SommerNachtFilmFestival"],
+      "link": "https://www.sommernachtfilmfestival.de/",
+      "beschreibung": "Open-Air-Kino in Nürnberg, Fürth und Erlangen, seit über 25 Jahren fester Teil des Sommers."
+    },
+    {
+      "id": "fftd-2027", "name": "Filmfestival Türkei/Deutschland", "art": "Länderfokus",
+      "von": "2027-03-05", "bis": "2027-03-14", "sicher": true,
+      "kinos": ["Filmhaus Nürnberg"], "land": "Türkei",
+      "link": "https://www.nuernberg.de/internet/kommunikation_stadtmarketing/filmfestivals.html",
+      "beschreibung": "Bundesweit wichtigstes Festival für den Dialog zwischen deutschem und türkischem Kino, mit Öngören-Preis für Demokratie und Menschenrechte."
+    },
+    {
+      "id": "mittelmeerfilmtage-2027", "name": "Mittelmeerfilmtage", "art": "Länderfokus",
+      "von": "2027-06-01", "bis": "2027-06-30", "sicher": false, "zeitraumText": "voraussichtlich Juni 2027",
+      "kinos": [],
+      "link": "https://tourismus.nuernberg.de/erleben/musik-theater-film/film/filmfestivals/",
+      "beschreibung": "Open Air vom Mobilen Kino e. V.: Filme aus dem Mittelmeerraum in Originalsprache mit Untertiteln."
+    },
+    {
+      "id": "sommernachtfilmfestival-2027", "name": "SommerNachtFilmFestival", "art": "Open Air",
+      "von": "2027-08-01", "bis": "2027-08-31", "sicher": false, "zeitraumText": "voraussichtlich August 2027",
+      "kinos": ["SommerNachtFilmFestival"],
+      "link": "https://www.sommernachtfilmfestival.de/",
+      "beschreibung": "Open-Air-Kino in Nürnberg, Fürth und Erlangen."
+    },
+    {
+      "id": "nihrff-2027", "name": "Nuremberg International Human Rights Film Festival", "art": "Thema",
+      "von": "2027-10-01", "bis": "2027-10-31", "sicher": false, "zeitraumText": "Oktober 2027",
+      "kinos": [],
+      "link": "https://www.nuernberg.de/internet/kommunikation_stadtmarketing/filmfestivals.html",
+      "beschreibung": "Filmfestival der Menschenrechte, alle zwei Jahre im Oktober, mit dem Nürnberger Filmpreis der Menschenrechte."
+    },
+    {
+      "id": "fantasy-filmfest", "name": "Fantasy Filmfest", "art": "Genre",
+      "kinos": [],
+      "link": "https://fantasyfilmfest.com/",
+      "beschreibung": "Horror, Thriller und Science-Fiction, mit Station in Nürnberg. Termine für Nürnberg folgen."
+    },
+    {
+      "id": "little-big-films", "name": "Little Big Films", "art": "Kinder",
+      "kinos": ["Filmhaus Nürnberg"],
+      "link": "https://www.nuernberg.de/internet/kommunikation_stadtmarketing/filmfestivals.html",
+      "beschreibung": "Deutschlands erstes Kinderfilmfestival, von Kindern für Kinder geplant, drei Tage im Filmhaus."
+    },
+    {
+      "id": "queer-film-festival", "name": "Queer Film Festival", "art": "Thema",
+      "kinos": ["Casablanca Nürnberg"],
+      "link": "",
+      "beschreibung": "Queeres Kino im Casablanca. Termine folgen."
+    }
+  ]
+}
