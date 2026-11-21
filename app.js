@@ -109,6 +109,8 @@
 
   const alleDaten = termine.map((t) => t.d).sort();
   const ERSTER = alleDaten[0];
+  // Start des Projekts mit automatischer Erfassung (erster Commit). Die Tagesverläufe der Statistik beginnen hier.
+  const PROJEKT_START = '2026-11-04';
   const LETZTER = alleDaten[alleDaten.length - 1];
 
   // Wie weit reicht das veröffentlichte Programm je Kino?
@@ -901,7 +903,10 @@
 
   function zeigeStatistik(daten) {
     const reihe = tagesreihe(daten);
-    const wertungen = bewertungsreihe(daten);
+    // Die beiden Tagesverläufe erst ab Projektstart: davor sind die Daten aus der Übergabe lückenhaft
+    const ab = (p) => p.d >= PROJEKT_START;
+    const reiheAb = reihe.filter(ab);
+    const wertungen = bewertungsreihe(daten).filter(ab);
     const laenderMonat = laenderJeMonat(daten);
     const mitWert = wertungen.filter((p) => p.n != null).map((p) => p.n);
     const kommende = new Set(daten.filter((t) => t.d >= HEUTE).map((t) => t.f));
@@ -925,13 +930,13 @@
       </div>
       <div class="tafel diagramm abstand" id="d-filme">
         <h3>Verschiedene Filme pro Tag</h3>
-        <p class="hinweis">Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Tage auf 0 sind meist Lücken in der Datenerfassung. Ein Klick auf einen Tag öffnet das Programm.</p>
+        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Markiert sind Höchst- und Tiefstwert der vergangenen Tage. Ein Klick auf einen Tag öffnet das Programm.</p>
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
       <div class="tafel diagramm abstand" id="d-wertung">
         <h3>Ø Score pro Tag</h3>
-        <p class="hinweis">Durchschnittlicher Score aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Score bleiben außen vor.${mitWert.length ? ` Über den ganzen Zeitraum liegt der Tagesschnitt zwischen ${Math.round(Math.min(...mitWert))} und ${Math.round(Math.max(...mitWert))}.` : ''}</p>
+        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Durchschnittlicher Score aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Score bleiben außen vor. Markiert sind Höchst- und Tiefstwert der vergangenen Tage.</p>
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
@@ -949,10 +954,11 @@
       <details><summary>Verlauf als Tabelle anzeigen (pro Monat)</summary>${monatsTabelle(reihe)}</details>
       <details><summary>Länder als Tabelle anzeigen (pro Monat)</summary>${laenderTabelle(laenderMonat)}</details>`;
 
-    const maxFilme = Math.max(1, ...reihe.map((p) => p.n));
+    const maxFilme = Math.max(1, ...reiheAb.map((p) => p.n));
     const stF = schritt(maxFilme);
-    linienDiagramm('d-filme', reihe, {
-      yMin: 0, yMax: Math.ceil(maxFilme / stF) * stF, schritt: stF, flaeche: true,
+    linienDiagramm('d-filme', reiheAb, {
+      yMin: 0, yMax: Math.ceil(maxFilme / stF) * stF, schritt: stF, flaeche: true, markierung: true,
+      markeText: (p) => `${p.n} Filme`,
       tipp: (p) => `${datum(p.d)}<br><b>${p.n}</b> ${p.n === 1 ? 'Film' : 'Filme'}`,
       beschreibung: 'Liniendiagramm: verschiedene Filme pro Tag',
     });
@@ -960,7 +966,8 @@
     const unten = mitWert.length ? Math.max(0, Math.floor(Math.min(...mitWert) / 5) * 5 - 5) : 0;
     const oben = mitWert.length ? Math.min(100, Math.ceil(Math.max(...mitWert) / 5) * 5 + 5) : 100;
     linienDiagramm('d-wertung', wertungen, {
-      yMin: unten, yMax: oben, schritt: 5, flaeche: false,
+      yMin: unten, yMax: oben, schritt: 5, flaeche: false, markierung: true,
+      markeText: (p) => `Ø ${p.n.toLocaleString('de-DE', { maximumFractionDigits: 1 })}`,
       tipp: (p) => (p.n == null ? `${datum(p.d)}<br>keine Filme mit Score` : `${datum(p.d)}<br>Ø Score <b>${p.n.toLocaleString('de-DE', { maximumFractionDigits: 1 })}</b> aus ${p.anzahl} ${p.anzahl === 1 ? 'Film' : 'Filmen'}`),
       beschreibung: 'Liniendiagramm: durchschnittlicher Score pro Tag',
     });
@@ -1133,11 +1140,35 @@
       ticksY += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${zahl(v)}</text>`;
     }
     let ticksX = '';
+    const kurzerZeitraum = reihe.length < 200;   // dann auch der 15. jedes Monats beschriftet
     reihe.forEach((p, i) => {
-      if (p.d.endsWith('-01') && !(B < 500 && Number(p.d.slice(5, 7)) % 2 === 0)) {
+      if (p.d.endsWith('-01') && !(B < 500 && !kurzerZeitraum && Number(p.d.slice(5, 7)) % 2 === 0)) {
         ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(p.d))}${p.d.endsWith('-01-01') ? ` ’${p.d.slice(2, 4)}` : ''}</text>`;
+      } else if (kurzerZeitraum && B >= 500 && p.d.endsWith('-15')) {
+        ticksX += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">15.</text>`;
       }
     });
+    // Höchst- und Tiefstwert, nur aus vergangenen Tagen (heute und später zählen nicht)
+    let marken = '';
+    if (opt.markierung) {
+      const vergangen = reihe.map((p, i) => ({ ...p, i })).filter((p) => p.d < HEUTE && p.n != null && p.n > 0);
+      if (vergangen.length > 1) {
+        const hoch = vergangen.reduce((a, b) => (b.n > a.n ? b : a));
+        const tief = vergangen.reduce((a, b) => (b.n < a.n ? b : a));
+        const basisY = y(opt.yMin);
+        const marke = (p, art) => {
+          const px = x(p.i), py = y(p.n);
+          // Beschriftung über dem Hoch und unter dem Tief, bei Platzmangel auf die andere Seite
+          let ty = art === 'hoch' ? py - 10 : py + 18;
+          if (ty < 12) ty = py + 18;
+          if (ty > basisY - 4) ty = py - 10;
+          const anker = px > B - 110 ? 'end' : px < r.l + 70 ? 'start' : 'middle';
+          const tag = `${p.d.slice(8)}.${p.d.slice(5, 7)}.`;
+          return `<g class="marke ${art}"><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="4"/><text x="${px.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${anker}">${art === 'hoch' ? '▲' : '▼'} ${opt.markeText(p)} · ${tag}</text></g>`;
+        };
+        marken = marke(hoch, 'hoch') + (tief.i !== hoch.i ? marke(tief, 'tief') : '');
+      }
+    }
     let pfad = '', offen = false;
     reihe.forEach((p, i) => {
       if (p.n == null) { offen = false; return; }
@@ -1148,7 +1179,7 @@
     const hi = reihe.findIndex((p) => p.d === HEUTE);
     const heute = hi >= 0 ? `<g class="heute"><line x1="${x(hi)}" x2="${x(hi)}" y1="${r.o - 6}" y2="${y(opt.yMin)}"/><text x="${x(hi) + 5}" y="${r.o + 4}">Heute</text></g>` : '';
 
-    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="${esc(opt.beschreibung)} von ${datum(ERSTER)} bis ${datum(LETZTER)}">
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="${esc(opt.beschreibung)} von ${datum(reihe[0].d)} bis ${datum(reihe[reihe.length - 1].d)}">
       <defs><linearGradient id="goldverlauf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c9a24a" stop-opacity=".28"/><stop offset="1" stop-color="#c9a24a" stop-opacity="0"/></linearGradient></defs>
       <g class="gitter">${gitter}</g>
       ${flaechePfad}
@@ -1156,6 +1187,7 @@
       <line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(opt.yMin)}" y2="${y(opt.yMin)}"/>
       <g class="achse">${ticksY}${ticksX}</g>
       ${heute}
+      ${marken}
       <g class="fadenkreuz" visibility="hidden"><line y1="${r.o}" y2="${y(opt.yMin)}"/><circle r="4.5"/></g>
       <rect class="treffer" x="${r.l}" y="0" width="${B - r.l - r.re}" height="${H}" fill="transparent" style="cursor:crosshair"/>
     </svg>`;

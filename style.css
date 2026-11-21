@@ -467,3 +467,8 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .legende-laender .punkt-vorbei { background: #6f6758; }
 .legende-laender .strich-schnitt { height: 2px !important; background: var(--rot-hell); align-self: center; }
 .diagramm .bruch { stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 3 4; }
+/* Höchst- und Tiefstwert in den Tagesverläufen */
+.diagramm .marke circle { stroke: var(--surface); stroke-width: 2; }
+.diagramm .marke.hoch circle { fill: var(--gold-hell); }
+.diagramm .marke.tief circle { fill: var(--rot-hell); }
+.diagramm .marke text { font-size: 11px; font-weight: 600; fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; font-variant-numeric: tabular-nums; }
