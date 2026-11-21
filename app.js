@@ -246,6 +246,16 @@
 
   // ---------- Fakten je Film und Grund-Zeile ----------
   const donnerstagVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7)); // Kinowoche läuft Donnerstag bis Mittwoch
+  // Erfassungslücke (daten/luecke.json): Für einzeln geprüfte Filme zählen die Wochen der Lücke als Spielwochen,
+  // damit "Wochen am Stück" nicht an fehlenden Daten abbricht. Für alle anderen Filme beginnt die Serie danach neu.
+  const LUECKE = D.luecke || null;
+  const lueckeDurchgehend = new Set((LUECKE && LUECKE.durchgehend) || []);
+  function mitLuecke(wochen, f) {
+    if (!LUECKE || !f || !f.info.tmdb || !lueckeDurchgehend.has(Number(f.info.tmdb))) return wochen;
+    const erg = new Set(wochen);
+    for (let w = donnerstagVon(LUECKE.von); w <= LUECKE.bis; w = plusTage(w, 7)) erg.add(w);
+    return erg;
+  }
   let faktenCache = null;
   let chanceCache = null;
   function fakten() {
@@ -267,8 +277,9 @@
     const neuBis = plusTage(neuAb, 6);
     const diesesJahr = Number(HEUTE.slice(0, 4));
     m.forEach((e, id) => {
+      const wochen = mitLuecke(e.wochen, filme[id]);
       let w = donnerstagVon(HEUTE), n = 0;
-      while (e.wochen.has(w)) { n++; w = plusTage(w, -7); }
+      while (wochen.has(w)) { n++; w = plusTage(w, -7); }
       e.serie = n;
       const jahr = parseInt(filme[id].jahr, 10);
       const ks = filme[id].info && filme[id].info.kinostart;
@@ -1167,7 +1178,7 @@
       const teile = [ksText, `Erster Termin bei uns: ${esc(datum(erster).replace(/^\S+\s/, ''))}`].filter(Boolean);
       return `<div class="meta">${teile.join(' · ')}</div>`;
     }
-    const wochen = new Set(tage.map(kinowocheVon));
+    const wochen = mitLuecke(new Set(tage.map(kinowocheVon)), f);
     const jetzt = kinowocheVon(HEUTE);
     const laeuft = wochen.has(jetzt);
     // Rückwärts ab aktueller Woche, sonst ab der letzten Woche mit Termin bis heute

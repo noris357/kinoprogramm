@@ -352,6 +352,19 @@ if (Test-Path $auslastungDatei) {
   }
 }
 
+# ---------- Erfassungsluecke (daten/luecke.json) ----------
+# Zeitraum ohne Programmdaten und einzeln gepruefte Filme, deren Serie "Wochen am Stueck" darueber weiterlaeuft
+$luecke = $null
+$lueckeDatei = "$PSScriptRoot/../daten/luecke.json"
+if (Test-Path $lueckeDatei) {
+  $lj = Get-Content $lueckeDatei -Raw -Encoding UTF8 | ConvertFrom-Json
+  $luecke = [ordered]@{
+    von         = ConvertTo-IsoText $lj.luecke.von
+    bis         = ConvertTo-IsoText $lj.luecke.bis
+    durchgehend = @($lj.durchgehend | ForEach-Object { [int]$_.tmdb })
+  }
+}
+
 $codes = [ordered]@{}
 foreach ($l in ($genutzteLaender.Keys | Sort-Object)) { if ($landCode[$l]) { $codes[$l] = $landCode[$l] } }
 
@@ -366,6 +379,7 @@ $daten = [ordered]@{
   auslastungStand = $auslastungStand
   auslastung   = $auslastung
   personen     = $personenAusgabe
+  luecke       = $luecke
 }
 
 $inhalt = "window.KINO_DATA = " + ($daten | ConvertTo-Json -Depth 5 -Compress) + ";"

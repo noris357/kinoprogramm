@@ -1,0 +1,8 @@
+{
+  "hinweis": "Erfassungsluecke: In diesem Zeitraum fehlen Programmdaten (Uebergabedaten enden am 26.08.2026, automatische Erfassung ab 19.10.2026). Fuer die hier einzeln geprueften Filme laeuft die Zaehlung 'Wochen am Stueck' ueber die Luecke weiter. Nur aufnehmen, wenn sicher ist, dass der Film durchgehend lief. Schluessel ist die TMDB-ID, der Titel dient nur der Lesbarkeit.",
+  "luecke": { "von": "2026-08-20", "bis": "2026-10-18" },
+  "durchgehend": [
+    { "tmdb": 1368337, "titel": "Die Odyssee" },
+    { "tmdb": 969681, "titel": "Spider-Man: Brand New Day" }
+  ]
+}
