@@ -23,7 +23,9 @@ function Read-FilmhausDetail([string]$Html) {
     Daten    = $daten
     # Der Saal "kommkino" wird auch vom Filmhaus bespielt. Veranstalter KommKino erkennt man an "Kommkino e. V."
     KommKino = $kern -match '(?i)Kommkino e\.\s?V\.'
-    Land     = & $feld 'Land'
+    # Nur eine Liste kurzer Laendernamen uebernehmen. Fehlt die Angabe auf der Seite, liest das Muster sonst
+    # den Beschreibungstext mit (so geschehen bei "Inglourious Basterds"). Dann gilt die Angabe von TMDB.
+    Land     = $(& { $l = & $feld 'Land'; if ($l -and $l.Length -le 150 -and -not ($l -split '\s*[,/]\s*' | Where-Object { $_.Length -gt 40 })) { $l } })
     Jahr     = & $feld 'Jahr'
     Regie    = & $feld 'Regie'
   }
