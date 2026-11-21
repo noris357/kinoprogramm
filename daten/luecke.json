@@ -3,6 +3,19 @@
   "luecke": { "von": "2026-08-20", "bis": "2026-10-18" },
   "durchgehend": [
     { "tmdb": 1368337, "titel": "Die Odyssee" },
-    { "tmdb": 969681, "titel": "Spider-Man: Brand New Day" }
+    { "tmdb": 969681, "titel": "Spider-Man: Brand New Day" },
+    { "tmdb": 1214931, "titel": "Nürnberg" },
+    { "tmdb": 1422407, "titel": "Meine Freundin Conni - Abenteuer mit Kranich Klaus" },
+    { "tmdb": 1084244, "titel": "Toy Story 5" },
+    { "tmdb": 1339713, "titel": "Obsession - Du sollst mich lieben" },
+    { "tmdb": 1315772, "titel": "Minions & Monster" },
+    { "tmdb": 1108427, "titel": "Vaiana (Live Action)" },
+    { "tmdb": 1516724, "titel": "Chéri, ich komme! - Die Erfindung der Lust" },
+    { "tmdb": 1328335, "titel": "Steckerlfischfiasko" },
+    { "tmdb": 1185806, "titel": "Paw Patrol: Der Dino Film" },
+    { "tmdb": 1291595, "titel": "Insidious: Out of the Further" },
+    { "tmdb": 1410202, "titel": "Spaziergang nach Syrakus" },
+    { "tmdb": 1240889, "titel": "Teenage Sex and Death at Camp Miasma" },
+    { "tmdb": 1437696, "titel": "Vaterland" }
   ]
 }
