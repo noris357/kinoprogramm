@@ -451,3 +451,7 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .gesehen-datum { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 10px; font-size: 13px; color: var(--text-2); }
 .profil-liste .gesehen-datum { margin: 0 0 0 4px; }
 .gesehen-datum input { font: inherit; font-size: 13px; color: var(--text); background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: 8px; padding: 3px 8px; color-scheme: dark; }
+.profil-konto { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 14px; margin-top: 14px; }
+.profil-konto .profil-name { margin-top: 0; flex: 1 1 200px; }
+.profil-konto .gesehen-knopf, .profil-konto .vorbei-knopf { margin-top: 0; }
+#pd-sync:empty { display: none; }

@@ -1131,7 +1131,7 @@
         <p>Die Namen der Kinos gehören den jeweiligen Betreibern. Diese Seite steht in keiner Verbindung zu den Kinos.</p>
         <h3>Datenschutz</h3>
         <p>Diese Seite setzt keine Cookies und verwendet kein Tracking. Sie wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc. (USA). Beim Aufruf verarbeitet GitHub technisch notwendige Zugriffsdaten wie die IP-Adresse, um die Seite auszuliefern und vor Missbrauch zu schützen. Näheres steht in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
-        <p>„Mein Kino“ speichert gesehene Filme und einen frei gewählten Namen nur im Speicher deines Browsers (localStorage). Diese Angaben verlassen dein Gerät nicht. Löschen kannst du sie über die Browsereinstellungen für diese Seite.</p>
+        <p>„Mein Kino“ ist freiwillig. Wer sich dort mit einem selbst gewählten Nutzernamen anmeldet, dessen Nutzername und die als gesehen markierten Filme mit Datum werden in einer Datenbank bei Supabase gespeichert (Supabase Inc., Rechenzentrum in Frankfurt am Main). Weitere Angaben wie E-Mail-Adresse oder Passwort werden nicht erhoben. Beim Abruf verarbeitet Supabase technisch notwendige Zugriffsdaten wie die IP-Adresse. Näheres steht in der <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Supabase</a>. Eine Kopie der Liste liegt zusätzlich im Speicher deines Browsers (localStorage). Bitte keinen echten Namen als Nutzernamen verwenden. Wer die eigene Liste gelöscht haben möchte, entfernt die Markierungen im Profil oder wendet sich an die oben genannte Kontaktadresse.</p>
         <p>Schriftarten werden direkt von dieser Seite geladen. Es werden dabei keine Daten an Dritte wie Google übertragen. Links zu den Kinos führen auf deren eigene Seiten, für die deren Datenschutzbestimmungen gelten.</p>
         <p class="meta">Rot markierte Stellen sind Platzhalter und müssen vor der Veröffentlichung ersetzt werden.</p>
       </div>`;
@@ -1203,26 +1203,88 @@
   }
 
   // ---------- Mein Kino: im Kino gesehene Filme ----------
-  // Gespeichert nur in diesem Browser (localStorage), es geht nichts an einen Server.
+  // Anmeldung nur mit Nutzername (ohne Passwort). Die Liste liegt bei Supabase (Rechenzentrum Frankfurt),
+  // dazu eine Kopie im Browser, damit die Seite sofort und auch ohne Verbindung das Häkchen zeigt.
+  // Die Website darf nur drei Datenbankfunktionen aufrufen (mk_laden, mk_setzen, mk_loeschen), die Tabelle
+  // selbst ist gesperrt. So kann niemand die Liste aller Nutzernamen abrufen.
+  // Der Publishable Key ist für die Veröffentlichung im Browser gedacht.
   // Schlüssel je Film: TMDB-Nummer, sonst Titel und Jahr. Die laufende Nummer in data.js ändert sich bei jedem Lauf.
+  const SUPABASE_URL = 'https://ksruwflrjitbxhrolqlr.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_3pEljk4pexNEtxjwI13tEQ_kc2938a9';
   const SPEICHER = 'kinoprogramm-meinkino-v1';
   const filmSchluessel = (f) => (f.info.tmdb ? `t${f.info.tmdb}` : `n${f.titel.toLocaleLowerCase('de')}|${f.jahr || ''}`);
-  let meinKino = { name: '', gesehen: {} };
+  const normName = (n) => String(n || '').trim().toLowerCase().slice(0, 40);
+  let meinKino = { nutzer: '', gesehen: {} };
+  let syncStatus = '';   // Meldung im Profil, z. B. "Gespeichert" oder ein Fehler
   function ladeMeinKino(roh) {
     const s = roh && typeof roh === 'object' ? roh : {};
     const gesehen = {};
     if (s.gesehen && typeof s.gesehen === 'object') Object.entries(s.gesehen).forEach(([k, d]) => { if (/^[tn]/.test(k) && /^\d{4}-\d{2}-\d{2}$/.test(String(d))) gesehen[k] = String(d); });
-    return { name: String(s.name || '').slice(0, 40), gesehen };
+    // ausstehend: eine Änderung konnte nicht gesendet werden und wird beim nächsten Abgleich nachgeholt
+    return { nutzer: normName(s.nutzer), gesehen, ...(s.ausstehend ? { ausstehend: true } : {}) };
   }
   try { meinKino = ladeMeinKino(JSON.parse(localStorage.getItem(SPEICHER) || 'null')); } catch (e) { /* privater Modus o. ä. */ }
   function speichereMeinKino() {
     try { localStorage.setItem(SPEICHER, JSON.stringify(meinKino)); } catch (e) { /* nicht speicherbar, gilt dann nur bis zum Neuladen */ }
     profilKnopfText();
   }
+
+  // Aufruf einer Datenbankfunktion über die Supabase-Schnittstelle
+  async function rpc(name, daten) {
+    const antwort = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`, {
+      method: 'POST',
+      headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify(daten),
+    });
+    if (!antwort.ok) throw new Error(`${name}: ${antwort.status}`);
+    return antwort.status === 204 ? null : antwort.json();
+  }
+  function meldeSync(text) {
+    syncStatus = text;
+    const el = $('#pd-sync');
+    if (el) el.textContent = text;
+  }
+  // Änderung an die Datenbank schicken. Schlägt das fehl, bleibt die Änderung im Browser und wird beim nächsten Laden nachgeholt.
+  async function sendeAenderung(schluessel, datum) {
+    if (!meinKino.nutzer) return;
+    try {
+      if (datum) await rpc('mk_setzen', { p_nutzer: meinKino.nutzer, p_film: schluessel, p_datum: datum });
+      else await rpc('mk_loeschen', { p_nutzer: meinKino.nutzer, p_film: schluessel });
+      meldeSync('Gespeichert, auf allen Geräten verfügbar.');
+    } catch (e) {
+      meinKino.ausstehend = true;
+      speichereMeinKino();
+      meldeSync('Nicht gespeichert, keine Verbindung. Wird beim nächsten Öffnen nachgeholt.');
+    }
+  }
+  // Liste aus der Datenbank holen. Mit "zusammenfuehren" werden Markierungen aus dem Browser dazugenommen
+  // (beim ersten Anmelden und wenn eine Änderung nicht gesendet werden konnte), sonst gilt die Datenbank.
+  async function holeVomServer(zusammenfuehren) {
+    if (!meinKino.nutzer) return;
+    try {
+      const zeilen = await rpc('mk_laden', { p_nutzer: meinKino.nutzer });
+      const server = {};
+      (zeilen || []).forEach((z) => { server[z.film] = String(z.datum); });
+      if (zusammenfuehren || meinKino.ausstehend) {
+        const fehlen = Object.entries(meinKino.gesehen).filter(([k, d]) => server[k] !== d);
+        for (const [k, d] of fehlen) { await rpc('mk_setzen', { p_nutzer: meinKino.nutzer, p_film: k, p_datum: d }); server[k] = d; }
+      }
+      meinKino = { nutzer: meinKino.nutzer, gesehen: server };
+      speichereMeinKino();
+      meldeSync('Abgeglichen, auf allen Geräten verfügbar.');
+      zeichne();
+      if ($('#profil-dialog').open) zeigeProfil();
+    } catch (e) {
+      meldeSync('Keine Verbindung zur Datenbank. Angezeigt wird der Stand in diesem Browser.');
+    }
+  }
+
   const gesehenAm = (f) => meinKino.gesehen[filmSchluessel(f)] || null;
   function setzeGesehen(f, an) {
-    if (an) meinKino.gesehen[filmSchluessel(f)] = HEUTE; else delete meinKino.gesehen[filmSchluessel(f)];
+    const k = filmSchluessel(f);
+    if (an) meinKino.gesehen[k] = HEUTE; else delete meinKino.gesehen[k];
     speichereMeinKino();
+    sendeAenderung(k, an ? HEUTE : null);
   }
   // Datum frei wählbar, höchstens heute. Vorgabe beim Markieren ist heute.
   const datumFeld = (f, am) => `<label class="gesehen-datum">am <input type="date" data-gesehen-datum="${f.id}" value="${am}" max="${HEUTE}" aria-label="Gesehen am"></label>`;
@@ -1233,6 +1295,7 @@
     if (!f || !gesehenAm(f) || !/^\d{4}-\d{2}-\d{2}$/.test(d) || d > HEUTE) { if (f && gesehenAm(f)) feld.value = gesehenAm(f); return; }
     meinKino.gesehen[filmSchluessel(f)] = d;
     speichereMeinKino();
+    sendeAenderung(filmSchluessel(f), d);
   }
   function gesehenKnopf(f) {
     const am = gesehenAm(f);
@@ -1250,7 +1313,21 @@
   }
   function profilKnopfText() {
     const n = Object.keys(meinKino.gesehen).length;
-    $('#profil-knopf').innerHTML = `${meinKino.name ? esc(meinKino.name) : 'Mein Kino'}${n ? ` <span class="zahl-punkt">${n}</span>` : ''}`;
+    $('#profil-knopf').innerHTML = `${meinKino.nutzer ? esc(meinKino.nutzer) : 'Mein Kino'}${n ? ` <span class="zahl-punkt">${n}</span>` : ''}`;
+  }
+
+  function anmeldeBereich() {
+    if (meinKino.nutzer) {
+      return `<div class="profil-konto"><span>Angemeldet als <b>${esc(meinKino.nutzer)}</b></span><button type="button" class="vorbei-knopf" id="pd-abmelden">Abmelden</button></div>
+        <p class="meta" id="pd-sync" role="status">${esc(syncStatus)}</p>`;
+    }
+    const lokal = Object.keys(meinKino.gesehen).length;
+    return `<form class="profil-konto" id="pd-anmelden">
+        <label class="profil-name">Nutzername <input id="pd-nutzer" type="text" minlength="2" maxlength="40" required autocomplete="username" placeholder="z. B. dein Spitzname"></label>
+        <button type="submit" class="gesehen-knopf an">Anmelden</button>
+      </form>
+      <p class="meta">Melde dich auf jedem Gerät mit demselben Namen an, dann siehst du überall dieselbe Liste. Es gibt kein Passwort: Wähle einen Namen, den niemand errät.${lokal ? ` Deine ${lokal} Markierungen aus diesem Browser werden beim Anmelden übernommen.` : ''}</p>
+      <p class="meta" id="pd-sync" role="status">${esc(syncStatus)}</p>`;
   }
 
   function zeigeProfil() {
@@ -1267,8 +1344,8 @@
     const sMeine = schnitt(meine), sAlle = schnitt(alleFilme);
     $('#pd-inhalt').innerHTML = `
       <h2 id="pd-titel">Mein Kino</h2>
-      <p class="meta">Markiere Filme, die du im Kino gesehen hast. Gesehene Filme erscheinen auf der Seite blasser mit einem Häkchen. Alles bleibt nur in diesem Browser gespeichert, es geht nichts an einen Server.</p>
-      <label class="profil-name">Dein Name <input id="pd-name" type="text" maxlength="40" value="${esc(meinKino.name)}" placeholder="optional" autocomplete="off"></label>
+      <p class="meta">Markiere Filme, die du im Kino gesehen hast. Gesehene Filme erscheinen auf der Seite blasser mit einem Häkchen.</p>
+      ${anmeldeBereich()}
       <div class="profil-zahlen">
         <div><b>${meine.length}</b><span>${meine.length === 1 ? 'Film' : 'Filme'} gesehen</span></div>
         <div><b>${sMeine ?? '–'}</b><span>Ø Score deiner Filme</span></div>
@@ -1279,29 +1356,30 @@
       ${jz.length ? `<h3>Deine Jahrzehnte</h3><div class="chips">${reihe(jz)}</div>` : ''}
       ${offen.length ? `<h3>Noch nicht gesehen, läuft noch</h3><ul class="profil-liste">${offen.slice(0, 8).map((f) => `<li>${filmLink(f)} ${wertung(f)}</li>`).join('')}</ul>` : ''}
       <h3>Gesehen</h3>
-      ${meine.length ? `<ul class="profil-liste">${meine.map((f) => `<li>${filmLink(f)} ${wertung(f)} ${datumFeld(f, gesehenAm(f))} <button type="button" class="entfernen" data-gesehen-film="${f.id}" aria-label="${esc(f.titel)} entfernen">×</button></li>`).join('')}</ul>` : '<p class="meta">Noch keine Filme markiert. Öffne einen Film und klicke auf „Im Kino gesehen?“.</p>'}
-      <h3>Auf ein anderes Gerät übertragen</h3>
-      <p class="meta">Kopiere den Code und füge ihn auf dem anderen Gerät hier ein. Vorhandene Markierungen bleiben erhalten.</p>
-      <div class="profil-code">
-        <button type="button" class="vorbei-knopf" id="pd-kopieren">Code kopieren</button>
-        <textarea id="pd-code" rows="2" placeholder="Code hier einfügen" spellcheck="false"></textarea>
-        <button type="button" class="vorbei-knopf" id="pd-einfuegen">Code übernehmen</button>
-        <span class="meta" id="pd-meldung" role="status"></span>
-      </div>`;
-    $('#pd-name').addEventListener('input', (e) => { meinKino.name = e.target.value.slice(0, 40); speichereMeinKino(); });
-    $('#pd-kopieren').addEventListener('click', async () => {
-      const code = btoa(unescape(encodeURIComponent(JSON.stringify(meinKino))));
-      $('#pd-code').value = code;
-      try { await navigator.clipboard.writeText(code); $('#pd-meldung').textContent = 'Code kopiert.'; } catch (e) { $('#pd-code').select(); $('#pd-meldung').textContent = 'Code markiert, bitte kopieren.'; }
-    });
-    $('#pd-einfuegen').addEventListener('click', () => {
-      try {
-        const neu = ladeMeinKino(JSON.parse(decodeURIComponent(escape(atob($('#pd-code').value.trim())))));
-        meinKino = { name: meinKino.name || neu.name, gesehen: { ...neu.gesehen, ...meinKino.gesehen } };
-        speichereMeinKino(); zeigeProfil(); zeichne();
-        $('#pd-meldung').textContent = `${Object.keys(neu.gesehen).length} Markierungen übernommen.`;
-      } catch (e) { $('#pd-meldung').textContent = 'Der Code ist ungültig.'; }
-    });
+      ${meine.length ? `<ul class="profil-liste">${meine.map((f) => `<li>${filmLink(f)} ${wertung(f)} ${datumFeld(f, gesehenAm(f))} <button type="button" class="entfernen" data-gesehen-film="${f.id}" aria-label="${esc(f.titel)} entfernen">×</button></li>`).join('')}</ul>` : '<p class="meta">Noch keine Filme markiert. Öffne einen Film und klicke auf „Im Kino gesehen?“.</p>'}`;
+    const form = $('#pd-anmelden');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = normName($('#pd-nutzer').value);
+        if (name.length < 2) return meldeSync('Bitte mindestens 2 Zeichen eingeben.');
+        meinKino.nutzer = name;
+        speichereMeinKino();
+        meldeSync('Wird abgeglichen …');
+        zeigeProfil();
+        await holeVomServer(true);
+      });
+    }
+    const ab = $('#pd-abmelden');
+    if (ab) {
+      ab.addEventListener('click', () => {
+        // Abmelden entfernt die Liste nur aus diesem Browser, in der Datenbank bleibt sie erhalten
+        meinKino = { nutzer: '', gesehen: {} };
+        speichereMeinKino();
+        meldeSync('Abgemeldet. Deine Liste bleibt gespeichert, melde dich mit demselben Namen wieder an.');
+        zeigeProfil(); zeichne();
+      });
+    }
     if (!$('#profil-dialog').open) $('#profil-dialog').showModal();
   }
 
@@ -1440,4 +1518,6 @@
   profilKnopfText();
   const start = location.hash.slice(1);
   wechsleAnsicht(ANSICHTEN[start] ? start : 'highlights');
+  // Angemeldet: aktuellen Stand aus der Datenbank holen (andere Geräte könnten etwas geändert haben)
+  holeVomServer(false);
 })();
