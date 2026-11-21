@@ -100,6 +100,8 @@
       id, titel, regie: leerWert(regie), jahr: leerWert(jahr), info: info || {},
       laender: [...new Set(laender)],
       bewertung: Number.isFinite(b) ? b : null,
+      // Genauer Score mit drei Nachkommastellen, nur für Rang und Reihenfolge. Angezeigt wird immer die ganze Zahl.
+      genau: Number.isFinite(b) ? (info.scoreGenau != null ? Number(info.scoreGenau) : b) : null,
       jahrzehnt: j > 1880 && j <= new Date().getFullYear() + 1 ? `${Math.floor(j / 10) * 10}er` : null,
     };
   });
@@ -359,7 +361,7 @@
   }
 
   // ---------- Ansicht Highlights ----------
-  const nachScore = (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || a.titel.localeCompare(b.titel, 'de');
+  const nachScore = (a, b) => (b.genau ?? -1) - (a.genau ?? -1) || a.titel.localeCompare(b.titel, 'de');
   function highlightKarte(h, gross) {
     const f = h.f;
     // Nur die Kinos dieser Woche. Die einzelnen Tage stehen in der Filmansicht, hier wären sie zu unübersichtlich.
@@ -456,7 +458,7 @@
 
     const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= sonntag) : daten.filter((t) => t.d === zustand.tag);
     // Sortierung für beide Ansichten immer nach Score, Filme ohne Score am Ende, bei Gleichstand alphabetisch
-    const filmOrdnung = (a, b) => (b.bewertung ?? -1) - (a.bewertung ?? -1) || a.titel.localeCompare(b.titel, 'de');
+    const filmOrdnung = (a, b) => (b.genau ?? -1) - (a.genau ?? -1) || a.titel.localeCompare(b.titel, 'de');
     let inhalt;
     if (!amTag.length) {
       inhalt = zustand.nurNeu
@@ -624,7 +626,7 @@
     { feld: 'rang', titel: '#', wert: (s) => s.rang, zahl: true, zelle: (s) => (s.rang ? `<span class="rang">${s.rang}</span>` : '–') },
     { feld: 'titel', titel: 'Titel', wert: (s) => s.f.titel.toLocaleLowerCase('de'), klasse: 'umbruch',
       zelle: (s) => `<div class="titelzelle">${plakat(s.f, 'mini')}<div>${filmLink(s.f)}${pokale(s.f)}${gefragtAbzeichen(s.f)}</div></div>` },
-    { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.bewertung, zahl: true, zelle: (s) => (s.f.bewertung != null ? wertung(s.f) : '–') },
+    { feld: 'bewertung', titel: 'Score', wert: (s) => s.f.genau, zahl: true, zelle: (s) => (s.f.bewertung != null ? wertung(s.f) : '–') },
     { feld: 'regie', titel: 'Regie', wert: (s) => (s.f.regie || '￿').toLocaleLowerCase('de'), klasse: 'umbruch', zelle: (s) => (istSneak(s.f) ? '?' : regieLinks(s.f) || '–') },
     { feld: 'erster', titel: 'Kinostart', wert: (s) => kinostart(s).d, hinweis: 'Deutscher Kinostart laut TMDB, sonst der erste erfasste Spieltag', zelle: kinostartZelle },
     { feld: 'naechster', titel: 'Nächster Tag', wert: (s) => s.naechster || '9999', zelle: (s) => (s.naechster ? datumKurz(s.naechster) : '–') },
@@ -643,11 +645,12 @@
     const k = kinostart(s);
     return k.echt ? datumKurz(k.d) : `<span class="geschaetzt" title="Kein Kinostart bekannt, erster erfasster Spieltag">${datumKurz(k.d)}</span>`;
   }
-  // Rang nach Score: 1, 2, 2, 4 ... Filme ohne Score bekommen keinen Rang
+  // Rang nach dem genauen Score (drei Nachkommastellen). Gleicher Rang nur bei exakt gleichem Wert.
+  // Filme ohne Score bekommen keinen Rang.
   function setzeRang(liste) {
-    const mitScore = liste.filter((s) => s.f.bewertung != null).sort((a, b) => b.f.bewertung - a.f.bewertung);
+    const mitScore = liste.filter((s) => s.f.genau != null).sort((a, b) => b.f.genau - a.f.genau);
     liste.forEach((s) => { s.rang = null; });
-    mitScore.forEach((s, i) => { s.rang = i > 0 && s.f.bewertung === mitScore[i - 1].f.bewertung ? mitScore[i - 1].rang : i + 1; });
+    mitScore.forEach((s, i) => { s.rang = i > 0 && s.f.genau === mitScore[i - 1].f.genau ? mitScore[i - 1].rang : i + 1; });
   }
 
   function zeigeFilme(daten) {

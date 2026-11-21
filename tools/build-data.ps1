@@ -230,6 +230,7 @@ $bezugMittel = if ($summeG) { ($statistik.Keys | ForEach-Object { $gewichte[$_] 
 $bezugSd = if ($summeG) { ($statistik.Keys | ForEach-Object { $gewichte[$_] * $statistik[$_].sd } | Measure-Object -Sum).Sum / $summeG } else { 0 }
 
 $scores = @{}
+$scoresGenau = @{}
 foreach ($id in $wertRoh.Keys) {
   $sz = 0.0; $sw = 0.0; $roh = @()
   foreach ($quelle in $statistik.Keys) {
@@ -245,6 +246,9 @@ foreach ($id in $wertRoh.Keys) {
     # Bewusst keine Untergrenze: bei nur einer Quelle wuerde sie den Score auf deren Rohwert festlegen.
     $wert = [math]::Min($wert, ($roh | Measure-Object -Maximum).Maximum)
     $scores[$id] = [int][math]::Max(1, [math]::Min(99, [math]::Round($wert)))
+    # Genauer Wert mit drei Nachkommastellen, nur fuer die Rangfolge (angezeigt wird die ganze Zahl)
+    # 1.0 statt 1: sonst waehlt PowerShell Max(int, int) und schneidet die Nachkommastellen ab
+    $scoresGenau[$id] = [math]::Round([math]::Max(1.0, [math]::Min(99.499, [double]$wert)), 3)
   }
 }
 
@@ -305,7 +309,7 @@ foreach ($g in $gruppen.Values) {
     # Nur Plakat, TMDB-ID und eigener Score gehen auf die Website, keine Einzelwertungen
     $zusatz = [ordered]@{}
     foreach ($f in 'poster', 'tmdb', 'kinostart') { if ($i.$f) { $zusatz[$f] = $i.$f } }
-    if ($scores.ContainsKey($g.Id)) { $zusatz.score = $scores[$g.Id] }
+    if ($scores.ContainsKey($g.Id)) { $zusatz.score = $scores[$g.Id]; $zusatz.scoreGenau = $scoresGenau[$g.Id] }
     if ($i.tmdb -and $preise.ContainsKey([string]$i.tmdb)) { $zusatz.preise = $preise[[string]$i.tmdb] }
     if ($zusatz.Count) { $eintrag += , $zusatz }
   }
