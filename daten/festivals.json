@@ -51,22 +51,58 @@
       "beschreibung": "Filmfestival der Menschenrechte, alle zwei Jahre im Oktober, mit dem Nürnberger Filmpreis der Menschenrechte."
     },
     {
+      "id": "fantasy-filmfest-white-nights-2027", "name": "Fantasy Filmfest White Nights", "art": "Genre",
+      "von": "2027-01-28", "bis": "2027-01-31", "sicher": true,
+      "kinos": ["Cinecitta Nürnberg"], "nurTitel": true, "titel": [],
+      "link": "https://fantasyfilmfest.com/tickets-white-nights-nuernberg/",
+      "beschreibung": "Winterausgabe des Genrefestivals: rund 17 Filme an einem Wochenende im Cinecittà. Festivalpass 150 Euro, Einzeltickets ab 4. Januar."
+    },
+    {
       "id": "fantasy-filmfest", "name": "Fantasy Filmfest", "art": "Genre",
-      "kinos": [],
+      "kinos": ["Cinecitta Nürnberg"], "nurTitel": true,
       "link": "https://fantasyfilmfest.com/",
-      "beschreibung": "Horror, Thriller und Science-Fiction, mit Station in Nürnberg. Termine für Nürnberg folgen."
+      "beschreibung": "Horror, Thriller und Science-Fiction, die große Sommerausgabe mit Station in Nürnberg. Termine für 2027 folgen."
+    },
+    {
+      "id": "around-the-world-2027", "name": "Around the World in 14 Films", "art": "Thema",
+      "von": "2027-01-01", "bis": "2027-01-10", "sicher": false, "zeitraumText": "voraussichtlich Anfang Januar 2027",
+      "kinos": ["Filmhaus Nürnberg"], "nurTitel": true,
+      "link": "https://www.kunstkulturquartier.de/programm/festivals",
+      "beschreibung": "Festival der Festivals aus Berlin zu Gast im Filmhaus: herausragende Werke des jungen Weltkinos, jeder Film mit Patin oder Pate."
+    },
+    {
+      "id": "heimat-2027", "name": "Heimat! Das Filmfestival", "art": "Thema",
+      "von": "2027-01-20", "bis": "2027-01-31", "sicher": false, "zeitraumText": "voraussichtlich Ende Januar 2027",
+      "kinos": ["Filmhaus Nürnberg"], "nurTitel": true,
+      "link": "https://www.kunstkulturquartier.de/programm/festivals",
+      "beschreibung": "Jährliches Festival im Filmhaus rund um Heimat, jedes Jahr mit eigenem Motto."
+    },
+    {
+      "id": "fahrrad-film-festival-2027", "name": "Nürnberger Fahrrad-Film-Festival", "art": "Thema",
+      "von": "2027-05-01", "bis": "2027-05-31", "sicher": false, "zeitraumText": "voraussichtlich Mai 2027",
+      "kinos": ["Casablanca Nürnberg"], "nurTitel": true,
+      "link": "https://www.casablanca-nuernberg.de/veranstaltungen/festivalkalender",
+      "beschreibung": "Filme rund ums Fahrrad, jedes Jahr im Mai im Casablanca."
+    },
+    {
+      "id": "energiewende-2027", "name": "Energiewende-Filmfestival", "art": "Thema",
+      "von": "2027-05-01", "bis": "2027-05-31", "sicher": false, "zeitraumText": "voraussichtlich Mai 2027",
+      "kinos": ["Filmhaus Nürnberg"], "nurTitel": true,
+      "link": "https://www.kunstkulturquartier.de/programm/festivals",
+      "beschreibung": "Spiel- und Dokumentarfilme zu Klimaschutz und Energie, veranstaltet vom Umweltreferat der Stadt im Filmhaus."
+    },
+    {
+      "id": "queeres-filmfestival-2027", "name": "Queeres Filmfestival", "art": "Thema",
+      "von": "2027-06-01", "bis": "2027-06-30", "sicher": false, "zeitraumText": "voraussichtlich Juni 2027",
+      "kinos": ["Casablanca Nürnberg", "Cinecitta Nürnberg"], "nurTitel": true,
+      "link": "https://www.casablanca-nuernberg.de/veranstaltungen/festivalkalender",
+      "beschreibung": "Queeres Kino im Juni, gemeinsam von Casablanca, Cinecittà und Queer Culture e. V."
     },
     {
       "id": "little-big-films", "name": "Little Big Films", "art": "Kinder",
       "kinos": ["Filmhaus Nürnberg"],
       "link": "https://www.nuernberg.de/internet/kommunikation_stadtmarketing/filmfestivals.html",
       "beschreibung": "Deutschlands erstes Kinderfilmfestival, von Kindern für Kinder geplant, drei Tage im Filmhaus."
-    },
-    {
-      "id": "queer-film-festival", "name": "Queer Film Festival", "art": "Thema",
-      "kinos": ["Casablanca Nürnberg"],
-      "link": "",
-      "beschreibung": "Queeres Kino im Casablanca. Termine folgen."
     }
   ]
 }

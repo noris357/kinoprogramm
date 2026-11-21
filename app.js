@@ -1612,18 +1612,32 @@
   // ---------- Ansicht Festivals ----------
   // Festivalkalender aus daten/festivals.json. Vorstellungen gehören zu einem Festival, wenn sie im Zeitraum in einem
   // der genannten Kinos laufen. titel, land und bisJahr schränken das ein (dann reicht eines davon).
+  // nurTitel: nur Filme aus der Titelliste zählen (für Festivals in großen Kinos). Ohne Kino und ohne Filter wird nichts zugeordnet.
+  // Die Liste kommt beim Laden frisch aus daten/festivals.json, data.js dient nur als Rückfall.
   const FESTIVAL_FARBEN = { 'Länderfokus': '#3987e5', 'Klassiker': '#c98500', 'Open Air': '#199e70', 'Thema': '#d55181', 'Genre': '#d95926', 'Kinder': '#9085e9' };
   const festivalFarbe = (fe) => FESTIVAL_FARBEN[fe.art] || 'var(--gold)';
   const normTitel = (s) => String(s || '').toLocaleLowerCase('de').replace(/[^\p{L}\p{N}]/gu, '');
-  const FESTIVALS = (D.festivals || []).map((fe) => ({ ...fe, kinos: fe.kinos || [] }));
+  const festivalListe = (liste) => (liste || []).map((fe) => ({ ...fe, kinos: fe.kinos || [] }));
+  let FESTIVALS = festivalListe(D.festivals);
+  fetch('daten/festivals.json', { cache: 'no-cache' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => {
+      if (!j || !Array.isArray(j.festivals)) return;
+      FESTIVALS = festivalListe(j.festivals);
+      if (zustand.ansicht === 'festivals') zeichne();
+    })
+    .catch(() => { /* Rückfall auf data.js */ });
   function festivalTermine(fe, daten) {
     if (!fe.von || !fe.bis) return [];
     const mitFilter = (fe.titel && fe.titel.length) || fe.land || fe.bisJahr;
+    if (fe.nurTitel && !(fe.titel && fe.titel.length)) return [];
+    if (!fe.kinos.length && !mitFilter) return [];
     return daten.filter((t) => {
       if (t.d < fe.von || t.d > fe.bis) return false;
       if (fe.kinos.length && !fe.kinos.includes(kinos[t.k].roh)) return false;
       if (!mitFilter) return true;
       const f = filme[t.f], j = parseInt(f.jahr, 10);
+      if (fe.nurTitel) return fe.titel.some((x) => normTitel(f.titel).includes(normTitel(x)));
       return Boolean((fe.titel && fe.titel.some((x) => normTitel(f.titel).includes(normTitel(x))))
         || (fe.land && f.laender.includes(fe.land))
         || (fe.bisJahr && j && j <= fe.bisJahr));
@@ -1702,13 +1716,26 @@
     const sichtbar = liste.filter((fe) => fe.von && fe.bis >= start && fe.von < ende).sort((a, b) => a.von.localeCompare(b.von));
     const monate = [];
     for (let m = new Date(Number(start.slice(0, 4)), Number(start.slice(5, 7)) - 1, 1); m < endeMonat; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) monate.push(iso(m));
+    // Spuren verteilen, damit sich Balken und Beschriftungen nicht überlagern (Beschriftung grob 0,8 % je Zeichen).
+    // --spur gilt mit Beschriftung, --spur-m für schmale Bildschirme, auf denen die Beschriftung fehlt.
+    const belegt = [], belegtM = [];
+    const freieSpur = (spuren, von, bis) => {
+      let i = spuren.findIndex((ende) => ende < von);
+      if (i < 0) { i = spuren.length; spuren.push(0); }
+      spuren[i] = bis;
+      return i;
+    };
     const balken = sichtbar.map((fe) => {
-      const l = pos(fe.von), b = Math.max(0.9, pos(plusTage(fe.bis, 1)) - l);
-      return `<button type="button" class="zeit-balken${fe.sicher === false ? ' unsicher' : ''}${l > 70 ? ' rechts' : ''}" data-festival-sprung="${esc(fe.id)}" style="left:${l}%;width:${b}%;--fest-farbe:${festivalFarbe(fe)}" title="${esc(fe.name)} · ${esc(zeitraumText(fe))}"><span>${esc(fe.name)}</span></button>`;
+      const l = pos(fe.von), b = Math.max(0.9, pos(plusTage(fe.bis, 1)) - l), rechts = l > 70;
+      const w = fe.name.length * 0.8 + 1.5;
+      const spur = freieSpur(belegt, rechts ? Math.min(l, l + b - w) : l, rechts ? l + b : Math.max(l + b, l + w));
+      const spurM = freieSpur(belegtM, l, l + b + 0.5);
+      return `<button type="button" class="zeit-balken${fe.sicher === false ? ' unsicher' : ''}${rechts ? ' rechts' : ''}" data-festival-sprung="${esc(fe.id)}" style="left:${l}%;width:${b}%;--spur:${spur};--spur-m:${spurM};--fest-farbe:${festivalFarbe(fe)}" title="${esc(fe.name)} · ${esc(zeitraumText(fe))}"><span>${esc(fe.name)}</span></button>`;
     }).join('');
+    const spuren = Math.max(1, belegt.length), spurenM = Math.max(1, belegtM.length);
     return `<div class="zeitleiste">
       <div class="zeit-monate">${monate.map((m) => `<span style="left:${pos(m)}%">${fmtMonat.format(parse(m))}${m.endsWith('-01-01') ? ` ’${m.slice(2, 4)}` : ''}</span>`).join('')}</div>
-      <div class="zeit-spur">${balken}<i class="zeit-heute" style="left:${pos(HEUTE)}%"><b>Heute</b></i></div>
+      <div class="zeit-spur" style="--spuren:${spuren};--spuren-m:${spurenM}">${balken}<i class="zeit-heute" style="left:${pos(HEUTE)}%"><b>Heute</b></i></div>
     </div>`;
   }
   function zeigeFestivals(daten) {

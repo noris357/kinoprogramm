@@ -598,10 +598,9 @@ details.monat-ranking[open] > summary { margin-bottom: 6px; }
 .zeitleiste { position: relative; margin-top: 8px; }
 .zeit-monate { position: relative; height: 18px; border-bottom: 1px solid var(--line); }
 .zeit-monate span { position: absolute; top: 0; font-size: 11px; color: var(--muted); padding-left: 3px; border-left: 1px solid var(--line); height: 18px; }
-.zeit-spur { position: relative; min-height: 120px; }
-.zeit-balken { position: absolute; height: 26px; top: 10px; border: 0; border-radius: 6px; background: var(--fest-farbe); color: #fff; font: inherit; font-size: 11px; font-weight: 600; text-align: left; padding: 0 6px; cursor: pointer; overflow: visible; white-space: nowrap; min-width: 8px; }
+.zeit-spur { position: relative; min-height: calc(var(--spuren, 2) * 52px + 12px); }
+.zeit-balken { position: absolute; height: 26px; top: calc(10px + var(--spur, 0) * 52px); border: 0; border-radius: 6px; background: var(--fest-farbe); color: #fff; font: inherit; font-size: 11px; font-weight: 600; text-align: left; padding: 0 6px; cursor: pointer; overflow: visible; white-space: nowrap; min-width: 8px; }
 .zeit-balken span { position: absolute; left: 0; top: 30px; color: var(--text-2); font-weight: 500; }
-.zeit-balken:nth-of-type(2n) { top: 64px; }
 .zeit-balken.unsicher { background: repeating-linear-gradient(135deg, var(--fest-farbe) 0 6px, transparent 6px 10px); border: 1.5px dashed var(--fest-farbe); }
 .zeit-heute { position: absolute; top: -18px; bottom: 0; width: 0; border-left: 1.5px solid var(--rot-hell); font-style: normal; }
 .zeit-heute b { position: absolute; top: -2px; left: 4px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--rot-hell); }
@@ -629,8 +628,8 @@ details.monat-ranking[open] > summary { margin-bottom: 6px; }
 /* Handy: keine Namen unter den Balken (stehen in den Karten), nur jeder zweite Monat, Balken in einer Reihe */
 @media (max-width: 560px) {
   .zeit-balken span { display: none; }
-  .zeit-balken, .zeit-balken:nth-of-type(2n) { top: 12px; }
-  .zeit-spur { min-height: 50px; }
+  .zeit-balken { top: calc(12px + var(--spur-m, 0) * 32px); }
+  .zeit-spur { min-height: calc(var(--spuren-m, 1) * 32px + 18px); }
   .zeit-monate span:nth-child(2n) { visibility: hidden; }
   .zeit-heute b { display: none; }
 }

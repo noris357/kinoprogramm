@@ -11,6 +11,8 @@ Live unter https://noris357.github.io/kinoprogramm/ (GitHub Pages, öffentlich).
 - `daten/filminfos.json` (TMDB), `daten/wertungen.json` (MDBList), `daten/preise.json` (Wikidata): Zwischenspeicher der Abrufe
 - `daten/score-gewichte.json`, `daten/titel-korrekturen.json`, `daten/ausschluss.txt`, `daten/preise-manuell.json`, `daten/luecke.json`: von Hand gepflegte Einstellungen
   (`luecke.json`: Erfassungslücke 20.08. bis 18.10.2026 und einzeln geprüfte Filme, deren „Wochen am Stück“ darüber weiterzählen)
+- `daten/festivals.json`: Festivalkalender, von Hand und von der Routine „Festivalseiten prüfen“ (1. und 15. im Monat, Pull Request) gepflegt.
+  Die Website lädt die Datei direkt, nach Änderungen daran ist kein Neubau von `data.js` nötig.
 - `tools/aktualisieren.ps1`: liest die Kinoseiten aus (`tools/quellen/*.ps1`) und gleicht mit dem Bestand ab
 - `tools/tmdb.ps1`, `tools/mdblist.ps1`, `tools/preise.ps1`: Zusatzdaten
 - `tools/auslastung.ps1`: Auslastungsstufen der Cinecitta-Gruppe nach `daten/auslastung.json` (Rubrik „Schnell vergriffen“)
