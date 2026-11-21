@@ -118,4 +118,34 @@ foreach ($pnr in $offen) {
   $n++; if ($n % 25 -eq 0) { "  $n von $($offen.Count) Personen"; Save-Personen }
 }
 Save-Personen
+
+# ---------- 3. Letterboxd-Seite ----------
+# Letterboxd findet Personen nicht ueber die TMDB-Nummer. Die Adresse wird aus dem Namen gebildet
+# (letterboxd.com/director/denis-villeneuve/) und einmal geprueft. Gibt es sie nicht, bleibt das Feld leer
+# und die Website verlinkt die Letterboxd-Suche. Hoeflich: eine Abfrage pro Person und Sekunde, nur einmal.
+function Get-LetterboxdSlug([string]$Name) {
+  $t = $Name.Normalize([Text.NormalizationForm]::FormD)
+  $t = [regex]::Replace($t, '\p{Mn}', '').ToLowerInvariant().Replace('ß', 'ss').Replace('ø', 'o').Replace('ł', 'l').Replace('&', 'and')
+  return ([regex]::Replace($t, '[^a-z0-9]+', '-')).Trim('-')
+}
+$ohneLb = @($personen.Keys | Where-Object { $personen[$_].name -and $null -eq $personen[$_].letterboxd })
+"Personen: $($ohneLb.Count) ohne geprueften Letterboxd-Link"
+$n = 0
+foreach ($pnr in $ohneLb) {
+  $e = $personen[$pnr]
+  $slug = Get-LetterboxdSlug $e.name
+  $ok = $false
+  if ($slug) {
+    try {
+      $r = Invoke-WebRequest -Uri "https://letterboxd.com/director/$slug/" -Method Head -UseBasicParsing -TimeoutSec 20 -UserAgent $script:UserAgent -MaximumRedirection 0
+      $ok = [int]$r.StatusCode -eq 200
+    } catch { $ok = $false }
+    Start-Sleep -Milliseconds 1000
+  }
+  # Eingelesene Eintraege sind Objekte, neue Woerterbuecher
+  $wert = if ($ok) { $slug } else { '' }
+  if ($e -is [System.Collections.IDictionary]) { $e.letterboxd = $wert } else { $e | Add-Member -NotePropertyName letterboxd -NotePropertyValue $wert -Force }
+  $n++; if ($n % 50 -eq 0) { "  $n von $($ohneLb.Count) Letterboxd-Links"; Save-Personen }
+}
+Save-Personen
 "Personen: fertig, $(@($personen.Values | Where-Object { $_.foto }).Count) mit Foto"

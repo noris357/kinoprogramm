@@ -405,8 +405,19 @@
     const film = neu[0] || null;
     if (film) belegt.add(film.f.id);
     const hatPreis = (h) => preisGruppen(h.f).length > 0;
+    // Previews: Vorstellungen vor dem deutschen Kinostart laut TMDB (Feld kinostart)
+    const previews = alle.filter((h) => h.f.info.kinostart && [...h.kinos.values()].some((ds) => [...ds].some((d) => d < h.f.info.kinostart)))
+      .map((h) => {
+        const ks = h.f.info.kinostart;
+        // Je Kino die Preview-Tage, z. B. "So 22.11.26, Mo 23.11.26 im Uferpalast Fürth"
+        const wann = [...h.kinos].map(([k, ds]) => ({ k, tage: [...ds].filter((d) => d < ks).sort() })).filter((e) => e.tage.length)
+          .sort((a, b) => a.tage[0].localeCompare(b.tage[0]))
+          .map((e) => `${e.tage.map(wochentagDatum).join(', ')} im ${kinos[e.k].name}`).join(' · ');
+        return { ...h, hinweis: `Preview ${wann} · Kinostart ${datumKurz(ks)}` };
+      });
     const rubriken = [
       ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', nimm(neu)],
+      ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart.', nimm(previews)],
       ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
         const j = parseInt(h.f.jahr, 10);
         return j && jetzt - j >= KLASSIKER_ALTER && ((h.f.bewertung ?? -1) >= KLASSIKER_SCORE || hatPreis(h));
@@ -725,11 +736,16 @@
   }
   function regieKopf(r) {
     const p = PERSONEN[r.name] || [];
-    const [, geboren, gestorben, ort, arbeiten] = p;
+    const [, geboren, gestorben, ort, arbeiten, lbSlug] = p;
+    // Geprüfte Letterboxd-Seite, sonst die Letterboxd-Suche nach dem Namen
+    const lbUrl = lbSlug ? `https://letterboxd.com/director/${encodeURIComponent(lbSlug)}/` : `https://letterboxd.com/search/${encodeURIComponent(r.name)}/`;
+    const lbLink = `<a class="lb-link" href="${esc(lbUrl)}" target="_blank" rel="noopener">${lbSlug ? 'Auf Letterboxd' : 'Auf Letterboxd suchen'} ↗</a>`;
     const leben = geboren ? `* ${geboren}${ort ? ` in ${esc(ort)}` : ''}${gestorben ? ` · † ${gestorben}` : ''}` : (ort ? `Geboren in ${esc(ort)}` : '');
     const werk = arbeiten ? `${arbeiten} ${arbeiten === 1 ? 'Spielfilm' : 'Spielfilme'} als Regie` : '';
     const zeilen = [leben, werk].filter(Boolean);
-    return `<div class="regie-kopf">${regieFoto(r.name, 'gross')}<div><b>${esc(r.name)}</b>${zeilen.length ? `<div class="meta">${zeilen.join(' · ')}</div>` : ''}<div class="meta">${r.nFilme} ${r.nFilme === 1 ? 'Film' : 'Filme'} bei uns${r.schnitt != null ? `, Ø Score ${r.schnitt}` : ''}</div></div></div>`;
+    const zurueckKnopf = zurueck && zurueck.name === r.name && filme[zurueck.film]
+      ? `<button type="button" class="zurueck-film" data-zurueck-film>← Zurück zu ${esc(filme[zurueck.film].titel)}</button>` : '';
+    return `${zurueckKnopf}<div class="regie-kopf">${regieFoto(r.name, 'gross')}<div><b>${esc(r.name)}</b>${zeilen.length ? `<div class="meta">${zeilen.join(' · ')}</div>` : ''}<div class="meta">${r.nFilme} ${r.nFilme === 1 ? 'Film' : 'Filme'} bei uns${r.schnitt != null ? `, Ø Score ${r.schnitt}` : ''}</div><div class="meta">${lbLink}</div></div></div>`;
   }
   // Filme einer Person, aufgeklappt unter ihrer Zeile. Spalten wie im Reiter Filme, dazu der erste Tag.
   function regieFilmTabelle(r) {
@@ -781,8 +797,11 @@
       ${liste.length ? `<div class="tabelle-wrap"><table class="liste regie-liste"><thead><tr>${kopf}</tr></thead><tbody>${zeilen}</tbody></table></div>` : '<p class="leer">Keine Regie für diese Auswahl.</p>'}`;
   }
   // Sprung aus Film-Dialog oder Filmliste: Reiter Regie, Person aufgeklappt und sichtbar
-  function zeigeRegiePerson(name) {
+  // herkunft: Film-Dialog, aus dem gesprungen wurde. Dann zeigt der Kopf der Person einen Knopf zurück zum Film.
+  let zurueck = null;
+  function zeigeRegiePerson(name, herkunft = null) {
     zustand.regieOffen = name;
+    zurueck = herkunft ? { ...herkunft, name } : null;
     if ($('#film-dialog').open) $('#film-dialog').close();
     wechsleAnsicht('regie');
     const zeile = [...document.querySelectorAll('#v-regie tr.regie-zeile')].find((z) => z.dataset.regieAuf === name);
@@ -1138,7 +1157,9 @@
     return `<div class="meta">${start}Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
   }
 
+  let offenerFilm = null;   // Film im Dialog, für den Sprung zur Regie und zurück
   function zeigeFilm(fid) {
+    offenerFilm = fid;
     const f = filme[fid];
     const nachKino = new Map();
     const alleTage = [];
@@ -1231,6 +1252,14 @@
     let el;
     if ((el = ziel('[data-zu]'))) { wechsleAnsicht(el.dataset.zu); return scrollTo(0, 0); }
     if ((el = ziel('[data-film]'))) return zeigeFilm(Number(el.dataset.film));
+    if ((el = ziel('[data-zurueck-film]'))) {
+      const z = zurueck;
+      zurueck = null;
+      if (!z) return;
+      if (z.ansicht !== 'regie') wechsleAnsicht(z.ansicht);
+      scrollTo(0, z.y);
+      return zeigeFilm(z.film);
+    }
     if ((el = ziel('[data-regie]'))) return zeigeRegiePerson(el.dataset.regie);
     if ((el = ziel('[data-regie-auf]'))) { zustand.regieOffen = zustand.regieOffen === el.dataset.regieAuf ? '' : el.dataset.regieAuf; return zeichne(); }
     if ((el = ziel('[data-rsort]'))) {
@@ -1263,7 +1292,8 @@
   $('#film-dialog').addEventListener('click', (e) => {
     if (e.target.id === 'film-dialog') return e.target.close();
     const regie = e.target.closest('[data-regie]');
-    if (regie) zeigeRegiePerson(regie.dataset.regie);
+    // Herkunft merken: Film, Reiter und Scrollposition, damit "Zurück zum Film" alles wiederherstellt
+    if (regie) zeigeRegiePerson(regie.dataset.regie, { film: offenerFilm, ansicht: zustand.ansicht, y: scrollY });
   });
   $('#fuss').addEventListener('click', (e) => { if (e.target.closest('[data-impressum]')) { wechsleAnsicht('impressum'); scrollTo(0, 0); } });
 

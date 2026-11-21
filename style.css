@@ -277,6 +277,9 @@ table.liste { border-collapse: collapse; width: 100%; font-size: 14px; }
 /* Bleibt beim seitlichen Scrollen der Tabelle stehen und bricht um, damit auf dem Handy nichts abgeschnitten wird */
 .regie-kopf { display: flex; align-items: center; gap: 14px; padding: 10px 12px 6px; position: sticky; left: 0; max-width: min(640px, calc(100vw - 60px)); white-space: normal; }
 .regie-kopf b { font-size: 16px; }
+.lb-link { font-size: 13px; }
+.zurueck-film { position: sticky; left: 0; margin: 10px 12px 0; padding: 6px 12px; font: inherit; font-size: 13px; font-weight: 600; color: var(--gold-hell); background: var(--gold-wash); border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; white-space: normal; text-align: left; }
+.zurueck-film:hover { border-color: var(--gold); }
 .regie-name .pfeil { display: inline-block; width: 1.1em; color: var(--gold); }
 .liste tr.regie-filme > td { padding: 4px 0 14px 18px; background: var(--surface); }
 .liste tr.regie-filme:hover { background: none; }
