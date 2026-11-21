@@ -935,6 +935,12 @@
         <div class="tooltip" hidden></div>
         <p class="hinweis karten-fuss"></p>
       </div>
+      <div class="tafel diagramm abstand" id="d-sankey">
+        <h3>Lebenslauf der Neustarts</h3>
+        <p class="hinweis">Alle Filme mit deutschem Kinostart seit Projektstart: in welcher Woche sie starteten, in wie vielen Kinos sie in der Startwoche liefen und wie lange sie bisher am Stück im Programm blieben. Jeder Strom zählt Filme. Fahre über einen Strom, um die Filme zu sehen.</p>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
       <h2 class="statistik-zwischentitel">Rankings je Monat</h2>
       <p class="hinweis">Nur Neustarts des jeweiligen Monats (deutscher Kinostart in diesem Monat), ab Projektstart am ${datumKurz(PROJEKT_START)}. Spieltage zählen jeden Tag in jedem Kino, an dem ein Film läuft. Einzelne Vorstellungen und Uhrzeiten erfassen wir nicht.</p>
       ${monatsRankings(daten)}
@@ -984,6 +990,100 @@
     saeulenDiagramm('d-laender', laenderMonat);
     streuDiagramm('d-streu', daten);
     weltkarte('d-karte', daten);
+    sankeyNeustarts('d-sankey', daten);
+  }
+
+  // ---------- Sankey: Lebenslauf der Neustarts ----------
+  // Neustart: deutscher Kinostart (TMDB) zwischen Projektstart und heute. Drei Spalten:
+  // Startwoche (Kinowoche des Kinostarts) -> Zahl der Kinos in dieser Woche -> Laufzeit bis heute.
+  function sankeyNeustarts(id, daten) {
+    const rahmen = document.getElementById(id);
+    if (!rahmen) return;
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const jeFilm = new Map();
+    daten.forEach((t) => { if (!jeFilm.has(t.f)) jeFilm.set(t.f, []); jeFilm.get(t.f).push(t); });
+    const ersteWoche = donnerstagVon(PROJEKT_START) < PROJEKT_START ? plusTage(donnerstagVon(PROJEKT_START), 7) : donnerstagVon(PROJEKT_START);
+    const KINOS = ['1 Kino', '2–4 Kinos', '5 und mehr', 'erst später bei uns'];
+    const LAUF = ['1 Woche, dann abgesetzt', '2–3 Wochen, dann abgesetzt', '4 und mehr Wochen, abgesetzt', 'läuft noch'];
+    const filmeListe = [];
+    jeFilm.forEach((ts, fid) => {
+      const f = filme[fid], ks = f.info.kinostart && String(f.info.kinostart);
+      if (!ks || istSneak(f) || istKurzfilm(f)) return;
+      const sw = donnerstagVon(ks);
+      if (sw < ersteWoche || ks > HEUTE) return;
+      const kinosStart = new Set(ts.filter((t) => donnerstagVon(t.d) === sw).map((t) => t.k)).size;
+      const wochen = new Set(ts.filter((t) => t.d >= sw && t.d <= HEUTE).map((t) => donnerstagVon(t.d)));
+      let n = 0;
+      for (let w = sw; wochen.has(w); w = plusTage(w, 7)) n++;
+      const laeuft = ts.some((t) => t.d >= HEUTE);
+      filmeListe.push({
+        f, start: sw,
+        kinos: kinosStart === 0 ? KINOS[3] : kinosStart === 1 ? KINOS[0] : kinosStart <= 4 ? KINOS[1] : KINOS[2],
+        lauf: laeuft ? LAUF[3] : n <= 1 ? LAUF[0] : n <= 3 ? LAUF[1] : LAUF[2],
+      });
+    });
+    if (filmeListe.length < 3) { ziel.innerHTML = '<p class="leer">Noch zu wenige Neustarts seit Projektstart.</p>'; return; }
+    const wochenNamen = [...new Set(filmeListe.map((e) => e.start))].sort();
+    const spalten = [
+      wochenNamen.map((w) => ({ id: `w${w}`, name: `Start ${w.slice(8)}.${w.slice(5, 7)}.` })),
+      KINOS.map((k) => ({ id: `k${k}`, name: k })),
+      LAUF.map((l) => ({ id: `l${l}`, name: l })),
+    ];
+    // Ströme zählen Filme
+    const strom = new Map();
+    const add = (a, b, e) => { const k = `${a}>${b}`; if (!strom.has(k)) strom.set(k, { a, b, filme: [] }); strom.get(k).filme.push(e.f); };
+    filmeListe.forEach((e) => { add(`w${e.start}`, `k${e.kinos}`, e); add(`k${e.kinos}`, `l${e.lauf}`, e); });
+    const knotenWert = new Map();
+    filmeListe.forEach((e) => [`w${e.start}`, `k${e.kinos}`, `l${e.lauf}`].forEach((k) => knotenWert.set(k, (knotenWert.get(k) || 0) + 1)));
+    spalten.forEach((s, i) => { spalten[i] = s.filter((kn) => knotenWert.get(kn.id)); });
+
+    const B = Math.max(ziel.clientWidth, 280), schmal = B < 500;
+    const H = schmal ? 360 : 420, LUECKE = 10, KNOTEN_B = 12;
+    const randL = schmal ? 4 : 8, randR = schmal ? 4 : 8;
+    const xs = [randL, (B - KNOTEN_B) / 2, B - randR - KNOTEN_B];
+    const gesamt = filmeListe.length;
+    const hoeheProFilm = Math.min(...spalten.map((s) => (H - LUECKE * (s.length - 1)) / gesamt));
+    const pos = new Map();
+    spalten.forEach((s, i) => {
+      const belegt = gesamt * hoeheProFilm + LUECKE * (s.length - 1);
+      let y = (H - belegt) / 2;
+      s.forEach((kn) => { const h = knotenWert.get(kn.id) * hoeheProFilm; pos.set(kn.id, { x: xs[i], y, h, aus: y, ein: y, spalte: i, name: kn.name }); y += h + LUECKE; });
+    });
+    // Farben: je Kinozahl zum Start eine Goldstufe, Ströme tragen die Farbe ihrer Kino-Gruppe
+    const FARBE = { [`k${KINOS[0]}`]: '#7a6638', [`k${KINOS[1]}`]: '#b08f45', [`k${KINOS[2]}`]: '#e8cf8a', [`k${KINOS[3]}`]: '#6f6758' };
+    const reihenfolge = (id2) => spalten.flat().findIndex((kn) => kn.id === id2);
+    const stroeme = [...strom.values()].sort((p, q) => reihenfolge(p.a) - reihenfolge(q.a) || reihenfolge(p.b) - reihenfolge(q.b));
+    const pfade = stroeme.map((s, i) => {
+      const a = pos.get(s.a), b = pos.get(s.b), h = s.filme.length * hoeheProFilm;
+      const x0 = a.x + KNOTEN_B, x1 = b.x, y0 = a.aus, y1 = b.ein;
+      a.aus += h; b.ein += h;
+      const xm = (x0 + x1) / 2;
+      const d = `M${x0},${y0}C${xm},${y0} ${xm},${y1} ${x1},${y1}L${x1},${y1 + h}C${xm},${y1 + h} ${xm},${y0 + h} ${x0},${y0 + h}Z`;
+      const farbe = FARBE[s.a] || FARBE[s.b];
+      return `<path class="strom" d="${d}" fill="${farbe}" data-i="${i}"/>`;
+    }).join('');
+    const knoten = [...pos.entries()].map(([kid, p]) => {
+      const rechts = p.spalte === 2, mitte = p.spalte === 1;
+      const tx = rechts ? p.x - 6 : p.x + KNOTEN_B + 6;
+      const anker = rechts ? 'end' : 'start';
+      const zahlText = knotenWert.get(kid);
+      return `<g class="knoten"><rect x="${p.x}" y="${p.y.toFixed(1)}" width="${KNOTEN_B}" height="${Math.max(2, p.h).toFixed(1)}" rx="2" fill="${FARBE[kid] || 'var(--gold)'}"/>
+        <text x="${tx}" y="${(p.y + p.h / 2 + 4).toFixed(1)}" text-anchor="${anker}"${mitte ? ' class="mitte"' : ''}>${esc(p.name)} <tspan class="zahl">${zahlText}</tspan></text></g>`;
+    }).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Sankey-Diagramm: ${gesamt} Neustarts nach Startwoche, Kinozahl zum Start und Laufzeit"><g class="stroeme">${pfade}</g>${knoten}</svg>
+      <div class="sankey-kopf"><span>Startwoche</span><span>Kinos in der Startwoche</span><span>Laufzeit bis heute</span></div>`;
+    const svg = ziel.querySelector('svg');
+    svg.addEventListener('pointermove', (ev) => {
+      const el = ev.target.closest('.strom');
+      svg.querySelectorAll('.strom.aktiv').forEach((p) => p.classList.remove('aktiv'));
+      if (!el) { tip.hidden = true; svg.classList.remove('hervor'); return; }
+      el.classList.add('aktiv'); svg.classList.add('hervor');
+      const s = stroeme[+el.dataset.i], b = svg.getBoundingClientRect();
+      const titel = s.filme.slice().sort(nachScore).slice(0, 6).map((f) => esc(f.titel)).join('<br>');
+      setzeTipp(rahmen, tip, svg, B, (ev.clientX - b.left) * (B / b.width), (ev.clientY - b.top) * (B / b.width) - 6,
+        `${esc(pos.get(s.a).name)} → ${esc(pos.get(s.b).name)}: <b>${s.filme.length}</b> ${s.filme.length === 1 ? 'Film' : 'Filme'}<br><span class="meta">${titel}${s.filme.length > 6 ? '<br>…' : ''}</span>`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; svg.classList.remove('hervor'); svg.querySelectorAll('.strom.aktiv').forEach((p) => p.classList.remove('aktiv')); });
   }
 
   // ---------- Weltkarte: Ø Score je Produktionsland ----------

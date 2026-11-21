@@ -488,3 +488,14 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .rangliste { list-style: none; margin: 0; padding: 0; counter-reset: rang; display: grid; gap: 8px; }
 .rangliste li { counter-increment: rang; display: flex; align-items: center; gap: 10px; }
 .rangliste li::before { content: counter(rang); font-family: var(--font-display); font-size: 22px; color: var(--gold-hell); width: 18px; text-align: right; }
+/* Sankey: Lebenslauf der Neustarts */
+#d-sankey .strom { opacity: .55; transition: opacity .12s; }
+#d-sankey svg.hervor .strom { opacity: .18; }
+#d-sankey svg.hervor .strom.aktiv { opacity: .9; }
+#d-sankey .knoten text { font-size: 12px; fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+#d-sankey .knoten text.mitte { font-weight: 600; }
+#d-sankey .knoten .zahl { fill: var(--gold-hell); font-variant-numeric: tabular-nums; }
+.sankey-kopf { display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 8px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.sankey-kopf span:nth-child(2) { text-align: center; }
+.sankey-kopf span:nth-child(3) { text-align: right; }
+#d-sankey .tooltip { white-space: normal; max-width: 260px; }
