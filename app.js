@@ -1145,7 +1145,12 @@
   function laufzeitZeile(f, tage) {
     if (/^(Sneak Preview|Kult Sneak)$/.test(f.titel) || !tage.length) return '';
     const erster = tage[0];
-    if (erster > HEUTE) return '';
+    const ksText = f.info && f.info.kinostart ? `Kinostart: ${esc(datumKurz(String(f.info.kinostart)))}` : '';
+    // Noch nicht gelaufen (z. B. Preview oder kommender Start): Kinostart und erster Termin bei uns
+    if (erster > HEUTE) {
+      const teile = [ksText, `Erster Termin bei uns: ${esc(datum(erster).replace(/^\S+\s/, ''))}`].filter(Boolean);
+      return `<div class="meta">${teile.join(' · ')}</div>`;
+    }
     const wochen = new Set(tage.map(kinowocheVon));
     const jetzt = kinowocheVon(HEUTE);
     const laeuft = wochen.has(jetzt);
@@ -1155,8 +1160,7 @@
     let n = 0;
     while (wochen.has(w)) { n++; w = plusTage(w, -7); }
     const einheit = n === 1 ? 'Woche' : 'Wochen';
-    const ks = f.info && f.info.kinostart;
-    const start = ks ? `Kinostart: ${esc(datumKurz(String(ks)))} · ` : '';
+    const start = ksText ? `${ksText} · ` : '';
     return `<div class="meta">${start}Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
   }
 
