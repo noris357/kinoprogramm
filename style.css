@@ -180,6 +180,8 @@ h1, h2, h3 { text-wrap: balance; }
 .fd-festivals { margin: 4px 0; }
 .fd-festivals .abzeichen.festival { margin-left: 0; margin-right: 4px; }
 .fest-auto { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--line-strong); border-radius: 999px; padding: 1px 7px; }
+.fest-alle summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--gold-hell); }
+.fest-alle ul { margin-top: 10px; }
 .fest-genres { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 13px; color: var(--text-2); }
 .abzeichen.gefragt { background: var(--rot-wash); color: var(--rot-hell); border: 1px solid var(--rot-hell); padding: 1px 6px; }
 /* Rubrik "Schnell vergriffen": je Film die gut gebuchten Vorstellungen, Punktfarbe nach Auslastung */

@@ -463,9 +463,9 @@
     const previewKnopf = previewsFrei.length > FILME_JE_RUBRIK
       ? `<button type="button" class="vorbei-knopf mehr-knopf" data-alle-previews aria-expanded="${zustand.allePreviews}">${zustand.allePreviews ? 'Weniger Previews' : `Mehr Previews (${previewsFrei.length - FILME_JE_RUBRIK})`}</button>` : '';
     const rubriken = [
-      ['Festival diese Woche', festText, festListe, null, festFuss],
       ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', neuListe],
       ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart. Vorstellungen am Vorabend des Starts zählen nicht.', previewListe, null, previewKnopf],
+      ['Festival diese Woche', festText, festListe, null, festFuss],
       ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
         const j = parseInt(h.f.jahr, 10);
         return j && jetzt - j >= KLASSIKER_ALTER && ((h.f.bewertung ?? -1) >= KLASSIKER_SCORE || hatPreis(h));
@@ -1755,6 +1755,17 @@
       top: mitScore.sort(nachScore).slice(0, 3),
     };
   }
+  // Klappliste mit allen Filmen des Festivals als Filmzeilen (Plakat, Titel, Score, Festivaltage), nach erstem Festivaltag.
+  // Auch bereits gelaufene Filme sind anklickbar.
+  function festivalAlleFilme(a) {
+    if (a.fs.length <= a.top.length) return '';
+    const tage = new Map();
+    a.ts.forEach((t) => { if (!tage.has(t.f)) tage.set(t.f, new Set()); tage.get(t.f).add(t.d); });
+    const zeilen = a.fs.map((f) => ({ f, tage: [...(tage.get(f.id) || [])].sort() }))
+      .sort((x, y) => (x.tage[0] || '').localeCompare(y.tage[0] || '') || x.f.titel.localeCompare(y.f.titel, 'de'))
+      .map(({ f, tage: ds }) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)} ${wertung(f)}<div class="meta">${filmMeta(f)}</div><div class="meta">${ds.map(wochentagDatum).join(', ')}</div></div></li>`).join('');
+    return `<details class="fest-alle fest-liste"><summary>Alle ${a.fs.length} Filme anzeigen</summary><ul>${zeilen}</ul></details>`;
+  }
   function festivalKarte(fe, a) {
     const st = festivalStatus(fe);
     const statusText = st === 'laeuft' ? 'läuft gerade' : st === 'kommt' ? (fe.sicher === false ? 'voraussichtlich' : 'demnächst') : st === 'vorbei' ? 'vorbei' : 'Termin folgt';
@@ -1773,6 +1784,7 @@
         ${a.laender.length ? `<div class="fest-laender">${a.laender.slice(0, 8).map(([l, n]) => `<span title="${esc(l)}: ${n}">${mitFlagge(l)} <b>${n}</b></span>`).join('')}</div>` : ''}
         ${a.genres.length ? `<div class="fest-genres">${a.genres.slice(0, 6).map(([g, n]) => `<span>${esc(g)} <b>${n}</b></span>`).join('')}</div>` : ''}
         ${zeile('Highlights', a.top)}
+        ${festivalAlleFilme(a)}
         ${zeile('Jetzt schon sehen, Kinostart erst später', a.jetztSchon.slice(0, 4), (f) => `regulärer Kinostart ${datumKurz(String(f.info.kinostart))}`)}
         ${a.nurHier.length ? `<p class="meta fest-nurhier"><b>${a.nurHier.length}</b> ${a.nurHier.length === 1 ? 'Film läuft' : 'Filme laufen'} bei uns nur auf diesem Festival: ${a.nurHier.slice(0, 5).map((f) => filmLink(f)).join(', ')}${a.nurHier.length > 5 ? ' …' : ''}</p>` : ''}`;
     } else {
