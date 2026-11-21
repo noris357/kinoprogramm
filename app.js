@@ -1224,10 +1224,20 @@
     if (an) meinKino.gesehen[filmSchluessel(f)] = HEUTE; else delete meinKino.gesehen[filmSchluessel(f)];
     speichereMeinKino();
   }
+  // Datum frei wählbar, höchstens heute. Vorgabe beim Markieren ist heute.
+  const datumFeld = (f, am) => `<label class="gesehen-datum">am <input type="date" data-gesehen-datum="${f.id}" value="${am}" max="${HEUTE}" aria-label="Gesehen am"></label>`;
+  function setzeGesehenDatum(feld) {
+    const f = filme[Number(feld.dataset.gesehenDatum)];
+    const d = feld.value;
+    // Leere oder ungültige Eingabe und Daten in der Zukunft nicht übernehmen
+    if (!f || !gesehenAm(f) || !/^\d{4}-\d{2}-\d{2}$/.test(d) || d > HEUTE) { if (f && gesehenAm(f)) feld.value = gesehenAm(f); return; }
+    meinKino.gesehen[filmSchluessel(f)] = d;
+    speichereMeinKino();
+  }
   function gesehenKnopf(f) {
     const am = gesehenAm(f);
     return am
-      ? `<button type="button" class="gesehen-knopf an" data-gesehen-film="${f.id}" aria-pressed="true">✓ Im Kino gesehen · ${datumKurz(am)}</button><span class="meta"> Nochmal klicken zum Entfernen</span>`
+      ? `<button type="button" class="gesehen-knopf an" data-gesehen-film="${f.id}" aria-pressed="true">✓ Im Kino gesehen</button>${datumFeld(f, am)}<span class="meta"> Knopf nochmal klicken zum Entfernen</span>`
       : `<button type="button" class="gesehen-knopf" data-gesehen-film="${f.id}" aria-pressed="false">Im Kino gesehen?</button>`;
   }
   // Gesehene Filme überall abschwächen, aber sichtbar lassen: Karten, Tabellenzeilen, Listeneinträge mit Filmlink
@@ -1269,7 +1279,7 @@
       ${jz.length ? `<h3>Deine Jahrzehnte</h3><div class="chips">${reihe(jz)}</div>` : ''}
       ${offen.length ? `<h3>Noch nicht gesehen, läuft noch</h3><ul class="profil-liste">${offen.slice(0, 8).map((f) => `<li>${filmLink(f)} ${wertung(f)}</li>`).join('')}</ul>` : ''}
       <h3>Gesehen</h3>
-      ${meine.length ? `<ul class="profil-liste">${meine.map((f) => `<li>${filmLink(f)} ${wertung(f)} <span class="meta">${datumKurz(gesehenAm(f))}</span> <button type="button" class="entfernen" data-gesehen-film="${f.id}" aria-label="${esc(f.titel)} entfernen">×</button></li>`).join('')}</ul>` : '<p class="meta">Noch keine Filme markiert. Öffne einen Film und klicke auf „Im Kino gesehen?“.</p>'}
+      ${meine.length ? `<ul class="profil-liste">${meine.map((f) => `<li>${filmLink(f)} ${wertung(f)} ${datumFeld(f, gesehenAm(f))} <button type="button" class="entfernen" data-gesehen-film="${f.id}" aria-label="${esc(f.titel)} entfernen">×</button></li>`).join('')}</ul>` : '<p class="meta">Noch keine Filme markiert. Öffne einen Film und klicke auf „Im Kino gesehen?“.</p>'}
       <h3>Auf ein anderes Gerät übertragen</h3>
       <p class="meta">Kopiere den Code und füge ihn auf dem anderen Gerät hier ein. Vorhandene Markierungen bleiben erhalten.</p>
       <div class="profil-code">
@@ -1397,6 +1407,9 @@
     zeichne();
   }
   $('#profil-knopf').addEventListener('click', zeigeProfil);
+  ['#film-dialog', '#profil-dialog'].forEach((sel) => $(sel).addEventListener('change', (e) => {
+    if (e.target.matches('[data-gesehen-datum]')) setzeGesehenDatum(e.target);
+  }));
   $('#profil-dialog').addEventListener('click', (e) => {
     if (e.target.id === 'profil-dialog') return e.target.close();
     const g = e.target.closest('[data-gesehen-film]');
