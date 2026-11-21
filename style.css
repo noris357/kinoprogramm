@@ -550,3 +550,16 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 #d-baukasten .knoten text { font-size: 12px; fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
 #d-baukasten .knoten .zahl { fill: var(--gold-hell); font-variant-numeric: tabular-nums; }
 #d-baukasten .tooltip { white-space: normal; max-width: 280px; }
+/* Rankings einklappbar (details), erster Zwischentitel ohne Abstand nach oben */
+.statistik-zwischentitel.erst { margin-top: 4px; }
+details.monat-ranking > summary { list-style: none; display: flex; align-items: baseline; gap: 12px; cursor: pointer; }
+details.monat-ranking > summary::-webkit-details-marker { display: none; }
+details.monat-ranking > summary::before { content: "▸"; color: var(--gold); font-size: 14px; }
+details.monat-ranking[open] > summary::before { content: "▾"; }
+details.monat-ranking > summary h3 { margin: 0; }
+details.monat-ranking[open] > summary { margin-bottom: 6px; }
+/* Länder je Monat als Linien */
+#d-laender .land-wert { font-size: 12px; font-weight: 600; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+#d-laender .tooltip { white-space: nowrap; }
+#fd-inhalt .zurueck-auswertung { margin: 0 0 12px; }
+#v-filme > .zurueck-film { margin: 0 0 10px; }

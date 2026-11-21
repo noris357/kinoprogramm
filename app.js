@@ -716,7 +716,9 @@
     const haken = (f) => (istSneak(f) || istKurzfilm(f) ? '' : `<button type="button" class="gesehen-haken" data-gesehen-film="${f.id}" aria-pressed="${Boolean(gesehenAm(f))}" aria-label="${esc(f.titel)} im Kino gesehen" title="Im Kino gesehen">✓</button>`);
     const zeilen = liste.map((s) => `<tr>${SPALTEN.map((sp2) => `<td class="${[sp2.zahl ? 'zahl' : '', sp2.klasse || ''].join(' ').trim()}">${sp2.zelle(s)}</td>`).join('')}<td><span class="status ${s.status}">${STATUS_TEXT[s.status]}</span></td><td class="mitte">${haken(s.f)}</td></tr>`).join('');
 
-    $('#v-filme').innerHTML = `
+    // Nach einem Sprung aus Statistik oder Datenexploration: Knopf zurück (stellt die vorherigen Filter wieder her)
+    const zurueckKnopf = auswertungZurueck ? `<button type="button" class="zurueck-film" data-zurueck-auswertung-seite>← Zurück zur ${AUSWERTUNGEN[auswertungZurueck.ansicht]}</button>` : '';
+    $('#v-filme').innerHTML = `${zurueckKnopf}
       <div class="ansicht-kopf"><h2>${zahl(liste.length)} Filme</h2>
         <label class="meta"><input type="checkbox" id="nur-kommend" ${zustand.nurKommend ? 'checked' : ''}> Nur Filme mit kommenden Terminen</label></div>
       ${liste.length ? `<div class="tabelle-wrap"><table class="liste"><thead><tr>${kopf}</tr></thead><tbody>${zeilen}</tbody></table></div>` : '<p class="leer">Keine Filme für diese Auswahl.</p>'}`;
@@ -876,55 +878,50 @@
     return reihe;
   }
 
-  // Filme pro Monat nach erstgenanntem Produktionsland: jeder Film zählt pro Monat einmal
+  // Farben für Länder (Filme pro Tag nach Land) und Gruppen im Baukasten, feste Reihenfolge
   const LANDFARBEN = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9'];
   const FARBE_ANDERE = '#6b6760';
-  function laenderJeMonat(daten) {
-    const monate = new Map();
-    daten.forEach((t) => {
-      const land = filme[t.f].laender[0];
-      if (!land) return;
-      const m = t.d.slice(0, 7);
-      if (!monate.has(m)) monate.set(m, new Map());
-      monate.get(m).set(t.f, land);
-    });
-    const summe = new Map();
-    monate.forEach((fs) => fs.forEach((land) => summe.set(land, (summe.get(land) || 0) + 1)));
-    const spitze = [...summe].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')).slice(0, LANDFARBEN.length).map(([l]) => l);
-    const reihen = [...spitze, 'Andere'];
-    const liste = [...monate.keys()].sort().map((m) => {
-      const z = new Map(reihen.map((r) => [r, 0]));
-      monate.get(m).forEach((land) => { const r = spitze.includes(land) ? land : 'Andere'; z.set(r, z.get(r) + 1); });
-      return { m, werte: reihen.map((r) => z.get(r)), gesamt: monate.get(m).size };
-    });
-    const gesamt = reihen.map((r, i) => liste.reduce((s, e) => s + e.werte[i], 0));
-    return { reihen, liste, gesamt, farben: [...LANDFARBEN.slice(0, spitze.length), FARBE_ANDERE] };
-  }
-
   function zeigeStatistik(daten) {
     const reihe = tagesreihe(daten);
-    // Die beiden Tagesverläufe erst ab Projektstart: davor sind die Daten aus der Übergabe lückenhaft
+    // Die Tagesverläufe erst ab Projektstart: davor sind die Daten aus der Übergabe lückenhaft
     const ab = (p) => p.d >= PROJEKT_START;
     const reiheAb = reihe.filter(ab);
     const wertungen = bewertungsreihe(daten).filter(ab);
-    const laenderMonat = laenderJeMonat(daten);
+    const laenderTag = laenderJeTag(daten);
     const mitWert = wertungen.filter((p) => p.n != null).map((p) => p.n);
     const kommende = new Set(daten.filter((t) => t.d >= HEUTE).map((t) => t.f));
     const basis = kommende.size ? [...kommende].map((id) => filme[id]) : [];
     const jz = new Map(), la = new Map();
     basis.forEach((f) => {
-      const j = f.jahrzehnt || 'unbekannt';
-      jz.set(j, (jz.get(j) || 0) + 1);
+      if (f.jahrzehnt) jz.set(f.jahrzehnt, (jz.get(f.jahrzehnt) || 0) + 1);   // ohne "unbekannt"
       f.laender.forEach((l) => la.set(l, (la.get(l) || 0) + 1));
     });
-    const jahrzehnte = [...jz].sort((a, b) => (a[0] === 'unbekannt') - (b[0] === 'unbekannt') || a[0].localeCompare(b[0]));
+    const jahrzehnte = [...jz].sort((a, b) => a[0].localeCompare(b[0]));
     const laender = [...la].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')).slice(0, 12);
+    const rankingHinweis = `Nur Neustarts (deutscher Kinostart im jeweiligen Zeitraum), ab Projektstart am ${datumKurz(PROJEKT_START)}. Spieltage zählen jeden Tag in jedem Kino, an dem ein Film läuft. Einzelne Vorstellungen und Uhrzeiten erfassen wir nicht.`;
 
     $('#v-statistik').innerHTML = `
-      <div class="tafel diagramm" id="d-streu">
-        <h3>Score und Produktionsjahr</h3>
-        <p class="hinweis">Jeder Punkt ist ein Film, der seit Beginn der Erfassung lief. Die Linien zeigen den Ø Score je Jahrzehnt. Rechts der gestrichelten Linie sind die 2020er gestreckt, weil dort die meisten Filme liegen. Ein Klick auf einen Punkt öffnet den Film.</p>
-        <div class="legende-laender"><span><i class="punkt-laeuft"></i>läuft noch</span><span><i class="punkt-vorbei"></i>lief schon</span><span><i class="strich-schnitt"></i>Ø je Jahrzehnt</span></div>
+      <h2 class="statistik-zwischentitel erst">Rankings je Monat</h2>
+      <p class="hinweis">${rankingHinweis}</p>
+      ${zeitRankings(daten, 'monat')}
+      <h2 class="statistik-zwischentitel">Rankings je Jahr</h2>
+      <p class="hinweis">${rankingHinweis}</p>
+      ${zeitRankings(daten, 'jahr')}
+      <div class="tafel diagramm abstand" id="d-wertung">
+        <h3>Ø Score pro Tag</h3>
+        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Durchschnittlicher Score aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Score bleiben außen vor. Markiert sind Höchst- und Tiefstwert der vergangenen Tage.</p>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-filme">
+        <h3>Verschiedene Filme pro Tag</h3>
+        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Markiert sind Höchst- und Tiefstwert der vergangenen Tage. Ein Klick auf einen Tag öffnet das Programm.</p>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-sankey">
+        <h3>Lebenslauf der Neustarts</h3>
+        <p class="hinweis">Alle Filme mit deutschem Kinostart seit Projektstart: in welcher Woche sie starteten, in wie vielen Kinos sie in der Startwoche liefen und wie lange sie bisher am Stück im Programm blieben. Jeder Strom zählt Filme. Fahre über einen Strom, um die Filme zu sehen.</p>
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
@@ -935,9 +932,10 @@
         <div class="tooltip" hidden></div>
         <p class="hinweis karten-fuss"></p>
       </div>
-      <div class="tafel diagramm abstand" id="d-sankey">
-        <h3>Lebenslauf der Neustarts</h3>
-        <p class="hinweis">Alle Filme mit deutschem Kinostart seit Projektstart: in welcher Woche sie starteten, in wie vielen Kinos sie in der Startwoche liefen und wie lange sie bisher am Stück im Programm blieben. Jeder Strom zählt Filme. Fahre über einen Strom, um die Filme zu sehen.</p>
+      <div class="tafel diagramm abstand" id="d-streu">
+        <h3>Score und Produktionsjahr</h3>
+        <p class="hinweis">Jeder Punkt ist ein Film, der seit Beginn der Erfassung lief. Die Linien zeigen den Ø Score je Jahrzehnt. Rechts der gestrichelten Linie sind die 2020er gestreckt, weil dort die meisten Filme liegen. Ein Klick auf einen Punkt öffnet den Film.</p>
+        <div class="legende-laender"><span><i class="punkt-laeuft"></i>läuft noch</span><span><i class="punkt-vorbei"></i>lief schon</span><span><i class="strich-schnitt"></i>Ø je Jahrzehnt</span></div>
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
@@ -948,42 +946,17 @@
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
-      <div class="tafel diagramm abstand" id="d-scorelauf">
-        <h3>Läuft ein guter Film länger?</h3>
-        <p class="hinweis">Jeder Punkt ist ein Film mit Score: rechts der bessere Score, oben mehr Spieltage seit Projektstart am ${datumKurz(PROJEKT_START)}. Die Farbe zeigt, in wie vielen Kinos der Film lief. Die y-Achse ist logarithmisch. Ein Klick auf einen Punkt öffnet den Film.</p>
-        <p class="korrelation"></p>
-        <div class="legende-laender"></div>
-        <div class="flaeche"></div>
-        <div class="tooltip" hidden></div>
-      </div>
-      <h2 class="statistik-zwischentitel">Rankings je Monat</h2>
-      <p class="hinweis">Nur Neustarts des jeweiligen Monats (deutscher Kinostart in diesem Monat), ab Projektstart am ${datumKurz(PROJEKT_START)}. Spieltage zählen jeden Tag in jedem Kino, an dem ein Film läuft. Einzelne Vorstellungen und Uhrzeiten erfassen wir nicht.</p>
-      ${monatsRankings(daten)}
-      <div class="tafel diagramm abstand" id="d-filme">
-        <h3>Verschiedene Filme pro Tag</h3>
-        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Markiert sind Höchst- und Tiefstwert der vergangenen Tage. Ein Klick auf einen Tag öffnet das Programm.</p>
-        <div class="flaeche"></div>
-        <div class="tooltip" hidden></div>
-      </div>
-      <div class="tafel diagramm abstand" id="d-wertung">
-        <h3>Ø Score pro Tag</h3>
-        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Durchschnittlicher Score aller Filme, die an diesem Tag laufen. Jeder Film zählt pro Tag nur einmal, Filme ohne Score bleiben außen vor. Markiert sind Höchst- und Tiefstwert der vergangenen Tage.</p>
-        <div class="flaeche"></div>
-        <div class="tooltip" hidden></div>
-      </div>
       <div class="tafel diagramm abstand" id="d-laender">
-        <h3>Filme pro Monat nach Land</h3>
-        <p class="hinweis">Jeder Film zählt pro Monat einmal, und zwar für das erstgenannte Produktionsland. Eine deutsch-französische Koproduktion mit Deutschland an erster Stelle zählt also als deutscher Film.</p>
-        <div class="legende-laender">${laenderMonat.reihen.map((r, i) => `<span><i style="background:${laenderMonat.farben[i]}"></i>${r === 'Andere' ? 'Andere' : mitFlagge(r)} <b>${laenderMonat.gesamt[i]}</b></span>`).join('')}</div>
+        <h3>Filme pro Tag nach Land</h3>
+        <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}, gleiche Zeitachse wie der Ø Score pro Tag. Jeder Film zählt pro Tag einmal, und zwar für das erstgenannte Produktionsland. Eine Linie je Land, bei heute stehen die Zahlen der drei häufigsten Länder. Die Zahl in der Legende nennt die verschiedenen Filme seit Projektstart.</p>
+        <div class="legende-laender">${laenderTag.reihen.map((r, i) => `<span><i style="background:${laenderTag.farben[i]}"></i>${r === 'Andere' ? 'Andere' : mitFlagge(r)} <b>${laenderTag.gesamt[i]}</b></span>`).join('')}</div>
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
       <div class="raster-2">
         <div class="tafel"><h3>Nach Jahrzehnt</h3><p class="hinweis">Filme mit kommenden Terminen nach Produktionsjahr. Ein Klick filtert.</p>${jahrzehnte.length ? balken(jahrzehnte, 'jahrzehnt') : '<p class="leer">Keine Daten.</p>'}</div>
         <div class="tafel"><h3>Nach Land</h3><p class="hinweis">Die zwölf häufigsten Produktionsländer. Koproduktionen zählen für jedes Land.</p>${laender.length ? balken(laender, 'land') : '<p class="leer">Keine Daten.</p>'}</div>
-      </div>
-      <details><summary>Verlauf als Tabelle anzeigen (pro Monat)</summary>${monatsTabelle(reihe)}</details>
-      <details><summary>Länder als Tabelle anzeigen (pro Monat)</summary>${laenderTabelle(laenderMonat)}</details>`;
+      </div>`;
 
     const maxFilme = Math.max(1, ...reiheAb.map((p) => p.n));
     const stF = schritt(maxFilme);
@@ -1002,12 +975,94 @@
       tipp: (p) => (p.n == null ? `${datum(p.d)}<br>keine Filme mit Score` : `${datum(p.d)}<br>Ø Score <b>${p.n.toLocaleString('de-DE', { maximumFractionDigits: 1 })}</b> aus ${p.anzahl} ${p.anzahl === 1 ? 'Film' : 'Filmen'}`),
       beschreibung: 'Liniendiagramm: durchschnittlicher Score pro Tag',
     });
-    saeulenDiagramm('d-laender', laenderMonat);
+    laenderLinien('d-laender', laenderTag);
     streuDiagramm('d-streu', daten);
     weltkarte('d-karte', daten);
     sankeyNeustarts('d-sankey', daten);
     hantelDiagramm('d-hantel', daten);
-    scoreLaufzeit('d-scorelauf', daten);
+  }
+
+  // Filme pro Tag nach Land: gleiche Zeitachse wie "Ø Score pro Tag" (Projektstart bis zum letzten Tag mit Terminen).
+  // Jeder Film zählt pro Tag einmal, für das erstgenannte Produktionsland. Eine Linie je Land (die häufigsten plus "Andere").
+  function laenderJeTag(daten) {
+    const tage = new Map(), filmeJeLand = new Map();
+    daten.forEach((t) => {
+      if (t.d < PROJEKT_START) return;
+      const land = filme[t.f].laender[0];
+      if (!land) return;
+      if (!tage.has(t.d)) tage.set(t.d, new Map());
+      tage.get(t.d).set(t.f, land);
+      if (!filmeJeLand.has(land)) filmeJeLand.set(land, new Set());
+      filmeJeLand.get(land).add(t.f);
+    });
+    const spitze = [...filmeJeLand].sort((a, b) => b[1].size - a[1].size || a[0].localeCompare(b[0], 'de')).slice(0, LANDFARBEN.length).map(([l]) => l);
+    const reihen = [...spitze, 'Andere'];
+    const gesamt = reihen.map((r) => (r === 'Andere' ? [...filmeJeLand].filter(([l]) => !spitze.includes(l)).reduce((s, [, f]) => s + f.size, 0) : filmeJeLand.get(r).size));
+    const liste = [];
+    for (let d = PROJEKT_START; d <= LETZTER; d = plusTage(d, 1)) {
+      const z = new Map(reihen.map((r) => [r, 0]));
+      (tage.get(d) || new Map()).forEach((land) => { const r = spitze.includes(land) ? land : 'Andere'; z.set(r, z.get(r) + 1); });
+      liste.push({ d, werte: reihen.map((r) => z.get(r)), gesamt: tage.get(d)?.size || 0 });
+    }
+    return { reihen, liste, gesamt, farben: [...LANDFARBEN.slice(0, spitze.length), FARBE_ANDERE] };
+  }
+
+  // Linien je Land über die Tage, mit Heute-Linie. Bei heute stehen die Werte der drei häufigsten Länder dieses Tages.
+  function laenderLinien(id, { reihen, liste, farben }) {
+    const rahmen = document.getElementById(id);
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    if (!liste.length) { ziel.innerHTML = '<p class="leer">Keine Filme mit Länderangabe.</p>'; return; }
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 240 : 300;
+    const r = { l: 34, o: 20, u: 26, re: 8 };
+    const max = Math.max(1, ...liste.flatMap((e) => e.werte));
+    const st = schritt(max), yMax = Math.ceil(max / st) * st;
+    const y = (n) => r.o + (1 - n / yMax) * (H - r.o - r.u);
+    const x = (i) => r.l + (i / Math.max(1, liste.length - 1)) * (B - r.l - r.re);
+    let gitter = '', ticks = '';
+    for (let v = 0; v <= yMax; v += st) { gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(v)}" y2="${y(v)}"/>`; ticks += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`; }
+    // Beschriftung wie bei den anderen Tagesverläufen: Monatsanfang, bei kurzem Zeitraum auch der 15.
+    const kurz = liste.length < 200;
+    liste.forEach((e, i) => {
+      if (e.d.endsWith('-01')) ticks += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${fmtMonat.format(parse(e.d))}${e.d.endsWith('-01-01') ? ` ’${e.d.slice(2, 4)}` : ''}</text>`;
+      else if (kurz && B >= 500 && e.d.endsWith('-15')) ticks += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">15.</text>`;
+    });
+    const linien = reihen.map((land, j) => `<polyline points="${liste.map((e, i) => `${x(i).toFixed(1)},${y(e.werte[j]).toFixed(1)}`).join(' ')}" fill="none" stroke="${farben[j]}" stroke-width="${land === 'Andere' ? 1.5 : 2}" stroke-linejoin="round" opacity="${land === 'Andere' ? 0.7 : 1}"/>`).join('');
+    const hi = liste.findIndex((e) => e.d === HEUTE);
+    const heute = hi >= 0 ? `<g class="heute"><line x1="${x(hi)}" x2="${x(hi)}" y1="${r.o - 6}" y2="${y(0)}"/><text x="${x(hi) + 5}" y="${r.o + 4}">Heute</text></g>` : '';
+    // Werte der drei häufigsten Länder heute (ohne "Andere"), untereinander mit Abstand gegen Überlappung
+    let marken = '';
+    if (hi >= 0) {
+      const e = liste[hi];
+      const top3 = reihen.map((land, j) => ({ land, j, n: e.werte[j] })).filter((t) => t.land !== 'Andere' && t.n > 0).sort((a, b) => b.n - a.n).slice(0, 3);
+      const belegt = [];
+      top3.sort((a, b) => y(a.n) - y(b.n)).forEach((t) => {
+        let ty = y(t.n) + 4;
+        belegt.forEach((b) => { if (Math.abs(ty - b) < 14) ty = b + 14; });
+        belegt.push(ty);
+        const name = B < 500 ? (D.laenderCodes || {})[t.land] || t.land : t.land;
+        marken += `<circle cx="${x(hi).toFixed(1)}" cy="${y(t.n).toFixed(1)}" r="3.5" fill="${farben[t.j]}" stroke="var(--surface)" stroke-width="1.5"/><text class="land-wert" x="${(x(hi) - 6).toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="end" fill="${farben[t.j]}">${t.n} ${esc(name)}</text>`;
+      });
+    }
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Liniendiagramm: Filme pro Tag nach erstgenanntem Produktionsland"><g class="gitter">${gitter}</g><line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(0)}" y2="${y(0)}"/>${linien}<g class="achse">${ticks}</g>${heute}${marken}
+      <g class="fadenkreuz" visibility="hidden"><line y1="${r.o}" y2="${y(0)}"/></g>
+      <rect class="treffer" x="${r.l}" y="0" width="${B - r.l - r.re}" height="${H}" fill="transparent" style="cursor:crosshair"/></svg>`;
+    const svg = ziel.querySelector('svg'), fk = svg.querySelector('.fadenkreuz'), fkL = fk.querySelector('line');
+    const treffer = svg.querySelector('.treffer');
+    treffer.addEventListener('pointermove', (ev) => {
+      const b = svg.getBoundingClientRect(), px = (ev.clientX - b.left) * (B / b.width);
+      const i = Math.max(0, Math.min(liste.length - 1, Math.round(((px - r.l) / (B - r.l - r.re)) * (liste.length - 1))));
+      const m = liste[i];
+      fk.setAttribute('visibility', 'visible'); fkL.setAttribute('x1', x(i)); fkL.setAttribute('x2', x(i));
+      const zeilen = reihen.map((land, j) => ({ land, j, n: m.werte[j] })).filter((t) => t.n > 0).sort((a, c) => c.n - a.n)
+        .map((t) => `<i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${farben[t.j]}"></i> ${t.land === 'Andere' ? 'Andere' : mitFlagge(t.land)}: <b>${t.n}</b>`).join('<br>');
+      setzeTipp(rahmen, tip, svg, B, x(i), r.o + 10, `${datum(m.d)} · ${m.gesamt} ${m.gesamt === 1 ? 'Film' : 'Filme'}${zeilen ? `<br>${zeilen}` : ''}`);
+    });
+    treffer.addEventListener('pointerleave', () => { tip.hidden = true; fk.setAttribute('visibility', 'hidden'); });
+    treffer.addEventListener('click', (ev) => {
+      const b = svg.getBoundingClientRect(), px = (ev.clientX - b.left) * (B / b.width);
+      const i = Math.max(0, Math.min(liste.length - 1, Math.round(((px - r.l) / (B - r.l - r.re)) * (liste.length - 1))));
+      zustand.tag = liste[i].d; wechsleAnsicht('programm');
+    });
   }
 
   // ---------- Streudiagramm: Score gegen Spieltage ----------
@@ -1331,7 +1386,7 @@
     svg.addEventListener('click', (ev) => {
       const el = ev.target.closest('path[data-land]');
       if (!el) return;
-      zustand.land = el.dataset.land; fuelleAuswahl(); wechsleAnsicht('filme'); scrollTo(0, 0);
+      springeAusAuswertung({ land: el.dataset.land });
     });
     fuss.innerHTML = ohneFlaeche.length
       ? `Nicht auf der Karte (zu klein oder historisch): ${ohneFlaeche.sort((a, b) => a.land.localeCompare(b.land, 'de')).map((e) => `${mitFlagge(e.land)} Ø ${Math.round(e.schnitt)} (${e.n})`).join(' · ')}` : '';
@@ -1341,37 +1396,41 @@
   // Erst ab Projektstart und nur bis zum laufenden Monat. Spieltage: Tage je Kino mit dem Film (Uhrzeiten erfassen wir nicht).
   // Nur Neustarts des Monats: deutscher Kinostart (TMDB) in diesem Monat. Ohne Kinostart: erster Termin überhaupt
   // in diesem Monat und kein alter Film (Produktionsjahr höchstens NEU_HOECHSTALTER Jahre zurück oder unbekannt).
-  function monatsRankings(daten) {
-    const bisMonat = HEUTE.slice(0, 7);
+  // art 'monat' oder 'jahr'. Spieltage zählen ab Projektstart bis heute. Der laufende Zeitraum ist aufgeklappt,
+  // vergangene sind eingeklappt.
+  function zeitRankings(daten, art) {
+    const laenge = art === 'jahr' ? 4 : 7;
+    const bis = HEUTE.slice(0, laenge);
     const fk = fakten();
-    const istNeustart = (f, monat) => {
-      if (f.info.kinostart) return String(f.info.kinostart).slice(0, 7) === monat;
+    const istNeustart = (f, zeit) => {
+      if (f.info.kinostart) return String(f.info.kinostart).slice(0, laenge) === zeit;
       const j = parseInt(f.jahr, 10);
-      return fk.get(f.id).erster.slice(0, 7) === monat && (!j || Number(monat.slice(0, 4)) - j <= NEU_HOECHSTALTER);
+      return fk.get(f.id).erster.slice(0, laenge) === zeit && (!j || Number(zeit.slice(0, 4)) - j <= NEU_HOECHSTALTER);
     };
     const m = new Map();
     daten.forEach((t) => {
-      if (t.d < PROJEKT_START || t.d.slice(0, 7) > bisMonat) return;
+      if (t.d < PROJEKT_START || t.d > HEUTE) return;
       const f = filme[t.f];
       if (istSneak(f) || istKurzfilm(f)) return;
-      const k = t.d.slice(0, 7);
-      if (!istNeustart(f, k)) return;
+      const k = t.d.slice(0, laenge);
+      if (k > bis || !istNeustart(f, k)) return;
       if (!m.has(k)) m.set(k, new Map());
       const jeFilm = m.get(k);
       jeFilm.set(t.f, (jeFilm.get(t.f) || 0) + 1);
     });
-    const monate = [...m].sort((a, b) => b[0].localeCompare(a[0]));
-    if (!monate.length) return '<p class="leer">Noch keine Daten ab Projektstart.</p>';
+    const zeiten = [...m].sort((a, b) => b[0].localeCompare(a[0]));
+    if (!zeiten.length) return '<p class="leer">Noch keine Daten ab Projektstart.</p>';
     const liste = (eintraege, wert) => `<ol class="rangliste">${eintraege.map(([fid, n]) => `<li>${plakat(filme[fid], 'mini')}<div>${filmLink(filme[fid])}<div class="meta">${wert(filme[fid], n)}</div></div></li>`).join('')}</ol>`;
-    return monate.map(([monat, jeFilm]) => {
+    return zeiten.map(([zeit, jeFilm]) => {
       const nachTagen = [...jeFilm].sort((a, b) => b[1] - a[1] || nachScore(filme[a[0]], filme[b[0]])).slice(0, 3);
       const nachScoreListe = [...jeFilm].filter(([fid]) => filme[fid].bewertung != null).sort((a, b) => nachScore(filme[a[0]], filme[b[0]])).slice(0, 3);
-      const laufend = monat === HEUTE.slice(0, 7) ? ' <span class="meta">(bisher)</span>' : '';
-      return `<div class="tafel monat-ranking"><h3>${fmtMonatLang.format(parse(monat + '-01'))}${laufend}</h3>
+      const laufend = zeit === bis;
+      const name = art === 'jahr' ? zeit : fmtMonatLang.format(parse(zeit + '-01'));
+      return `<details class="tafel monat-ranking"${laufend ? ' open' : ''}><summary><h3>${name}${laufend ? ' <span class="meta">(bisher)</span>' : ''}</h3><span class="meta">${jeFilm.size} Neustarts</span></summary>
         <div class="raster-2 eng">
           <div><h4>Meiste Spieltage</h4>${liste(nachTagen, (f, n) => `${n} Spieltage${f.bewertung != null ? ` · Score ${f.bewertung}` : ''}`)}</div>
           <div><h4>Bester Score</h4>${liste(nachScoreListe, (f, n) => `Score ${f.bewertung} · ${n} Spieltage`)}</div>
-        </div></div>`;
+        </div></details>`;
     }).join('');
   }
 
@@ -1449,12 +1508,6 @@
     svg.addEventListener('click', (ev) => { const p = naechster(ev); if (p) zeigeFilm(p.f.id); });
   }
 
-  function laenderTabelle({ reihen, liste }) {
-    const kopf = reihen.map((r) => `<th class="zahl">${r === 'Andere' ? 'Andere' : mitFlagge(r)}</th>`).join('');
-    const zeilen = liste.map((e) => `<tr><td>${fmtMonatLang.format(parse(e.m + '-01'))}</td>${e.werte.map((w) => `<td class="zahl">${w || '–'}</td>`).join('')}<td class="zahl"><b>${e.gesamt}</b></td></tr>`).join('');
-    return `<div class="tabelle-wrap"><table class="liste"><thead><tr><th>Monat</th>${kopf}<th class="zahl">Gesamt</th></tr></thead><tbody>${zeilen}</tbody></table></div>`;
-  }
-
   // Tooltip relativ zum Diagrammrahmen setzen (SVG-Elemente kennen kein offsetLeft)
   function setzeTipp(rahmen, tip, svg, B, xPunkt, yPunkt, html) {
     const sr = svg.getBoundingClientRect(), dr = rahmen.getBoundingClientRect();
@@ -1464,64 +1517,6 @@
     const links = Math.max(80, Math.min(sr.width - 80, xPunkt * skala));
     tip.style.left = `${links + sr.left - dr.left}px`;
     tip.style.top = `${yPunkt * skala + sr.top - dr.top - 10}px`;
-  }
-
-  function saeulenDiagramm(id, { reihen, liste, farben }) {
-    const rahmen = document.getElementById(id);
-    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
-    if (!liste.length) { ziel.innerHTML = '<p class="leer">Keine Filme mit Länderangabe.</p>'; return; }
-    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 240 : 300;
-    const r = { l: 34, o: 12, u: 26, re: 8 };
-    const max = Math.max(1, ...liste.map((e) => e.gesamt));
-    const st = schritt(max), yMax = Math.ceil(max / st) * st;
-    const y = (n) => r.o + (1 - n / yMax) * (H - r.o - r.u);
-    const breite = (B - r.l - r.re) / liste.length;
-    const saeule = Math.min(56, breite * 0.62);
-    let gitter = '', ticksY = '', ticksX = '', segmente = '';
-    for (let v = 0; v <= yMax; v += st) {
-      gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(v)}" y2="${y(v)}"/>`;
-      ticksY += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
-    }
-    liste.forEach((e, i) => {
-      const xm = r.l + breite * (i + 0.5), x0 = xm - saeule / 2;
-      // Januar mit Jahreszahl, weil die Daten über den Jahreswechsel reichen
-      const kurz = fmtMonat.format(parse(e.m + '-01')) + (e.m.endsWith('-01') && i > 0 ? ` ’${e.m.slice(2, 4)}` : '');
-      if (!(B < 500 && liste.length > 8 && i % 2)) ticksX += `<text x="${xm}" y="${H - 6}" text-anchor="middle">${kurz}</text>`;
-      let unten = 0;
-      e.werte.forEach((w, j) => {
-        if (!w) return;
-        // 2px Abstand in Flächenfarbe zwischen gestapelten Segmenten
-        const y1 = y(unten + w), y0 = y(unten);
-        segmente += `<rect class="segment" x="${x0.toFixed(1)}" y="${y1.toFixed(1)}" width="${saeule.toFixed(1)}" height="${Math.max(1, y0 - y1 - 2).toFixed(1)}" fill="${farben[j]}" data-i="${i}" data-j="${j}"/>`;
-        unten += w;
-      });
-    });
-    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Gestapeltes Säulendiagramm: Filme pro Monat nach erstgenanntem Produktionsland">
-      <g class="gitter">${gitter}</g>${segmente}
-      <line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(0)}" y2="${y(0)}"/>
-      <g class="achse">${ticksY}${ticksX}</g></svg>`;
-    const svg = ziel.querySelector('svg');
-    svg.addEventListener('pointermove', (ev) => {
-      const s = ev.target.closest('.segment');
-      if (!s) { tip.hidden = true; return; }
-      const e = liste[+s.dataset.i], j = +s.dataset.j, land = reihen[j];
-      setzeTipp(rahmen, tip, svg, B, +s.getAttribute('x') + saeule / 2, +s.getAttribute('y'),
-        `${fmtMonatLang.format(parse(e.m + '-01'))}<br>${land === 'Andere' ? 'Andere Länder' : mitFlagge(land)}: <b>${e.werte[j]}</b> von ${e.gesamt} Filmen`);
-    });
-    svg.addEventListener('pointerleave', () => { tip.hidden = true; });
-  }
-
-  function monatsTabelle(reihe) {
-    const m = new Map();
-    reihe.forEach(({ d, n }) => {
-      const k = d.slice(0, 7);
-      if (!m.has(k)) m.set(k, { tage: 0, summe: 0, max: 0 });
-      const s = m.get(k);
-      if (n > 0) { s.tage++; s.summe += n; }
-      s.max = Math.max(s.max, n);
-    });
-    const zeilen = [...m].map(([k, s]) => `<tr><td>${fmtMonatLang.format(parse(k + '-01'))}</td><td class="zahl">${s.tage}</td><td class="zahl">${s.tage ? (s.summe / s.tage).toLocaleString('de-DE', { maximumFractionDigits: 1 }) : '–'}</td><td class="zahl">${s.max}</td></tr>`).join('');
-    return `<div class="tabelle-wrap"><table class="liste"><thead><tr><th>Monat</th><th class="zahl">Tage mit Daten</th><th class="zahl">Ø Filme pro Tag</th><th class="zahl">Höchstwert</th></tr></thead><tbody>${zeilen}</tbody></table></div>`;
   }
 
   // Liniendiagramm über alle Tage. Werte null erzeugen eine Lücke in der Linie.
@@ -1706,6 +1701,24 @@
   }
 
   let offenerFilm = null;   // Film im Dialog, für den Sprung zur Regie und zurück
+  // Reiter mit Auswertungen, aus denen heraus Filme geöffnet werden. Wert: Name im Zurück-Knopf.
+  const AUSWERTUNGEN = { statistik: 'Statistik', baukasten: 'Datenexploration' };
+  // Sprung aus einer Auswertung in einen anderen Reiter (Karte, Balken): wohin zurück und welche Filter vorher galten
+  let auswertungZurueck = null;
+  function springeAusAuswertung(aenderung) {
+    if (AUSWERTUNGEN[zustand.ansicht]) {
+      auswertungZurueck = { ansicht: zustand.ansicht, y: scrollY, filter: { stadt: zustand.stadt, kino: zustand.kino, land: zustand.land, jahrzehnt: zustand.jahrzehnt, suche: zustand.suche } };
+    }
+    Object.assign(zustand, aenderung);
+    fuelleAuswahl(); wechsleAnsicht('filme'); scrollTo(0, 0);
+  }
+  function zurueckZurAuswertung() {
+    const z = auswertungZurueck;
+    auswertungZurueck = null;
+    if (!z) return;
+    Object.assign(zustand, z.filter);
+    fuelleAuswahl(); wechsleAnsicht(z.ansicht); scrollTo(0, z.y);
+  }
   function zeigeFilm(fid) {
     offenerFilm = fid;
     const f = filme[fid];
@@ -1734,7 +1747,10 @@
     }).join('');
     const knopfText = () => (vorbeiSichtbar ? `Vergangene Termine ausblenden (${anzahlVorbei})` : `Vergangene Termine anzeigen (${anzahlVorbei})`);
     const knopf = hatKommend && anzahlVorbei ? `<button type="button" class="vorbei-knopf" aria-expanded="${vorbeiSichtbar}">${knopfText()}</button>` : '';
-    $('#fd-inhalt').innerHTML = `<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<div id="fd-gesehen">${gesehenKnopf(f)}</div><p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
+    // Aus Statistik oder Datenexploration geöffnet: Knopf zurück zur Auswertung (schließt den Dialog, Stelle bleibt)
+    const auswertung = AUSWERTUNGEN[zustand.ansicht];
+    const zurueckAuswertung = auswertung ? `<button type="button" class="zurueck-film zurueck-auswertung" data-zurueck-auswertung>← Zurück zur ${auswertung}</button>` : '';
+    $('#fd-inhalt').innerHTML = `${zurueckAuswertung}<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<div id="fd-gesehen">${gesehenKnopf(f)}</div><p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
     const knopfEl = $('#fd-inhalt .vorbei-knopf');
     if (knopfEl) {
       knopfEl.addEventListener('click', () => {
@@ -1834,7 +1850,7 @@
       : [0, 1, 2, 3].map((i) => feld(`s${i}`, `Spalte ${i + 1}${i > 1 ? ' (optional)' : ''}`, 'gruppe', bk.spalten[i])).join('')
         + `<div class="umschalter bk-mass" role="group" aria-label="Ströme zählen"><button data-mass="filme" aria-pressed="${bk.mass === 'filme'}">Filme zählen</button><button data-mass="spieltage" aria-pressed="${bk.mass === 'spieltage'}">Spieltage zählen</button></div>`;
     $('#v-baukasten').innerHTML = `
-      <div class="ansicht-kopf"><h2>Baukasten</h2>
+      <div class="ansicht-kopf"><h2>Datenexploration</h2>
         <div class="umschalter" role="group" aria-label="Diagrammart"><button data-bk-art="streu" aria-pressed="${streu}">Streudiagramm</button><button data-bk-art="sankey" aria-pressed="${!streu}">Sankey</button></div></div>
       <p class="hinweis">Ziehe Merkmale auf die Felder (oder tippe erst ein Merkmal und dann ein Feld an). Goldene Merkmale sind Zahlen, graue sind Gruppen. Spieltage, Kinos und Kinowochen zählen ab Projektstart am ${datumKurz(PROJEKT_START)}. Die Filter oben gelten auch hier.</p>
       <div class="bk-werkbank">
@@ -1843,8 +1859,18 @@
         <div class="bk-felder">${felder}</div>
       </div>
       <p class="bk-meldung" role="status"></p>
-      <div class="tafel diagramm" id="d-baukasten"><p class="korrelation"></p><div class="legende-laender"></div><div class="flaeche"></div><div class="tooltip" hidden></div></div>`;
+      <div class="tafel diagramm" id="d-baukasten"><p class="korrelation"></p><div class="legende-laender"></div><div class="flaeche"></div><div class="tooltip" hidden></div></div>
+      <h2 class="statistik-zwischentitel">Analysen</h2>
+      <div class="tafel diagramm" id="d-scorelauf">
+        <h3>Läuft ein guter Film länger?</h3>
+        <p class="hinweis">Jeder Punkt ist ein Film mit Score: rechts der bessere Score, oben mehr Spieltage seit Projektstart am ${datumKurz(PROJEKT_START)}. Die Farbe zeigt, in wie vielen Kinos der Film lief. Die y-Achse ist logarithmisch. Ein Klick auf einen Punkt öffnet den Film.</p>
+        <p class="korrelation"></p>
+        <div class="legende-laender"></div>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>`;
     if (streu) bkStreu(eintraege); else bkSankey(eintraege);
+    scoreLaufzeit('d-scorelauf', daten);
   }
 
   function bkStreu(eintraege) {
@@ -2211,7 +2237,8 @@
 
   document.querySelector('.reiter').addEventListener('click', (e) => {
     const b = e.target.closest('button[data-ansicht]');
-    if (b) wechsleAnsicht(b.dataset.ansicht);
+    // Wer selbst einen Reiter wählt, verlässt den Sprung aus der Auswertung: Zurück-Knopf verschwindet
+    if (b) { auswertungZurueck = null; wechsleAnsicht(b.dataset.ansicht); }
   });
   $('#f-stadt').addEventListener('change', (e) => { zustand.stadt = e.target.value; fuelleAuswahl(); zeichne(); });
   $('#f-kino').addEventListener('change', (e) => { zustand.kino = e.target.value; zeichne(); });
@@ -2255,11 +2282,8 @@
     if ((el = ziel('[data-kal]'))) { zustand.kalModus = el.dataset.kal; return zeichne(); }
     if ((el = ziel('[data-monat]'))) { zustand.kalMonat = el.dataset.monat; return zeichne(); }
     if ((el = ziel('[data-matrix]'))) { zustand.matrixStart = el.dataset.matrix; return zeichne(); }
-    if ((el = ziel('[data-setze]'))) {
-      zustand[el.dataset.setze] = el.dataset.wert;
-      fuelleAuswahl();
-      return wechsleAnsicht('filme');
-    }
+    if ((el = ziel('[data-setze]'))) return springeAusAuswertung({ [el.dataset.setze]: el.dataset.wert });
+    if ((el = ziel('[data-zurueck-auswertung-seite]'))) return zurueckZurAuswertung();
     if ((el = ziel('[data-sort]'))) {
       const feld = el.dataset.sort;
       zustand.sort = { feld, auf: zustand.sort.feld === feld ? !zustand.sort.auf : ['rang', 'titel', 'regie', 'land', 'naechster'].includes(feld) };
@@ -2295,6 +2319,7 @@
     if (e.target.id === 'film-dialog') return e.target.close();
     const g = e.target.closest('[data-gesehen-film]');
     if (g) return umschaltenGesehen(g);
+    if (e.target.closest('[data-zurueck-auswertung]')) return e.target.closest('dialog').close();
     const regie = e.target.closest('[data-regie]');
     // Herkunft merken: Film, Reiter und Scrollposition, damit "Zurück zum Film" alles wiederherstellt
     if (regie) zeigeRegiePerson(regie.dataset.regie, { film: offenerFilm, ansicht: zustand.ansicht, y: scrollY });
