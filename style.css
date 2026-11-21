@@ -456,3 +456,14 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .profil-konto .gesehen-knopf, .profil-konto .vorbei-knopf { margin-top: 0; }
 #pd-sync:empty { display: none; }
 .mehr-knopf { display: block; margin: 14px auto 0; }
+/* Streudiagramm Score und Produktionsjahr */
+.diagramm .streu circle { stroke: var(--surface); stroke-width: 1; }
+.diagramm .streu .laeuft { fill: var(--gold); }
+.diagramm .streu .vorbei { fill: #6f6758; }
+.diagramm .schnitte .schnitt { stroke: var(--rot-hell); stroke-width: 2; stroke-linecap: round; }
+.diagramm .markiert { fill: none; stroke: var(--gold-hell); stroke-width: 1.5; pointer-events: none; }
+.legende-laender .punkt-laeuft, .legende-laender .punkt-vorbei { border-radius: 50%; }
+.legende-laender .punkt-laeuft { background: var(--gold); }
+.legende-laender .punkt-vorbei { background: #6f6758; }
+.legende-laender .strich-schnitt { height: 2px !important; background: var(--rot-hell); align-self: center; }
+.diagramm .bruch { stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 3 4; }

@@ -916,7 +916,14 @@
     const laender = [...la].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')).slice(0, 12);
 
     $('#v-statistik').innerHTML = `
-      <div class="tafel diagramm" id="d-filme">
+      <div class="tafel diagramm" id="d-streu">
+        <h3>Score und Produktionsjahr</h3>
+        <p class="hinweis">Jeder Punkt ist ein Film, der seit Beginn der Erfassung lief. Die Linien zeigen den Ø Score je Jahrzehnt. Rechts der gestrichelten Linie sind die 2020er gestreckt, weil dort die meisten Filme liegen. Ein Klick auf einen Punkt öffnet den Film.</p>
+        <div class="legende-laender"><span><i class="punkt-laeuft"></i>läuft noch</span><span><i class="punkt-vorbei"></i>lief schon</span><span><i class="strich-schnitt"></i>Ø je Jahrzehnt</span></div>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-filme">
         <h3>Verschiedene Filme pro Tag</h3>
         <p class="hinweis">Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Tage auf 0 sind meist Lücken in der Datenerfassung. Ein Klick auf einen Tag öffnet das Programm.</p>
         <div class="flaeche"></div>
@@ -958,6 +965,81 @@
       beschreibung: 'Liniendiagramm: durchschnittlicher Score pro Tag',
     });
     saeulenDiagramm('d-laender', laenderMonat);
+    streuDiagramm('d-streu', daten);
+  }
+
+  // Streudiagramm: x = Produktionsjahr, y = Score. Ein Punkt je Film mit Score und Jahr (ohne Sneaks und Kurzfilme).
+  function streuDiagramm(id, daten) {
+    const rahmen = document.getElementById(id);
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const ids = new Set(daten.map((t) => t.f)), kommend = new Set(daten.filter((t) => t.d >= HEUTE).map((t) => t.f));
+    const punkte = [...ids].map((i) => filme[i])
+      .filter((f) => f.bewertung != null && parseInt(f.jahr, 10) > 1880 && !istSneak(f) && !istKurzfilm(f))
+      .map((f) => ({ f, j: parseInt(f.jahr, 10), s: f.genau ?? f.bewertung, laeuft: kommend.has(f.id) }));
+    if (!punkte.length) { ziel.innerHTML = '<p class="leer">Keine Filme mit Score und Produktionsjahr.</p>'; return; }
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 300 : 380;
+    const r = { l: 34, o: 12, u: 26, re: 10 };
+    // x-Achse auf volle Jahrzehnte, y-Achse in 10er-Schritten knapp um die Werte
+    const jMin = Math.floor(Math.min(...punkte.map((p) => p.j)) / 10) * 10, jNeu = Math.max(...punkte.map((p) => p.j)) + 1;
+    let jMax = Math.ceil(jNeu / 10) * 10;
+    const sMin = Math.max(0, Math.floor(Math.min(...punkte.map((p) => p.s)) / 10) * 10), sMax = Math.min(100, Math.ceil(Math.max(...punkte.map((p) => p.s)) / 10) * 10);
+    // Die meisten Filme sind neu. Damit sie nicht in einer schmalen Säule kleben, bekommen die 2020er
+    // einen eigenen, gestreckten Abschnitt der x-Achse (45 % der Breite), sofern auch ältere Filme dabei sind.
+    const W = B - r.l - r.re, BRUCH = 2020;
+    const gestreckt = jMin < BRUCH - 20 && jNeu > BRUCH && punkte.filter((p) => p.j >= BRUCH).length > punkte.length * 0.3;
+    if (gestreckt) jMax = jNeu;   // gestreckter Abschnitt endet mit dem jüngsten Jahr
+    const x = (j) => (!gestreckt ? r.l + ((j - jMin) / (jMax - jMin)) * W
+      : j < BRUCH ? r.l + ((j - jMin) / (BRUCH - jMin)) * W * 0.55
+        : r.l + W * 0.55 + ((j - BRUCH) / (jMax - BRUCH)) * W * 0.45);
+    const y = (s) => r.o + (1 - (s - sMin) / (sMax - sMin)) * (H - r.o - r.u);
+    // Leichter, fester Versatz innerhalb des Jahres, damit Filme mit gleichem Jahr und Score nicht deckungsgleich liegen
+    const versatz = (f) => ((f.id * 9301 + 49297) % 233280) / 233280 - 0.5;
+    punkte.forEach((p) => { p.x = x(p.j + 0.5 + versatz(p.f) * 0.7); p.y = y(p.s); });
+    let gitter = '', ticks = '';
+    for (let s = sMin; s <= sMax; s += 10) { gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(s)}" y2="${y(s)}"/>`; ticks += `<text x="${r.l - 6}" y="${y(s) + 4}" text-anchor="end">${s}</text>`; }
+    // Schmale Bildschirme: weniger Jahreszahlen, damit sie nicht aneinanderstoßen
+    const jSchritt = B < 500 ? (gestreckt ? 40 : 20) : (gestreckt ? (BRUCH - jMin) / 10 > 6 : (jMax - jMin) / 10 > 10) ? 20 : 10;
+    const bisJahr = gestreckt ? BRUCH - 1 : jMax;
+    for (let j = jMin; j <= bisJahr; j += jSchritt) ticks += `<text x="${x(j)}" y="${H - 6}" text-anchor="middle">${j}</text>`;
+    let bruch = '';
+    if (gestreckt) {
+      // Im gestreckten Abschnitt jedes Jahr (auf schmalen Bildschirmen jedes zweite), Beschriftung in der Jahresmitte
+      for (let j = BRUCH; j < jMax; j += B < 500 ? 2 : 1) ticks += `<text x="${x(j + 0.5)}" y="${H - 6}" text-anchor="middle">${B < 500 ? `’${String(j).slice(2)}` : j}</text>`;
+      bruch = `<line class="bruch" x1="${x(BRUCH)}" x2="${x(BRUCH)}" y1="${r.o}" y2="${H - r.u}"/>`;
+    }
+    // Ø Score je Jahrzehnt als kurze waagerechte Linie über das Jahrzehnt
+    const jz = new Map();
+    punkte.forEach((p) => { const d = Math.floor(p.j / 10) * 10; if (!jz.has(d)) jz.set(d, []); jz.get(d).push(p.s); });
+    const schnitte = [...jz].map(([d, w]) => ({ d, n: w.length, s: w.reduce((a, b) => a + b, 0) / w.length }));
+    const linien = schnitte.map((e) => `<line class="schnitt" x1="${x(e.d) + 3}" x2="${x(Math.min(e.d + 10, jMax)) - 3}" y1="${y(e.s)}" y2="${y(e.s)}"/>`).join('');
+    // Vergangene zuerst, laufende darüber
+    const kreise = [...punkte].sort((a, b) => a.laeuft - b.laeuft)
+      .map((p) => `<circle class="${p.laeuft ? 'laeuft' : 'vorbei'}" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${B < 500 ? 2.5 : 3}"/>`).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Streudiagramm: ${punkte.length} Filme nach Produktionsjahr und Score">
+      <g class="gitter">${gitter}</g>${bruch}
+      <line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${H - r.u}" y2="${H - r.u}"/>
+      <g class="streu">${kreise}</g><g class="schnitte">${linien}</g>
+      <circle class="markiert" r="6" hidden/>
+      <g class="achse">${ticks}</g></svg>`;
+    const svg = ziel.querySelector('svg'), mark = svg.querySelector('.markiert');
+    // Nächster Punkt zur Maus (Trefferfläche größer als der Punkt), sonst Ø des Jahrzehnts unter der Maus
+    const naechster = (ev) => {
+      const b = svg.getBoundingClientRect(), mx = (ev.clientX - b.left) * (B / b.width), my = (ev.clientY - b.top) * (H / b.height);
+      let best = null, bd = 14 * 14;
+      punkte.forEach((p) => { const d = (p.x - mx) ** 2 + (p.y - my) ** 2; if (d < bd) { bd = d; best = p; } });
+      return best;
+    };
+    svg.addEventListener('pointermove', (ev) => {
+      const p = naechster(ev);
+      if (!p) { tip.hidden = true; mark.setAttribute('hidden', ''); svg.style.cursor = ''; return; }
+      mark.removeAttribute('hidden'); mark.setAttribute('cx', p.x); mark.setAttribute('cy', p.y);
+      svg.style.cursor = 'pointer';
+      const e = schnitte.find((s) => s.d === Math.floor(p.j / 10) * 10);
+      setzeTipp(rahmen, tip, svg, B, p.x, p.y - 6,
+        `<b>${esc(p.f.titel)}</b><br>${esc(p.f.jahr)} · Score <b>${p.f.bewertung}</b>${p.f.regie ? `<br>${esc(p.f.regie)}` : ''}<br><span class="meta">Ø ${e.d}er: ${Math.round(e.s)} (${e.n} ${e.n === 1 ? 'Film' : 'Filme'})</span>`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; mark.setAttribute('hidden', ''); });
+    svg.addEventListener('click', (ev) => { const p = naechster(ev); if (p) zeigeFilm(p.f.id); });
   }
 
   function laenderTabelle({ reihen, liste }) {
