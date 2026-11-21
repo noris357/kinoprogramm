@@ -407,16 +407,23 @@
     const hatPreis = (h) => preisGruppen(h.f).length > 0;
     // Previews: Vorstellungen vor dem deutschen Kinostart laut TMDB (Feld kinostart).
     // Der Vorabend zählt nicht: Viele Kinos zeigen Mittwochabend schon den Donnerstagsstart.
-    const previewBis = (h) => plusTage(String(h.f.info.kinostart), -1);   // Termine vor diesem Tag sind Previews
-    const previews = alle.filter((h) => h.f.info.kinostart && [...h.kinos.values()].some((ds) => [...ds].some((d) => d < previewBis(h))))
+    // Ersatzregel ohne Kinostart: neuer Film (Produktionsjahr dieses oder letztes Jahr oder unbekannt),
+    // der bei uns noch nie gelaufen ist (erster Termin überhaupt heute oder später). Dann zählen alle Termine der Woche.
+    const previewBis = (h) => (h.f.info.kinostart ? plusTage(String(h.f.info.kinostart), -1) : null);   // Termine vor diesem Tag sind Previews
+    const ersatzPreview = (h) => {
+      if (h.f.info.kinostart) return false;
+      const j = parseInt(h.f.jahr, 10);
+      return (!j || j >= jetzt - 1) && fk.get(h.f.id).erster >= HEUTE;
+    };
+    const previewTag = (h, d) => (previewBis(h) ? d < previewBis(h) : ersatzPreview(h));
+    const previews = alle.filter((h) => [...h.kinos.values()].some((ds) => [...ds].some((d) => previewTag(h, d))))
       .map((h) => {
-        const ks = h.f.info.kinostart;
-        const bis = previewBis(h);
         // Je Kino die Preview-Tage, z. B. "So 22.11.26, Mo 23.11.26 im Uferpalast Fürth"
-        const wann = [...h.kinos].map(([k, ds]) => ({ k, tage: [...ds].filter((d) => d < bis).sort() })).filter((e) => e.tage.length)
+        const wann = [...h.kinos].map(([k, ds]) => ({ k, tage: [...ds].filter((d) => previewTag(h, d)).sort() })).filter((e) => e.tage.length)
           .sort((a, b) => a.tage[0].localeCompare(b.tage[0]))
           .map((e) => `${e.tage.map(wochentagDatum).join(', ')} im ${kinos[e.k].name}`).join(' · ');
-        return { ...h, hinweis: `Preview ${wann} · Kinostart ${datumKurz(ks)}` };
+        const start = h.f.info.kinostart ? `Kinostart ${datumKurz(h.f.info.kinostart)}` : 'Kinostart unbekannt';
+        return { ...h, hinweis: `Preview ${wann} · ${start}` };
       });
     const rubriken = [
       ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', nimm(neu)],
