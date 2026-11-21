@@ -928,6 +928,16 @@
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
+      <div class="tafel diagramm abstand" id="d-karte">
+        <h3>Ø Score nach Produktionsland</h3>
+        <p class="hinweis">Je kräftiger das Gold, desto besser der Ø Score der Filme aus diesem Land. Koproduktionen zählen für jedes beteiligte Land. Grau: keine Filme. Ein Klick zeigt die Filme des Landes.</p>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+        <p class="hinweis karten-fuss"></p>
+      </div>
+      <h2 class="statistik-zwischentitel">Rankings je Monat</h2>
+      <p class="hinweis">Nur Neustarts des jeweiligen Monats (deutscher Kinostart in diesem Monat), ab Projektstart am ${datumKurz(PROJEKT_START)}. Spieltage zählen jeden Tag in jedem Kino, an dem ein Film läuft. Einzelne Vorstellungen und Uhrzeiten erfassen wir nicht.</p>
+      ${monatsRankings(daten)}
       <div class="tafel diagramm abstand" id="d-filme">
         <h3>Verschiedene Filme pro Tag</h3>
         <p class="hinweis">Ab Projektstart am ${datumKurz(PROJEKT_START)}. Ein Film in mehreren Kinos zählt an einem Tag nur einmal. Markiert sind Höchst- und Tiefstwert der vergangenen Tage. Ein Klick auf einen Tag öffnet das Programm.</p>
@@ -973,6 +983,124 @@
     });
     saeulenDiagramm('d-laender', laenderMonat);
     streuDiagramm('d-streu', daten);
+    weltkarte('d-karte', daten);
+  }
+
+  // ---------- Weltkarte: Ø Score je Produktionsland ----------
+  // ISO-Kürzel (aus data.js) -> ISO-Zahlencode der Kartendatei world-atlas. Sehr kleine Länder (Hongkong, Singapur,
+  // Kapverden ...) haben in der vereinfachten Karte keine Fläche und stehen deshalb unter der Karte.
+  const ISO_ZAHL = {
+    AF: 4, AL: 8, DZ: 12, AO: 24, AR: 32, AM: 51, AU: 36, AT: 40, AZ: 31, BD: 50, BY: 112, BE: 56, BJ: 204, BT: 64, BO: 68, BA: 70, BW: 72,
+    BR: 76, BG: 100, BF: 854, KH: 116, CM: 120, CA: 124, TD: 148, CL: 152, CN: 156, CO: 170, CD: 180, CG: 178, CR: 188, CI: 384, HR: 191,
+    CU: 192, CY: 196, CZ: 203, DK: 208, DO: 214, EC: 218, EG: 818, SV: 222, EE: 233, ET: 231, FI: 246, FR: 250, GE: 268, DE: 276, GH: 288,
+    GR: 300, GT: 320, GN: 324, HT: 332, HN: 340, HU: 348, IS: 352, IN: 356, ID: 360, IR: 364, IQ: 368, IE: 372, IL: 376, IT: 380, JM: 388,
+    JP: 392, JO: 400, KZ: 398, KE: 404, KP: 408, KR: 410, KW: 414, KG: 417, LA: 418, LV: 428, LB: 422, LY: 434, LT: 440, LU: 442, MK: 807,
+    MG: 450, MW: 454, MY: 458, ML: 466, MR: 478, MX: 484, MD: 498, MN: 496, ME: 499, MA: 504, MZ: 508, MM: 104, NA: 516, NP: 524, NL: 528,
+    NZ: 554, NI: 558, NE: 562, NG: 566, NO: 578, OM: 512, PK: 586, PS: 275, PA: 591, PY: 600, PE: 604, PH: 608, PL: 616, PT: 620, QA: 634,
+    RO: 642, RU: 643, RW: 646, SA: 682, SN: 686, RS: 688, SL: 694, SK: 703, SI: 705, SO: 706, ZA: 710, SS: 728, ES: 724, LK: 144, SD: 729,
+    SE: 752, CH: 756, SY: 760, TW: 158, TJ: 762, TZ: 834, TH: 764, TN: 788, TR: 792, TM: 795, UG: 800, UA: 804, AE: 784, GB: 826, US: 840,
+    UY: 858, UZ: 860, VE: 862, VN: 704, YE: 887, ZM: 894, ZW: 716, HK: 344, SG: 702, CV: 132,
+  };
+  let kartenDaten = null;   // Länderumrisse, einmal geladen
+  async function weltkarte(id, daten) {
+    const rahmen = document.getElementById(id);
+    if (!rahmen) return;
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip'), fuss = rahmen.querySelector('.karten-fuss');
+    if (!window.d3 || !window.topojson) { ziel.innerHTML = '<p class="leer">Die Karte konnte nicht geladen werden.</p>'; return; }
+    // Ø Score je Land über alle Filme der Auswahl mit Score. Koproduktionen zählen für jedes Land.
+    const ids = new Set(daten.map((t) => t.f));
+    const jeLand = new Map();
+    ids.forEach((i) => {
+      const f = filme[i];
+      if (f.bewertung == null || istSneak(f) || istKurzfilm(f)) return;
+      f.laender.forEach((l) => { if (!jeLand.has(l)) jeLand.set(l, []); jeLand.get(l).push(f.bewertung); });
+    });
+    const codes = D.laenderCodes || {};
+    const werte = new Map();   // Zahlencode -> { land, schnitt, n }
+    const ohneFlaeche = [];
+    jeLand.forEach((w, land) => {
+      const e = { land, schnitt: w.reduce((a, b) => a + b, 0) / w.length, n: w.length };
+      const zahl = ISO_ZAHL[codes[land]];
+      if (zahl) werte.set(String(zahl).padStart(3, '0'), e); else ohneFlaeche.push(e);
+    });
+    try {
+      if (!kartenDaten) kartenDaten = await fetch('vendor/countries-110m.json').then((r) => r.json());
+    } catch (e) { ziel.innerHTML = '<p class="leer">Die Karte konnte nicht geladen werden.</p>'; return; }
+    if (!document.body.contains(rahmen)) return;   // Ansicht wurde inzwischen gewechselt
+    const laender = topojson.feature(kartenDaten, kartenDaten.objects.countries).features.filter((g) => g.id !== '010');   // ohne Antarktis
+    const B = Math.max(ziel.clientWidth, 280), H = Math.round(B * 0.5);
+    const proj = d3.geoNaturalEarth1().fitSize([B, H], { type: 'FeatureCollection', features: laender });
+    const pfad = d3.geoPath(proj);
+    // Farbe: ein Goldton, je höher der Ø Score, desto kräftiger. Skala vom niedrigsten bis zum höchsten Landesschnitt.
+    const alle = [...werte.values(), ...ohneFlaeche].map((e) => e.schnitt);
+    const sMin = Math.floor(Math.min(...alle)), sMax = Math.ceil(Math.max(...alle));
+    const farbe = (s) => {
+      const t = sMax > sMin ? (s - sMin) / (sMax - sMin) : 1;
+      // von gedecktem Ocker (#6b5a32) bis hellem Gold (#f0d27a), klar abgesetzt vom Grau der Länder ohne Filme
+      const mix = (a, b) => Math.round(a + (b - a) * t);
+      return `rgb(${mix(0x6b, 0xf0)},${mix(0x5a, 0xd2)},${mix(0x32, 0x7a)})`;
+    };
+    const formen = laender.map((g) => {
+      const e = werte.get(String(g.id));
+      return `<path d="${pfad(g)}" class="${e ? 'mit' : 'ohne'}"${e ? ` fill="${farbe(e.schnitt)}" data-land="${esc(e.land)}"` : ''}/>`;
+    }).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Weltkarte: Ø Score der Filme je Produktionsland">${formen}</svg>
+      <div class="karten-legende"><span>Ø ${sMin}</span><i style="background:linear-gradient(90deg, ${farbe(sMin)}, ${farbe(sMax)})"></i><span>Ø ${sMax}</span></div>`;
+    const svg = ziel.querySelector('svg');
+    svg.addEventListener('pointermove', (ev) => {
+      const el = ev.target.closest('path[data-land]');
+      if (!el) { tip.hidden = true; return; }
+      const e = jeLand.get(el.dataset.land), s = e.reduce((a, b) => a + b, 0) / e.length;
+      const b = svg.getBoundingClientRect();
+      setzeTipp(rahmen, tip, svg, B, (ev.clientX - b.left) * (B / b.width), (ev.clientY - b.top) * (B / b.width) - 6,
+        `${mitFlagge(el.dataset.land)}<br>Ø Score <b>${Math.round(s)}</b> aus ${e.length} ${e.length === 1 ? 'Film' : 'Filmen'}`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+    svg.addEventListener('click', (ev) => {
+      const el = ev.target.closest('path[data-land]');
+      if (!el) return;
+      zustand.land = el.dataset.land; fuelleAuswahl(); wechsleAnsicht('filme'); scrollTo(0, 0);
+    });
+    fuss.innerHTML = ohneFlaeche.length
+      ? `Nicht auf der Karte (zu klein oder historisch): ${ohneFlaeche.sort((a, b) => a.land.localeCompare(b.land, 'de')).map((e) => `${mitFlagge(e.land)} Ø ${Math.round(e.schnitt)} (${e.n})`).join(' · ')}` : '';
+  }
+
+  // ---------- Rankings je Monat: meiste Spieltage und bester Score ----------
+  // Erst ab Projektstart und nur bis zum laufenden Monat. Spieltage: Tage je Kino mit dem Film (Uhrzeiten erfassen wir nicht).
+  // Nur Neustarts des Monats: deutscher Kinostart (TMDB) in diesem Monat. Ohne Kinostart: erster Termin überhaupt
+  // in diesem Monat und kein alter Film (Produktionsjahr höchstens NEU_HOECHSTALTER Jahre zurück oder unbekannt).
+  function monatsRankings(daten) {
+    const bisMonat = HEUTE.slice(0, 7);
+    const fk = fakten();
+    const istNeustart = (f, monat) => {
+      if (f.info.kinostart) return String(f.info.kinostart).slice(0, 7) === monat;
+      const j = parseInt(f.jahr, 10);
+      return fk.get(f.id).erster.slice(0, 7) === monat && (!j || Number(monat.slice(0, 4)) - j <= NEU_HOECHSTALTER);
+    };
+    const m = new Map();
+    daten.forEach((t) => {
+      if (t.d < PROJEKT_START || t.d.slice(0, 7) > bisMonat) return;
+      const f = filme[t.f];
+      if (istSneak(f) || istKurzfilm(f)) return;
+      const k = t.d.slice(0, 7);
+      if (!istNeustart(f, k)) return;
+      if (!m.has(k)) m.set(k, new Map());
+      const jeFilm = m.get(k);
+      jeFilm.set(t.f, (jeFilm.get(t.f) || 0) + 1);
+    });
+    const monate = [...m].sort((a, b) => b[0].localeCompare(a[0]));
+    if (!monate.length) return '<p class="leer">Noch keine Daten ab Projektstart.</p>';
+    const liste = (eintraege, wert) => `<ol class="rangliste">${eintraege.map(([fid, n]) => `<li>${plakat(filme[fid], 'mini')}<div>${filmLink(filme[fid])}<div class="meta">${wert(filme[fid], n)}</div></div></li>`).join('')}</ol>`;
+    return monate.map(([monat, jeFilm]) => {
+      const nachTagen = [...jeFilm].sort((a, b) => b[1] - a[1] || nachScore(filme[a[0]], filme[b[0]])).slice(0, 3);
+      const nachScoreListe = [...jeFilm].filter(([fid]) => filme[fid].bewertung != null).sort((a, b) => nachScore(filme[a[0]], filme[b[0]])).slice(0, 3);
+      const laufend = monat === HEUTE.slice(0, 7) ? ' <span class="meta">(bisher)</span>' : '';
+      return `<div class="tafel monat-ranking"><h3>${fmtMonatLang.format(parse(monat + '-01'))}${laufend}</h3>
+        <div class="raster-2 eng">
+          <div><h4>Meiste Spieltage</h4>${liste(nachTagen, (f, n) => `${n} Spieltage${f.bewertung != null ? ` · Score ${f.bewertung}` : ''}`)}</div>
+          <div><h4>Bester Score</h4>${liste(nachScoreListe, (f, n) => `Score ${f.bewertung} · ${n} Spieltage`)}</div>
+        </div></div>`;
+    }).join('');
   }
 
   // Streudiagramm: x = Produktionsjahr, y = Score. Ein Punkt je Film mit Score und Jahr (ohne Sneaks und Kurzfilme).

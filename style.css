@@ -472,3 +472,19 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .diagramm .marke.hoch circle { fill: var(--gold-hell); }
 .diagramm .marke.tief circle { fill: var(--rot-hell); }
 .diagramm .marke text { font-size: 11px; font-weight: 600; fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; font-variant-numeric: tabular-nums; }
+/* Weltkarte */
+#d-karte svg path { stroke: var(--surface); stroke-width: .5; }
+#d-karte svg path.ohne { fill: #24221f; }
+#d-karte svg path.mit { cursor: pointer; }
+#d-karte svg path.mit:hover { stroke: var(--gold-hell); stroke-width: 1.2; }
+.karten-legende { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.karten-legende i { flex: 0 1 220px; height: 8px; border-radius: 4px; }
+.karten-fuss:empty { display: none; }
+/* Rankings je Monat */
+.statistik-zwischentitel { font-family: var(--font-display); font-weight: 400; font-size: 26px; margin: 28px 0 2px; }
+.monat-ranking { margin-top: 12px; }
+.monat-ranking h4 { margin: 4px 0 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.raster-2.eng { margin-top: 6px; gap: 12px 20px; }
+.rangliste { list-style: none; margin: 0; padding: 0; counter-reset: rang; display: grid; gap: 8px; }
+.rangliste li { counter-increment: rang; display: flex; align-items: center; gap: 10px; }
+.rangliste li::before { content: counter(rang); font-family: var(--font-display); font-size: 22px; color: var(--gold-hell); width: 18px; text-align: right; }
