@@ -28,7 +28,10 @@ function ConvertTo-IsoText($Wert) { if ($Wert -is [datetime]) { $Wert.ToString('
 # ---------- Bestand laden (beim ersten Mal aus dem ChatGPT-Export, ohne persoenliche Spalte) ----------
 $quelleBestand = if (Test-Path $bestandDatei) { $bestandDatei } else { "$tools/../../Kinoprogramm_entpivotiert.json" }
 $bestand = @((Get-Content $quelleBestand -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen | Where-Object { $_.Datum } | ForEach-Object {
-  [pscustomobject][ordered]@{ Titel = $_.Titel; Kino = $_.Kino; Land = $_.Land; 'Regisseur:in' = $_.'Regisseur:in'; Produktionsjahr = $_.Produktionsjahr; Datum = (ConvertTo-IsoText $_.Datum) }
+  $z = [pscustomobject][ordered]@{ Titel = $_.Titel; Kino = $_.Kino; Land = $_.Land; 'Regisseur:in' = $_.'Regisseur:in'; Produktionsjahr = $_.Produktionsjahr; Datum = (ConvertTo-IsoText $_.Datum) }
+  # Reihe (bisher nur Filmhaus) nur dort führen, wo sie bekannt ist, damit programm.json nicht anschwillt
+  if ($_.PSObject.Properties['Reihe'] -and $_.Reihe) { $z | Add-Member Reihe $_.Reihe }
+  $z
 })
 $heute = (Get-Heute).ToString('yyyy-MM-dd')
 
@@ -130,6 +133,7 @@ foreach ($e in $ergebnisse) {
         # Sofort merken, damit andere Kinos denselben neuen Film unter demselben Titel fuehren
         $bekannt[(Get-TitelSchluessel $titel)] = $zeile
       }
+      if ($t.PSObject.Properties['Reihe'] -and $t.Reihe) { $zeile = $zeile.PSObject.Copy(); $zeile | Add-Member Reihe $t.Reihe -Force }
       $s = "$(Get-TitelSchluessel $zeile.Titel)|$($e.Kino)|$($t.Datum)"
       if ($entfernt.ContainsKey($s)) { $entfernt.Remove($s); $bestaetigt++ } else { $hinzu++ }
       $neu.Add($zeile)

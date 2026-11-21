@@ -19,7 +19,12 @@ function Read-FilmhausDetail([string]$Html) {
   $kern = if ($ende -gt 0) { $text.Substring(0, $ende) } else { $text }
   $daten = @([regex]::Matches($kern, '\b\p{L}{2} / (\d{2})\.(\d{2})\.(\d{4}) / \d{1,2}:\d{2}') | ForEach-Object { ConvertTo-IsoDatum ([int]$_.Groups[1].Value) ([int]$_.Groups[2].Value) ([int]$_.Groups[3].Value) } | Sort-Object -Unique)
   $feld = { param($n) $m = [regex]::Match($kern, "\b${n}:\s*(.+?)\s*(?=\b(Land|Jahr|Regie|mit|Länge|Sprache|FSK|Eintritt|Hinweise|Links):|$)"); if ($m.Success) { $m.Groups[1].Value.Trim(' ,') } }
+  # Reihe der Veranstaltung, z. B. "9. Griechische Filmtage" oder "Neustart". Sie steht unter "Mehr in dieser Reihe"
+  # als "Reihe:" mit Link (Parameter tx_vkevents_pi1list[reihe]). "Kommkino e. V. präsentiert" ist der Veranstalter, keine Reihe.
+  $reihen = @([regex]::Matches($Html.Substring($start), 'Reihe:\s*</span>\s*<a href="[^"]*pi1list%5Breihe%5D=([^&"]+)') | ForEach-Object { [uri]::UnescapeDataString($_.Groups[1].Value).Trim() } |
+    Where-Object { $_ -and $_ -notmatch '(?i)^Kommkino' } | Select-Object -Unique)
   [pscustomobject]@{
+    Reihe    = $(if ($reihen.Count) { $reihen -join ' | ' } else { $null })
     Daten    = $daten
     # Der Saal "kommkino" wird auch vom Filmhaus bespielt. Veranstalter KommKino erkennt man an "Kommkino e. V."
     KommKino = $kern -match '(?i)Kommkino e\.\s?V\.'
@@ -74,7 +79,7 @@ function Get-FilmhausProgramm {
       $d = Read-FilmhausDetail (Get-Seite ($script:KkqBasis + $k.Url))
       $ziel = if ($d.KommKino) { $kk } else { $fh }
       foreach ($tag in $d.Daten) {
-        $ziel.Termine.Add([pscustomobject]@{ Titel = $k.Titel; Datum = $tag; Land = $d.Land; Jahr = $d.Jahr; Regie = $d.Regie })
+        $ziel.Termine.Add([pscustomobject]@{ Titel = $k.Titel; Datum = $tag; Land = $d.Land; Jahr = $d.Jahr; Regie = $d.Regie; Reihe = $d.Reihe })
       }
     }
 

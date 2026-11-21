@@ -13,6 +13,8 @@ Live unter https://noris357.github.io/kinoprogramm/ (GitHub Pages, öffentlich).
   (`luecke.json`: Erfassungslücke 20.08. bis 18.10.2026 und einzeln geprüfte Filme, deren „Wochen am Stück“ darüber weiterzählen)
 - `daten/festivals.json`: Festivalkalender, von Hand und von der Routine „Festivalseiten prüfen“ (1. und 15. im Monat, Pull Request) gepflegt.
   Die Website lädt die Datei direkt, nach Änderungen daran ist kein Neubau von `data.js` nötig.
+  Felder und Zuordnungsregeln stehen im Feld `hinweis` der Datei.
+- `daten/festivals-erkannt.json`: von `build-data.ps1` aus den Filmhaus-Reihen erkannte Festivals (Feld `Reihe` in `programm.json`), nicht von Hand bearbeiten.
 - `tools/aktualisieren.ps1`: liest die Kinoseiten aus (`tools/quellen/*.ps1`) und gleicht mit dem Bestand ab
 - `tools/tmdb.ps1`, `tools/mdblist.ps1`, `tools/preise.ps1`: Zusatzdaten
 - `tools/auslastung.ps1`: Auslastungsstufen der Cinecitta-Gruppe nach `daten/auslastung.json` (Rubrik „Schnell vergriffen“)

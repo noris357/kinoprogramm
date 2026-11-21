@@ -1,17 +1,17 @@
 {
-  "hinweis": "Festivalkalender, von Hand gepflegt. Termine aus den Seiten von Stadt Nürnberg, Tourismus Nürnberg, KunstKulturQuartier und den Festivals. sicher: false heißt voraussichtlich (z. B. nur Monat bekannt). Ohne von/bis: Termin noch offen. Zuordnung der Vorstellungen: alle Termine im Zeitraum in den genannten Kinos, eingeschränkt durch titel (Liste von Titelteilen), land (erstgenanntes oder beteiligtes Land) oder bisJahr (Produktionsjahr höchstens).",
+  "hinweis": "Festivalkalender, von Hand gepflegt. Termine aus den Seiten von Stadt Nürnberg, Tourismus Nürnberg, KunstKulturQuartier und den Festivals. sicher: false heißt voraussichtlich (z. B. nur Monat bekannt). Ohne von/bis: Termin noch offen. Zuordnung der Vorstellungen: alle Termine im Zeitraum in den genannten Kinos, eingeschränkt durch titel (Liste von Titelteilen), land (erstgenanntes oder beteiligtes Land), bisJahr (Produktionsjahr höchstens) oder genres (Genres laut TMDB, z. B. Horror). reihe: Reihe laut Kinoseite (bisher nur Filmhaus), entscheidet allein, sobald eine Vorstellung eine Reihe hat. hoechstensTage: nur Filme, die im Zeitraum an höchstens so vielen Tagen im Kino laufen. nurTitel: nur Filme aus titel (oder reihe). Festivals aus den Filmhaus-Reihen erkennt tools/build-data.ps1 selbst (festivals-erkannt.json). Ein Eintrag hier mit gleicher reihe oder gleichem Namen ersetzt den erkannten.",
   "festivals": [
     {
       "id": "griechische-filmtage-2026", "name": "Griechische Filmtage Nürnberg", "art": "Länderfokus",
       "von": "2026-11-18", "bis": "2026-11-22", "sicher": true,
-      "kinos": ["Filmhaus Nürnberg"], "land": "Griechenland", "titel": ["Black Box Poem", "Kiki Kolympari", "griechischen Bürgerkrieg", "Astero"],
+      "kinos": ["Filmhaus Nürnberg"], "reihe": "Griechische Filmtage", "land": "Griechenland", "titel": ["Black Box Poem", "Kiki Kolympari", "griechischen Bürgerkrieg", "Astero"],
       "link": "https://www.kunstkulturquartier.de/programm/festivals",
       "beschreibung": "Aktuelles Kino aus Griechenland im Filmhaus, mit Gästen, Ausstellung und Musik."
     },
     {
       "id": "stummfilmmusiktage-2026", "name": "28. Stummfilmmusiktage", "art": "Klassiker",
       "von": "2026-11-06", "bis": "2026-11-08", "sicher": true,
-      "kinos": ["Filmhaus Nürnberg"], "bisJahr": 1930,
+      "kinos": ["Filmhaus Nürnberg"], "reihe": "Stummfilmmusiktage", "bisJahr": 1930,
       "link": "https://www.kunstkulturquartier.de/programm/festivals",
       "beschreibung": "Ein Wochenende im Zeichen des frühen Kinos: Filmklassiker mit Livemusik."
     },
@@ -25,7 +25,7 @@
     {
       "id": "fftd-2027", "name": "Filmfestival Türkei/Deutschland", "art": "Länderfokus",
       "von": "2027-03-05", "bis": "2027-03-14", "sicher": true,
-      "kinos": ["Filmhaus Nürnberg"], "land": "Türkei",
+      "kinos": ["Filmhaus Nürnberg"], "reihe": "Türkei", "land": "Türkei",
       "link": "https://www.nuernberg.de/internet/kommunikation_stadtmarketing/filmfestivals.html",
       "beschreibung": "Bundesweit wichtigstes Festival für den Dialog zwischen deutschem und türkischem Kino, mit Öngören-Preis für Demokratie und Menschenrechte."
     },
@@ -53,7 +53,7 @@
     {
       "id": "fantasy-filmfest-white-nights-2027", "name": "Fantasy Filmfest White Nights", "art": "Genre",
       "von": "2027-01-28", "bis": "2027-01-31", "sicher": true,
-      "kinos": ["Cinecitta Nürnberg"], "nurTitel": true, "titel": [],
+      "kinos": ["Cinecitta Nürnberg"], "genres": ["Horror", "Thriller", "Science Fiction", "Fantasy", "Mystery"], "hoechstensTage": 2,
       "link": "https://fantasyfilmfest.com/tickets-white-nights-nuernberg/",
       "beschreibung": "Winterausgabe des Genrefestivals: rund 17 Filme an einem Wochenende im Cinecittà. Festivalpass 150 Euro, Einzeltickets ab 4. Januar."
     },

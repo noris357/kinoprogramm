@@ -105,7 +105,8 @@
       jahrzehnt: j > 1880 && j <= new Date().getFullYear() + 1 ? `${Math.floor(j / 10) * 10}er` : null,
     };
   });
-  const termine = D.termine.map(([f, k, d]) => ({ f, k, d }));
+  // r: Index der Reihe in D.reihen (bisher nur Filmhaus), sonst undefined
+  const termine = D.termine.map(([f, k, d, r]) => ({ f, k, d, r }));
 
   const alleDaten = termine.map((t) => t.d).sort();
   const ERSTER = alleDaten[0];
@@ -381,7 +382,7 @@
     // Nur die Kinos dieser Woche. Die einzelnen Tage stehen in der Filmansicht, hier wären sie zu unübersichtlich.
     const zeilen = [...h.kinos.keys()].sort((a, b) => kinos[a].name.localeCompare(kinos[b].name, 'de'))
       .map((k) => `<li><span class="chip">${esc(kinos[k].name)}</span></li>`).join('');
-    return `<article class="filmkarte hl-karte${gross ? ' hl-gross' : ''}">${plakat(f, gross ? 'gross' : 'mittel')}<div>${filmLink(f)}${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}${h.hinweis ? `<div class="zuletzt">${esc(h.hinweis)}</div>` : ''}<ul class="hl-kinos">${zeilen}</ul></div></article>`;
+    return `<article class="filmkarte hl-karte${gross ? ' hl-gross' : ''}">${plakat(f, gross ? 'gross' : 'mittel')}<div>${filmLink(f)}${pokale(f)}${festivalAbzeichen(h.fest)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}${h.hinweis ? `<div class="zuletzt">${esc(h.hinweis)}</div>` : ''}<ul class="hl-kinos">${zeilen}</ul></div></article>`;
   }
   function zeigeHighlights(daten) {
     const ende = plusTage(HEUTE, 7);
@@ -393,6 +394,7 @@
       if (t.d < HEUTE || t.d > ende || OHNE_HIGHLIGHT.test(filme[t.f].titel)) return;
       if (!kand.has(t.f)) kand.set(t.f, { f: filme[t.f], kinos: new Map(), hinweis: '' });
       const h = kand.get(t.f);
+      if (!h.fest) h.fest = festivalVon(t);
       if (!h.kinos.has(t.k)) h.kinos.set(t.k, new Set());
       h.kinos.get(t.k).add(t.d);
     });
@@ -439,6 +441,21 @@
         const start = h.f.info.kinostart ? `Kinostart ${datumKurz(h.f.info.kinostart)}` : 'Kinostart unbekannt';
         return { ...h, hinweis: `Preview ${wann} · ${start}` };
       });
+    // Festival diese Woche: läuft gerade oder beginnt in den nächsten sieben Tagen (nur sichere Termine).
+    // Bei mehreren das, das zuerst beginnt. Die besten Filme des Festivals in dieser Woche, je Karte mit den Festivaltagen.
+    const festWoche = FESTIVALS.filter((fe) => fe.von && fe.sicher !== false && fe.bis >= HEUTE && fe.von <= ende)
+      .sort((a, b) => a.von.localeCompare(b.von))
+      .map((fe) => {
+        const ts = festivalTermine(fe, daten).filter((t) => t.d >= HEUTE && t.d <= ende);
+        const tage = new Map();
+        ts.forEach((t) => { if (!tage.has(t.f)) tage.set(t.f, new Set()); tage.get(t.f).add(t.d); });
+        const liste = alle.filter((h) => tage.has(h.f.id))
+          .map((h) => ({ ...h, hinweis: `Beim Festival ${[...tage.get(h.f.id)].sort().map(wochentagDatum).join(', ')}` }));
+        return { fe, liste };
+      }).find((e) => e.liste.length);
+    const festListe = festWoche ? nimm(festWoche.liste) : [];
+    const festText = festWoche ? `${esc(festWoche.fe.name)}, ${zeitraumText(festWoche.fe)}${festWoche.fe.kinos.length ? ` im ${festWoche.fe.kinos.map(esc).join(', ')}` : ''}. Die besten Filme des Festivals in dieser Woche.` : '';
+    const festFuss = festWoche ? `<p><button type="button" class="film-link" data-festival-zu="${esc(festWoche.fe.id)}">Mehr zum Festival →</button></p>` : '';
     const neuListe = nimm(neu);
     // Previews: zuerst die 3 besten nach Score, der Knopf darunter zeigt alle weiteren
     const previewsFrei = previews.filter((h) => !belegt.has(h.f.id));
@@ -446,6 +463,7 @@
     const previewKnopf = previewsFrei.length > FILME_JE_RUBRIK
       ? `<button type="button" class="vorbei-knopf mehr-knopf" data-alle-previews aria-expanded="${zustand.allePreviews}">${zustand.allePreviews ? 'Weniger Previews' : `Mehr Previews (${previewsFrei.length - FILME_JE_RUBRIK})`}</button>` : '';
     const rubriken = [
+      ['Festival diese Woche', festText, festListe, null, festFuss],
       ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', neuListe],
       ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart. Vorstellungen am Vorabend des Starts zählen nicht.', previewListe, null, previewKnopf],
       ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
@@ -500,6 +518,14 @@
     const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= sonntag) : daten.filter((t) => t.d === zustand.tag);
     // Sortierung für beide Ansichten immer nach Score, Filme ohne Score am Ende, bei Gleichstand alphabetisch
     const filmOrdnung = (a, b) => (b.genau ?? -1) - (a.genau ?? -1) || a.titel.localeCompare(b.titel, 'de');
+    // Festival je Film (Ansicht nach Film) und je Film und Kino (Ansicht nach Kino), erstes passendes zählt
+    const festJeFilm = new Map(), festJeFilmKino = new Map();
+    amTag.forEach((t) => {
+      const fe = festivalVon(t);
+      if (!fe) return;
+      if (!festJeFilm.has(t.f)) festJeFilm.set(t.f, fe);
+      if (!festJeFilmKino.has(`${t.f}|${t.k}`)) festJeFilmKino.set(`${t.f}|${t.k}`, fe);
+    });
     let inhalt;
     if (!amTag.length) {
       inhalt = zustand.nurNeu
@@ -512,7 +538,7 @@
       inhalt = `<div class="karten">${liste.map(([fid, ks]) => {
         const f = filme[fid];
         const chips = [...ks].map((k) => kinos[k].name).sort().map((n) => `<span class="chip">${esc(n)}</span>`).join('');
-        const badge = chanceIds.has(fid) ? '<span class="abzeichen chance">Letzte Chance</span>' : '';
+        const badge = (chanceIds.has(fid) ? '<span class="abzeichen chance">Letzte Chance</span>' : '') + festivalAbzeichen(festJeFilm.get(fid));
         return `<article class="filmkarte">${plakat(f)}<div>${filmLink(f)}${pokale(f)}${badge}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}<div class="chips">${chips}</div></div></article>`;
       }).join('')}</div>`;
     } else {
@@ -522,7 +548,7 @@
       inhalt = `<div class="karten">${liste.map(([kid, fs]) => {
         const k = kinos[kid];
         const zeilen = [...fs].map((f) => filme[f]).sort(filmOrdnung)
-          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${pokale(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}</div></li>`).join('');
+          .map((f) => `<li>${plakat(f, 'mini')}<div>${filmLink(f)}${pokale(f)}${chanceIds.has(f.id) ? '<span class="abzeichen chance">Letzte Chance</span>' : ''}${festivalAbzeichen(festJeFilmKino.get(`${f.id}|${kid}`))}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}</div></li>`).join('');
         return `<article class="kinoblock"><h3><span class="monogramm klein">${esc(k.mono)}</span>${esc(k.name)}</h3><div class="meta">${fs.size} ${fs.size === 1 ? 'Film' : 'Filme'}</div><ul>${zeilen}</ul></article>`;
       }).join('')}</div>`;
     }
@@ -831,6 +857,13 @@
       ${liste.length ? `<div class="tabelle-wrap"><table class="liste regie-liste"><thead><tr>${kopf}</tr></thead><tbody>${zeilen}</tbody></table></div>` : '<p class="leer">Keine Regie für diese Auswahl.</p>'}`;
   }
   // Sprung aus Film-Dialog oder Filmliste: Reiter Regie, Person aufgeklappt und sichtbar
+  // Vom Abzeichen oder aus den Highlights zur Karte des Festivals im Reiter Festivals
+  function springeZuFestival(id) {
+    if ($('#film-dialog').open) $('#film-dialog').close();
+    wechsleAnsicht('festivals');
+    const k = document.getElementById(`festival-${id}`);
+    if (k) k.scrollIntoView({ block: 'start' }); else scrollTo(0, 0);
+  }
   // herkunft: Film-Dialog, aus dem gesprungen wurde. Dann zeigt der Kopf der Person einen Knopf zurück zum Film.
   let zurueck = null;
   function zeigeRegiePerson(name, herkunft = null) {
@@ -1612,37 +1645,82 @@
   // ---------- Ansicht Festivals ----------
   // Festivalkalender aus daten/festivals.json. Vorstellungen gehören zu einem Festival, wenn sie im Zeitraum in einem
   // der genannten Kinos laufen. titel, land und bisJahr schränken das ein (dann reicht eines davon).
-  // nurTitel: nur Filme aus der Titelliste zählen (für Festivals in großen Kinos). Ohne Kino und ohne Filter wird nichts zugeordnet.
+  // reihe: Reihe laut Kinoseite (bisher nur Filmhaus, z. B. "Griechische Filmtage"). Ist die Reihe einer Vorstellung bekannt,
+  // entscheidet allein sie. Für ältere Termine ohne Reihe gelten die übrigen Angaben.
+  // genres: Genres laut TMDB, hoechstensTage: nur Filme, die im Zeitraum an höchstens so vielen Tagen im Kino laufen
+  // (Festivalfilme laufen ein- oder zweimal, das reguläre Programm täglich).
+  // nurTitel: nur Filme aus der Titelliste zählen. Ohne Kino und ohne Filter wird nichts zugeordnet.
   // Die Liste kommt beim Laden frisch aus daten/festivals.json, data.js dient nur als Rückfall.
+  // Dazu kommen automatisch erkannte Festivals aus den Filmhaus-Reihen (D.festivalsErkannt), sofern kein
+  // Eintrag von Hand dieselbe Reihe oder denselben Namen hat.
   const FESTIVAL_FARBEN = { 'Länderfokus': '#3987e5', 'Klassiker': '#c98500', 'Open Air': '#199e70', 'Thema': '#d55181', 'Genre': '#d95926', 'Kinder': '#9085e9' };
   const festivalFarbe = (fe) => FESTIVAL_FARBEN[fe.art] || 'var(--gold)';
   const normTitel = (s) => String(s || '').toLocaleLowerCase('de').replace(/[^\p{L}\p{N}]/gu, '');
-  const festivalListe = (liste) => (liste || []).map((fe) => ({ ...fe, kinos: fe.kinos || [] }));
+  const REIHEN = D.reihen || [];
+  const reiheTrifft = (soll, ist) => Boolean(ist) && String(ist).split(' | ').some((r) => normTitel(r).includes(normTitel(soll)));
+  function festivalListe(liste) {
+    const hand = (liste || []).map((fe) => ({ ...fe, kinos: fe.kinos || [] }));
+    const auto = (D.festivalsErkannt || []).filter((a) => !hand.some((h) => (h.reihe && (reiheTrifft(h.reihe, a.reihe) || reiheTrifft(a.reihe, h.reihe)))
+      || normTitel(h.name).includes(normTitel(a.name)) || normTitel(a.name).includes(normTitel(h.name))))
+      .map((a) => ({ ...a, kinos: a.kinos || [], beschreibung: a.beschreibung || `Automatisch erkannt aus der Reihe „${a.ausgabe || a.reihe}“ im Programm des Kinos.` }));
+    return [...hand, ...auto];
+  }
   let FESTIVALS = festivalListe(D.festivals);
+  let festivalIndexCache = null;
   fetch('daten/festivals.json', { cache: 'no-cache' })
     .then((r) => (r.ok ? r.json() : null))
     .then((j) => {
       if (!j || !Array.isArray(j.festivals)) return;
       FESTIVALS = festivalListe(j.festivals);
-      if (zustand.ansicht === 'festivals') zeichne();
+      festivalIndexCache = null;
+      zeichne();
     })
     .catch(() => { /* Rückfall auf data.js */ });
   function festivalTermine(fe, daten) {
     if (!fe.von || !fe.bis) return [];
-    const mitFilter = (fe.titel && fe.titel.length) || fe.land || fe.bisJahr;
-    if (fe.nurTitel && !(fe.titel && fe.titel.length)) return [];
-    if (!fe.kinos.length && !mitFilter) return [];
+    const hatTitel = Boolean(fe.titel && fe.titel.length);
+    const mitFilter = hatTitel || fe.land || fe.bisJahr || (fe.genres && fe.genres.length);
+    if (fe.nurTitel && !hatTitel && !fe.reihe) return [];
+    if (!fe.kinos.length && !mitFilter && !fe.reihe) return [];
+    // Spieltage je Film und Kino im Zeitraum, über alle Termine (nicht nur die gefilterten)
+    let tageJe = null;
+    if (fe.hoechstensTage) {
+      tageJe = new Map();
+      termine.forEach((t) => { if (t.d >= fe.von && t.d <= fe.bis) { const s = `${t.f}|${t.k}`; tageJe.set(s, (tageJe.get(s) || 0) + 1); } });
+    }
     return daten.filter((t) => {
       if (t.d < fe.von || t.d > fe.bis) return false;
       if (fe.kinos.length && !fe.kinos.includes(kinos[t.k].roh)) return false;
-      if (!mitFilter) return true;
+      if (fe.reihe && t.r != null) return reiheTrifft(fe.reihe, REIHEN[t.r]);
+      if (!mitFilter) return !fe.reihe;
       const f = filme[t.f], j = parseInt(f.jahr, 10);
-      if (fe.nurTitel) return fe.titel.some((x) => normTitel(f.titel).includes(normTitel(x)));
-      return Boolean((fe.titel && fe.titel.some((x) => normTitel(f.titel).includes(normTitel(x))))
+      const titelTrifft = hatTitel && fe.titel.some((x) => normTitel(f.titel).includes(normTitel(x)));
+      if (fe.nurTitel) return titelTrifft;
+      if (tageJe && tageJe.get(`${t.f}|${t.k}`) > fe.hoechstensTage && !titelTrifft) return false;
+      return Boolean(titelTrifft
         || (fe.land && f.laender.includes(fe.land))
-        || (fe.bisJahr && j && j <= fe.bisJahr));
+        || (fe.bisJahr && j && j <= fe.bisJahr)
+        || (fe.genres && (f.info.genres || []).some((g) => fe.genres.includes(g))));
     });
   }
+  // Welche Vorstellung gehört zu welchem Festival? Schlüssel "Film|Kino|Tag", über alle Termine
+  function festivalIndex() {
+    if (festivalIndexCache) return festivalIndexCache;
+    festivalIndexCache = new Map();
+    FESTIVALS.forEach((fe) => festivalTermine(fe, termine).forEach((t) => {
+      const s = `${t.f}|${t.k}|${t.d}`;
+      if (!festivalIndexCache.has(s)) festivalIndexCache.set(s, fe);
+    }));
+    return festivalIndexCache;
+  }
+  const festivalVon = (t) => festivalIndex().get(`${t.f}|${t.k}|${t.d}`) || null;
+  const festivalFilmIds = () => {
+    const idx = festivalIndex();
+    if (!idx.ids) idx.ids = new Set([...idx.keys()].map((s) => Number(s.split('|')[0])));
+    return idx.ids;
+  };
+  // Abzeichen mit Klick zum Festival, für Programm, Highlights und Film-Dialog
+  const festivalAbzeichen = (fe) => (fe ? `<button type="button" class="abzeichen festival" data-festival-zu="${esc(fe.id)}" style="--fest-farbe:${festivalFarbe(fe)}" title="Zum Festival">${esc(fe.name)}</button>` : '');
   function festivalStatus(fe) {
     if (!fe.von || !fe.bis) return 'offen';
     if (fe.bis < HEUTE) return 'vorbei';
@@ -1666,10 +1744,12 @@
     const termineFestival = new Set(ts.map((t) => `${t.f}|${t.k}|${t.d}`));
     const nurHier = fs.filter((f) => termine.every((t) => t.f !== f.id || termineFestival.has(`${t.f}|${t.k}|${t.d}`)));
     const jetztSchon = fs.filter((f) => f.info.kinostart && String(f.info.kinostart) > fe.bis).sort((a, b) => String(a.info.kinostart).localeCompare(String(b.info.kinostart)));
-    const laender = new Map();
+    const laender = new Map(), genres = new Map();
     fs.forEach((f) => f.laender.forEach((l) => laender.set(l, (laender.get(l) || 0) + 1)));
+    fs.forEach((f) => (f.info.genres || []).forEach((g) => genres.set(g, (genres.get(g) || 0) + 1)));
     return {
       fs, ts, schnitt, schnittUebrig, nurHier, jetztSchon,
+      genres: [...genres].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')),
       tage: new Set(ts.map((t) => t.d)).size, spielorte: [...new Set(ts.map((t) => kinos[t.k].name))],
       laender: [...laender].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')),
       top: mitScore.sort(nachScore).slice(0, 3),
@@ -1691,6 +1771,7 @@
           <div><b>${a.schnitt != null ? Math.round(a.schnitt) : '–'}</b><span>Ø Score ${vergleich}</span></div>
         </div>
         ${a.laender.length ? `<div class="fest-laender">${a.laender.slice(0, 8).map(([l, n]) => `<span title="${esc(l)}: ${n}">${mitFlagge(l)} <b>${n}</b></span>`).join('')}</div>` : ''}
+        ${a.genres.length ? `<div class="fest-genres">${a.genres.slice(0, 6).map(([g, n]) => `<span>${esc(g)} <b>${n}</b></span>`).join('')}</div>` : ''}
         ${zeile('Highlights', a.top)}
         ${zeile('Jetzt schon sehen, Kinostart erst später', a.jetztSchon.slice(0, 4), (f) => `regulärer Kinostart ${datumKurz(String(f.info.kinostart))}`)}
         ${a.nurHier.length ? `<p class="meta fest-nurhier"><b>${a.nurHier.length}</b> ${a.nurHier.length === 1 ? 'Film läuft' : 'Filme laufen'} bei uns nur auf diesem Festival: ${a.nurHier.slice(0, 5).map((f) => filmLink(f)).join(', ')}${a.nurHier.length > 5 ? ' …' : ''}</p>` : ''}`;
@@ -1698,7 +1779,7 @@
       inhalt = `<p class="meta">${st === 'offen' ? 'Sobald die Termine feststehen, erscheinen hier Programm und Highlights.' : st === 'vorbei' ? 'Keine Vorstellungen in unseren Daten.' : 'Das Programm ist noch nicht veröffentlicht. Sobald die Kinos es zeigen, erscheinen hier Filme und Highlights.'}</p>`;
     }
     return `<article class="fest-karte ${st}${fe.sicher === false ? ' unsicher' : ''}" id="festival-${esc(fe.id)}" style="--fest-farbe:${festivalFarbe(fe)}">
-      <header><span class="fest-art">${esc(fe.art || 'Festival')}</span><span class="fest-status ${st}">${statusText}</span></header>
+      <header><span class="fest-art">${esc(fe.art || 'Festival')}</span>${fe.automatisch ? '<span class="fest-auto" title="Aus den Reihen im Kinoprogramm erkannt, noch nicht von Hand geprüft">automatisch erkannt</span>' : ''}<span class="fest-status ${st}">${statusText}</span></header>
       <h3>${esc(fe.name)}</h3>
       <div class="meta">${zeitraumText(fe)}${fe.kinos.length ? ` · ${fe.kinos.map((k) => esc(k.replace('Manhatten', 'Manhattan'))).join(', ')}` : ''}</div>
       ${fe.beschreibung ? `<p class="fest-text">${esc(fe.beschreibung)}</p>` : ''}
@@ -2116,7 +2197,11 @@
     // Aus Statistik oder Datenexploration geöffnet: Knopf zurück zur Auswertung (schließt den Dialog, Stelle bleibt)
     const auswertung = AUSWERTUNGEN[zustand.ansicht];
     const zurueckAuswertung = auswertung ? `<button type="button" class="zurueck-film zurueck-auswertung" data-zurueck-auswertung>← Zurück zur ${auswertung}</button>` : '';
-    $('#fd-inhalt').innerHTML = `${zurueckAuswertung}<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<div id="fd-gesehen">${gesehenKnopf(f)}</div><p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
+    // Genres laut TMDB und Festivals, auf denen der Film bei uns lief oder läuft
+    const genreZeile = (f.info.genres || []).length ? `<div class="meta">${f.info.genres.map(esc).join(', ')}</div>` : '';
+    const festivals = [...new Set(termine.filter((t) => t.f === fid).map(festivalVon).filter(Boolean))];
+    const festZeile = festivals.length ? `<div class="fd-festivals"><span class="meta">Festival</span> ${festivals.map(festivalAbzeichen).join(' ')}</div>` : '';
+    $('#fd-inhalt').innerHTML = `${zurueckAuswertung}<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${genreZeile}${festZeile}${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<div id="fd-gesehen">${gesehenKnopf(f)}</div><p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
     const knopfEl = $('#fd-inhalt .vorbei-knopf');
     if (knopfEl) {
       knopfEl.addEventListener('click', () => {
@@ -2147,6 +2232,8 @@
     { id: 'alter', name: 'Alter des Films (Jahre)', typ: 'zahl', wert: (e) => { const j = parseInt(e.f.jahr, 10); return j ? Number(e.erster.slice(0, 4)) - j : null; } },
     { id: 'jahrzehnt', name: 'Jahrzehnt', typ: 'gruppe', wert: (e) => e.f.jahrzehnt, ordnung: 'name' },
     { id: 'land', name: 'Land (erstgenannt)', typ: 'gruppe', wert: (e) => e.f.laender[0] || null },
+    { id: 'genre', name: 'Genre (erstgenannt)', typ: 'gruppe', wert: (e) => (e.f.info.genres || [])[0] || null },
+    { id: 'festival', name: 'Festivalfilm', typ: 'gruppe', wert: (e) => (festivalFilmIds().has(e.f.id) ? 'auf einem Festival' : 'nur regulär'), reihe: ['auf einem Festival', 'nur regulär'] },
     { id: 'hauptkino', name: 'Hauptkino', typ: 'gruppe', wert: (e) => e.hauptkino },
     { id: 'stadt', name: 'Stadt', typ: 'gruppe', wert: (e) => e.stadt },
     { id: 'status', name: 'Läuft noch?', typ: 'gruppe', wert: (e) => (e.laeuft ? 'läuft noch' : 'vorbei'), reihe: ['läuft noch', 'vorbei'] },
@@ -2627,6 +2714,7 @@
       zustand.kinoSort = { feld, auf: zustand.kinoSort.feld === feld ? !zustand.kinoSort.auf : feld === 'name' };
       return zeichne();
     }
+    if ((el = ziel('[data-festival-zu]'))) return springeZuFestival(el.dataset.festivalZu);
     if ((el = ziel('[data-festival-sprung]'))) { const k = document.getElementById(`festival-${el.dataset.festivalSprung}`); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if ((el = ziel('[data-kino-sprung]'))) { const k = $(`#kino-${el.dataset.kinoSprung}`); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if ((el = ziel('[data-alle-previews]'))) {
@@ -2693,6 +2781,8 @@
     const g = e.target.closest('[data-gesehen-film]');
     if (g) return umschaltenGesehen(g);
     if (e.target.closest('[data-zurueck-auswertung]')) return e.target.closest('dialog').close();
+    const fest = e.target.closest('[data-festival-zu]');
+    if (fest) return springeZuFestival(fest.dataset.festivalZu);
     const regie = e.target.closest('[data-regie]');
     // Herkunft merken: Film, Reiter und Scrollposition, damit "Zurück zum Film" alles wiederherstellt
     if (regie) zeigeRegiePerson(regie.dataset.regie, { film: offenerFilm, ansicht: zustand.ansicht, y: scrollY });

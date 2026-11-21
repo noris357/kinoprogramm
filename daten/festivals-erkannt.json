@@ -1,0 +1,33 @@
+{
+    "hinweis":  "Automatisch aus den Reihen des Filmhauses erkannt (tools/build-data.ps1), nicht von Hand bearbeiten. Zum Bestätigen oder Ergänzen einen Eintrag mit gleichem Feld reihe in festivals.json anlegen.",
+    "festivals":  [
+                      {
+                          "id":  "auto-9-griechische-filmtage-2026",
+                          "name":  "Griechische Filmtage",
+                          "ausgabe":  "9. Griechische Filmtage",
+                          "art":  "Länderfokus",
+                          "von":  "2026-11-21",
+                          "bis":  "2026-11-22",
+                          "sicher":  true,
+                          "kinos":  [
+                                        "Filmhaus Nürnberg"
+                                    ],
+                          "reihe":  "9. Griechische Filmtage",
+                          "automatisch":  true
+                      },
+                      {
+                          "id":  "auto-cinema-italia-2026-2026",
+                          "name":  "Cinema! Italia! 2026",
+                          "ausgabe":  "Cinema! Italia! 2026",
+                          "art":  "Länderfokus",
+                          "von":  "2026-12-03",
+                          "bis":  "2026-12-09",
+                          "sicher":  true,
+                          "kinos":  [
+                                        "Filmhaus Nürnberg"
+                                    ],
+                          "reihe":  "Cinema! Italia! 2026",
+                          "automatisch":  true
+                      }
+                  ]
+}

@@ -78,6 +78,8 @@ $offen = @($filme.Keys | Where-Object {
   if ($i.tmdb -and -not $i.PSObject.Properties['kinostart']) { return $true }
   # Ebenso fuer das spaeter ergaenzte Feld laufzeit (Filmlaenge)
   if ($i.tmdb -and -not $i.PSObject.Properties['laufzeit']) { return $true }
+  # und fuer die Genres
+  if ($i.tmdb -and -not $i.PSObject.Properties['genres']) { return $true }
   # Regie oder Titel in fremder Schrift: neu pruefen, nach erfolglosem Versuch aber erst nach 30 Tagen wieder
   if ((Test-FremdeSchrift $i.regie) -or (Test-FremdeSchrift $i.titel)) {
     if (-not $i.schriftGeprueft) { return $true }
@@ -210,6 +212,8 @@ foreach ($k in $offen) {
   $eintrag.kinostart = $kinostart
   # Filmlaenge in Minuten laut TMDB. 0 heisst unbekannt.
   $eintrag.laufzeit = if ($f.runtime) { [int]$f.runtime } else { 0 }
+  # Genres auf Deutsch laut TMDB, z. B. Horror, Dokumentarfilm, Komödie. Leere Liste heisst unbekannt.
+  $eintrag.genres = @($f.genres | ForEach-Object { $_.name } | Where-Object { $_ })
   $start = ConvertTo-IsoText $f.release_date
   if ($start -match '^\d{4}') { $eintrag.jahr = $start.Substring(0, 4) }
   $infos[$k] = $eintrag

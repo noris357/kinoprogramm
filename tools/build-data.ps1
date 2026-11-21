@@ -309,6 +309,7 @@ foreach ($g in $gruppen.Values) {
     # Nur Plakat, TMDB-ID und eigener Score gehen auf die Website, keine Einzelwertungen
     $zusatz = [ordered]@{}
     foreach ($f in 'poster', 'tmdb', 'kinostart', 'laufzeit') { if ($i.$f) { $zusatz[$f] = $i.$f } }
+    if ($i.genres) { $zusatz.genres = @($i.genres) }
     if ($scores.ContainsKey($g.Id)) { $zusatz.score = $scores[$g.Id]; $zusatz.scoreGenau = $scoresGenau[$g.Id] }
     if ($i.tmdb -and $preise.ContainsKey([string]$i.tmdb)) { $zusatz.preise = $preise[[string]$i.tmdb] }
     if ($zusatz.Count) { $eintrag += , $zusatz }
@@ -318,6 +319,8 @@ foreach ($g in $gruppen.Values) {
 }
 
 $termine = New-Object System.Collections.Generic.List[object]
+$reihen = New-Object System.Collections.Generic.List[string]
+$reiheIndex = @{}
 $doppelt = @{}
 foreach ($z in $zeilen) {
   if (-not $kinoIndex.ContainsKey($z.Kino)) {
@@ -330,8 +333,42 @@ foreach ($z in $zeilen) {
   $s = "$f|$($kinoIndex[$z.Kino])|$d"
   if ($doppelt.ContainsKey($s)) { continue }
   $doppelt[$s] = $true
-  $termine.Add(@($f, $kinoIndex[$z.Kino], $d))
+  # Vierter Wert: Index der Reihe in "reihen" (bisher nur Filmhaus), sonst entfällt er
+  if ($z.PSObject.Properties['Reihe'] -and $z.Reihe) {
+    if (-not $reiheIndex.ContainsKey($z.Reihe)) { $reiheIndex[$z.Reihe] = $reihen.Count; $reihen.Add($z.Reihe) }
+    $termine.Add(@($f, $kinoIndex[$z.Kino], $d, $reiheIndex[$z.Reihe]))
+  } else {
+    $termine.Add(@($f, $kinoIndex[$z.Kino], $d))
+  }
 }
+
+# ---------- Festivals aus Reihen erkennen ----------
+# Reihen mit Festival-Namen (Filmtage, Festival, Filmwoche ...) werden zu Vorschlägen in daten/festivals-erkannt.json.
+# Zeitraum vom ersten bis zum letzten Termin, mehr als 21 Tage Pause trennt zwei Ausgaben.
+# Von Hand gepflegte Festivals mit passendem Feld "reihe" haben auf der Website Vorrang.
+$erkannt = New-Object System.Collections.Generic.List[object]
+$festivalMuster = '(?i)filmtage|musiktage|kinotage|festival|filmfest|filmwoche|filmtag\b|cinema!\s*italia'
+foreach ($g in @($termine | Where-Object { $_.Count -gt 3 } | Group-Object { "$($_[1])|$($_[3])" })) {
+  $k = [int]$g.Group[0][1]
+  foreach ($teil in ($reihen[[int]$g.Group[0][3]] -split '\s*\|\s*')) {
+    if ($teil -notmatch $festivalMuster) { continue }
+    $tage = @($g.Group | ForEach-Object { $_[2] } | Sort-Object -Unique)
+    $abschnitte = New-Object System.Collections.Generic.List[object]
+    foreach ($t in $tage) {
+      if ($abschnitte.Count -and ([datetime]$t - [datetime]$abschnitte[-1].bis).TotalDays -le 21) { $abschnitte[-1].bis = $t }
+      else { $abschnitte.Add([pscustomobject]@{ von = $t; bis = $t }) }
+    }
+    $art = if ($teil -match '(?i)kinder|jugend') { 'Kinder' } elseif ($teil -match '(?i)stummfilm|klassik') { 'Klassiker' }
+      elseif ($teil -match '(?i)griech|türk|tuerk|ital|franz|span|portug|japan|korea|chines|indi|mittelmeer|latein|poln|ukrain|israel|arab|iran|afrika|nordisch|skandinav|österreich|schweiz|kurd|balkan|russ|tschech|ungar') { 'Länderfokus' }
+      else { 'Thema' }
+    foreach ($a in $abschnitte) {
+      $id = ('auto-' + ($teil.ToLowerInvariant() -replace '[^\p{L}\p{N}]+', '-').Trim('-') + '-' + $a.von.Substring(0, 4))
+      $erkannt.Add([pscustomobject][ordered]@{ id = $id; name = ($teil -replace '^\d+\.\s*', ''); ausgabe = $teil; art = $art; von = $a.von; bis = $a.bis; sicher = $true; kinos = @([string]$kinos[$k]); reihe = $teil; automatisch = $true })
+    }
+  }
+}
+$erkanntText = ([ordered]@{ hinweis = 'Automatisch aus den Reihen des Filmhauses erkannt (tools/build-data.ps1), nicht von Hand bearbeiten. Zum Bestätigen oder Ergänzen einen Eintrag mit gleichem Feld reihe in festivals.json anlegen.'; festivals = $erkannt.ToArray() } | ConvertTo-Json -Depth 4)
+[System.IO.File]::WriteAllText((Join-Path (Resolve-Path "$PSScriptRoot/../daten").Path 'festivals-erkannt.json'), $erkanntText, (New-Object System.Text.UTF8Encoding $false))
 
 # ---------- Auslastung (tools/auslastung.ps1, nur Cinecitta-Gruppe) ----------
 # Zuordnung zum Film ueber einen Termin desselben Kinos am selben Tag mit gleichem Titelschluessel.
@@ -387,6 +424,8 @@ $daten = [ordered]@{
   personen     = $personenAusgabe
   luecke       = $luecke
   festivals    = $festivals
+  reihen       = $reihen
+  festivalsErkannt = $erkannt.ToArray()
 }
 
 $inhalt = "window.KINO_DATA = " + ($daten | ConvertTo-Json -Depth 5 -Compress) + ";"
