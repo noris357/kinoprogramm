@@ -80,7 +80,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.js daten/programm.json daten/letzter-lauf.json daten/auslastung.json
+          git add data.js daten/programm.json daten/letzter-lauf.json daten/auslastung.json daten/festivals-erkannt.json
           git add daten/filminfos.json daten/wertungen.json daten/preise.json daten/preise-geprueft.json plakate 2>/dev/null || true
           git add daten/personen.json fotos 2>/dev/null || true
           if git diff --cached --quiet; then
