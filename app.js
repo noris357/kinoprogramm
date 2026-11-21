@@ -905,7 +905,7 @@
       <p class="hinweis">${rankingHinweis}</p>
       ${zeitRankings(daten, 'monat')}
       <h2 class="statistik-zwischentitel">Rankings je Jahr</h2>
-      <p class="hinweis">${rankingHinweis}</p>
+      <p class="hinweis">Nur Neustarts (deutscher Kinostart im jeweiligen Jahr). Anders als bei den Monaten zählen hier auch die Spieltage vor dem Projektstart aus den übernommenen Daten. Diese Daten haben Lücken, vor allem Ende August bis Mitte Oktober 2026. Spieltage zählen jeden Tag in jedem Kino, an dem ein Film läuft.</p>
       ${zeitRankings(daten, 'jahr')}
       <div class="tafel diagramm abstand" id="d-wertung">
         <h3>Ø Score pro Tag</h3>
@@ -1396,7 +1396,7 @@
   // Erst ab Projektstart und nur bis zum laufenden Monat. Spieltage: Tage je Kino mit dem Film (Uhrzeiten erfassen wir nicht).
   // Nur Neustarts des Monats: deutscher Kinostart (TMDB) in diesem Monat. Ohne Kinostart: erster Termin überhaupt
   // in diesem Monat und kein alter Film (Produktionsjahr höchstens NEU_HOECHSTALTER Jahre zurück oder unbekannt).
-  // art 'monat' oder 'jahr'. Spieltage zählen ab Projektstart bis heute. Der laufende Zeitraum ist aufgeklappt,
+  // art 'monat' oder 'jahr'. Spieltage bis heute, je Monat ab Projektstart, je Jahr auch davor. Der laufende Zeitraum ist aufgeklappt,
   // vergangene sind eingeklappt.
   function zeitRankings(daten, art) {
     const laenge = art === 'jahr' ? 4 : 7;
@@ -1409,7 +1409,8 @@
     };
     const m = new Map();
     daten.forEach((t) => {
-      if (t.d < PROJEKT_START || t.d > HEUTE) return;
+      // Je Jahr zählen auch Spieltage vor dem Projektstart (Übergabedaten), je Monat erst ab Projektstart
+      if ((art !== 'jahr' && t.d < PROJEKT_START) || t.d > HEUTE) return;
       const f = filme[t.f];
       if (istSneak(f) || istKurzfilm(f)) return;
       const k = t.d.slice(0, laenge);
