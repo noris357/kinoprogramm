@@ -135,6 +135,7 @@
     ansicht: 'highlights', tag: 'woche', gruppe: 'film',
     sort: { feld: 'bewertung', auf: false }, nurKommend: false, nurNeu: false,
     regieSort: { feld: 'schnitt', auf: false }, regieOffen: '', allePreviews: false,
+    kinoSort: { feld: 'score', auf: false },
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
 
@@ -1609,33 +1610,236 @@
   }
 
   // ---------- Ansicht Kinos ----------
-  function zeigeKinos(daten) {
-    const s = kinos.map((k) => ({ k, gesamt: 0, kommend: 0, filmeKommend: new Set() }));
+  // Profil je Kino ab Projektstart (bekannte Termine, auch kommende): Ø Score, Exklusivfilme, Alter, Länder,
+  // Kinowochen, Preisträger, Wochenrhythmus. Dazu ein sortierbarer Vergleich, die Überschneidungen als Heatmap,
+  // die Score-Verteilung und eine Empfehlung aus "Mein Kino".
+  const WOCHENTAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+  const KINO_SPALTEN = [
+    { feld: 'name', titel: 'Kino', wert: (e) => e.k.name.toLocaleLowerCase('de') },
+    { feld: 'score', titel: 'Ø Score', zahl: true, wert: (e) => e.score, zeige: (e) => (e.score != null ? Math.round(e.score) : '–') },
+    { feld: 'filme', titel: 'Filme', zahl: true, wert: (e) => e.filme.size, zeige: (e) => e.filme.size },
+    { feld: 'exklusiv', titel: 'Exklusiv', zahl: true, wert: (e) => e.exklusiv.length, zeige: (e) => e.exklusiv.length, hinweis: 'Filme, die seit Projektstart nur in diesem Kino liefen' },
+    { feld: 'alter', titel: 'Ø Alter', zahl: true, wert: (e) => e.alter, zeige: (e) => (e.alter != null ? `${Math.round(e.alter)} J.` : '–'), hinweis: 'Durchschnittliches Alter der Filme beim Spieltermin' },
+    { feld: 'klassiker', titel: 'Klassiker', zahl: true, wert: (e) => e.klassiker, zeige: (e) => prozent(e.klassiker), hinweis: `Anteil der Filme, die mindestens ${KLASSIKER_ALTER} Jahre alt sind` },
+    { feld: 'international', titel: 'International', zahl: true, wert: (e) => e.international, zeige: (e) => prozent(e.international), hinweis: 'Anteil der Filme, deren erstgenanntes Land weder USA noch Deutschland ist' },
+    { feld: 'wochen', titel: 'Ø Wochen', zahl: true, wert: (e) => e.wochen, zeige: (e) => (e.wochen != null ? e.wochen.toLocaleString('de-DE', { maximumFractionDigits: 1 }) : '–'), hinweis: 'Durchschnittliche Zahl der Kinowochen je Film' },
+    { feld: 'preise', titel: 'Preisträger', zahl: true, wert: (e) => e.preise, zeige: (e) => prozent(e.preise), hinweis: 'Anteil der Filme mit einem Hauptpreis' },
+  ];
+  const prozent = (v) => (v == null ? '–' : `${Math.round(v * 100)} %`);
+  // Eindeutige Kurznamen für enge Diagramme: Anfang des ersten Worts, so lang wie nötig, damit keine zwei gleich sind
+  // (Cinecitta, CineStar, Cineplex -> Cinec, CineS, Cinep; Meisengeige, Metropolis -> Mei, Met)
+  function kurzNamen(namen) {
+    const wort = namen.map((n) => n.replace(/^Lamm-/, 'Lamm ').split(/\s+/)[0]);
+    const laenge = wort.map(() => 3);
+    for (let runde = 0; runde < 8; runde++) {
+      const kurz = wort.map((w, i) => w.slice(0, laenge[i]));
+      let doppelt = false;
+      kurz.forEach((k, i) => { if (kurz.filter((x) => x === k).length > 1 && laenge[i] < wort[i].length) { laenge[i]++; doppelt = true; } });
+      if (!doppelt) return kurz;
+    }
+    return wort.map((w, i) => w.slice(0, laenge[i]));
+  }
+  function kinoKennzahlen(daten) {
+    const jeKino = kinos.map((k) => ({ k, filme: new Set(), tageJeFilm: new Map(), wochenJeFilm: new Map(), ersterJeFilm: new Map(), wochentage: Array(7).fill(0), kommendFilme: new Set(), kommendTage: 0 }));
+    const kinosJeFilm = new Map();
     daten.forEach((t) => {
-      const e = s[t.k];
-      e.gesamt++;
-      if (t.d >= HEUTE) { e.kommend++; e.filmeKommend.add(t.f); }
+      const e = jeKino[t.k];
+      if (t.d >= HEUTE) { e.kommendTage++; e.kommendFilme.add(t.f); }
+      if (t.d < PROJEKT_START) return;
+      const f = filme[t.f];
+      if (istSneak(f) || istKurzfilm(f)) return;
+      e.filme.add(t.f);
+      e.tageJeFilm.set(t.f, (e.tageJeFilm.get(t.f) || 0) + 1);
+      if (!e.wochenJeFilm.has(t.f)) e.wochenJeFilm.set(t.f, new Set());
+      e.wochenJeFilm.get(t.f).add(donnerstagVon(t.d));
+      if (!e.ersterJeFilm.has(t.f) || t.d < e.ersterJeFilm.get(t.f)) e.ersterJeFilm.set(t.f, t.d);
+      e.wochentage[wochentag(t.d)]++;
+      if (!kinosJeFilm.has(t.f)) kinosJeFilm.set(t.f, new Set());
+      kinosJeFilm.get(t.f).add(t.k);
     });
-    const liste = s.filter((e) => e.gesamt).sort((a, b) => b.kommend - a.kommend || a.k.name.localeCompare(b.k.name, 'de'));
-    const karten = liste.map((e) => {
+    const mittel = (l) => (l.length ? l.reduce((a, b) => a + b, 0) / l.length : null);
+    return jeKino.filter((e) => e.filme.size || e.kommendTage).map((e) => {
+      const fs = [...e.filme].map((id) => filme[id]);
+      const mitScore = fs.filter((f) => f.bewertung != null);
+      const alter = fs.map((f) => { const j = parseInt(f.jahr, 10); return j ? Number(e.ersterJeFilm.get(f.id).slice(0, 4)) - j : null; }).filter((a) => a != null);
+      const mitLand = fs.filter((f) => f.laender[0]);
+      const laender = new Map();
+      mitLand.forEach((f) => laender.set(f.laender[0], (laender.get(f.laender[0]) || 0) + 1));
+      const kommend = [...e.kommendFilme].map((id) => filme[id]).filter((f) => !istSneak(f) && !istKurzfilm(f));
+      const besterJetzt = kommend.filter((f) => f.bewertung != null).sort(nachScore)[0] || null;
+      // Mein Kino: gute Filme ab heute, die noch nicht als gesehen markiert sind
+      const fuerDich = kommend.filter((f) => f.bewertung != null && f.bewertung >= 75 && !gesehenAm(f)).sort(nachScore);
+      return {
+        ...e,
+        score: mittel(mitScore.map((f) => f.genau ?? f.bewertung)),
+        exklusiv: fs.filter((f) => kinosJeFilm.get(f.id).size === 1).sort(nachScore),
+        alter: mittel(alter),
+        klassiker: alter.length ? alter.filter((a) => a >= KLASSIKER_ALTER).length / alter.length : null,
+        international: mitLand.length ? mitLand.filter((f) => f.laender[0] !== 'USA' && f.laender[0] !== 'Deutschland').length / mitLand.length : null,
+        topLaender: [...laender].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'de')).slice(0, 3),
+        wochen: mittel([...e.wochenJeFilm.values()].map((w) => w.size)),
+        preise: fs.length ? fs.filter((f) => preisGruppen(f).length).length / fs.length : null,
+        besterJetzt, fuerDich,
+      };
+    });
+  }
+
+  function zeigeKinos(daten) {
+    const liste = kinoKennzahlen(daten);
+    if (!liste.length) { $('#v-kinos').innerHTML = '<div class="ansicht-kopf"><h2>Kinos und Spielorte</h2></div><p class="leer">Keine Kinos für diese Auswahl.</p>'; return; }
+    // Platz nach Ø Score für die Karten
+    const nachScoreRang = liste.filter((e) => e.score != null).sort((a, b) => b.score - a.score);
+    nachScoreRang.forEach((e, i) => { e.rang = i + 1; });
+    const sp = KINO_SPALTEN.find((s) => s.feld === zustand.kinoSort.feld) || KINO_SPALTEN[1];
+    const sortiert = [...liste].sort((a, b) => {
+      const x = sp.wert(a), y = sp.wert(b);
+      if (x == null || y == null) return (x == null) - (y == null) || a.k.name.localeCompare(b.k.name, 'de');
+      const r = typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'de');
+      return (zustand.kinoSort.auf ? r : -r) || a.k.name.localeCompare(b.k.name, 'de');
+    });
+    const kopf = KINO_SPALTEN.map((s) => {
+      const aktiv = s.feld === sp.feld;
+      return `<th class="${s.zahl ? 'zahl' : ''}" aria-sort="${aktiv ? (zustand.kinoSort.auf ? 'ascending' : 'descending') : 'none'}"${s.hinweis ? ` title="${esc(s.hinweis)}"` : ''}><button data-ksort="${s.feld}"${aktiv ? ` data-richtung="${zustand.kinoSort.auf ? 'auf' : 'ab'}"` : ''}>${s.titel}</button></th>`;
+    }).join('');
+    const tabelle = sortiert.map((e) => `<tr data-kino-sprung="${e.k.id}"><td><span class="monogramm klein">${esc(e.k.mono)}</span> ${esc(e.k.name)}</td>${KINO_SPALTEN.slice(1).map((s) => `<td class="zahl">${s.zeige(e)}</td>`).join('')}</tr>`).join('');
+
+    const karten = [...liste].sort((a, b) => b.kommendTage - a.kommendTage || a.k.name.localeCompare(b.k.name, 'de')).map((e) => {
       const bis = horizont[e.k.id];
       const vorlauf = bis >= HEUTE ? tageZwischen(HEUTE, bis) + 1 : 0;
       const st = !vorlauf ? ['nein', 'Kein kommender Termin'] : vorlauf < 7 ? ['kurz', `Programm nur ${vorlauf} ${vorlauf === 1 ? 'Tag' : 'Tage'} im Voraus`] : ['ja', `Programm ${vorlauf} Tage im Voraus`];
       const link = e.k.link ? `<a href="${esc(e.k.link)}" target="_blank" rel="noopener">Zur Kinoseite ↗</a>` : '';
-      return `<article class="kinokarte">
+      const maxTag = Math.max(1, ...e.wochentage);
+      const rhythmus = `<div class="wochenrhythmus" title="Spieltage je Wochentag seit Projektstart">${e.wochentage.map((n, i) => `<span><i style="height:${Math.max(2, Math.round((n / maxTag) * 28))}px"></i><small>${WOCHENTAGE[i]}</small></span>`).join('')}</div>`;
+      const exklusiv = e.exklusiv.length ? `${e.exklusiv.length} · ${e.exklusiv.slice(0, 3).map((f) => filmLink(f)).join(', ')}` : 'keine';
+      const laender = e.topLaender.map(([l, n]) => `<span title="${esc(l)}: ${n} Filme">${flagge(l) || esc(l)} ${n}</span>`).join(' ');
+      const profil = [
+        ['Ø Score', e.score != null ? `<b>${Math.round(e.score)}</b>${e.rang ? ` <span class="meta">Platz ${e.rang} von ${nachScoreRang.length}</span>` : ''}` : '–'],
+        ['Bester Film gerade', e.besterJetzt ? `${filmLink(e.besterJetzt)} ${wertung(e.besterJetzt)}` : '–'],
+        ['Exklusiv', exklusiv],
+        ['Ø Alter der Filme', e.alter != null ? `${Math.round(e.alter)} Jahre · ${prozent(e.klassiker)} Klassiker` : '–'],
+        ['Top-Länder', laender ? `${laender} <span class="meta">· ${prozent(e.international)} international</span>` : '–'],
+        ['Ø Kinowochen je Film', e.wochen != null ? e.wochen.toLocaleString('de-DE', { maximumFractionDigits: 1 }) : '–'],
+        ['Preisträger', prozent(e.preise)],
+        ['Für dich', e.fuerDich.length ? `${e.fuerDich.length} gute ${e.fuerDich.length === 1 ? 'Film' : 'Filme'} noch nicht gesehen, z. B. ${filmLink(e.fuerDich[0])}` : '<span class="meta">nichts Neues ab Score 75</span>'],
+      ].map(([n, v]) => `<div class="profil-zeile"><span>${n}</span><span>${v}</span></div>`).join('');
+      return `<article class="kinokarte" id="kino-${e.k.id}">
         <header><span class="monogramm">${esc(e.k.mono)}</span><div><h3>${esc(e.k.name)}</h3><div class="meta">${esc(e.k.stadt)}</div></div></header>
         <div class="kino-zahlen">
-          <div><b>${e.filmeKommend.size}</b><span>Filme ab heute</span></div>
-          <div><b>${e.kommend}</b><span>Spieltage ab heute</span></div>
+          <div><b>${e.kommendFilme.size}</b><span>Filme ab heute</span></div>
+          <div><b>${e.kommendTage}</b><span>Spieltage ab heute</span></div>
           <div><b>${bis ? datumKurz(bis) : '–'}</b><span>bekannt bis</span></div>
         </div>
+        <div class="kino-profil">${profil}</div>
+        ${rhythmus}
         <footer><span class="status ${st[0]}">${st[1]}</span>${link}</footer>
       </article>`;
     }).join('');
+
     $('#v-kinos').innerHTML = `
       <div class="ansicht-kopf"><h2>Kinos und Spielorte</h2></div>
-      <p class="hinweis">Wie weit das bekannte Programm je Kino reicht. Ein kurzer Vorlauf heißt meist, dass das Kino noch nicht weiter veröffentlicht hat.</p>
-      ${liste.length ? `<div class="kino-raster">${karten}</div>` : '<p class="leer">Keine Kinos für diese Auswahl.</p>'}`;
+      <p class="hinweis">Kennzahlen seit Projektstart am ${datumKurz(PROJEKT_START)}, mit allen bekannten Terminen. Sneaks und Kurzfilmprogramme zählen nicht mit. Die Filter oben gelten auch hier.</p>
+      <div class="tafel"><h3>Kinos im Vergleich</h3><p class="hinweis">Ein Klick auf eine Spaltenüberschrift sortiert, ein Klick auf eine Zeile springt zur Karte des Kinos.</p>
+        <div class="tabelle-wrap"><table class="liste kino-vergleich"><thead><tr>${kopf}</tr></thead><tbody>${tabelle}</tbody></table></div></div>
+      <div class="tafel diagramm abstand" id="d-ueberschneidung">
+        <h3>Welche Kinos spielen dasselbe?</h3>
+        <p class="hinweis">Anteil gemeinsamer Filme je Kinopaar seit Projektstart: gemeinsame Filme geteilt durch alle Filme der beiden Kinos. Je kräftiger das Gold, desto ähnlicher das Programm.</p>
+        <div class="flaeche"></div><div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-kinoscore">
+        <h3>Score-Verteilung je Kino</h3>
+        <p class="hinweis">Jeder Punkt ist ein Film seit Projektstart, der Strich der Median. So sieht man, ob ein Kino gleichmäßig gut spielt oder stark streut. Ein Klick auf einen Punkt öffnet den Film.</p>
+        <div class="flaeche"></div><div class="tooltip" hidden></div>
+      </div>
+      <h2 class="statistik-zwischentitel">Die Kinos im Einzelnen</h2>
+      <div class="kino-raster">${karten}</div>`;
+    kinoHeatmap('d-ueberschneidung', liste);
+    kinoScoreVerteilung('d-kinoscore', liste);
+  }
+
+  // Heatmap: Jaccard-Ähnlichkeit der Filmlisten je Kinopaar. Reihenfolge nach Stadt und Name.
+  function kinoHeatmap(id, liste) {
+    const rahmen = document.getElementById(id), ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const ks = liste.filter((e) => e.filme.size).sort((a, b) => a.k.stadt.localeCompare(b.k.stadt, 'de') || a.k.name.localeCompare(b.k.name, 'de'));
+    if (ks.length < 2) { ziel.innerHTML = '<p class="leer">Zu wenige Kinos für einen Vergleich.</p>'; return; }
+    const B = Math.max(ziel.clientWidth, 280), schmal = B < 500;
+    const links = schmal ? 52 : 170, oben = 52;
+    const zelle = Math.min(44, (B - links - 4) / ks.length);
+    const H = oben + zelle * ks.length + 4;
+    const werte = ks.map((a) => ks.map((b) => {
+      const gemeinsam = [...a.filme].filter((f) => b.filme.has(f));
+      return { a, b, gemeinsam, j: gemeinsam.length / new Set([...a.filme, ...b.filme]).size };
+    }));
+    const maxJ = Math.max(0.01, ...werte.flatMap((z) => z.filter((w) => w.a !== w.b).map((w) => w.j)));
+    const farbe = (j) => { const t = Math.min(1, j / maxJ); const mix = (a, b) => Math.round(a + (b - a) * t); return `rgb(${mix(0x24, 0xf0)},${mix(0x22, 0xd2)},${mix(0x1f, 0x7a)})`; };
+    let zellen = '';
+    werte.forEach((z, i) => z.forEach((w, j) => {
+      const x = links + j * zelle, y = oben + i * zelle;
+      zellen += i === j
+        ? `<rect x="${x}" y="${y}" width="${zelle - 2}" height="${zelle - 2}" rx="3" class="diagonal"/>`
+        : `<rect x="${x}" y="${y}" width="${zelle - 2}" height="${zelle - 2}" rx="3" fill="${farbe(w.j)}" data-i="${i}" data-j="${j}"/>${!schmal && zelle >= 30 ? `<text x="${x + zelle / 2 - 1}" y="${y + zelle / 2 + 3}" text-anchor="middle" class="${w.j / maxJ > 0.55 ? 'dunkel' : ''}">${Math.round(w.j * 100)}</text>` : ''}`;
+    }));
+    // Spalten (und auf dem Handy auch Zeilen) mit eindeutigen Kurznamen, senkrecht gestellt, damit sie in die Zellbreite passen
+    const kurz = kurzNamen(ks.map((e) => e.k.name));
+    const zeilenNamen = ks.map((e, i) => `<text x="${links - 6}" y="${oben + i * zelle + zelle / 2 + 3}" text-anchor="end">${esc(schmal ? kurz[i] : e.k.name)}</text>`).join('');
+    const spaltenNamen = ks.map((e, j) => { const x = links + j * zelle + zelle / 2 + 2; return `<text x="${x}" y="${oben - 6}" text-anchor="start" transform="rotate(-60 ${x} ${oben - 6})">${esc(kurz[j])}</text>`; }).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Heatmap: Anteil gemeinsamer Filme je Kinopaar"><g class="namen">${zeilenNamen}${spaltenNamen}</g><g class="zellen">${zellen}</g></svg>`;
+    const svg = ziel.querySelector('svg');
+    svg.addEventListener('pointermove', (ev) => {
+      const r = ev.target.closest('rect[data-i]');
+      if (!r) { tip.hidden = true; return; }
+      const w = werte[+r.dataset.i][+r.dataset.j];
+      const beispiele = w.gemeinsam.map((id) => filme[id]).sort(nachScore).slice(0, 4).map((f) => esc(f.titel)).join(', ');
+      setzeTipp(rahmen, tip, svg, B, +r.getAttribute('x') + zelle / 2, +r.getAttribute('y'),
+        `${esc(w.a.k.name)} und ${esc(w.b.k.name)}<br><b>${w.gemeinsam.length}</b> gemeinsame Filme · <b>${Math.round(w.j * 100)} %</b>${beispiele ? `<br><span class="meta">${beispiele}${w.gemeinsam.length > 4 ? ' …' : ''}</span>` : ''}`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+  }
+
+  // Score-Verteilung: je Kino eine Zeile mit allen Filmen als Punkte, dazu der Median. Sortiert nach Median.
+  function kinoScoreVerteilung(id, liste) {
+    const rahmen = document.getElementById(id), ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const zeilen = liste.map((e) => {
+      const fs = [...e.filme].map((fid) => filme[fid]).filter((f) => f.bewertung != null);
+      const w = fs.map((f) => f.genau ?? f.bewertung).sort((a, b) => a - b);
+      const median = w.length ? (w.length % 2 ? w[(w.length - 1) / 2] : (w[w.length / 2 - 1] + w[w.length / 2]) / 2) : null;
+      return { e, fs, median };
+    }).filter((z) => z.fs.length).sort((a, b) => b.median - a.median);
+    if (!zeilen.length) { ziel.innerHTML = '<p class="leer">Keine Filme mit Score.</p>'; return; }
+    const B = Math.max(ziel.clientWidth, 280), schmal = B < 500;
+    const links = schmal ? 52 : 170, zeile = 26, H = zeilen.length * zeile + 30;
+    const kurzV = kurzNamen(zeilen.map((z) => z.e.k.name));
+    const alle = zeilen.flatMap((z) => z.fs.map((f) => f.genau ?? f.bewertung));
+    const sMin = Math.floor(Math.min(...alle) / 10) * 10, sMax = Math.ceil(Math.max(...alle) / 10) * 10;
+    const x = (s) => links + ((s - sMin) / (sMax - sMin)) * (B - links - 10);
+    let gitter = '', ticks = '';
+    for (let s = sMin; s <= sMax; s += 10) { gitter += `<line x1="${x(s)}" x2="${x(s)}" y1="4" y2="${H - 22}"/>`; ticks += `<text x="${x(s)}" y="${H - 6}" text-anchor="middle">${s}</text>`; }
+    const punkte = [];
+    const reihen = zeilen.map((z, i) => {
+      const ym = 4 + i * zeile + zeile / 2;
+      const kreise = z.fs.map((f) => {
+        const versatz = ((((f.id * 9301 + 49297) % 233280) / 233280) - 0.5) * (zeile - 10);
+        const p = { f, x: x(f.genau ?? f.bewertung), y: ym + versatz, kino: z.e.k.name };
+        punkte.push(p);
+        return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${schmal ? 2 : 2.5}"/>`;
+      }).join('');
+      return `<text class="kinoname" x="${links - 8}" y="${ym + 4}" text-anchor="end">${esc(schmal ? kurzV[i] : z.e.k.name)}</text>${kreise}<line class="median" x1="${x(z.median)}" x2="${x(z.median)}" y1="${ym - zeile / 2 + 3}" y2="${ym + zeile / 2 - 3}"/>`;
+    }).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Score-Verteilung je Kino"><g class="gitter">${gitter}</g><g class="streu">${reihen}</g><circle class="markiert" r="5" hidden/><g class="achse">${ticks}</g></svg>`;
+    const svg = ziel.querySelector('svg'), mark = svg.querySelector('.markiert');
+    const naechster = (ev) => {
+      const b = svg.getBoundingClientRect(), mx = (ev.clientX - b.left) * (B / b.width), my = (ev.clientY - b.top) * (H / b.height);
+      let best = null, bd = 12 * 12;
+      punkte.forEach((p) => { const d = (p.x - mx) ** 2 + (p.y - my) ** 2; if (d < bd) { bd = d; best = p; } });
+      return best;
+    };
+    svg.addEventListener('pointermove', (ev) => {
+      const p = naechster(ev);
+      if (!p) { tip.hidden = true; mark.setAttribute('hidden', ''); svg.style.cursor = ''; return; }
+      mark.removeAttribute('hidden'); mark.setAttribute('cx', p.x); mark.setAttribute('cy', p.y); svg.style.cursor = 'pointer';
+      setzeTipp(rahmen, tip, svg, B, p.x, p.y - 6, `<b>${esc(p.f.titel)}</b><br>Score <b>${p.f.bewertung}</b> · ${esc(p.kino)}`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; mark.setAttribute('hidden', ''); });
+    svg.addEventListener('click', (ev) => { const p = naechster(ev); if (p) zeigeFilm(p.f.id); });
   }
 
   // ---------- Impressum ----------
@@ -2257,6 +2461,12 @@
     if ((el = ziel('[data-zu]'))) { wechsleAnsicht(el.dataset.zu); return scrollTo(0, 0); }
     if ((el = ziel('[data-film]'))) return zeigeFilm(Number(el.dataset.film));
     if ((el = ziel('[data-gesehen-film]'))) return umschaltenGesehen(el);
+    if ((el = ziel('[data-ksort]'))) {
+      const feld = el.dataset.ksort;
+      zustand.kinoSort = { feld, auf: zustand.kinoSort.feld === feld ? !zustand.kinoSort.auf : feld === 'name' };
+      return zeichne();
+    }
+    if ((el = ziel('[data-kino-sprung]'))) { const k = $(`#kino-${el.dataset.kinoSprung}`); if (k) k.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     if ((el = ziel('[data-alle-previews]'))) {
       zustand.allePreviews = !zustand.allePreviews;
       const y = scrollY; zeichne(); scrollTo(0, y);

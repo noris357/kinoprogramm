@@ -563,3 +563,27 @@ details.monat-ranking[open] > summary { margin-bottom: 6px; }
 #d-laender .tooltip { white-space: nowrap; }
 #fd-inhalt .zurueck-auswertung { margin: 0 0 12px; }
 #v-filme > .zurueck-film { margin: 0 0 10px; }
+/* ---------- Kinos: Vergleich, Heatmap, Verteilung, Profil ---------- */
+.kino-vergleich tbody tr { cursor: pointer; }
+.kino-vergleich td:first-child { white-space: nowrap; }
+.kinokarte { scroll-margin-top: 110px; }
+.kino-profil { display: grid; gap: 6px; font-size: 13px; border-top: 1px solid var(--line); padding-top: 10px; }
+.profil-zeile { display: grid; grid-template-columns: 118px 1fr; gap: 8px; align-items: baseline; }
+.profil-zeile > span:first-child { color: var(--muted); font-size: 12px; }
+.profil-zeile b { font-family: var(--font-display); font-weight: 400; font-size: 20px; color: var(--gold-hell); }
+.profil-zeile .film-link { font-size: 13px; }
+.wochenrhythmus { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; align-items: end; height: 46px; }
+.wochenrhythmus span { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 3px; height: 100%; }
+.wochenrhythmus i { display: block; width: 100%; max-width: 22px; background: var(--gold); border-radius: 3px 3px 0 0; opacity: .8; }
+.wochenrhythmus small { font-size: 10px; color: var(--muted); }
+#d-ueberschneidung .namen text { fill: var(--text-2); font-size: 11px; }
+#d-ueberschneidung .zellen text { fill: var(--text); font-size: 10px; pointer-events: none; font-variant-numeric: tabular-nums; }
+#d-ueberschneidung .zellen text.dunkel { fill: #140f05; }
+#d-ueberschneidung .diagonal { fill: var(--surface-2); }
+#d-ueberschneidung rect[data-i]:hover { stroke: var(--gold-hell); stroke-width: 1.5; }
+#d-ueberschneidung .tooltip, #d-kinoscore .tooltip { white-space: normal; max-width: 280px; }
+#d-kinoscore .streu circle { fill: var(--gold); opacity: .7; stroke: none; }
+#d-kinoscore .median { stroke: var(--rot-hell); stroke-width: 2.5; stroke-linecap: round; }
+#d-kinoscore .kinoname { fill: var(--text-2); font-size: 11px; }
+.kino-vergleich td:first-child { display: flex; align-items: center; gap: 8px; }
+.kino-vergleich td:first-child .monogramm { flex: none; margin: 0; }
