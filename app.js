@@ -246,6 +246,29 @@
 
   // ---------- Fakten je Film und Grund-Zeile ----------
   const donnerstagVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7)); // Kinowoche läuft Donnerstag bis Mittwoch
+  // Lücken in der Erfassung: Kinowochen mit sehr wenigen Terminen über alle Kinos (z. B. Ende August bis Anfang
+  // Oktober 2026, als die Programme noch nicht regelmäßig abgefragt wurden). Eine Serie "Wochen am Stück" läuft über
+  // eine solche Lücke weiter, wenn der Film davor und danach lief. Die Lückenwochen zählen dann mit.
+  const LUECKE_HOECHSTENS = 100;   // weniger Termine in einer Kinowoche gelten als nicht erfasst
+  let terminZahlJeWoche = null;
+  function istLuecke(w) {
+    if (!terminZahlJeWoche) {
+      terminZahlJeWoche = new Map();
+      termine.forEach((t) => { const k = donnerstagVon(t.d); terminZahlJeWoche.set(k, (terminZahlJeWoche.get(k) || 0) + 1); });
+    }
+    return (terminZahlJeWoche.get(w) || 0) < LUECKE_HOECHSTENS;
+  }
+  // Zusammenhängende Kinowochen rückwärts ab start (Donnerstag). wochen: Kinowochen mit Termin des Films.
+  function wochenAmStueck(wochen, start) {
+    let w = start, n = 0;
+    for (;;) {
+      if (wochen.has(w)) { n++; w = plusTage(w, -7); continue; }
+      let g = w, luecke = 0;
+      while (luecke < 12 && !wochen.has(g) && istLuecke(g)) { luecke++; g = plusTage(g, -7); }
+      if (luecke && wochen.has(g)) { n += luecke; w = g; continue; }
+      return n;
+    }
+  }
   let faktenCache = null;
   let chanceCache = null;
   function fakten() {
@@ -267,9 +290,7 @@
     const neuBis = plusTage(neuAb, 6);
     const diesesJahr = Number(HEUTE.slice(0, 4));
     m.forEach((e, id) => {
-      let w = donnerstagVon(HEUTE), n = 0;
-      while (e.wochen.has(w)) { n++; w = plusTage(w, -7); }
-      e.serie = n;
+      e.serie = wochenAmStueck(e.wochen, donnerstagVon(HEUTE));
       const jahr = parseInt(filme[id].jahr, 10);
       const ks = filme[id].info && filme[id].info.kinostart;
       if (ks) {
@@ -1173,8 +1194,7 @@
     // Rückwärts ab aktueller Woche, sonst ab der letzten Woche mit Termin bis heute
     let w = jetzt;
     if (!laeuft) w = [...wochen].filter((x) => x < jetzt).sort().pop();
-    let n = 0;
-    while (wochen.has(w)) { n++; w = plusTage(w, -7); }
+    const n = wochenAmStueck(wochen, w);   // überbrückt Lücken in der Erfassung
     const einheit = n === 1 ? 'Woche' : 'Wochen';
     const start = ksText ? `${ksText} · ` : '';
     return `<div class="meta">${start}Im Kino seit ${esc(datum(erster).replace(/^\S+\s/, ''))} · ${laeuft ? `seit ${n} ${einheit} am Stück` : `lief ${n} ${einheit}`}</div>`;
