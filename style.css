@@ -455,3 +455,4 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .profil-konto .profil-name { margin-top: 0; flex: 1 1 200px; }
 .profil-konto .gesehen-knopf, .profil-konto .vorbei-knopf { margin-top: 0; }
 #pd-sync:empty { display: none; }
+.mehr-knopf { display: block; margin: 14px auto 0; }

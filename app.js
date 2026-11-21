@@ -132,7 +132,7 @@
     stadt: '', kino: '', land: '', jahrzehnt: '', suche: '',
     ansicht: 'highlights', tag: 'woche', gruppe: 'film',
     sort: { feld: 'bewertung', auf: false }, nurKommend: false, nurNeu: false,
-    regieSort: { feld: 'schnitt', auf: false }, regieOffen: '',
+    regieSort: { feld: 'schnitt', auf: false }, regieOffen: '', allePreviews: false,
     kalModus: 'monat', kalMonat: HEUTE.slice(0, 7), matrixStart: montagVon(HEUTE),
   };
 
@@ -425,9 +425,15 @@
         const start = h.f.info.kinostart ? `Kinostart ${datumKurz(h.f.info.kinostart)}` : 'Kinostart unbekannt';
         return { ...h, hinweis: `Preview ${wann} · ${start}` };
       });
+    const neuListe = nimm(neu);
+    // Previews: zuerst die 3 besten nach Score, der Knopf darunter zeigt alle weiteren
+    const previewsFrei = previews.filter((h) => !belegt.has(h.f.id));
+    const previewListe = nimm(previews, zustand.allePreviews ? previewsFrei.length : FILME_JE_RUBRIK);
+    const previewKnopf = previewsFrei.length > FILME_JE_RUBRIK
+      ? `<button type="button" class="vorbei-knopf mehr-knopf" data-alle-previews aria-expanded="${zustand.allePreviews}">${zustand.allePreviews ? 'Weniger Previews' : `Mehr Previews (${previewsFrei.length - FILME_JE_RUBRIK})`}</button>` : '';
     const rubriken = [
-      ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', nimm(neu)],
-      ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart. Vorstellungen am Vorabend des Starts zählen nicht.', nimm(previews)],
+      ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', neuListe],
+      ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart. Vorstellungen am Vorabend des Starts zählen nicht.', previewListe, null, previewKnopf],
       ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
         const j = parseInt(h.f.jahr, 10);
         return j && jetzt - j >= KLASSIKER_ALTER && ((h.f.bewertung ?? -1) >= KLASSIKER_SCORE || hatPreis(h));
@@ -450,7 +456,7 @@
       <div class="ansicht-kopf"><h2>Highlights</h2></div>
       <p class="hinweis">Besondere Filme der nächsten sieben Tage. Jeder Film erscheint nur einmal.</p>
       ${film ? `<section class="hl-rubrik"><h3 class="hl-titel">Film der Woche</h3>${highlightKarte(film, true)}</section>` : ''}
-      ${rubriken.map(([name, text, liste, karte]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => (karte ? karte(h) : highlightKarte(h, false))).join('')}</div></section>`).join('')}
+      ${rubriken.map(([name, text, liste, karte, fuss]) => `<section class="hl-rubrik"><h3 class="hl-titel">${name}</h3><p class="meta">${text}</p><div class="karten">${liste.map((h) => (karte ? karte(h) : highlightKarte(h, false))).join('')}</div>${fuss || ''}</section>`).join('')}
       ${film || rubriken.length ? '' : '<p class="leer">Für diese Auswahl gibt es in den nächsten sieben Tagen keine Highlights.</p>'}
       ${sonderZeilen.length ? `<section class="hl-rubrik"><h3 class="hl-titel">Sneak und Kurzfilme</h3><p class="meta">Überraschungsfilme und Kurzfilmprogramme der nächsten sieben Tage.</p><ul class="hl-termine">${sonderZeilen.map((e) => `<li>${filmLink(e.f)}<span class="chip">${esc(kinos[e.k].name)}</span><span class="meta">${e.tage.map(wochentagDatum).join(', ')}</span></li>`).join('')}</ul></section>` : ''}
       <p class="hl-fuss"><button class="film-link" data-zu="programm">Zum ganzen Programm →</button></p>`;
@@ -1452,6 +1458,11 @@
     if ((el = ziel('[data-zu]'))) { wechsleAnsicht(el.dataset.zu); return scrollTo(0, 0); }
     if ((el = ziel('[data-film]'))) return zeigeFilm(Number(el.dataset.film));
     if ((el = ziel('[data-gesehen-film]'))) return umschaltenGesehen(el);
+    if ((el = ziel('[data-alle-previews]'))) {
+      zustand.allePreviews = !zustand.allePreviews;
+      const y = scrollY; zeichne(); scrollTo(0, y);
+      return;
+    }
     if ((el = ziel('[data-zurueck-film]'))) {
       const z = zurueck;
       zurueck = null;
