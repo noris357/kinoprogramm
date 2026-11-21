@@ -405,19 +405,22 @@
     const film = neu[0] || null;
     if (film) belegt.add(film.f.id);
     const hatPreis = (h) => preisGruppen(h.f).length > 0;
-    // Previews: Vorstellungen vor dem deutschen Kinostart laut TMDB (Feld kinostart)
-    const previews = alle.filter((h) => h.f.info.kinostart && [...h.kinos.values()].some((ds) => [...ds].some((d) => d < h.f.info.kinostart)))
+    // Previews: Vorstellungen vor dem deutschen Kinostart laut TMDB (Feld kinostart).
+    // Der Vorabend zählt nicht: Viele Kinos zeigen Mittwochabend schon den Donnerstagsstart.
+    const previewBis = (h) => plusTage(String(h.f.info.kinostart), -1);   // Termine vor diesem Tag sind Previews
+    const previews = alle.filter((h) => h.f.info.kinostart && [...h.kinos.values()].some((ds) => [...ds].some((d) => d < previewBis(h))))
       .map((h) => {
         const ks = h.f.info.kinostart;
+        const bis = previewBis(h);
         // Je Kino die Preview-Tage, z. B. "So 22.11.26, Mo 23.11.26 im Uferpalast Fürth"
-        const wann = [...h.kinos].map(([k, ds]) => ({ k, tage: [...ds].filter((d) => d < ks).sort() })).filter((e) => e.tage.length)
+        const wann = [...h.kinos].map(([k, ds]) => ({ k, tage: [...ds].filter((d) => d < bis).sort() })).filter((e) => e.tage.length)
           .sort((a, b) => a.tage[0].localeCompare(b.tage[0]))
           .map((e) => `${e.tage.map(wochentagDatum).join(', ')} im ${kinos[e.k].name}`).join(' · ');
         return { ...h, hinweis: `Preview ${wann} · Kinostart ${datumKurz(ks)}` };
       });
     const rubriken = [
       ['Neu diese Woche', 'Weitere Neustarts dieser Woche, die besten zuerst.', nimm(neu)],
-      ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart.', nimm(previews)],
+      ['Previews', 'Diese Filme laufen schon vor ihrem offiziellen Kinostart. Vorstellungen am Vorabend des Starts zählen nicht.', nimm(previews)],
       ['Klassiker zum Nachholen', `Mindestens ${KLASSIKER_ALTER} Jahre alt, mit hohem Score oder einem Hauptpreis.`, nimm(alle.filter((h) => {
         const j = parseInt(h.f.jahr, 10);
         return j && jetzt - j >= KLASSIKER_ALTER && ((h.f.bewertung ?? -1) >= KLASSIKER_SCORE || hatPreis(h));
