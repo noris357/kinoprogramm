@@ -499,3 +499,54 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .sankey-kopf span:nth-child(2) { text-align: center; }
 .sankey-kopf span:nth-child(3) { text-align: right; }
 #d-sankey .tooltip { white-space: normal; max-width: 260px; }
+/* Hantel: Spieltage je Jahrzehnt */
+#d-hantel .spanne { stroke: var(--line-strong); stroke-width: 2; stroke-linecap: round; }
+#d-hantel .hantel.aktiv .spanne { stroke: var(--gold); }
+#d-hantel circle { stroke: var(--surface); stroke-width: 2; }
+#d-hantel circle.max { fill: var(--gold-hell); cursor: pointer; }
+#d-hantel circle.min { fill: var(--rot-hell); cursor: pointer; }
+#d-hantel circle.median { fill: var(--text); }
+#d-hantel .jahrzehnt { fill: var(--text-2); font-size: 11px; }
+#d-hantel .anzahl { fill: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+#d-hantel .tooltip { white-space: normal; min-width: 200px; max-width: 280px; }
+.legende-laender .punkt-max, .legende-laender .punkt-median, .legende-laender .punkt-min { border-radius: 50%; }
+.legende-laender .punkt-max { background: var(--gold-hell); }
+.legende-laender .punkt-median { background: var(--text); width: 7px !important; height: 7px !important; }
+.legende-laender .punkt-min { background: var(--rot-hell); }
+/* Streudiagramm Score gegen Spieltage */
+#d-scorelauf .korrelation { margin: 0 0 10px; font-size: 14px; color: var(--text-2); }
+#d-scorelauf .korrelation b { color: var(--gold-hell); font-family: var(--font-display); font-size: 22px; font-weight: 400; }
+#d-scorelauf .achsen-titel { text-align: right; font-size: 11px; color: var(--muted); letter-spacing: .08em; margin-top: 2px; }
+/* ---------- Baukasten ---------- */
+.bk-werkbank { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 16px; margin: 12px 0 8px; }
+@media (max-width: 760px) { .bk-werkbank { grid-template-columns: 1fr; } }
+.bk-merkmale { display: grid; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
+.bk-merkmale > div { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.bk-feld-titel { display: block; width: 100%; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.bk-chip { font: inherit; font-size: 13px; padding: 5px 11px; border-radius: 999px; cursor: grab; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); touch-action: manipulation; }
+.bk-chip.zahl { border-color: var(--gold); color: var(--gold-hell); }
+.bk-chip.gruppe { color: var(--text-2); }
+.bk-chip[aria-pressed="true"] { background: var(--gold); color: #140f05; border-color: var(--gold); }
+.bk-chip:active { cursor: grabbing; }
+.bk-felder { display: grid; gap: 8px; align-content: start; }
+.bk-feld { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-height: 46px; padding: 8px 12px; border: 1.5px dashed var(--line-strong); border-radius: var(--radius); background: var(--surface); }
+.bk-feld .bk-feld-titel { width: auto; min-width: 92px; margin: 0; }
+.bk-feld.ueber, .waehlt .bk-feld { border-color: var(--gold); background: var(--gold-wash); cursor: pointer; }
+.bk-leer { font-size: 13px; color: var(--muted); font-style: italic; }
+.bk-belegt { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 3px 4px 3px 11px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line-strong); }
+.bk-belegt.zahl { color: var(--gold-hell); border-color: var(--gold); }
+.bk-belegt button { font: inherit; background: none; border: 0; color: var(--muted); cursor: pointer; padding: 0 6px; font-size: 15px; }
+.bk-belegt button:hover { color: var(--rot-hell); }
+.bk-log { margin-left: auto; font-size: 12px; color: var(--text-2); display: inline-flex; gap: 4px; align-items: center; }
+.bk-mass { margin-top: 4px; }
+.bk-meldung { min-height: 1em; margin: 0 0 8px; font-size: 13px; color: var(--rot-hell); }
+#d-baukasten .korrelation { margin: 0 0 8px; font-size: 14px; color: var(--text-2); }
+#d-baukasten .korrelation:empty { display: none; }
+#d-baukasten .korrelation b { color: var(--gold-hell); font-family: var(--font-display); font-size: 24px; font-weight: 400; }
+#d-baukasten .achsen-name { fill: var(--text-2); font-size: 11px; }
+#d-baukasten .strom { opacity: .55; transition: opacity .12s; }
+#d-baukasten svg.hervor .strom { opacity: .15; }
+#d-baukasten svg.hervor .strom.aktiv { opacity: .9; }
+#d-baukasten .knoten text { font-size: 12px; fill: var(--text); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+#d-baukasten .knoten .zahl { fill: var(--gold-hell); font-variant-numeric: tabular-nums; }
+#d-baukasten .tooltip { white-space: normal; max-width: 280px; }

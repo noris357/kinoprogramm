@@ -76,6 +76,8 @@ $offen = @($filme.Keys | Where-Object {
   if ($i.nichtGefunden) { return ((Get-Date) - [datetime]::ParseExact((ConvertTo-IsoText $i.geprueft), 'yyyy-MM-dd', $null)).TotalDays -gt 30 }
   # Gefundene Filme ohne Feld kinostart (aus aelteren Laeufen): einmal neu abfragen. Ohne deutschen Eintrag steht kinostart auf leer, nicht fehlend.
   if ($i.tmdb -and -not $i.PSObject.Properties['kinostart']) { return $true }
+  # Ebenso fuer das spaeter ergaenzte Feld laufzeit (Filmlaenge)
+  if ($i.tmdb -and -not $i.PSObject.Properties['laufzeit']) { return $true }
   # Regie oder Titel in fremder Schrift: neu pruefen, nach erfolglosem Versuch aber erst nach 30 Tagen wieder
   if ((Test-FremdeSchrift $i.regie) -or (Test-FremdeSchrift $i.titel)) {
     if (-not $i.schriftGeprueft) { return $true }
@@ -122,6 +124,8 @@ foreach ($k in $offen) {
   $jahr = 0; if ("$($z.Produktionsjahr)" -match '^(\d{4})') { $jahr = [int]$Matches[1] }
   $id = $null
   if ($zuordnung.ContainsKey($k)) { $id = $zuordnung[$k] }
+  # Bereits gefundener Film, nur ein neues Feld fehlt (z. B. laufzeit): bekannte TMDB-ID behalten, nicht neu suchen
+  elseif (-not $Alle -and $infos[$k] -and $infos[$k].tmdb) { $id = $infos[$k].tmdb }
   else {
     # Suchvarianten: mit Jahr, ohne Jahr, ohne Doppelpunkt ("Der Herr der Ringe: ..." heisst bei TMDB "... - ..."),
     # nur Haupttitel, und auf Englisch (manche Filme kennt TMDB auf Deutsch nur unter dem Originaltitel)
@@ -204,6 +208,8 @@ foreach ($k in $offen) {
     }
   }
   $eintrag.kinostart = $kinostart
+  # Filmlaenge in Minuten laut TMDB. 0 heisst unbekannt.
+  $eintrag.laufzeit = if ($f.runtime) { [int]$f.runtime } else { 0 }
   $start = ConvertTo-IsoText $f.release_date
   if ($start -match '^\d{4}') { $eintrag.jahr = $start.Substring(0, 4) }
   $infos[$k] = $eintrag

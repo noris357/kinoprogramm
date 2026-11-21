@@ -941,6 +941,21 @@
         <div class="flaeche"></div>
         <div class="tooltip" hidden></div>
       </div>
+      <div class="tafel diagramm abstand" id="d-hantel">
+        <h3>Spieltage je Produktionsjahr</h3>
+        <p class="hinweis">Spieltage je Film seit Projektstart am ${datumKurz(PROJEKT_START)}, für jedes Produktionsjahr. Jahre mit wenigen Filmen sind zu Zeiträumen mit mindestens fünf Filmen zusammengefasst. Oben der Film mit den meisten, unten der mit den wenigsten Spieltagen, der kleine Punkt ist der Median. Die Achse ist logarithmisch, jeder Schritt nach oben ist ein Vielfaches. Ein Klick auf einen Punkt öffnet den Film.</p>
+        <div class="legende-laender"><span><i class="punkt-max"></i>meiste</span><span><i class="punkt-median"></i>Median</span><span><i class="punkt-min"></i>wenigste</span></div>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
+      <div class="tafel diagramm abstand" id="d-scorelauf">
+        <h3>Läuft ein guter Film länger?</h3>
+        <p class="hinweis">Jeder Punkt ist ein Film mit Score: rechts der bessere Score, oben mehr Spieltage seit Projektstart am ${datumKurz(PROJEKT_START)}. Die Farbe zeigt, in wie vielen Kinos der Film lief. Die y-Achse ist logarithmisch. Ein Klick auf einen Punkt öffnet den Film.</p>
+        <p class="korrelation"></p>
+        <div class="legende-laender"></div>
+        <div class="flaeche"></div>
+        <div class="tooltip" hidden></div>
+      </div>
       <h2 class="statistik-zwischentitel">Rankings je Monat</h2>
       <p class="hinweis">Nur Neustarts des jeweiligen Monats (deutscher Kinostart in diesem Monat), ab Projektstart am ${datumKurz(PROJEKT_START)}. Spieltage zählen jeden Tag in jedem Kino, an dem ein Film läuft. Einzelne Vorstellungen und Uhrzeiten erfassen wir nicht.</p>
       ${monatsRankings(daten)}
@@ -991,6 +1006,163 @@
     streuDiagramm('d-streu', daten);
     weltkarte('d-karte', daten);
     sankeyNeustarts('d-sankey', daten);
+    hantelDiagramm('d-hantel', daten);
+    scoreLaufzeit('d-scorelauf', daten);
+  }
+
+  // ---------- Streudiagramm: Score gegen Spieltage ----------
+  // Ein Punkt je Film mit Score, Spieltage seit Projektstart bis heute (logarithmisch). Farbe nach Zahl der Kinos.
+  // Dazu die Rangkorrelation (Spearman): 0 = kein Zusammenhang, 1 = perfekt gleichläufig.
+  function spearman(a, b) {
+    const rang = (w) => {
+      const s = w.map((v, i) => [v, i]).sort((x, y) => x[0] - y[0]), r = Array(w.length);
+      for (let i = 0; i < s.length;) { let j = i; while (j + 1 < s.length && s[j + 1][0] === s[i][0]) j++; for (let k = i; k <= j; k++) r[s[k][1]] = (i + j) / 2 + 1; i = j + 1; }
+      return r;
+    };
+    const ra = rang(a), rb = rang(b), n = a.length, m = (n + 1) / 2;
+    let c = 0, va = 0, vb = 0;
+    for (let i = 0; i < n; i++) { c += (ra[i] - m) * (rb[i] - m); va += (ra[i] - m) ** 2; vb += (rb[i] - m) ** 2; }
+    return va && vb ? c / Math.sqrt(va * vb) : 0;
+  }
+  function scoreLaufzeit(id, daten) {
+    const rahmen = document.getElementById(id);
+    if (!rahmen) return;
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip'), wert = rahmen.querySelector('.korrelation');
+    const st = new Map();
+    daten.forEach((t) => {
+      if (t.d < PROJEKT_START || t.d > HEUTE) return;
+      if (!st.has(t.f)) st.set(t.f, { tage: 0, kinos: new Set() });
+      const e = st.get(t.f); e.tage++; e.kinos.add(t.k);
+    });
+    const GRUPPEN = [['1 Kino', '#7a6638'], ['2–4 Kinos', '#b08f45'], ['5 und mehr', '#e8cf8a']];
+    const punkte = [];
+    st.forEach((e, fid) => {
+      const f = filme[fid];
+      if (f.bewertung == null || istSneak(f) || istKurzfilm(f)) return;
+      const g = e.kinos.size === 1 ? 0 : e.kinos.size <= 4 ? 1 : 2;
+      punkte.push({ f, s: f.genau ?? f.bewertung, n: e.tage, kinos: e.kinos.size, g });
+    });
+    if (punkte.length < 5) { ziel.innerHTML = '<p class="leer">Noch zu wenige Filme seit Projektstart.</p>'; wert.textContent = ''; return; }
+    const rho = spearman(punkte.map((p) => p.s), punkte.map((p) => p.n));
+    const deutung = Math.abs(rho) < 0.1 ? 'kein Zusammenhang' : Math.abs(rho) < 0.3 ? 'schwacher Zusammenhang' : Math.abs(rho) < 0.5 ? 'mittlerer Zusammenhang' : 'starker Zusammenhang';
+    wert.innerHTML = `Rangkorrelation <b>${rho.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b> · ${deutung} · ${punkte.length} Filme`;
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 280 : 340;
+    const r = { l: 34, o: 12, u: 26, re: 10 };
+    const sMin = Math.floor(Math.min(...punkte.map((p) => p.s)) / 10) * 10, sMax = Math.ceil(Math.max(...punkte.map((p) => p.s)) / 10) * 10;
+    const maxN = Math.max(...punkte.map((p) => p.n));
+    const stufen = [];
+    for (let p = 1; p <= maxN * 10; p *= 10) [1, 2, 5].forEach((m) => stufen.push(m * p));
+    const yMax = stufen.find((v) => v >= maxN) || maxN;
+    const x = (s) => r.l + ((s - sMin) / (sMax - sMin)) * (B - r.l - r.re);
+    const y = (n) => r.o + (1 - Math.log(n) / Math.log(yMax)) * (H - r.o - r.u);
+    // Leichter fester Versatz nach oben/unten, damit Filme mit gleichen Spieltagen nicht deckungsgleich liegen
+    const versatz = (f) => (((f.id * 9301 + 49297) % 233280) / 233280 - 0.5) * 6;
+    let gitter = '', ticks = '';
+    stufen.filter((v) => v <= yMax).forEach((v) => { gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(v)}" y2="${y(v)}"/>`; ticks += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`; });
+    for (let s = sMin; s <= sMax; s += 10) ticks += `<text x="${x(s)}" y="${H - 6}" text-anchor="middle">${s}</text>`;
+    punkte.forEach((p) => { p.x = x(p.s); p.y = y(p.n) + versatz(p.f); });
+    const kreise = punkte.map((p) => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${B < 500 ? 2.5 : 3}" fill="${GRUPPEN[p.g][1]}"/>`).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Streudiagramm: Score gegen Spieltage, ${punkte.length} Filme">
+      <g class="gitter">${gitter}</g><line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(1)}" y2="${y(1)}"/>
+      <g class="streu">${kreise}</g><circle class="markiert" r="6" hidden/><g class="achse">${ticks}</g></svg>
+      <div class="achsen-titel"><span>Score →</span></div>`;
+    rahmen.querySelector('.legende-laender').innerHTML = GRUPPEN.map(([n, c]) => `<span><i style="background:${c};border-radius:50%"></i>${n}</span>`).join('');
+    const svg = ziel.querySelector('svg'), mark = svg.querySelector('.markiert');
+    const naechster = (ev) => {
+      const b = svg.getBoundingClientRect(), mx = (ev.clientX - b.left) * (B / b.width), my = (ev.clientY - b.top) * (H / b.height);
+      let best = null, bd = 14 * 14;
+      punkte.forEach((p) => { const d = (p.x - mx) ** 2 + (p.y - my) ** 2; if (d < bd) { bd = d; best = p; } });
+      return best;
+    };
+    svg.addEventListener('pointermove', (ev) => {
+      const p = naechster(ev);
+      if (!p) { tip.hidden = true; mark.setAttribute('hidden', ''); svg.style.cursor = ''; return; }
+      mark.removeAttribute('hidden'); mark.setAttribute('cx', p.x); mark.setAttribute('cy', p.y); svg.style.cursor = 'pointer';
+      setzeTipp(rahmen, tip, svg, B, p.x, p.y - 6, `<b>${esc(p.f.titel)}</b><br>Score <b>${p.f.bewertung}</b> · <b>${p.n}</b> Spieltage in ${p.kinos} ${p.kinos === 1 ? 'Kino' : 'Kinos'}`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; mark.setAttribute('hidden', ''); });
+    svg.addEventListener('click', (ev) => { const p = naechster(ev); if (p) zeigeFilm(p.f.id); });
+  }
+
+  // ---------- Hantel: Spanne der Spieltage je Produktionsjahr ----------
+  // Spieltage ab Projektstart bis heute (Tage je Kino mit dem Film). Je Produktionsjahr (nur Jahre mit Filmen):
+  // Film mit den wenigsten und den meisten Spieltagen, dazu der Median als typischer Wert.
+  function hantelDiagramm(id, daten) {
+    const rahmen = document.getElementById(id);
+    if (!rahmen) return;
+    const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const tage = new Map();
+    daten.forEach((t) => { if (t.d >= PROJEKT_START && t.d <= HEUTE) tage.set(t.f, (tage.get(t.f) || 0) + 1); });
+    const jz = new Map();
+    tage.forEach((n, fid) => {
+      const f = filme[fid];
+      const jahr = parseInt(f.jahr, 10);
+      if (!(jahr > 1880) || istSneak(f) || istKurzfilm(f)) return;
+      if (!jz.has(jahr)) jz.set(jahr, []);
+      jz.get(jahr).push({ f, n });
+    });
+    // Jahre mit wenigen Filmen zusammenfassen: aufeinanderfolgende Jahre werden zu einem Zeitraum gebündelt,
+    // bis er mindestens HANTEL_MIN_FILME Filme hat. Jahre mit genug Filmen (meist die neuen) stehen einzeln.
+    const HANTEL_MIN_FILME = 5;
+    const buendel = [];
+    let offen = null;
+    [...jz].sort((a, b) => a[0] - b[0]).forEach(([jahr, l]) => {
+      if (!offen) offen = { von: jahr, bis: jahr, l: [] };
+      offen.bis = jahr; offen.l.push(...l);
+      if (offen.l.length >= HANTEL_MIN_FILME) { buendel.push(offen); offen = null; }
+    });
+    // Rest am Ende an den letzten Zeitraum hängen, statt einen zu kleinen eigenen zu bilden
+    if (offen) { if (buendel.length) { const v = buendel[buendel.length - 1]; v.bis = offen.bis; v.l.push(...offen.l); } else buendel.push(offen); }
+    const gruppen = buendel.map((b) => [b.von === b.bis ? String(b.von) : `${b.von}–${b.bis}`, b.l]).map(([name, l]) => {
+      l.sort((a, b) => a.n - b.n || a.f.titel.localeCompare(b.f.titel, 'de'));
+      const mitte = l.length % 2 ? l[(l.length - 1) / 2].n : (l[l.length / 2 - 1].n + l[l.length / 2].n) / 2;
+      return { name, anzahl: l.length, min: l[0], max: l[l.length - 1], median: mitte };
+    });
+    if (!gruppen.length) { ziel.innerHTML = '<p class="leer">Noch keine Daten ab Projektstart.</p>'; return; }
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 280 : 340;
+    const r = { l: 34, o: 14, u: 34, re: 8 };
+    // Logarithmische y-Achse: Neue Jahrgänge reichen bis rund 100 Spieltage, ältere liegen meist unter 10.
+    // Linear wären deren Spannen nicht zu sehen. Beschriftung 1, 2, 5, 10, 20, 50, 100 ...
+    const maxN = Math.max(...gruppen.map((g) => g.max.n));
+    const stufen = [];
+    for (let p = 1; p <= maxN * 10; p *= 10) [1, 2, 5].forEach((m) => stufen.push(m * p));
+    const yMax = stufen.find((v) => v >= maxN) || maxN;
+    const y = (n) => r.o + (1 - Math.log(Math.max(1, n)) / Math.log(yMax)) * (H - r.o - r.u);
+    const breite = (B - r.l - r.re) / gruppen.length;
+    const xm = (i) => r.l + breite * (i + 0.5);
+    let gitter = '', ticks = '';
+    stufen.filter((v) => v <= yMax).forEach((v) => { gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${y(v)}" y2="${y(v)}"/>`; ticks += `<text x="${r.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`; });
+    // Viele Jahre nebeneinander: Punkte nach verfügbarer Breite, Jahreszahl nur an jedem n-ten Jahr (Abstand mind. 34 px)
+    const punktR = Math.max(2.5, Math.min(5, breite * 0.35));
+    const jedes = Math.max(1, Math.ceil(34 / breite));
+    const hanteln = gruppen.map((g, i) => {
+      const x = xm(i).toFixed(1);
+      const beschriftet = i % jedes === 0;
+      return `<g class="hantel" data-i="${i}">
+        <rect class="treffer" x="${(xm(i) - breite / 2).toFixed(1)}" y="0" width="${breite.toFixed(1)}" height="${H - r.u + 4}" fill="transparent"/>
+        <line class="spanne" x1="${x}" x2="${x}" y1="${y(g.min.n).toFixed(1)}" y2="${y(g.max.n).toFixed(1)}"/>
+        <circle class="min" cx="${x}" cy="${y(g.min.n).toFixed(1)}" r="${punktR.toFixed(1)}" data-film="${g.min.f.id}"/>
+        <circle class="median" cx="${x}" cy="${y(g.median).toFixed(1)}" r="${(punktR * 0.6).toFixed(1)}"/>
+        <circle class="max" cx="${x}" cy="${y(g.max.n).toFixed(1)}" r="${punktR.toFixed(1)}" data-film="${g.max.f.id}"/>
+        ${beschriftet ? `<text class="jahrzehnt" x="${x}" y="${H - r.u + 16}" text-anchor="middle">${B < 500 ? g.name.replace(/\b(19|20)(\d\d)\b/g, '’$2') : g.name}</text>` : ''}
+      </g>`;
+    }).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Hanteldiagramm: wenigste und meiste Spieltage je Film nach Produktionsjahr">
+      <g class="gitter">${gitter}</g><line class="basis" x1="${r.l}" x2="${B - r.re}" y1="${y(1)}" y2="${y(1)}"/>
+      <g class="achse">${ticks}</g>${hanteln}</svg>`;
+    const svg = ziel.querySelector('svg');
+    svg.addEventListener('pointermove', (ev) => {
+      const h = ev.target.closest('.hantel');
+      svg.querySelectorAll('.hantel.aktiv').forEach((e) => e.classList.remove('aktiv'));
+      if (!h) { tip.hidden = true; return; }
+      h.classList.add('aktiv');
+      const g = gruppen[+h.dataset.i];
+      const zahl = (n) => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
+      setzeTipp(rahmen, tip, svg, B, xm(+h.dataset.i), y(g.max.n) - 8,
+        `<b>${g.name}</b> · ${g.anzahl} ${g.anzahl === 1 ? 'Film' : 'Filme'}<br>meiste: <b>${g.max.n}</b> ${esc(g.max.f.titel)}<br>Median: <b>${zahl(g.median)}</b><br>wenigste: <b>${g.min.n}</b> ${esc(g.min.f.titel)}`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; svg.querySelectorAll('.hantel.aktiv').forEach((e) => e.classList.remove('aktiv')); });
+    svg.addEventListener('click', (ev) => { const c = ev.target.closest('[data-film]'); if (c) zeigeFilm(Number(c.dataset.film)); });
   }
 
   // ---------- Sankey: Lebenslauf der Neustarts ----------
@@ -1575,6 +1747,252 @@
     $('#film-dialog').showModal();
   }
 
+  // ---------- Ansicht Baukasten: eigene Streudiagramme und Sankeys ----------
+  // Merkmale je Film werden per Drag-and-drop (oder Antippen) auf die Felder gelegt. Zahlen für die Achsen des
+  // Streudiagramms, Gruppen für Farbe und Sankey-Spalten. Spieltage, Kinos und Kinowochen zählen ab Projektstart bis heute.
+  const BK_SPEICHER = 'kinoprogramm-baukasten-v1';
+  const bk = { art: 'streu', x: 'score', y: 'laufzeit', farbe: '', spalten: ['jahrzehnt', 'scoreStufe', 'status'], mass: 'filme', logX: false, logY: false, gewaehlt: '' };
+  try { Object.assign(bk, JSON.parse(localStorage.getItem(BK_SPEICHER) || '{}'), { gewaehlt: '' }); } catch (e) { /* ohne Speicher */ }
+  const bkSpeichern = () => { try { const { gewaehlt, ...rest } = bk; localStorage.setItem(BK_SPEICHER, JSON.stringify(rest)); } catch (e) { /* egal */ } };
+  const stufe = (grenzen, namen) => (v) => (v == null ? null : namen[grenzen.findIndex((g) => v < g)] ?? namen[namen.length - 1]);
+  const BK_MERKMALE = [
+    { id: 'score', name: 'Score', typ: 'zahl', wert: (e) => e.f.genau },
+    { id: 'jahr', name: 'Produktionsjahr', typ: 'zahl', wert: (e) => parseInt(e.f.jahr, 10) || null },
+    { id: 'laufzeit', name: 'Filmlänge (Min.)', typ: 'zahl', wert: (e) => e.f.info.laufzeit || null },
+    { id: 'spieltage', name: 'Spieltage', typ: 'zahl', wert: (e) => e.tage || null },
+    { id: 'kinos', name: 'Zahl der Kinos', typ: 'zahl', wert: (e) => e.kinos.size || null },
+    { id: 'wochen', name: 'Kinowochen', typ: 'zahl', wert: (e) => e.wochen.size || null },
+    { id: 'alter', name: 'Alter des Films (Jahre)', typ: 'zahl', wert: (e) => { const j = parseInt(e.f.jahr, 10); return j ? Number(e.erster.slice(0, 4)) - j : null; } },
+    { id: 'jahrzehnt', name: 'Jahrzehnt', typ: 'gruppe', wert: (e) => e.f.jahrzehnt, ordnung: 'name' },
+    { id: 'land', name: 'Land (erstgenannt)', typ: 'gruppe', wert: (e) => e.f.laender[0] || null },
+    { id: 'hauptkino', name: 'Hauptkino', typ: 'gruppe', wert: (e) => e.hauptkino },
+    { id: 'stadt', name: 'Stadt', typ: 'gruppe', wert: (e) => e.stadt },
+    { id: 'status', name: 'Läuft noch?', typ: 'gruppe', wert: (e) => (e.laeuft ? 'läuft noch' : 'vorbei'), reihe: ['läuft noch', 'vorbei'] },
+    { id: 'scoreStufe', name: 'Score-Stufe', typ: 'gruppe', wert: (e) => stufe([60, 70, 80, 90], ['unter 60', '60–69', '70–79', '80–89', '90+'])(e.f.bewertung), reihe: ['90+', '80–89', '70–79', '60–69', 'unter 60'] },
+    { id: 'laengeStufe', name: 'Filmlänge-Stufe', typ: 'gruppe', wert: (e) => stufe([90, 110, 130, 150], ['unter 90 Min.', '90–109 Min.', '110–129 Min.', '130–149 Min.', '150+ Min.'])(e.f.info.laufzeit || null), reihe: ['unter 90 Min.', '90–109 Min.', '110–129 Min.', '130–149 Min.', '150+ Min.'] },
+    { id: 'spieltageStufe', name: 'Spieltage-Stufe', typ: 'gruppe', wert: (e) => stufe([2, 6, 21, 51], ['1', '2–5', '6–20', '21–50', '51+'])(e.tage || null), reihe: ['51+', '21–50', '6–20', '2–5', '1'] },
+    { id: 'kinosStufe', name: 'Kinos-Stufe', typ: 'gruppe', wert: (e) => (e.kinos.size ? stufe([2, 5], ['1 Kino', '2–4 Kinos', '5 und mehr'])(e.kinos.size) : null), reihe: ['5 und mehr', '2–4 Kinos', '1 Kino'] },
+    { id: 'preis', name: 'Hauptpreis', typ: 'gruppe', wert: (e) => (preisGruppen(e.f).length ? 'mit Hauptpreis' : 'ohne'), reihe: ['mit Hauptpreis', 'ohne'] },
+    { id: 'gesehen', name: 'Mein Kino', typ: 'gruppe', wert: (e) => (gesehenAm(e.f) ? 'gesehen' : 'nicht gesehen'), reihe: ['gesehen', 'nicht gesehen'] },
+  ];
+  const bkMerkmal = (id) => BK_MERKMALE.find((m) => m.id === id);
+  // Kennzahlen je Film aus den gefilterten Terminen
+  function bkFilme(daten) {
+    const m = new Map();
+    daten.forEach((t) => {
+      const f = filme[t.f];
+      if (istSneak(f) || istKurzfilm(f)) return;
+      if (!m.has(t.f)) m.set(t.f, { f, tage: 0, kinos: new Set(), wochen: new Set(), jeKino: new Map(), laeuft: false, erster: t.d });
+      const e = m.get(t.f);
+      if (t.d < e.erster) e.erster = t.d;
+      if (t.d >= HEUTE) e.laeuft = true;
+      if (t.d >= PROJEKT_START && t.d <= HEUTE) {
+        e.tage++; e.kinos.add(t.k); e.wochen.add(donnerstagVon(t.d)); e.jeKino.set(t.k, (e.jeKino.get(t.k) || 0) + 1);
+      }
+    });
+    return [...m.values()].map((e) => {
+      const haupt = [...e.jeKino].sort((a, b) => b[1] - a[1])[0];
+      e.hauptkino = haupt ? kinos[haupt[0]].name : null;
+      e.stadt = haupt ? kinos[haupt[0]].stadt : null;
+      return e;
+    });
+  }
+  // Gruppenwerte auf höchstens 7 häufige plus "Andere" begrenzen, feste Reihenfolge je Merkmal
+  function bkGruppen(merkmal, eintraege) {
+    const z = new Map();
+    eintraege.forEach((e) => { const v = merkmal.wert(e); if (v != null) z.set(v, (z.get(v) || 0) + 1); });
+    let namen = merkmal.reihe ? merkmal.reihe.filter((n) => z.has(n))
+      : merkmal.ordnung === 'name' ? [...z.keys()].sort() : [...z].sort((a, b) => b[1] - a[1]).map(([n]) => n);
+    let andere = false;
+    if (namen.length > 7) { const behalten = new Set([...z].sort((a, b) => b[1] - a[1]).slice(0, 7).map(([n]) => n)); namen = namen.filter((n) => behalten.has(n)); andere = true; }
+    const ziel = (v) => (v == null ? null : namen.includes(v) ? v : andere ? 'Andere' : null);
+    return { namen: andere ? [...namen, 'Andere'] : namen, ziel };
+  }
+  function korrelation(a, b) {
+    const n = a.length;
+    if (n < 3) return null;
+    const ma = a.reduce((x, y) => x + y, 0) / n, mb = b.reduce((x, y) => x + y, 0) / n;
+    let c = 0, va = 0, vb = 0;
+    for (let i = 0; i < n; i++) { c += (a[i] - ma) * (b[i] - mb); va += (a[i] - ma) ** 2; vb += (b[i] - mb) ** 2; }
+    return va && vb ? c / Math.sqrt(va * vb) : 0;
+  }
+  const deutung = (r) => (r == null ? '' : Math.abs(r) < 0.1 ? 'kein Zusammenhang' : `${Math.abs(r) < 0.3 ? 'schwacher' : Math.abs(r) < 0.5 ? 'mittlerer' : 'starker'} ${r > 0 ? 'gleichläufiger' : 'gegenläufiger'} Zusammenhang`);
+  const kommaZahl = (r) => r.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function zeigeBaukasten(daten) {
+    const eintraege = bkFilme(daten);
+    const chip = (m) => `<button type="button" class="bk-chip ${m.typ}" draggable="true" data-merkmal="${m.id}" aria-pressed="${bk.gewaehlt === m.id}">${esc(m.name)}</button>`;
+    const feld = (ziel, titel, typ, wert, zusatz = '') => {
+      const m = wert && bkMerkmal(wert);
+      return `<div class="bk-feld" data-ziel="${ziel}" data-typ="${typ}"><span class="bk-feld-titel">${titel}</span>${m ? `<span class="bk-belegt ${m.typ}">${esc(m.name)}<button type="button" data-leeren="${ziel}" aria-label="${titel} leeren">×</button></span>` : `<span class="bk-leer">${typ === 'zahl' ? 'Zahl hierher ziehen' : 'Gruppe hierher ziehen'}</span>`}${zusatz}</div>`;
+    };
+    const streu = bk.art === 'streu';
+    const felder = streu
+      ? feld('x', 'x-Achse', 'zahl', bk.x, `<label class="bk-log"><input type="checkbox" data-log="logX" ${bk.logX ? 'checked' : ''}> log</label>`)
+        + feld('y', 'y-Achse', 'zahl', bk.y, `<label class="bk-log"><input type="checkbox" data-log="logY" ${bk.logY ? 'checked' : ''}> log</label>`)
+        + feld('farbe', 'Farbe (optional)', 'gruppe', bk.farbe)
+      : [0, 1, 2, 3].map((i) => feld(`s${i}`, `Spalte ${i + 1}${i > 1 ? ' (optional)' : ''}`, 'gruppe', bk.spalten[i])).join('')
+        + `<div class="umschalter bk-mass" role="group" aria-label="Ströme zählen"><button data-mass="filme" aria-pressed="${bk.mass === 'filme'}">Filme zählen</button><button data-mass="spieltage" aria-pressed="${bk.mass === 'spieltage'}">Spieltage zählen</button></div>`;
+    $('#v-baukasten').innerHTML = `
+      <div class="ansicht-kopf"><h2>Baukasten</h2>
+        <div class="umschalter" role="group" aria-label="Diagrammart"><button data-bk-art="streu" aria-pressed="${streu}">Streudiagramm</button><button data-bk-art="sankey" aria-pressed="${!streu}">Sankey</button></div></div>
+      <p class="hinweis">Ziehe Merkmale auf die Felder (oder tippe erst ein Merkmal und dann ein Feld an). Goldene Merkmale sind Zahlen, graue sind Gruppen. Spieltage, Kinos und Kinowochen zählen ab Projektstart am ${datumKurz(PROJEKT_START)}. Die Filter oben gelten auch hier.</p>
+      <div class="bk-werkbank">
+        <div class="bk-merkmale"><div><span class="bk-feld-titel">Zahlen</span>${BK_MERKMALE.filter((m) => m.typ === 'zahl').map(chip).join('')}</div>
+          <div><span class="bk-feld-titel">Gruppen</span>${BK_MERKMALE.filter((m) => m.typ === 'gruppe').map(chip).join('')}</div></div>
+        <div class="bk-felder">${felder}</div>
+      </div>
+      <p class="bk-meldung" role="status"></p>
+      <div class="tafel diagramm" id="d-baukasten"><p class="korrelation"></p><div class="legende-laender"></div><div class="flaeche"></div><div class="tooltip" hidden></div></div>`;
+    if (streu) bkStreu(eintraege); else bkSankey(eintraege);
+  }
+
+  function bkStreu(eintraege) {
+    const rahmen = $('#d-baukasten'), ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    const mx = bkMerkmal(bk.x), my = bkMerkmal(bk.y), mf = bk.farbe && bkMerkmal(bk.farbe);
+    if (!mx || !my) { ziel.innerHTML = '<p class="leer">Lege eine Zahl auf die x-Achse und eine auf die y-Achse.</p>'; return; }
+    const gruppen = mf ? bkGruppen(mf, eintraege) : null;
+    const farbeVon = (name) => (name === 'Andere' ? FARBE_ANDERE : LANDFARBEN[gruppen.namen.indexOf(name)] || FARBE_ANDERE);
+    const punkte = eintraege.map((e) => ({ e, x: mx.wert(e), y: my.wert(e), g: gruppen ? gruppen.ziel(mf.wert(e)) : null }))
+      .filter((p) => p.x != null && p.y != null && Number.isFinite(p.x) && Number.isFinite(p.y) && (!bk.logX || p.x > 0) && (!bk.logY || p.y > 0) && (!gruppen || p.g != null));
+    // Korrelation: Rangkorrelation (robust, Grundlage der Deutung) und linear
+    const kopf = rahmen.querySelector('.korrelation');
+    if (punkte.length < 3) { ziel.innerHTML = '<p class="leer">Zu wenige Filme mit beiden Werten.</p>'; kopf.textContent = ''; return; }
+    const rang = (w) => { const s = w.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]), r = Array(w.length); for (let i = 0; i < s.length;) { let j = i; while (j + 1 < s.length && s[j + 1][0] === s[i][0]) j++; for (let k = i; k <= j; k++) r[s[k][1]] = (i + j) / 2 + 1; i = j + 1; } return r; };
+    const rho = korrelation(rang(punkte.map((p) => p.x)), rang(punkte.map((p) => p.y)));
+    const lin = korrelation(punkte.map((p) => p.x), punkte.map((p) => p.y));
+    kopf.innerHTML = `Rangkorrelation <b>${kommaZahl(rho)}</b> · ${deutung(rho)} · linear ${kommaZahl(lin)} · ${punkte.length} Filme`;
+    rahmen.querySelector('.legende-laender').innerHTML = gruppen ? gruppen.namen.map((n) => `<span><i style="background:${farbeVon(n)};border-radius:50%"></i>${esc(n)}</span>`).join('') : '';
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 300 : 380, r = { l: 40, o: 12, u: 40, re: 12 };
+    const achse = (werte, log, lo, hi) => {
+      let min = Math.min(...werte), max = Math.max(...werte);
+      if (log) {
+        const stufen = []; for (let p = 10 ** Math.floor(Math.log10(min)); p <= max * 10; p *= 10) [1, 2, 5].forEach((m) => stufen.push(m * p));
+        const a = [...stufen].reverse().find((v) => v <= min) || min, b = stufen.find((v) => v >= max) || max;
+        return { pos: (v) => lo + ((Math.log(v) - Math.log(a)) / (Math.log(b) - Math.log(a) || 1)) * (hi - lo), ticks: stufen.filter((v) => v >= a && v <= b) };
+      }
+      if (min === max) { min -= 1; max += 1; }
+      const st = schritt(max - min), a = Math.floor(min / st) * st, b = Math.ceil(max / st) * st;
+      const ticks = []; for (let v = a; v <= b + 1e-9; v += st) ticks.push(+v.toFixed(6));
+      return { pos: (v) => lo + ((v - a) / (b - a)) * (hi - lo), ticks };
+    };
+    const ax = achse(punkte.map((p) => p.x), bk.logX, r.l, B - r.re), ay = achse(punkte.map((p) => p.y), bk.logY, H - r.u, r.o);
+    let gitter = '', ticks = '';
+    ay.ticks.forEach((v) => { gitter += `<line x1="${r.l}" x2="${B - r.re}" y1="${ay.pos(v)}" y2="${ay.pos(v)}"/>`; ticks += `<text x="${r.l - 6}" y="${ay.pos(v) + 4}" text-anchor="end">${v.toLocaleString('de-DE')}</text>`; });
+    const xt = ax.ticks.length > (B < 500 ? 6 : 12) ? ax.ticks.filter((_, i) => i % 2 === 0) : ax.ticks;
+    xt.forEach((v) => { ticks += `<text x="${ax.pos(v)}" y="${H - r.u + 16}" text-anchor="middle">${v.toLocaleString('de-DE', { useGrouping: false })}</text>`; });
+    ticks += `<text class="achsen-name" x="${B - r.re}" y="${H - 4}" text-anchor="end">${esc(mx.name)} →</text><text class="achsen-name" x="${r.l}" y="${r.o - 2}" text-anchor="start">↑ ${esc(my.name)}</text>`;
+    const versatz = (f) => (((f.id * 9301 + 49297) % 233280) / 233280 - 0.5) * 4;
+    punkte.forEach((p) => { p.px = ax.pos(p.x) + versatz(p.e.f); p.py = ay.pos(p.y) + versatz({ id: p.e.f.id + 7 }); });
+    const kreise = punkte.map((p) => `<circle cx="${p.px.toFixed(1)}" cy="${p.py.toFixed(1)}" r="${B < 500 ? 2.5 : 3}" fill="${gruppen ? farbeVon(p.g) : 'var(--gold)'}"/>`).join('');
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Streudiagramm: ${esc(my.name)} gegen ${esc(mx.name)}"><g class="gitter">${gitter}</g><g class="streu">${kreise}</g><circle class="markiert" r="6" hidden/><g class="achse">${ticks}</g></svg>`;
+    const svg = ziel.querySelector('svg'), mark = svg.querySelector('.markiert');
+    const fmt = (m, v) => (Number.isInteger(v) ? String(v) : v.toLocaleString('de-DE', { maximumFractionDigits: 1 }));
+    const naechster = (ev) => {
+      const b = svg.getBoundingClientRect(), mxp = (ev.clientX - b.left) * (B / b.width), myp = (ev.clientY - b.top) * (H / b.height);
+      let best = null, bd = 14 * 14;
+      punkte.forEach((p) => { const d = (p.px - mxp) ** 2 + (p.py - myp) ** 2; if (d < bd) { bd = d; best = p; } });
+      return best;
+    };
+    svg.addEventListener('pointermove', (ev) => {
+      const p = naechster(ev);
+      if (!p) { tip.hidden = true; mark.setAttribute('hidden', ''); svg.style.cursor = ''; return; }
+      mark.removeAttribute('hidden'); mark.setAttribute('cx', p.px); mark.setAttribute('cy', p.py); svg.style.cursor = 'pointer';
+      setzeTipp(rahmen, tip, svg, B, p.px, p.py - 6, `<b>${esc(p.e.f.titel)}</b><br>${esc(mx.name)}: <b>${fmt(mx, p.x)}</b><br>${esc(my.name)}: <b>${fmt(my, p.y)}</b>${p.g ? `<br>${esc(mf.name)}: ${esc(p.g)}` : ''}`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; mark.setAttribute('hidden', ''); });
+    svg.addEventListener('click', (ev) => { const p = naechster(ev); if (p) zeigeFilm(p.e.f.id); });
+  }
+
+  function bkSankey(eintraege) {
+    const rahmen = $('#d-baukasten'), ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
+    rahmen.querySelector('.korrelation').textContent = '';
+    rahmen.querySelector('.legende-laender').innerHTML = '';
+    const merkmale = bk.spalten.filter(Boolean).map(bkMerkmal).filter(Boolean);
+    if (merkmale.length < 2) { ziel.innerHTML = '<p class="leer">Lege mindestens zwei Gruppen auf die Spalten.</p>'; return; }
+    const gruppen = merkmale.map((m) => bkGruppen(m, eintraege));
+    const zeilen = eintraege.map((e) => ({ e, werte: merkmale.map((m, i) => gruppen[i].ziel(m.wert(e))), gewicht: bk.mass === 'spieltage' ? e.tage : 1 }))
+      .filter((z) => z.werte.every((v) => v != null) && z.gewicht > 0);
+    if (zeilen.length < 2) { ziel.innerHTML = '<p class="leer">Zu wenige Filme mit allen gewählten Merkmalen.</p>'; return; }
+    const spalten = gruppen.map((g, i) => g.namen.map((n) => ({ id: `${i}|${n}`, name: n })));
+    const strom = new Map(), wert = new Map();
+    zeilen.forEach((z) => {
+      z.werte.forEach((v, i) => { const k = `${i}|${v}`; wert.set(k, (wert.get(k) || 0) + z.gewicht); });
+      for (let i = 0; i + 1 < z.werte.length; i++) {
+        // Ströme je Herkunft (Wert der ersten Spalte) getrennt, damit deren Farbe bis zur letzten Spalte durchläuft
+        const k = `${i}|${z.werte[i]}>${i + 1}|${z.werte[i + 1]}#${z.werte[0]}`;
+        if (!strom.has(k)) strom.set(k, { a: `${i}|${z.werte[i]}`, b: `${i + 1}|${z.werte[i + 1]}`, herkunft: `0|${z.werte[0]}`, w: 0, filme: [] });
+        const s = strom.get(k); s.w += z.gewicht; s.filme.push(z.e.f);
+      }
+    });
+    spalten.forEach((s, i) => { spalten[i] = s.filter((kn) => wert.get(kn.id)); });
+    const B = Math.max(ziel.clientWidth, 280), H = B < 500 ? 380 : 460, LUECKE = 10, KB = 12;
+    const n = spalten.length, xs = spalten.map((_, i) => 4 + (i / (n - 1)) * (B - 8 - KB));
+    const summe = zeilen.reduce((a, z) => a + z.gewicht, 0);
+    const proEinheit = Math.min(...spalten.map((s) => (H - LUECKE * (s.length - 1)) / summe));
+    const pos = new Map();
+    spalten.forEach((s, i) => {
+      let y = (H - (summe * proEinheit + LUECKE * (s.length - 1))) / 2;
+      s.forEach((kn) => { const h = wert.get(kn.id) * proEinheit; pos.set(kn.id, { x: xs[i], y, h, aus: y, ein: y, i, name: kn.name }); y += h + LUECKE; });
+    });
+    // Farbe der Ströme nach der ersten Spalte, feste Reihenfolge der Palette
+    const farbeVon = (id) => { const [i, name] = [Number(id.split('|')[0]), id.slice(id.indexOf('|') + 1)]; if (i !== 0) return 'var(--gold)'; return name === 'Andere' ? FARBE_ANDERE : LANDFARBEN[spalten[0].findIndex((k) => k.name === name)] || FARBE_ANDERE; };
+    const reihenfolge = new Map(spalten.flat().map((kn, i) => [kn.id, i]));
+    const stroeme = [...strom.values()].sort((p, q) => reihenfolge.get(p.a) - reihenfolge.get(q.a) || reihenfolge.get(p.b) - reihenfolge.get(q.b) || reihenfolge.get(p.herkunft) - reihenfolge.get(q.herkunft));
+    // Jeder Strom trägt die Farbe seiner Herkunft in der ersten Spalte
+    const pfade = stroeme.map((s, k) => {
+      const a = pos.get(s.a), b = pos.get(s.b), h = s.w * proEinheit;
+      const x0 = a.x + KB, x1 = b.x, y0 = a.aus, y1 = b.ein, xm = (x0 + x1) / 2;
+      a.aus += h; b.ein += h;
+      return `<path class="strom" d="M${x0},${y0}C${xm},${y0} ${xm},${y1} ${x1},${y1}L${x1},${y1 + h}C${xm},${y1 + h} ${xm},${y0 + h} ${x0},${y0 + h}Z" fill="${farbeVon(s.herkunft)}" data-i="${k}"/>`;
+    }).join('');
+    const knoten = [...pos.entries()].map(([kid, p]) => {
+      const rechts = p.i === n - 1;
+      return `<g class="knoten"><rect x="${p.x}" y="${p.y.toFixed(1)}" width="${KB}" height="${Math.max(2, p.h).toFixed(1)}" rx="2" fill="${farbeVon(kid)}"/><text x="${rechts ? p.x - 6 : p.x + KB + 6}" y="${(p.y + p.h / 2 + 4).toFixed(1)}" text-anchor="${rechts ? 'end' : 'start'}">${esc(p.name)} <tspan class="zahl">${wert.get(kid)}</tspan></text></g>`;
+    }).join('');
+    const einheit = bk.mass === 'spieltage' ? 'Spieltage' : 'Filme';
+    ziel.innerHTML = `<svg viewBox="0 0 ${B} ${H}" role="img" aria-label="Sankey: ${merkmale.map((m) => esc(m.name)).join(' → ')}"><g class="stroeme">${pfade}</g>${knoten}</svg>
+      <div class="sankey-kopf" style="grid-template-columns:repeat(${n},1fr)">${merkmale.map((m, i) => `<span style="text-align:${i === 0 ? 'left' : i === n - 1 ? 'right' : 'center'}">${esc(m.name)}</span>`).join('')}</div>
+      <p class="hinweis">${bk.mass === 'spieltage' ? `${summe} Spieltage · ` : ''}${zeilen.length} Filme. Mehr als sieben Gruppen werden zu „Andere“ zusammengefasst.</p>`;
+    const svg = ziel.querySelector('svg');
+    svg.addEventListener('pointermove', (ev) => {
+      const el = ev.target.closest('.strom');
+      svg.querySelectorAll('.strom.aktiv').forEach((p) => p.classList.remove('aktiv'));
+      if (!el) { tip.hidden = true; svg.classList.remove('hervor'); return; }
+      el.classList.add('aktiv'); svg.classList.add('hervor');
+      const s = stroeme[+el.dataset.i], b = svg.getBoundingClientRect();
+      const titel = [...new Set(s.filme)].sort(nachScore).slice(0, 6).map((f) => esc(f.titel)).join('<br>');
+      setzeTipp(rahmen, tip, svg, B, (ev.clientX - b.left) * (B / b.width), (ev.clientY - b.top) * (B / b.width) - 6,
+        `${s.a !== s.herkunft ? `${esc(pos.get(s.herkunft).name)}: ` : ''}${esc(pos.get(s.a).name)} → ${esc(pos.get(s.b).name)}: <b>${s.w}</b> ${einheit}<br><span class="meta">${titel}${s.filme.length > 6 ? '<br>…' : ''}</span>`);
+    });
+    svg.addEventListener('pointerleave', () => { tip.hidden = true; svg.classList.remove('hervor'); svg.querySelectorAll('.strom.aktiv').forEach((p) => p.classList.remove('aktiv')); });
+  }
+
+  // Merkmal auf ein Feld legen (per Ziehen oder Antippen). Zahlen nur auf Achsen, Gruppen nur auf Farbe und Spalten.
+  function bkLegen(merkmalId, zielId) {
+    const m = bkMerkmal(merkmalId), meldung = $('#v-baukasten .bk-meldung');
+    const typ = zielId === 'x' || zielId === 'y' ? 'zahl' : 'gruppe';
+    if (!m) return;
+    if (m.typ !== typ) { if (meldung) meldung.textContent = typ === 'zahl' ? `„${m.name}“ ist eine Gruppe. Auf die Achsen gehören Zahlen.` : `„${m.name}“ ist eine Zahl. Hierher gehören Gruppen, z. B. die passende Stufe.`; return; }
+    if (zielId.startsWith('s')) bk.spalten[Number(zielId.slice(1))] = m.id; else bk[zielId] = m.id;
+    bk.gewaehlt = '';
+    bkSpeichern(); zeichne();
+  }
+  const bkWurzel = $('#v-baukasten');
+  bkWurzel.addEventListener('dragstart', (e) => { const c = e.target.closest('[data-merkmal]'); if (c) { e.dataTransfer.setData('text/plain', c.dataset.merkmal); e.dataTransfer.effectAllowed = 'copy'; } });
+  bkWurzel.addEventListener('dragover', (e) => { const f = e.target.closest('.bk-feld'); if (f) { e.preventDefault(); f.classList.add('ueber'); } });
+  bkWurzel.addEventListener('dragleave', (e) => { const f = e.target.closest('.bk-feld'); if (f) f.classList.remove('ueber'); });
+  bkWurzel.addEventListener('drop', (e) => { const f = e.target.closest('.bk-feld'); if (!f) return; e.preventDefault(); bkLegen(e.dataTransfer.getData('text/plain'), f.dataset.ziel); });
+  bkWurzel.addEventListener('click', (e) => {
+    let el;
+    if ((el = e.target.closest('[data-bk-art]'))) { bk.art = el.dataset.bkArt; bkSpeichern(); return zeichne(); }
+    if ((el = e.target.closest('[data-mass]'))) { bk.mass = el.dataset.mass; bkSpeichern(); return zeichne(); }
+    if ((el = e.target.closest('[data-leeren]'))) { const z = el.dataset.leeren; if (z.startsWith('s')) bk.spalten[Number(z.slice(1))] = ''; else bk[z] = ''; bkSpeichern(); return zeichne(); }
+    if ((el = e.target.closest('[data-merkmal]'))) { bk.gewaehlt = bk.gewaehlt === el.dataset.merkmal ? '' : el.dataset.merkmal; bkWurzel.querySelectorAll('[data-merkmal]').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.merkmal === bk.gewaehlt))); bkWurzel.classList.toggle('waehlt', Boolean(bk.gewaehlt)); return; }
+    if ((el = e.target.closest('.bk-feld')) && bk.gewaehlt) return bkLegen(bk.gewaehlt, el.dataset.ziel);
+  });
+  bkWurzel.addEventListener('change', (e) => { const l = e.target.closest('[data-log]'); if (l) { bk[l.dataset.log] = l.checked; bkSpeichern(); zeichne(); } });
+
   // ---------- Mein Kino: im Kino gesehene Filme ----------
   // Anmeldung nur mit Nutzername (ohne Passwort). Die Liste liegt bei Supabase (Rechenzentrum Frankfurt),
   // dazu eine Kopie im Browser, damit die Seite sofort und auch ohne Verbindung das Häkchen zeigt.
@@ -1757,7 +2175,7 @@
   }
 
   // ---------- Steuerung ----------
-  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, regie: zeigeRegie, statistik: zeigeStatistik, kinos: zeigeKinos, impressum: zeigeImpressum };
+  const ANSICHTEN = { highlights: zeigeHighlights, programm: zeigeProgramm, chance: zeigeChance, kalender: zeigeKalender, filme: zeigeFilme, regie: zeigeRegie, statistik: zeigeStatistik, baukasten: zeigeBaukasten, kinos: zeigeKinos, impressum: zeigeImpressum };
 
   function zeichne() {
     $('#f-reset').hidden = !filterAktiv();
