@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-21",
+  "stand": "2026-11-22",
   "vorstellungen": [
     {
       "Kino": "Cinecitta Nürnberg",
@@ -8,6 +8,14 @@
       "Zeit": "19:00",
       "Stufe": "wenige",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=6AACA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Parkway Drive - Home",
+      "Datum": "2026-11-26",
+      "Zeit": "20:30",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=00ACA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",
