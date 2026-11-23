@@ -11,7 +11,8 @@
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
-Get-ChildItem (Join-Path $tools 'quellen') -Filter *.ps1 | ForEach-Object { . $_.FullName }
+# Ausleser aller Regionen (tools/quellen und Unterordner), beobachtet werden alle Regionen aus daten/regionen.json
+Get-ChildItem (Join-Path $tools 'quellen') -Filter *.ps1 -Recurse | ForEach-Object { . $_.FullName }
 $datei = Join-Path (Resolve-Path "$tools/../daten").Path 'beobachtung.csv'
 
 $tz = [TimeZoneInfo]::FindSystemTimeZoneById($(if ($IsLinux -or $IsMacOS) { 'Europe/Berlin' } else { 'W. Europe Standard Time' }))
@@ -19,7 +20,8 @@ $jetzt = [TimeZoneInfo]::ConvertTimeFromUtc([DateTime]::UtcNow, $tz)
 $heute = $jetzt.ToString('yyyy-MM-dd')
 
 $zeilen = New-Object System.Collections.Generic.List[string]
-foreach ($g in @(Get-AlleProgramme) | Group-Object Kino) {
+$alle = foreach ($r in Get-Regionen) { & $r.ausleser }
+foreach ($g in @($alle) | Group-Object Kino) {
   $ok = @($g.Group | Where-Object Ok)
   $termine = @($ok | ForEach-Object { $_.Termine } | Where-Object { $_.Datum -ge $heute } | ForEach-Object { "$(Get-TitelSchluessel $_.Titel)|$($_.Datum)" } | Sort-Object -Unique)
   $dichtBis = ''; $letzter = ''; $kennung = ''

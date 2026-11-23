@@ -9,6 +9,8 @@ on:
   schedule:
     # Mittwoch 09:00 UTC = 10:00 Uhr Winterzeit, 11:00 Uhr Sommerzeit. GitHub startet geplante Laeufe oft etwas spaeter.
     - cron: '0 9 * * 3'
+    # Donnerstag 14:00 UTC = 15 Uhr Winterzeit: Casablanca und Lamm-Lichtspiele veroeffentlichen ihre Woche erst donnerstags
+    - cron: '0 14 * * 4'
     # Taeglich 06:00 UTC = 7 Uhr Winterzeit, 8 Uhr Sommerzeit: nur Auslastung
     - cron: '0 6 * * *'
   workflow_dispatch:
