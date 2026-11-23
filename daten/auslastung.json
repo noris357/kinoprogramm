@@ -1,14 +1,6 @@
 {
-  "stand": "2026-11-22",
+  "stand": "2026-11-23",
   "vorstellungen": [
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Die Tribute von Panem  - Sunrise on the Reaping",
-      "Datum": "2026-11-25",
-      "Zeit": "19:00",
-      "Stufe": "wenige",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=6AACA000023CPICFBA&language=de"
-    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "Parkway Drive - Home",
@@ -56,6 +48,22 @@
       "Zeit": "20:10",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=396BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-16",
+      "Zeit": "21:25",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=236BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-19",
+      "Zeit": "20:45",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=856BA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",
