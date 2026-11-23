@@ -10,24 +10,30 @@
 # - Konzerte und Opern werden ausgeschlossen (Muster in daten\ausschluss.txt).
 # - Fehlende Angaben zu Land, Regie und Jahr bleiben leer und werden im Bericht genannt.
 
-param([switch]$Probelauf)
+#   -Region hamburg liest die Kinos einer anderen Region (siehe daten/regionen.json), Standard ist nuernberg.
+
+param([switch]$Probelauf, [string]$Region = 'nuernberg')
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
-Get-ChildItem (Join-Path $tools 'quellen') -Filter *.ps1 | ForEach-Object { . $_.FullName }
+# Ausleser aller Regionen laden (tools/quellen und Unterordner je Region)
+Get-ChildItem (Join-Path $tools 'quellen') -Filter *.ps1 -Recurse | ForEach-Object { . $_.FullName }
+$regionInfo = Get-Region $Region
 
 # Pfade mit "/" funktionieren unter Windows und unter Linux (GitHub Actions)
-$datenOrdner = (Resolve-Path "$tools/../daten").Path
+$datenOrdner = $regionInfo.pfad
 $bestandDatei = Join-Path $datenOrdner 'programm.json'
-$ausschlussDatei = Join-Path $datenOrdner 'ausschluss.txt'
+$ausschlussDatei = Join-Path (Resolve-Path "$tools/../daten").Path 'ausschluss.txt'
 $utf8 = New-Object System.Text.UTF8Encoding $false
 
 # PowerShell 7 wandelt Datumstexte beim Einlesen teils in DateTime um. Hier immer JJJJ-MM-TT als Text.
 function ConvertTo-IsoText($Wert) { if ($Wert -is [datetime]) { $Wert.ToString('yyyy-MM-dd') } else { [string]$Wert } }
 
 # ---------- Bestand laden (beim ersten Mal aus dem ChatGPT-Export, ohne persoenliche Spalte) ----------
-$quelleBestand = if (Test-Path $bestandDatei) { $bestandDatei } else { "$tools/../../Kinoprogramm_entpivotiert.json" }
-$bestand = @((Get-Content $quelleBestand -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen | Where-Object { $_.Datum } | ForEach-Object {
+# Eine neue Region beginnt mit leerem Bestand
+$quelleBestand = if (Test-Path $bestandDatei) { $bestandDatei } elseif ($Region -eq 'nuernberg') { "$tools/../../Kinoprogramm_entpivotiert.json" } else { $null }
+$bestandRoh = if ($quelleBestand) { (Get-Content $quelleBestand -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen } else { @() }
+$bestand = @($bestandRoh | Where-Object { $_.Datum } | ForEach-Object {
   $z = [pscustomobject][ordered]@{ Titel = $_.Titel; Kino = $_.Kino; Land = $_.Land; 'Regisseur:in' = $_.'Regisseur:in'; Produktionsjahr = $_.Produktionsjahr; Datum = (ConvertTo-IsoText $_.Datum) }
   # Reihe (bisher nur Filmhaus) nur dort führen, wo sie bekannt ist, damit programm.json nicht anschwillt
   if ($_.PSObject.Properties['Reihe'] -and $_.Reihe) { $z | Add-Member Reihe $_.Reihe }
@@ -37,7 +43,13 @@ $heute = (Get-Heute).ToString('yyyy-MM-dd')
 
 # Bekannte Filme nach Titelschluessel, fuer die Uebernahme von Land, Regie und Jahr.
 # Bei gleichem Schluessel gewinnt der zuletzt gespielte Eintrag.
+# Filme anderer Regionen zählen mit (gleicher Titel und gleiches Jahr, damit TMDB und Wertungen geteilt werden),
+# der eigene Bestand hat Vorrang.
 $bekannt = @{}
+foreach ($r in Get-Regionen | Where-Object { $_.id -ne $Region }) {
+  $andere = Join-Path $r.pfad 'programm.json'
+  if (Test-Path $andere) { foreach ($z in ((Get-Content $andere -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen | Sort-Object Datum)) { $bekannt[(Get-TitelSchluessel $z.Titel)] = $z } }
+}
 foreach ($z in ($bestand | Sort-Object Datum)) { $bekannt[(Get-TitelSchluessel $z.Titel)] = $z }
 # Haupttitel ohne Untertitel ("Heimsuchung - Eine Jahrhundertgeschichte" -> "Heimsuchung"), nur wenn eindeutig
 $haupttitel = @{}
@@ -79,7 +91,7 @@ $bestand = @($bestand | Where-Object { -not (Test-Ausgeschlossen $_.Titel) })
 $ausDemBestand = $vorherBestand - $bestand.Count
 
 # ---------- Kinoseiten auslesen ----------
-$roh = @(Get-AlleProgramme)   # Liste der Ausleser in tools/quellen/alle.ps1
+$roh = @(& $regionInfo.ausleser)   # Liste der Ausleser der Region, z. B. Get-AlleProgramme in tools/quellen/alle.ps1
 
 # Mehrere Quellen fuer dasselbe Kino zusammenfuehren
 $ergebnisse = foreach ($g in $roh | Group-Object Kino) {
@@ -173,4 +185,4 @@ $json = [ordered]@{ stand = $heute; zeilen = $ergebnis } | ConvertTo-Json -Depth
 $lauf = [ordered]@{ abfragetag = $heute; kinos = $bericht; neueFilme = @($neueFilme.Keys | Sort-Object); ausgeschlossen = @($ausgeschlossen.Keys | Sort-Object) } | ConvertTo-Json -Depth 4
 [IO.File]::WriteAllText((Join-Path $datenOrdner 'letzter-lauf.json'), $lauf, $utf8)
 
-& (Join-Path $tools 'build-data.ps1') -Quelle $bestandDatei
+& (Join-Path $tools 'build-data.ps1') -Region $Region

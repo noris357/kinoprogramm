@@ -421,7 +421,12 @@ dialog h2 { margin: 0 32px 6px 0; font-family: var(--font-display); font-weight:
 
 /* ---------- Mein Kino: gesehene Filme (nur im Browser gespeichert) ---------- */
 .kopf .wrap { position: relative; }
-.profil-knopf { position: absolute; right: 16px; top: -10px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; color: var(--gold-hell); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; max-width: 46vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Rechts oben im Kopf: Regionswahl und Mein Kino nebeneinander */
+.kopf-knoepfe { position: absolute; right: 16px; top: -10px; display: flex; align-items: center; gap: 8px; }
+.region-wahl { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.region-wahl select { font: inherit; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--gold-hell); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
+.region-wahl select:hover { border-color: var(--gold); }
+.profil-knopf { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; color: var(--gold-hell); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; max-width: 46vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .profil-knopf:hover { border-color: var(--gold); }
 .zahl-punkt { display: inline-block; min-width: 20px; padding: 1px 6px; border-radius: 999px; background: var(--gold); color: #140f05; font-size: 11px; text-align: center; }
 /* Gesehen: blasser, aber sichtbar, mit Häkchen vor dem Titel */
@@ -455,7 +460,8 @@ tr.gesehen:hover > td:not(.mitte) { opacity: .85; }
 .profil-code textarea { width: 100%; box-sizing: border-box; resize: vertical; font-size: 12px; }
 /* Schmale Bildschirme: Knopf in eigener Zeile über der Ortszeile, damit er nichts verdeckt */
 @media (max-width: 640px) {
-  .profil-knopf { position: static; display: flex; margin: -22px 0 12px auto; width: max-content; }
+  .kopf-knoepfe { position: static; justify-content: flex-end; flex-wrap: wrap; margin: -22px 0 12px auto; }
+  .region-wahl span { display: none; }
 }
 .gesehen-datum { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 10px; font-size: 13px; color: var(--text-2); }
 .profil-liste .gesehen-datum { margin: 0 0 0 4px; }

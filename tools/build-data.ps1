@@ -10,16 +10,26 @@
 # - TMDB fuellt nur Luecken bei Land, Regie und Jahr
 # Die Spalte "Im Kino gesehen?" wird bewusst nicht veroeffentlicht.
 
+# -Region hamburg baut die Datendatei einer anderen Region (siehe daten/regionen.json), Standard ist nuernberg.
+# Programm, Auslastung, Festivals und Erfassungslücke kommen aus dem Ordner der Region, Filmangaben sind gemeinsam.
 param(
-  [string]$Quelle    = $(if (Test-Path "$PSScriptRoot/../daten/programm.json") { "$PSScriptRoot/../daten/programm.json" } else { "$PSScriptRoot/../../Kinoprogramm_entpivotiert.json" }),
+  [string]$Region    = 'nuernberg',
+  [string]$Quelle    = '',
   [string]$Quellen   = "$PSScriptRoot/../daten/quellen.json",
   [string]$FilmInfos = "$PSScriptRoot/../daten/filminfos.json",
-  [string]$Ziel      = "$PSScriptRoot/../data.js"
+  [string]$Ziel      = ''
 )
 
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/gemeinsam.ps1"
-$json = Get-Content $Quelle -Raw -Encoding UTF8 | ConvertFrom-Json
+$regionInfo = Get-Region $Region
+$regionOrdner = $regionInfo.pfad
+if (-not $Quelle) {
+  $Quelle = Join-Path $regionOrdner 'programm.json'
+  if (-not (Test-Path $Quelle) -and $Region -eq 'nuernberg') { $Quelle = "$PSScriptRoot/../../Kinoprogramm_entpivotiert.json" }
+}
+if (-not $Ziel) { $Ziel = $regionInfo.ziel }
+$json = if (Test-Path $Quelle) { Get-Content $Quelle -Raw -Encoding UTF8 | ConvertFrom-Json } else { [pscustomobject]@{ stand = $null; zeilen = @() } }
 
 # PowerShell 7 wandelt Datumstexte beim Einlesen teils in DateTime um. Hier immer JJJJ-MM-TT als Text.
 function ConvertTo-IsoText($Wert) { if ($Wert -is [datetime]) { $Wert.ToString('yyyy-MM-dd') } else { [string]$Wert } }
@@ -368,14 +378,14 @@ foreach ($g in @($termine | Where-Object { $_.Count -gt 3 } | Group-Object { "$(
   }
 }
 $erkanntText = ([ordered]@{ hinweis = 'Automatisch aus den Reihen des Filmhauses erkannt (tools/build-data.ps1), nicht von Hand bearbeiten. Zum Bestätigen oder Ergänzen einen Eintrag mit gleichem Feld reihe in festivals.json anlegen.'; festivals = $erkannt.ToArray() } | ConvertTo-Json -Depth 4)
-[System.IO.File]::WriteAllText((Join-Path (Resolve-Path "$PSScriptRoot/../daten").Path 'festivals-erkannt.json'), $erkanntText, (New-Object System.Text.UTF8Encoding $false))
+[System.IO.File]::WriteAllText((Join-Path $regionOrdner 'festivals-erkannt.json'), $erkanntText, (New-Object System.Text.UTF8Encoding $false))
 
 # ---------- Auslastung (tools/auslastung.ps1, nur Cinecitta-Gruppe) ----------
 # Zuordnung zum Film ueber einen Termin desselben Kinos am selben Tag mit gleichem Titelschluessel.
 # Vorstellungen ohne passenden Termin (z. B. ausgeschlossene Veranstaltungen) entfallen.
 $auslastung = New-Object System.Collections.Generic.List[object]
 $auslastungStand = $null
-$auslastungDatei = "$PSScriptRoot/../daten/auslastung.json"
+$auslastungDatei = Join-Path $regionOrdner 'auslastung.json'
 if (Test-Path $auslastungDatei) {
   $aj = Get-Content $auslastungDatei -Raw -Encoding UTF8 | ConvertFrom-Json
   $auslastungStand = ConvertTo-IsoText $aj.stand
@@ -392,13 +402,13 @@ if (Test-Path $auslastungDatei) {
 # ---------- Festivals (daten/festivals.json) ----------
 # Wird unveraendert weitergegeben, die Zuordnung der Vorstellungen geschieht auf der Website (app.js)
 $festivals = @()
-$festivalDatei = "$PSScriptRoot/../daten/festivals.json"
+$festivalDatei = Join-Path $regionOrdner 'festivals.json'
 if (Test-Path $festivalDatei) { $festivals = @((Get-Content $festivalDatei -Raw -Encoding UTF8 | ConvertFrom-Json).festivals) }
 
 # ---------- Erfassungsluecke (daten/luecke.json) ----------
 # Zeitraum ohne Programmdaten und einzeln gepruefte Filme, deren Serie "Wochen am Stueck" darueber weiterlaeuft
 $luecke = $null
-$lueckeDatei = "$PSScriptRoot/../daten/luecke.json"
+$lueckeDatei = Join-Path $regionOrdner 'luecke.json'
 if (Test-Path $lueckeDatei) {
   $lj = Get-Content $lueckeDatei -Raw -Encoding UTF8 | ConvertFrom-Json
   $luecke = [ordered]@{
@@ -412,6 +422,8 @@ $codes = [ordered]@{}
 foreach ($l in ($genutzteLaender.Keys | Sort-Object)) { if ($landCode[$l]) { $codes[$l] = $landCode[$l] } }
 
 $daten = [ordered]@{
+  # Angaben zur Region fuer die Website (Ortsfilter, Projektstart, Ordner fuer festivals.json)
+  region       = [ordered]@{ id = $regionInfo.id; name = $regionInfo.name; kurz = $regionInfo.kurz; orte = @($regionInfo.orte); ortName = $regionInfo.ortName; start = $regionInfo.start; ordner = $regionInfo.ordner; kinoOrte = $regionInfo.kinoOrte }
   stand        = $(if ($json.stand) { ConvertTo-IsoText $json.stand } else { Get-Date -Format 'yyyy-MM-dd' })
   quelle       = (Split-Path $Quelle -Leaf)
   kinos        = $kinos

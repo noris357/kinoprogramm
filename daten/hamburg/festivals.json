@@ -1,0 +1,19 @@
+{
+  "hinweis": "Festivalkalender der Region Hamburg, Aufbau wie daten/festivals.json (Nürnberg). Felder und Zuordnungsregeln stehen dort im Feld hinweis.",
+  "festivals": [
+    {
+      "id": "fantasy-filmfest-white-nights-hamburg-2027", "name": "Fantasy Filmfest White Nights", "art": "Genre",
+      "von": "2027-02-04", "bis": "2027-02-07", "sicher": true,
+      "kinos": [], "genres": ["Horror", "Thriller", "Science Fiction", "Fantasy", "Mystery"], "hoechstensTage": 2,
+      "link": "https://fantasyfilmfest.com/event-fantasy-filmfest-white-nights/",
+      "beschreibung": "Winterausgabe des Genrefestivals: rund 17 Filme an einem Wochenende. Der Spielort in Hamburg steht noch nicht fest."
+    },
+    {
+      "id": "filmfest-hamburg-2027", "name": "Filmfest Hamburg", "art": "Thema",
+      "von": "2027-09-23", "bis": "2027-10-02", "sicher": false, "zeitraumText": "voraussichtlich Ende September 2027",
+      "kinos": [],
+      "link": "https://www.filmfesthamburg.de/",
+      "beschreibung": "Großes internationales Filmfestival mit Premieren aus aller Welt in vielen Hamburger Kinos."
+    }
+  ]
+}

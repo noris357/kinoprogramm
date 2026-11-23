@@ -138,3 +138,28 @@ function Send-Formular([string]$Url, $Felder, $Sitzung = $null) {
 function New-KinoErgebnis([string]$Kino, [string]$Url) {
   return [pscustomobject]@{ Kino = $Kino; Url = $Url; Ok = $false; Fehler = $null; Von = $null; Bis = $null; Termine = New-Object System.Collections.Generic.List[object] }
 }
+
+# ---------- Regionen (daten/regionen.json) ----------
+# Liefert die Angaben einer Region, Pfade als absolute Pfade (ordner) bzw. Dateinamen.
+function Get-Region([string]$Id = 'nuernberg') {
+  $wurzel = (Resolve-Path "$PSScriptRoot/..").Path
+  $r = @((Get-Content "$wurzel/daten/regionen.json" -Raw -Encoding UTF8 | ConvertFrom-Json).regionen | Where-Object { $_.id -eq $Id })
+  if (-not $r.Count) { throw "Unbekannte Region '$Id' (siehe daten/regionen.json)" }
+  $r = $r[0]
+  $ordner = Join-Path $wurzel $r.ordner
+  if (-not (Test-Path $ordner)) { New-Item -ItemType Directory $ordner | Out-Null }
+  $r | Add-Member -NotePropertyName pfad -NotePropertyValue ((Resolve-Path $ordner).Path) -Force
+  $r | Add-Member -NotePropertyName ziel -NotePropertyValue (Join-Path $wurzel $r.datei) -Force
+  return $r
+}
+function Get-Regionen {
+  $wurzel = (Resolve-Path "$PSScriptRoot/..").Path
+  @((Get-Content "$wurzel/daten/regionen.json" -Raw -Encoding UTF8 | ConvertFrom-Json).regionen | ForEach-Object { Get-Region $_.id })
+}
+# Alle Bestandszeilen aller Regionen, fuer die gemeinsamen Filmangaben (TMDB, Wertungen)
+function Get-AlleProgrammZeilen {
+  foreach ($r in Get-Regionen) {
+    $datei = Join-Path $r.pfad 'programm.json'
+    if (Test-Path $datei) { (Get-Content $datei -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen }
+  }
+}

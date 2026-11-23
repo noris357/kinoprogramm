@@ -59,7 +59,7 @@ if (Test-Path $zuordnungDatei) { (Get-Content $zuordnungDatei -Raw -Encoding UTF
 if (-not (Test-Path $plakatOrdner)) { New-Item -ItemType Directory $plakatOrdner | Out-Null }
 
 $filme = [ordered]@{}
-foreach ($z in (Get-Content (Join-Path $daten 'programm.json') -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen) {
+foreach ($z in @(Get-AlleProgrammZeilen)) {
   $k = "$($z.Titel)|$($z.Produktionsjahr)"
   if (-not $filme.Contains($k)) { $filme[$k] = $z }
 }

@@ -5,6 +5,12 @@ Live unter https://noris357.github.io/kinoprogramm/ (GitHub Pages, öffentlich).
 
 ## Aufbau
 
+Regionen (`daten/regionen.json`): Nürnberg/Fürth/Erlangen (Daten in `daten/`, Website-Daten `data.js`) und Hamburg
+(Daten in `daten/hamburg/`, Website-Daten `data-hamburg.js`, Ausleser in `tools/quellen/hamburg/`).
+`aktualisieren.ps1` und `build-data.ps1` nehmen `-Region hamburg`, Standard ist Nürnberg. Filmangaben
+(filminfos, wertungen, preise, personen, titel-korrekturen, ausschluss) sind für alle Regionen gemeinsam.
+Die Website wählt die Region über `?region=` oder die zuletzt gewählte (index.html).
+
 - `index.html`, `style.css`, `app.js`: die Website, reines HTML/CSS/JavaScript ohne Build-Schritt
 - `data.js`: erzeugt von `tools/build-data.ps1`, nie von Hand bearbeiten
 - `daten/programm.json`: Bestand, eine Zeile je Film, Kino und Tag

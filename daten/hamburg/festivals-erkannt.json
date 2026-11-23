@@ -1,0 +1,6 @@
+{
+    "hinweis":  "Automatisch aus den Reihen des Filmhauses erkannt (tools/build-data.ps1), nicht von Hand bearbeiten. Zum Bestätigen oder Ergänzen einen Eintrag mit gleichem Feld reihe in festivals.json anlegen.",
+    "festivals":  [
+
+                  ]
+}

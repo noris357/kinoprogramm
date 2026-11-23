@@ -85,6 +85,12 @@
       "programm_url": "https://www.uferpalast.de/",
       "hinweis": "Auch Monatsübersichten als PDF prüfen.",
       "bestandszeilen": 101
-    }
+    },
+    { "bezeichnung_in_excel": "CinemaxX Hamburg-Dammtor", "programm_url": "https://www.cinemaxx.de/kinoprogramm/hamburg-dammtor/jetzt-im-kino", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "CinemaxX Hamburg-Wandsbek", "programm_url": "https://www.cinemaxx.de/kinoprogramm/hamburg-wandsbek/jetzt-im-kino", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "CinemaxX Hamburg-Harburg", "programm_url": "https://www.cinemaxx.de/kinoprogramm/hamburg-harburg/jetzt-im-kino", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Holi Hamburg", "programm_url": "https://www.cinemaxx.de/kinoprogramm/holi-hamburg/jetzt-im-kino", "hinweis": "Hamburg, gehört zu CinemaxX" },
+    { "bezeichnung_in_excel": "Astor Film Lounge HafenCity", "programm_url": "https://hamburg.premiumkino.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Savoy Filmtheater Hamburg", "programm_url": "https://savoy.premiumkino.de/", "hinweis": "Hamburg" }
   ]
 }

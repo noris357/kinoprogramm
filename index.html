@@ -10,7 +10,15 @@
 <body>
   <header class="kopf">
     <div class="wrap">
-      <button type="button" class="profil-knopf" id="profil-knopf" aria-haspopup="dialog">Mein Kino</button>
+      <div class="kopf-knoepfe">
+        <label class="region-wahl"><span>Region</span>
+          <select id="region-wahl">
+            <option value="nuernberg">Nürnberg · Fürth · Erlangen</option>
+            <option value="hamburg">Hamburg</option>
+          </select>
+        </label>
+        <button type="button" class="profil-knopf" id="profil-knopf" aria-haspopup="dialog">Mein Kino</button>
+      </div>
       <div class="augenbraue" id="augenbraue">Nürnberg <i></i> Fürth <i></i> Erlangen</div>
       <h1>Kinoprogramm</h1>
       <div class="kennzahlen" id="kennzahlen"></div>
@@ -36,13 +44,9 @@
   </div>
 
   <section class="filter wrap" aria-label="Filter" id="filter">
-    <label>Stadt
-      <select id="f-stadt">
-        <option value="">Alle Städte</option>
-        <option>Nürnberg</option>
-        <option>Fürth</option>
-        <option>Erlangen</option>
-      </select>
+    <label><span id="f-stadt-name">Stadt</span>
+      <!-- Orte der Region füllt app.js -->
+      <select id="f-stadt"><option value="">Alle Städte</option></select>
     </label>
     <label>Kino
       <select id="f-kino"><option value="">Alle Kinos</option></select>
@@ -89,7 +93,19 @@
   <script src="vendor/d3-array.min.js"></script>
   <script src="vendor/d3-geo.min.js"></script>
   <script src="vendor/topojson-client.min.js"></script>
-  <script src="data.js"></script>
+  <!-- Region wählen: ?region=… in der Adresse, sonst die zuletzt gewählte, sonst Nürnberg. Je Region eine eigene Datendatei. -->
+  <script>
+    (function () {
+      var DATEIEN = { nuernberg: 'data.js', hamburg: 'data-hamburg.js' };
+      var r = null;
+      try { r = new URLSearchParams(location.search).get('region'); } catch (e) { /* alte Browser */ }
+      if (!DATEIEN[r]) { try { r = localStorage.getItem('kinoRegion'); } catch (e) { r = null; } }
+      if (!DATEIEN[r]) r = 'nuernberg';
+      try { localStorage.setItem('kinoRegion', r); } catch (e) { /* ohne Speicher */ }
+      window.KINO_REGIONEN = DATEIEN;
+      document.write('<script src="' + DATEIEN[r] + '"><\/script>');
+    })();
+  </script>
   <script src="app.js"></script>
 </body>
 </html>

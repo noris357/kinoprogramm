@@ -15,6 +15,10 @@
   const OHNE_HIGHLIGHT = /^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/;
 
   const D = window.KINO_DATA;
+  // Region der geladenen Datendatei (daten/regionen.json). Ältere Datendateien ohne Angabe gelten als Nürnberg.
+  const REGION = D.region || { id: 'nuernberg', name: 'Nürnberg · Fürth · Erlangen', kurz: 'Nürnberg', orte: ['Nürnberg', 'Fürth', 'Erlangen'], ortName: 'Stadt', start: '2026-11-04', ordner: 'daten', kinoOrte: {} };
+  // Ortsangaben am Ende von Kinonamen, die in der Anzeige wegfallen (Monogramm, kurze Namen)
+  const ORT_ENDE = /\s*(Nürnberg|Fürth|Erlangen|Hamburg)$/;
   const $ = (sel) => document.querySelector(sel);
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const zahl = (n) => n.toLocaleString('de-DE');
@@ -60,13 +64,14 @@
 
   // ---------- Daten aufbereiten ----------
   function stadtVon(name) {
+    if (REGION.kinoOrte && REGION.kinoOrte[name]) return REGION.kinoOrte[name];
     if (/Nürnberg/.test(name)) return 'Nürnberg';
     if (/Fürth/.test(name)) return 'Fürth';
     if (/Erlangen/.test(name)) return 'Erlangen';
     return 'Diverse Orte';
   }
   function monogrammVon(name) {
-    const kern = name.replace(/\s*(Nürnberg|Fürth|Erlangen)$/, '').replace(/\b(Kino|Deluxe)\b/g, '').trim();
+    const kern = name.replace(ORT_ENDE, '').replace(/\b(Kino|Deluxe|Filmtheater|Film Lounge)\b/g, '').replace(/^CinemaxX\s+Hamburg-/, '').trim();
     const teile = kern.split(/[\s-]+/).filter(Boolean);
     if (teile.length === 1) {
       const gross = kern.match(/[A-ZÄÖÜ]/g) || [];
@@ -111,7 +116,7 @@
   const alleDaten = termine.map((t) => t.d).sort();
   const ERSTER = alleDaten[0];
   // Start des Projekts mit automatischer Erfassung (erster Commit). Die Tagesverläufe der Statistik beginnen hier.
-  const PROJEKT_START = '2026-11-04';
+  const PROJEKT_START = REGION.start || '2026-11-04';
   const LETZTER = alleDaten[alleDaten.length - 1];
 
   // Wie weit reicht das veröffentlichte Programm je Kino?
@@ -331,7 +336,7 @@
   // Filmkarte wie in den anderen Rubriken, statt der Kinos die Vorstellungen mit Link zur Sitzplatzwahl
   function vorverkaufKarte(e) {
     const f = e.f;
-    const termine = e.vs.map((v) => `<a class="vv vv-${v.stufe}" href="${esc(v.link)}" target="_blank" rel="noopener" title="Zur Sitzplatzwahl beim Kino"><span class="punkt" aria-hidden="true"></span>${fmtWt.format(parse(v.d)).replace('.', '')} ${v.d.slice(8, 10)}.${v.d.slice(5, 7)}. ${esc(v.zeit)} · ${esc(kinos[v.k].name.replace(/\s+(Nürnberg|Fürth|Erlangen)$/, ''))} · ${STUFEN[v.stufe]}</a>`).join('');
+    const termine = e.vs.map((v) => `<a class="vv vv-${v.stufe}" href="${esc(v.link)}" target="_blank" rel="noopener" title="Zur Sitzplatzwahl beim Kino"><span class="punkt" aria-hidden="true"></span>${fmtWt.format(parse(v.d)).replace('.', '')} ${v.d.slice(8, 10)}.${v.d.slice(5, 7)}. ${esc(v.zeit)} · ${esc(kinos[v.k].name.replace(ORT_ENDE, ''))} · ${STUFEN[v.stufe]}</a>`).join('');
     return `<article class="filmkarte hl-karte">${plakat(f, 'mittel')}<div>${filmLink(f)}${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f)}</div>${grundZeile(f)}<div class="vv-liste">${termine}</div></div></article>`;
   }
   // Bis zu zwei Gründe, warum ein Film besonders ist. Wird überall gleich gebildet.
@@ -366,7 +371,7 @@
     const woche = termine.filter((t) => statusVon(t.d) === 'ja');
     const kinosHeute = new Set(heute.map((t) => t.k)).size;
     const chance = letzteChance(termine).sicher.length;
-    $('#augenbraue').innerHTML = `Nürnberg <i></i> Fürth <i></i> Erlangen <i></i> KW ${kalenderwoche(HEUTE)}`;
+    $('#augenbraue').innerHTML = `${(REGION.id === 'nuernberg' ? REGION.orte : [REGION.kurz]).map(esc).join(' <i></i> ')} <i></i> KW ${kalenderwoche(HEUTE)}`;
     $('#kennzahlen').innerHTML = [
       [new Set(heute.map((t) => t.f)).size, `Filme heute in ${kinosHeute} Kinos`],
       [new Set(woche.map((t) => t.f)).size, 'Filme in den nächsten 7 Tagen'],
@@ -1667,7 +1672,7 @@
   }
   let FESTIVALS = festivalListe(D.festivals);
   let festivalIndexCache = null;
-  fetch('daten/festivals.json', { cache: 'no-cache' })
+  fetch(`${REGION.ordner || 'daten'}/festivals.json`, { cache: 'no-cache' })
     .then((r) => (r.ok ? r.json() : null))
     .then((j) => {
       if (!j || !Array.isArray(j.festivals)) return;
@@ -1854,7 +1859,7 @@
     }
     $('#v-festivals').innerHTML = `
       <div class="ansicht-kopf"><h2>Filmfestivals</h2></div>
-      <p class="hinweis">Filmfestivals in Nürnberg, Fürth und Erlangen. Vorstellungen werden einem Festival über Zeitraum und Spielort zugeordnet. Termine aus den Seiten der Stadt, des KunstKulturQuartiers und der Festivals, ohne Gewähr.</p>
+      <p class="hinweis">Filmfestivals in ${REGION.id === 'nuernberg' ? 'Nürnberg, Fürth und Erlangen' : esc(REGION.kurz)}. Vorstellungen werden einem Festival über Zeitraum und Spielort zugeordnet. Termine aus den Seiten der Städte, Kinos und Festivals, ohne Gewähr.</p>
       ${hero}
       <div class="tafel abstand"><h3>Festivaljahr</h3><p class="hinweis">Ein Klick auf einen Balken springt zum Festival. Gestrichelt: Termin noch nicht sicher.</p>${festivalZeitleiste(FESTIVALS)}
         <div class="legende-laender fest-legende">${Object.entries(FESTIVAL_FARBEN).map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join('')}</div></div>
@@ -2106,7 +2111,7 @@
         <p>${p('Vorname Nachname')}<br>${p('Straße Hausnummer')}<br>${p('PLZ Ort')}</p>
         <p>E-Mail: ${p('name@example.de')}</p>
         <h3>Über dieses Projekt</h3>
-        <p>Ein privates, nicht kommerzielles Hobbyprojekt. Die Seite sammelt, welche Filme an welchen Tagen in Kinos in Nürnberg, Fürth und Erlangen laufen. Grundlage sind die öffentlich veröffentlichten Programme der Kinos. Uhrzeiten, Säle und Fassungen werden nicht erfasst.</p>
+        <p>Ein privates, nicht kommerzielles Hobbyprojekt. Die Seite sammelt, welche Filme an welchen Tagen in Kinos in Nürnberg, Fürth, Erlangen und Hamburg laufen. Grundlage sind die öffentlich veröffentlichten Programme der Kinos. Uhrzeiten, Säle und Fassungen werden nicht erfasst.</p>
         <p>Ausnahme ist die Rubrik „Schnell vergriffen“: Cinecitta, Meisengeige, Metropolis und Manhattan zeigen auf ihrer Programmseite zu jeder Vorstellung eine Auslastungsstufe. Diese Stufen werden einmal täglich übernommen, für gut gebuchte Vorstellungen mit Uhrzeit. Eigene Berechnungen gibt es dazu nicht.</p>
         <h3>Ohne Gewähr</h3>
         <p>Die Daten werden mit Sorgfalt gepflegt, können aber unvollständig oder veraltet sein. Verbindlich sind allein die Programme und Ticketseiten der Kinos. Für Inhalte verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
@@ -2705,6 +2710,23 @@
     // Wer selbst einen Reiter wählt, verlässt den Sprung aus der Auswertung: Zurück-Knopf verschwindet
     if (b) { auswertungZurueck = null; wechsleAnsicht(b.dataset.ansicht); }
   });
+  // Ortsfilter der Region: Städte (Nürnberg) oder Bezirke (Hamburg), nur Orte mit Kinos in den Daten
+  {
+    const orte = [...new Set(kinos.map((k) => k.stadt))];
+    // Nur die festen Orte der Region, "Diverse Orte" (z. B. Open-Air-Festival) ist nicht wählbar
+    const reihe = (REGION.orte || []).filter((o) => orte.includes(o));
+    const mehrzahl = REGION.ortName === 'Bezirk' ? 'Alle Bezirke' : 'Alle Städte';
+    $('#f-stadt-name').textContent = REGION.ortName || 'Stadt';
+    $('#f-stadt').innerHTML = `<option value="">${mehrzahl}</option>` + reihe.map((o) => `<option>${esc(o)}</option>`).join('');
+    document.title = `Kinoprogramm ${REGION.kurz}`;
+    // Regionswechsel: Seite mit der neuen Region laden, der Reiter bleibt
+    const wahl = $('#region-wahl');
+    wahl.value = REGION.id;
+    wahl.addEventListener('change', () => {
+      try { localStorage.setItem('kinoRegion', wahl.value); } catch (e) { /* ohne Speicher */ }
+      location.href = `?region=${encodeURIComponent(wahl.value)}${location.hash}`;
+    });
+  }
   $('#f-stadt').addEventListener('change', (e) => { zustand.stadt = e.target.value; fuelleAuswahl(); zeichne(); });
   $('#f-kino').addEventListener('change', (e) => { zustand.kino = e.target.value; zeichne(); });
   $('#f-land').addEventListener('change', (e) => { zustand.land = e.target.value; zeichne(); });

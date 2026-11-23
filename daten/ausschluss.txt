@@ -34,3 +34,6 @@
 (?i)^Purzeltraumtheater\b
 (?i)^Freeride Filmfestival\b
 (?i)^Karaoke[- ]?Abend\b
+# Hamburg: Opernübertragungen der MET und Quizabende sind keine Filme
+(?i)\(MET \d{4}/\d{2}\)
+(?i)\bQuiz(nacht)?\b.*\bMonkey-Quiz\b|\bFilm Quiz\b

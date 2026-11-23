@@ -1,0 +1,24 @@
+{
+  "hinweis": "Regionen der Website. ordner: Programmdaten der Region (programm.json, letzter-lauf.json, auslastung.json, festivals.json, festivals-erkannt.json, luecke.json). datei: Datendatei für die Website. ausleser: Funktion in tools/quellen, die alle Kinos der Region liest. start: Beginn der automatischen Erfassung. ortName: Bezeichnung des Ortsfilters. kinoOrte: Ort je Kino, wenn er nicht im Kinonamen steht. Filmangaben (filminfos, wertungen, preise, personen) sind für alle Regionen gemeinsam.",
+  "regionen": [
+    {
+      "id": "nuernberg", "name": "Nürnberg · Fürth · Erlangen", "kurz": "Nürnberg",
+      "orte": ["Nürnberg", "Fürth", "Erlangen"], "ortName": "Stadt",
+      "start": "2026-11-04", "ordner": "daten", "datei": "data.js", "ausleser": "Get-AlleProgramme",
+      "kinoOrte": {}
+    },
+    {
+      "id": "hamburg", "name": "Hamburg", "kurz": "Hamburg",
+      "orte": ["Mitte", "Altona", "Eimsbüttel", "Nord", "Wandsbek", "Harburg", "Bergedorf"], "ortName": "Bezirk",
+      "start": "2026-11-23", "ordner": "daten/hamburg", "datei": "data-hamburg.js", "ausleser": "Get-HamburgProgramme",
+      "kinoOrte": {
+        "CinemaxX Hamburg-Dammtor": "Mitte",
+        "CinemaxX Hamburg-Wandsbek": "Wandsbek",
+        "CinemaxX Hamburg-Harburg": "Harburg",
+        "Holi Hamburg": "Eimsbüttel",
+        "Astor Film Lounge HafenCity": "Mitte",
+        "Savoy Filmtheater Hamburg": "Mitte"
+      }
+    }
+  ]
+}

@@ -73,7 +73,7 @@ function ConvertFrom-Wertungen($Obj) {
 
 # ---------- Welche Filme? ----------
 $infos = (Get-Content (Join-Path $daten 'filminfos.json') -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties
-$programm = (Get-Content (Join-Path $daten 'programm.json') -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen
+$programm = @(Get-AlleProgrammZeilen)   # alle Regionen
 $heute = (Get-Heute).ToString('yyyy-MM-dd')
 $kommend = @{}
 foreach ($z in $programm) { if ((ConvertTo-IsoText $z.Datum) -ge $heute) { $kommend["$($z.Titel)|$($z.Produktionsjahr)"] = $true } }
