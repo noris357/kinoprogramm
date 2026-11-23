@@ -18,14 +18,14 @@ function Get-CinemaxxProgramme {
     $erg = New-KinoErgebnis $script:CinemaxxKinos[$id] "$script:CinemaxxBasis/kinoprogramm/"
     try {
       $tage = @((Get-Seite "$script:CinemaxxBasis/api/microservice/showings/showingDates?cinemaId=$id&minEmbargoLevel=2&forNextWeek=true" | ConvertFrom-Json).result |
-        Where-Object { $_.hasShowings } | ForEach-Object { ([string]$_.showingDate).Substring(0, 10) })
+        Where-Object { $_.hasShowings } | ForEach-Object { ConvertTo-IsoTag $_.showingDate })
       foreach ($tag in $tage) {
         $antwort = Get-Seite "$script:CinemaxxBasis/api/microservice/showings/cinemas/$id/films?showingDate=${tag}T00:00:00&minEmbargoLevel=3&includesSession=true&includeSessionAttributes=true" | ConvertFrom-Json
         foreach ($f in @($antwort.result)) {
           $sitzungen = @($f.showingGroups | ForEach-Object { $_.sessions } | Where-Object { $_ })
           if (-not $sitzungen.Count) { continue }
           # Spieltag aus der Startzeit (Ortszeit), Spaetvorstellungen nach Mitternacht zaehlen zum Kalendertag
-          $daten = @($sitzungen | ForEach-Object { ([string]$_.startTime).Substring(0, 10) } | Sort-Object -Unique)
+          $daten = @($sitzungen | ForEach-Object { ConvertTo-IsoTag $_.startTime } | Sort-Object -Unique)
           $jahr = $null
           foreach ($datum in $daten) {
             $erg.Termine.Add([pscustomobject]@{ Titel = [string]$f.filmTitle; Datum = $datum; Regie = [string]$f.director; Jahr = $jahr })

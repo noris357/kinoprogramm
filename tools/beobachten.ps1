@@ -43,7 +43,7 @@ foreach ($g in @($alle) | Group-Object Kino) {
     $kennung = ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes(($termine -join "`n")))) -replace '-', '').Substring(0, 10)
   }
   $zeilen.Add(('{0},"{1}",{2},{3},{4},{5},{6}' -f $jetzt.ToString('yyyy-MM-dd HH:mm'), $g.Name, [int]($ok.Count -gt 0), $termine.Count, $dichtBis, $letzter, $kennung))
-  '{0,-26} ok={1} termine={2,4} dicht_bis={3} letzter={4} kennung={5}' -f $g.Name, [int]($ok.Count -gt 0), $termine.Count, $dichtBis, $letzter, $kennung
+  '{0,-26} ok={1} termine={2,4} dicht_bis={3} letzter={4} kennung={5} {6}' -f $g.Name, [int]($ok.Count -gt 0), $termine.Count, $dichtBis, $letzter, $kennung, ((@($g.Group | ForEach-Object Fehler | Where-Object { $_ })) -join '; ')
 }
 
 if (-not (Test-Path $datei)) { [IO.File]::WriteAllText($datei, "zeitpunkt,kino,ok,termine,dicht_bis,letzter,kennung`n", (New-Object System.Text.UTF8Encoding $false)) }

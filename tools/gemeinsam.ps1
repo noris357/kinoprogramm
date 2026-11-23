@@ -163,3 +163,10 @@ function Get-AlleProgrammZeilen {
     if (Test-Path $datei) { (Get-Content $datei -Raw -Encoding UTF8 | ConvertFrom-Json).zeilen }
   }
 }
+
+# Tag als JJJJ-MM-TT aus einem JSON-Wert. PowerShell 7 macht aus Datumstexten beim Einlesen DateTime-Werte,
+# Windows PowerShell 5.1 laesst sie als Text. Beides wird hier gleich behandelt.
+function ConvertTo-IsoTag($Wert) {
+  if ($Wert -is [datetime]) { return $Wert.ToString('yyyy-MM-dd') }
+  return ([string]$Wert).Substring(0, 10)
+}

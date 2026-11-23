@@ -19,7 +19,7 @@ function Get-PremiumkinoProgramme {
       foreach ($v in @($p.performances)) {
         $m = $filme[[string]$v.movieId]
         if (-not $m) { continue }
-        $tag = ([string]$v.cinemaDay).Substring(0, 10)
+        $tag = ConvertTo-IsoTag $v.cinemaDay
         $jahr = if ("$($m.year)" -match '^\d{4}$') { [string]$m.year } else { $null }
         $land = if ($m.country -is [string] -and $m.country.Length -le 80) { $m.country } else { $null }
         $erg.Termine.Add([pscustomobject]@{ Titel = [string]$m.name; Datum = $tag; Jahr = $jahr; Land = $land })
