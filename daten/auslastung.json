@@ -3,6 +3,14 @@
   "vorstellungen": [
     {
       "Kino": "Cinecitta Nürnberg",
+      "Titel": "Andrew Lloyd Webber's Starlight Express - Live On Stage",
+      "Datum": "2026-11-26",
+      "Zeit": "18:00",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=3B2CA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
       "Titel": "Parkway Drive - Home",
       "Datum": "2026-11-26",
       "Zeit": "20:30",
@@ -53,9 +61,41 @@
       "Kino": "Cinecitta Nürnberg",
       "Titel": "Avengers: Doomsday",
       "Datum": "2026-12-16",
+      "Zeit": "21:00",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=176BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-16",
       "Zeit": "21:25",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=236BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-18",
+      "Zeit": "20:45",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=756BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-19",
+      "Zeit": "14:30",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=156BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-19",
+      "Zeit": "20:10",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=F56BA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",

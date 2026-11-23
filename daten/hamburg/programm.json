@@ -1,1925 +1,1941 @@
 {
-    "stand":  "2026-11-23",
-    "zeilen":  [
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Godzilla Minus Zero",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Japan",
-                       "Regisseur:in":  "Takashi Yamazaki",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Hadoota",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Ägypten",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "How to Rob a Bank",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Other Mommy",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Rob Savage",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Sneak Preview",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "?",
-                       "Regisseur:in":  "?",
-                       "Produktionsjahr":  2038,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Akte Vuskovic - Doping. Skandal. Zweifel.",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Other Mommy",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Rob Savage",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Sneak Preview",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "?",
-                       "Regisseur:in":  "?",
-                       "Produktionsjahr":  2038,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Sneak Preview",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "?",
-                       "Regisseur:in":  "?",
-                       "Produktionsjahr":  2038,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "La bola negra",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Spanien, Frankreich",
-                       "Regisseur:in":  "Javier Ambrossi, Javier Calvo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "GIANT - The Play",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "Großbritannien",
-                       "Regisseur:in":  "Nicholas Hytner",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-23"
-                   },
-                   {
-                       "Titel":  "Block 10",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Akte Vuskovic - Doping. Skandal. Zweifel.",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Regenbogenfisch",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland, Schweiz",
-                       "Regisseur:in":  "Florian Moch",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Emil und die Detektive",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "David Dietl",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Festtagsspaß mit Peppa - Das Kinoerlebnis",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Großbritannien",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Godzilla Minus Zero",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Japan",
-                       "Regisseur:in":  "Takashi Yamazaki",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "How to Rob a Bank",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "OM",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Other Mommy",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Rob Savage",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Puella Magi Madoka Magica Der Film - Walpurgisnacht: Rising",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Regenbogenfisch",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Deutschland, Schweiz",
-                       "Regisseur:in":  "Florian Moch",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Emil und die Detektive",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "David Dietl",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Godzilla Minus Zero",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Japan",
-                       "Regisseur:in":  "Takashi Yamazaki",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Hadoota",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Ägypten",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Other Mommy",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Rob Savage",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Großbritannien",
-                       "Regisseur:in":  "Steve Cox, Matthew Walker",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Bibi Blocksberg - Die total verhexte Zeitreise",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Gregor Schnitzler",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Emil und die Detektive",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "David Dietl",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Großbritannien",
-                       "Regisseur:in":  "Steve Cox, Matthew Walker",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Heimsuchung - Eine Jahrhundertgeschichte",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Volker Schlöndorff",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "La bola negra",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Spanien, Frankreich",
-                       "Regisseur:in":  "Javier Ambrossi, Javier Calvo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-24"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Heimsuchung - Eine Jahrhundertgeschichte",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Volker Schlöndorff",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Der Regenbogenfisch",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland, Schweiz",
-                       "Regisseur:in":  "Florian Moch",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Emil und die Detektive",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "David Dietl",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "How to Rob a Bank",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Other Mommy",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Rob Savage",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Der Regenbogenfisch",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Deutschland, Schweiz",
-                       "Regisseur:in":  "Florian Moch",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Godzilla Minus Zero",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Japan",
-                       "Regisseur:in":  "Takashi Yamazaki",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "I Play Rocky",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Peter Farrelly",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Großbritannien",
-                       "Regisseur:in":  "Steve Cox, Matthew Walker",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Bibi Blocksberg - Die total verhexte Zeitreise",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Gregor Schnitzler",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Emil und die Detektive",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "David Dietl",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  "Großbritannien",
-                       "Regisseur:in":  "Steve Cox, Matthew Walker",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "La bola negra",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Spanien, Frankreich",
-                       "Regisseur:in":  "Javier Ambrossi, Javier Calvo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Holi Hamburg",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "You Can See Everything",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-25"
-                   },
-                   {
-                       "Titel":  "Block 10",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Wie verhext",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Ein Ticket für zwei",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1987",
-                       "Datum":  "2026-11-26"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Parkway Drive - Home",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Wie verhext",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Sneak Preview",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "?",
-                       "Regisseur:in":  "?",
-                       "Produktionsjahr":  2038,
-                       "Datum":  "2026-11-27"
-                   },
-                   {
-                       "Titel":  "Block 10",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Parkway Drive - Home",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Wie verhext",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  null,
-                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Wie verhext",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Wie verhext",
-                       "Kino":  "CinemaxX Hamburg-Wandsbek",
-                       "Land":  null,
-                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Kevin allein zu Haus",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1990",
-                       "Datum":  "2026-11-28"
-                   },
-                   {
-                       "Titel":  "Block 10",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Asterix und das Königreich Nubien",
-                       "Kino":  "CinemaxX Hamburg-Dammtor",
-                       "Land":  "Frankreich",
-                       "Regisseur:in":  "Alexandre Heboyan",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Asterix und das Königreich Nubien",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  "Frankreich",
-                       "Regisseur:in":  "Alexandre Heboyan",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Wie verhext",
-                       "Kino":  "CinemaxX Hamburg-Harburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Edward mit den Scherenhänden",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1990",
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-29"
-                   },
-                   {
-                       "Titel":  "Block 10",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "La bola negra",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "Spanien, Frankreich",
-                       "Regisseur:in":  "Javier Ambrossi, Javier Calvo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-11-30"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Sinn und Sinnlichkeit",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Georgia Oakley",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Gremlins - Kleine Monster",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1984",
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-01"
-                   },
-                   {
-                       "Titel":  "Der Perfekte Urlaub",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Bora Dagtekin",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "John Hamburg",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Wild Horse Nine",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Großbritannien, USA",
-                       "Regisseur:in":  "Martin McDonagh",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Chopin - Eine Sonate in Paris",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "Polen",
-                       "Regisseur:in":  "Michał Kwieciński",
-                       "Produktionsjahr":  2025,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Francis Lawrence",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  null,
-                       "Regisseur:in":  "Ti West",
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "Wildwood",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA, Großbritannien, Kanada",
-                       "Regisseur:in":  "Travis Knight",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-02"
-                   },
-                   {
-                       "Titel":  "You Can See Everything",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-03"
-                   },
-                   {
-                       "Titel":  "You Can See Everything",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-04"
-                   },
-                   {
-                       "Titel":  "Double Feature DUNE \u0026 DUNE: PART TWO",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  null,
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  null,
-                       "Datum":  "2026-12-05"
-                   },
-                   {
-                       "Titel":  "You Can See Everything",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-05"
-                   },
-                   {
-                       "Titel":  "Ein seltsames Paar",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1968",
-                       "Datum":  "2026-12-06"
-                   },
-                   {
-                       "Titel":  "Drei Haselnüsse für Aschenbrödel",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "DDR, Tschechoslowakei",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1973",
-                       "Datum":  "2026-12-06"
-                   },
-                   {
-                       "Titel":  "Gremlins - Kleine Monster",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1984",
-                       "Datum":  "2026-12-06"
-                   },
-                   {
-                       "Titel":  "You Can See Everything",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-06"
-                   },
-                   {
-                       "Titel":  "You Can See Everything",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-07"
-                   },
-                   {
-                       "Titel":  "Eyes Wide Shut",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1999",
-                       "Datum":  "2026-12-08"
-                   },
-                   {
-                       "Titel":  "Catch Me If You Can",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "2002",
-                       "Datum":  "2026-12-09"
-                   },
-                   {
-                       "Titel":  "Stirb langsam",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1988",
-                       "Datum":  "2026-12-10"
-                   },
-                   {
-                       "Titel":  "Little Women",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "2019",
-                       "Datum":  "2026-12-12"
-                   },
-                   {
-                       "Titel":  "Ist das Leben nicht schön?",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1946",
-                       "Datum":  "2026-12-13"
-                   },
-                   {
-                       "Titel":  "Liebe braucht keine Ferien",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Nancy Meyers",
-                       "Produktionsjahr":  2006,
-                       "Datum":  "2026-12-13"
-                   },
-                   {
-                       "Titel":  "NT: Fleabag",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "England",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "2019",
-                       "Datum":  "2026-12-13"
-                   },
-                   {
-                       "Titel":  "NT: Fleabag",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "England",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "2019",
-                       "Datum":  "2026-12-14"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three \u0027Early Fan Preview\u0027",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-12-15"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three \u0027Early Fan Preview\u0027",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "2026",
-                       "Datum":  "2026-12-15"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-16"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-16"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-16"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-16"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-17"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-17"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-17"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-18"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-18"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-18"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-19"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-19"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-19"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-20"
-                   },
-                   {
-                       "Titel":  "Jede Frau braucht einen Engel",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1947",
-                       "Datum":  "2026-12-20"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-20"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-20"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-21"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-21"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-21"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-22"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-22"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-22"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-23"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-23"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-23"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-24"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-24"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-24"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-25"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-25"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-25"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-26"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-26"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-26"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-27"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-27"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-27"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-28"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-28"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-29"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-29"
-                   },
-                   {
-                       "Titel":  "Avengers: Doomsday",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Joe Russo, Anthony Russo",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-30"
-                   },
-                   {
-                       "Titel":  "Dune: Part Three",
-                       "Kino":  "Savoy Filmtheater Hamburg",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Denis Villeneuve",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2026-12-30"
-                   },
-                   {
-                       "Titel":  "Singin\u0027 in the Rain",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1952",
-                       "Datum":  "2027-01-03"
-                   },
-                   {
-                       "Titel":  "Lieblingsmenschen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "Deutschland",
-                       "Regisseur:in":  "Helena Hufnagel",
-                       "Produktionsjahr":  2026,
-                       "Datum":  "2027-01-05"
-                   },
-                   {
-                       "Titel":  "Cocktail für eine Leiche",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1948",
-                       "Datum":  "2027-01-17"
-                   },
-                   {
-                       "Titel":  "African Queen",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  null,
-                       "Produktionsjahr":  "1951",
-                       "Datum":  "2027-01-31"
-                   },
-                   {
-                       "Titel":  "Michael",
-                       "Kino":  "Astor Film Lounge HafenCity",
-                       "Land":  "USA",
-                       "Regisseur:in":  "Antoine Fuqua",
-                       "Produktionsjahr":  null,
-                       "Datum":  "2027-02-02"
-                   }
-               ]
+  "stand": "2026-11-23",
+  "zeilen": [
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Hadoota",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Ägypten",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Sneak Preview",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "?",
+      "Regisseur:in": "?",
+      "Produktionsjahr": 2038,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Akte Vuskovic - Doping. Skandal. Zweifel.",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Sneak Preview",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "?",
+      "Regisseur:in": "?",
+      "Produktionsjahr": 2038,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Sneak Preview",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "?",
+      "Regisseur:in": "?",
+      "Produktionsjahr": 2038,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Holi Hamburg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Holi Hamburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Holi Hamburg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "GIANT - The Play",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Nicholas Hytner",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-23"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Akte Vuskovic - Doping. Skandal. Zweifel.",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Festtagsspaß mit Peppa - Das Kinoerlebnis",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Großbritannien",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "OM",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Puella Magi Madoka Magica Der Film - Walpurgisnacht: Rising",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Hadoota",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Ägypten",
+      "Regisseur:in": null,
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Holi Hamburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Holi Hamburg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Holi Hamburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Holi Hamburg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-24"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Volker Schlöndorff",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "How to Rob a Bank",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Other Mommy",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "USA",
+      "Regisseur:in": "Rob Savage",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Regenbogenfisch",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Deutschland, Schweiz",
+      "Regisseur:in": "Florian Moch",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Godzilla Minus Zero",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Japan",
+      "Regisseur:in": "Takashi Yamazaki",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "I Play Rocky",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Peter Farrelly",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Bibi Blocksberg - Die total verhexte Zeitreise",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "Gregor Schnitzler",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Emil und die Detektive",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Deutschland",
+      "Regisseur:in": "David Dietl",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": "Großbritannien",
+      "Regisseur:in": "Steve Cox, Matthew Walker",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Holi Hamburg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Holi Hamburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Holi Hamburg",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "You Can See Everything",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nathan Fielder Lance Oppenheim",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-25"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Wie verhext",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Ein Ticket für zwei",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1987",
+      "Datum": "2026-11-26"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Parkway Drive - Home",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Wie verhext",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Sneak Preview",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "?",
+      "Regisseur:in": "?",
+      "Produktionsjahr": 2038,
+      "Datum": "2026-11-27"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Parkway Drive - Home",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Wie verhext",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": null,
+      "Regisseur:in": "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Wie verhext",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Wie verhext",
+      "Kino": "CinemaxX Hamburg-Wandsbek",
+      "Land": null,
+      "Regisseur:in": "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Kevin allein zu Haus",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1990",
+      "Datum": "2026-11-28"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Asterix und das Königreich Nubien",
+      "Kino": "CinemaxX Hamburg-Dammtor",
+      "Land": "Frankreich",
+      "Regisseur:in": "Alexandre Heboyan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Asterix und das Königreich Nubien",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": "Frankreich",
+      "Regisseur:in": "Alexandre Heboyan",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Wie verhext",
+      "Kino": "CinemaxX Hamburg-Harburg",
+      "Land": null,
+      "Regisseur:in": "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+      "Produktionsjahr": null,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Edward mit den Scherenhänden",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1990",
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-29"
+    },
+    {
+      "Titel": "Block 10",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "La bola negra",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "Spanien, Frankreich",
+      "Regisseur:in": "Javier Ambrossi, Javier Calvo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-11-30"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Sinn und Sinnlichkeit",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Georgia Oakley",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Gremlins - Kleine Monster",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1984",
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-01"
+    },
+    {
+      "Titel": "Der Perfekte Urlaub",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Bora Dagtekin",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "John Hamburg",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Wild Horse Nine",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Großbritannien, USA",
+      "Regisseur:in": "Martin McDonagh",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Chopin - Eine Sonate in Paris",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "Polen",
+      "Regisseur:in": "Michał Kwieciński",
+      "Produktionsjahr": 2025,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": null,
+      "Regisseur:in": "Ti West",
+      "Produktionsjahr": "2026",
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "Wildwood",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA, Großbritannien, Kanada",
+      "Regisseur:in": "Travis Knight",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02"
+    },
+    {
+      "Titel": "You Can See Everything",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nathan Fielder Lance Oppenheim",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-03"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-04"
+    },
+    {
+      "Titel": "You Can See Everything",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nathan Fielder Lance Oppenheim",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-04"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-05"
+    },
+    {
+      "Titel": "Double Feature DUNE & DUNE: PART TWO",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-05"
+    },
+    {
+      "Titel": "You Can See Everything",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nathan Fielder Lance Oppenheim",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-05"
+    },
+    {
+      "Titel": "Ein seltsames Paar",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1968",
+      "Datum": "2026-12-06"
+    },
+    {
+      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Francis Lawrence",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-06"
+    },
+    {
+      "Titel": "Drei Haselnüsse für Aschenbrödel",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "DDR, Tschechoslowakei",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1973",
+      "Datum": "2026-12-06"
+    },
+    {
+      "Titel": "Gremlins - Kleine Monster",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1984",
+      "Datum": "2026-12-06"
+    },
+    {
+      "Titel": "You Can See Everything",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nathan Fielder Lance Oppenheim",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-06"
+    },
+    {
+      "Titel": "You Can See Everything",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nathan Fielder Lance Oppenheim",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-07"
+    },
+    {
+      "Titel": "Eyes Wide Shut",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1999",
+      "Datum": "2026-12-08"
+    },
+    {
+      "Titel": "Catch Me If You Can",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "2002",
+      "Datum": "2026-12-09"
+    },
+    {
+      "Titel": "Stirb langsam",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1988",
+      "Datum": "2026-12-10"
+    },
+    {
+      "Titel": "Little Women",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "2019",
+      "Datum": "2026-12-12"
+    },
+    {
+      "Titel": "Ist das Leben nicht schön?",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1946",
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "Liebe braucht keine Ferien",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Nancy Meyers",
+      "Produktionsjahr": 2006,
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "NT: Fleabag",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "England",
+      "Regisseur:in": null,
+      "Produktionsjahr": "2019",
+      "Datum": "2026-12-13"
+    },
+    {
+      "Titel": "NT: Fleabag",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "England",
+      "Regisseur:in": null,
+      "Produktionsjahr": "2019",
+      "Datum": "2026-12-14"
+    },
+    {
+      "Titel": "Dune: Part Three 'Early Fan Preview'",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "2026",
+      "Datum": "2026-12-15"
+    },
+    {
+      "Titel": "Dune: Part Three 'Early Fan Preview'",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "2026",
+      "Datum": "2026-12-15"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-16"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-16"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-16"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-16"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-17"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-17"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-17"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-18"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-18"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-18"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-19"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-19"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-19"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-20"
+    },
+    {
+      "Titel": "Jede Frau braucht einen Engel",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1947",
+      "Datum": "2026-12-20"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-20"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-20"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-21"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-21"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-21"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-22"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-22"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-22"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-23"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-23"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-23"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-24"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-24"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-24"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-25"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-25"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-25"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-26"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-26"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-26"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-27"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-27"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-27"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-28"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-28"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-29"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-29"
+    },
+    {
+      "Titel": "Avengers: Doomsday",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Joe Russo, Anthony Russo",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-30"
+    },
+    {
+      "Titel": "Dune: Part Three",
+      "Kino": "Savoy Filmtheater Hamburg",
+      "Land": "USA",
+      "Regisseur:in": "Denis Villeneuve",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-30"
+    },
+    {
+      "Titel": "Singin' in the Rain",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1952",
+      "Datum": "2027-01-03"
+    },
+    {
+      "Titel": "Lieblingsmenschen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "Deutschland",
+      "Regisseur:in": "Helena Hufnagel",
+      "Produktionsjahr": 2026,
+      "Datum": "2027-01-05"
+    },
+    {
+      "Titel": "Cocktail für eine Leiche",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1948",
+      "Datum": "2027-01-17"
+    },
+    {
+      "Titel": "African Queen",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": null,
+      "Produktionsjahr": "1951",
+      "Datum": "2027-01-31"
+    },
+    {
+      "Titel": "Michael",
+      "Kino": "Astor Film Lounge HafenCity",
+      "Land": "USA",
+      "Regisseur:in": "Antoine Fuqua",
+      "Produktionsjahr": null,
+      "Datum": "2027-02-02"
+    }
+  ]
 }

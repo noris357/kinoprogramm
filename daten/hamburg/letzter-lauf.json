@@ -1,104 +1,83 @@
 {
-    "abfragetag":  "2026-11-23",
-    "kinos":  [
-                  {
-                      "kino":  "CinemaxX Hamburg-Dammtor",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-23",
-                      "bis":  "2026-11-29",
-                      "bestaetigt":  0,
-                      "neu":  35,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "CinemaxX Hamburg-Wandsbek",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-23",
-                      "bis":  "2026-11-28",
-                      "bestaetigt":  0,
-                      "neu":  18,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "CinemaxX Hamburg-Harburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-23",
-                      "bis":  "2026-11-29",
-                      "bestaetigt":  0,
-                      "neu":  31,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Holi Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-23",
-                      "bis":  "2026-11-25",
-                      "bestaetigt":  0,
-                      "neu":  10,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Astor Film Lounge HafenCity",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-23",
-                      "bis":  "2027-06-22",
-                      "bestaetigt":  0,
-                      "neu":  71,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Savoy Filmtheater Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-23",
-                      "bis":  "2027-01-25",
-                      "bestaetigt":  0,
-                      "neu":  75,
-                      "entfernt":  0
-                  }
-              ],
-    "neueFilme":  [
-                      "African Queen",
-                      "Akte Vuskovic - Doping. Skandal. Zweifel.",
-                      "Catch Me If You Can",
-                      "Cocktail für eine Leiche",
-                      "Double Feature DUNE \u0026 DUNE: PART TWO",
-                      "Drei Haselnüsse für Aschenbrödel",
-                      "Dune: Part Three \u0027Early Fan Preview\u0027",
-                      "Edward mit den Scherenhänden",
-                      "Ein seltsames Paar",
-                      "Ein Ticket für zwei",
-                      "Eyes Wide Shut",
-                      "Gremlins - Kleine Monster",
-                      "Ist das Leben nicht schön?",
-                      "Jede Frau braucht einen Engel",
-                      "Kevin allein zu Haus",
-                      "Little Women",
-                      "NT: Fleabag",
-                      "Singin\u0027 in the Rain",
-                      "Stirb langsam",
-                      "Wie verhext"
-                  ],
-    "ausgeschlossen":  [
-                           "Alice im Wunderland - Wheeldon (Royal Ballet \u0026 Opera 2026/27)",
-                           "Berliner Philharmoniker - Live im Kino 2026/27: Silvesterkonzert",
-                           "Cosi fan tutte - Mozart (Royal Ballet \u0026 Opera 2026/27 live)",
-                           "Der Nussknacker - Tschaikowsky (Royal Ballet \u0026 Opera 2026/27)",
-                           "Die große Quiznacht by Monkey-Quiz (Savoy)",
-                           "Film Quiz #5 by Monkey-Quiz (Savoy)",
-                           "Götterdämmerung - Wagner (Royal Ballet \u0026 Opera 2026/27 live)",
-                           "La fanciulla del west - Puccini (MET 2026/27)",
-                           "Manon - Massenet (MET 2026/27)",
-                           "Otello - Verdi (MET 2026/27)",
-                           "Parsifal - Wagner (MET 2026/27)",
-                           "Romeo und Julia - Prokofjew (Royal Ballet \u0026 Opera 2026/27)",
-                           "Samson et Dalila - Saint-Saens (MET 2026/27)",
-                           "Schwanensee - Tschaikowsky (Royal Ballet \u0026 Opera 2026/27 live)",
-                           "Tosca - Puccini (Royal Ballet \u0026 Opera 2026/27 live)"
-                       ]
+  "abfragetag": "2026-11-23",
+  "kinos": [
+    {
+      "kino": "Astor Film Lounge HafenCity",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-23",
+      "bis": "2027-06-22",
+      "bestaetigt": 68,
+      "neu": 0,
+      "entfernt": 0
+    },
+    {
+      "kino": "CinemaxX Hamburg-Dammtor",
+      "ok": false,
+      "fehler": "Response status code does not indicate success: 401 (Unauthorized).",
+      "von": null,
+      "bis": null,
+      "bestaetigt": 0,
+      "neu": 0,
+      "entfernt": 0
+    },
+    {
+      "kino": "CinemaxX Hamburg-Harburg",
+      "ok": false,
+      "fehler": "Response status code does not indicate success: 401 (Unauthorized).",
+      "von": null,
+      "bis": null,
+      "bestaetigt": 0,
+      "neu": 0,
+      "entfernt": 0
+    },
+    {
+      "kino": "CinemaxX Hamburg-Wandsbek",
+      "ok": false,
+      "fehler": "Response status code does not indicate success: 401 (Unauthorized).",
+      "von": null,
+      "bis": null,
+      "bestaetigt": 0,
+      "neu": 0,
+      "entfernt": 0
+    },
+    {
+      "kino": "Holi Hamburg",
+      "ok": false,
+      "fehler": "Response status code does not indicate success: 401 (Unauthorized).",
+      "von": null,
+      "bis": null,
+      "bestaetigt": 0,
+      "neu": 0,
+      "entfernt": 0
+    },
+    {
+      "kino": "Savoy Filmtheater Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-23",
+      "bis": "2027-01-25",
+      "bestaetigt": 72,
+      "neu": 3,
+      "entfernt": 1
+    }
+  ],
+  "neueFilme": [],
+  "ausgeschlossen": [
+    "Alice im Wunderland - Wheeldon (Royal Ballet & Opera 2026/27)",
+    "Berliner Philharmoniker - Live im Kino 2026/27: Silvesterkonzert",
+    "Cosi fan tutte - Mozart (Royal Ballet & Opera 2026/27 live)",
+    "Der Nussknacker - Tschaikowsky (Royal Ballet & Opera 2026/27)",
+    "Die große Quiznacht by Monkey-Quiz (Savoy)",
+    "Film Quiz #5 by Monkey-Quiz (Savoy)",
+    "Götterdämmerung - Wagner (Royal Ballet & Opera 2026/27 live)",
+    "La fanciulla del west - Puccini (MET 2026/27)",
+    "Manon - Massenet (MET 2026/27)",
+    "Otello - Verdi (MET 2026/27)",
+    "Parsifal - Wagner (MET 2026/27)",
+    "Romeo und Julia - Prokofjew (Royal Ballet & Opera 2026/27)",
+    "Samson et Dalila - Saint-Saens (MET 2026/27)",
+    "Schwanensee - Tschaikowsky (Royal Ballet & Opera 2026/27 live)",
+    "Tosca - Puccini (Royal Ballet & Opera 2026/27 live)"
+  ]
 }
