@@ -11,7 +11,10 @@ function Get-LammProgramm {
       $kopf = [regex]::Match($art.Groups[2].Value, '(?s)<h[1-4][^>]*>(.*?)</h[1-4]>')
       if (-not $kopf.Success) { continue }
       $titel = ConvertFrom-Html $kopf.Groups[1].Value
-      foreach ($d in $tage) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $d }); $alleTage.Add($d) }
+      # Link zur Filmseite: /filme/<name>/
+      $pfad = [regex]::Match($art.Groups[2].Value, 'href="(/filme/[^"]+)"').Groups[1].Value
+      $link = if ($pfad) { "https://www.lamm-lichtspiele.de$pfad" } else { $null }
+      foreach ($d in $tage) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $d; Link = $link }); $alleTage.Add($d) }
     }
     if (-not $erg.Termine.Count) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
     $sortiert = $alleTage | Sort-Object

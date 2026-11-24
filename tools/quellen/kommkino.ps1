@@ -8,8 +8,9 @@ function Get-KommKinoProgramm {
     $html = Get-Seite $erg.Url
     # Vergangene Tage verlinken auf /component/icagenda/..., kommende auf /spielzeiten/...
     # Der Treffer darf nicht ueber den naechsten Link hinausreichen, sonst bekommt ein Film das Datum eines anderen Links
-    $termine = [regex]::Matches($html, '(?s)<a href="/(?:spielzeiten|component/icagenda)/\d+-[^/"]+/(\d{4}-\d\d-\d\d)-\d\d-\d\d">(?:(?!<a\s).)*?titletip">\s*(.*?)\s*</div>') |
-      ForEach-Object { [pscustomobject]@{ Titel = ConvertFrom-Html $_.Groups[2].Value; Datum = $_.Groups[1].Value } } |
+    # Der Link fuehrt direkt zur Vorstellung (Seite mit Film, Uhrzeit und Reservierung)
+    $termine = [regex]::Matches($html, '(?s)<a href="(/(?:spielzeiten|component/icagenda)/\d+-[^/"]+/(\d{4}-\d\d-\d\d)-\d\d-\d\d)">(?:(?!<a\s).)*?titletip">\s*(.*?)\s*</div>') |
+      ForEach-Object { [pscustomobject]@{ Titel = ConvertFrom-Html $_.Groups[3].Value; Datum = $_.Groups[2].Value; Link = 'https://www.kommkino.de' + $_.Groups[1].Value } } |
       Sort-Object Titel, Datum -Unique
     if (-not $termine) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
     $termine | ForEach-Object { $erg.Termine.Add($_) }

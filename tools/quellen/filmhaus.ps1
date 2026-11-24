@@ -79,7 +79,7 @@ function Get-FilmhausProgramm {
       $d = Read-FilmhausDetail (Get-Seite ($script:KkqBasis + $k.Url))
       $ziel = if ($d.KommKino) { $kk } else { $fh }
       foreach ($tag in $d.Daten) {
-        $ziel.Termine.Add([pscustomobject]@{ Titel = $k.Titel; Datum = $tag; Land = $d.Land; Jahr = $d.Jahr; Regie = $d.Regie; Reihe = $d.Reihe })
+        $ziel.Termine.Add([pscustomobject]@{ Titel = $k.Titel; Datum = $tag; Land = $d.Land; Jahr = $d.Jahr; Regie = $d.Regie; Reihe = $d.Reihe; Link = ($script:KkqBasis + ($k.Url -replace '#.*$', '')) })
       }
     }
 

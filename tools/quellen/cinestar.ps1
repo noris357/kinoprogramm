@@ -11,7 +11,9 @@ function Get-CineStarProgramm {
       if (-not $f.title) { continue }
       foreach ($s in @($f.showtimes)) {
         $d = [regex]::Match([string]$s.datetime, '^\d{4}-\d\d-\d\d')
-        if ($d.Success) { $erg.Termine.Add([pscustomobject]@{ Titel = [string]$f.title; Datum = $d.Value }) }
+        # detailLink: Filmseite, z. B. /kino-erlangen/film/<name>
+        $link = if ($f.detailLink) { 'https://www.cinestar.de' + [string]$f.detailLink } else { $null }
+        if ($d.Success) { $erg.Termine.Add([pscustomobject]@{ Titel = [string]$f.title; Datum = $d.Value; Link = $link }) }
       }
     }
     if (-not $erg.Termine.Count) { throw 'Keine Vorstellungen gefunden. Hat sich die Schnittstelle geaendert?' }

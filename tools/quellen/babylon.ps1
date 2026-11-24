@@ -9,7 +9,8 @@ function Read-ScreeningEvents([string]$Html) {
     $datum = [regex]::Match($block.Groups[1].Value, '"startDate"\s*:\s*"(\d{4}-\d\d-\d\d)')
     if (-not $datum.Success) { continue }
     $titel = if ($obj.workPresented.name) { $obj.workPresented.name } else { $obj.name }
-    [pscustomobject]@{ Titel = [System.Net.WebUtility]::HtmlDecode($titel).Trim(); Datum = $datum.Groups[1].Value }
+    # url: Filmseite beim Babylon, z. B. https://babylon-kino-fuerth.de/de/movie/934/der-regenbogenfisch
+    [pscustomobject]@{ Titel = [System.Net.WebUtility]::HtmlDecode($titel).Trim(); Datum = $datum.Groups[1].Value; Link = $(if ($obj.url) { [string]$obj.url } else { $null }) }
   }
 }
 

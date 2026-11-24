@@ -138,7 +138,12 @@ function Get-CasablancaProgramm {
         $j = [regex]::Match($zeile, '\b(19|20)\d{2}\b'); if ($j.Success) { $jahr = $j.Value }
         $r = [regex]::Match($zeile, '\bR:\s*([^|]+)'); if ($r.Success) { $regie = ($r.Groups[1].Value.Trim() -replace '\s*&\s*', ', ') }
       }
-      if ($titel) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $datum; Jahr = $jahr; Regie = $regie }) }
+      # Seite der Veranstaltung (permalink). Sie steht nach "start" im selben Eintrag, also vor dem naechsten "title".
+      $rest = $html.Substring($m.Index + $m.Length, [Math]::Min(6000, $html.Length - $m.Index - $m.Length))
+      $naechster = $rest.IndexOf('{"title":'); if ($naechster -gt 0) { $rest = $rest.Substring(0, $naechster) }
+      $pl = [regex]::Match($rest, '"permalink":"((?:[^"\\]|\\.)*)"')
+      $link = if ($pl.Success) { (ConvertFrom-JsonText $pl.Groups[1].Value) -replace '\?wcs_timestamp=\d+$', '' } else { $null }
+      if ($titel) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $datum; Jahr = $jahr; Regie = $regie; Link = $link }) }
     }
     if (-not $erg.Termine.Count) {
       $seitentitel = ConvertFrom-Html ([regex]::Match($html, '(?s)<title>(.*?)</title>').Groups[1].Value)

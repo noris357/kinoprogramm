@@ -57,12 +57,17 @@ function Get-CineplexAusEingang {
         $roh = [IO.File]::ReadAllText($d.FullName, [Text.Encoding]::UTF8)
         if ($roh -notmatch 'performanceDateAndTime') { continue }
         $text = $roh.Replace('\"', '"')
+        # Filmseiten stehen in der Seite als cineplex.de/fuerth/film/<name>-<Filmkennung>, die Kennung auch je Film
+        # als "movieWinTicketFilmId". Daraus wird der Link je Film.
+        $seiten = @{}
+        foreach ($s in [regex]::Matches($text, '(https://www\.cineplex\.de/fuerth/film/[a-z0-9-]+-([A-Z0-9]{18}))')) { $seiten[$s.Groups[2].Value] = $s.Groups[1].Value }
         # Vorstellungen der Reihe nach dem zuletzt genannten Film zuordnen
-        $titel = $null
-        foreach ($m in [regex]::Matches($text, '"movieTitle":"((?:[^"\\]|\\.)*)"|"performanceDateAndTime":"(\d{4}-\d\d-\d\d)T[^"]*","auditoriumName":"[^"]*","centerName":"([^"]*)"')) {
-          if ($m.Groups[1].Success) { $titel = [System.Net.WebUtility]::HtmlDecode(($m.Groups[1].Value -replace '\\u0026', '&')); continue }
+        $titel = $null; $link = $null
+        foreach ($m in [regex]::Matches($text, '"movieTitle":"((?:[^"\\]|\\.)*)"|"movieWinTicketFilmId":"([A-Z0-9]+)"|"performanceDateAndTime":"(\d{4}-\d\d-\d\d)T[^"]*","auditoriumName":"[^"]*","centerName":"([^"]*)"')) {
+          if ($m.Groups[1].Success) { $titel = [System.Net.WebUtility]::HtmlDecode(($m.Groups[1].Value -replace '\\u0026', '&')); $link = $null; continue }
+          if ($m.Groups[2].Success) { $link = $seiten[$m.Groups[2].Value]; continue }
           # Im Webarchiv kann der Name anders kodiert sein, deshalb "F.rth"
-          if ($titel -and ($m.Groups[3].Value -replace 'F.{1,2}rth', 'Fürth') -eq $center) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $m.Groups[2].Value }) }
+          if ($titel -and ($m.Groups[4].Value -replace 'F.{1,2}rth', 'Fürth') -eq $center) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $m.Groups[3].Value; Link = $link }) }
         }
       }
       if (-not $erg.Termine.Count) { throw "Keine Vorstellungen fuer $center in den gespeicherten Seiten." }

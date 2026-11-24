@@ -13,6 +13,6 @@ function Get-AlleProgramme {
   Get-CasablancaFlyer        # Tagesprogramm aus Wochenflyer und Monatsprogramm (PDF)
   Get-CineStarProgramm
   Get-AdmiralProgramm        # eigene Website des Admiral
-  Get-CineamoProgramme nuernberg   # Cineplex Fuerth ueber cineamo.com (regulaeres Wochenprogramm)
   Get-CineplexAusEingang     # Cineplex Fuerth ergaenzend aus gespeicherter Seite in eingang/ (Sondertermine, Vorverkauf)
+  Get-CineamoProgramme nuernberg   # Cineplex Fuerth ueber cineamo.com (regulaeres Wochenprogramm)
 }

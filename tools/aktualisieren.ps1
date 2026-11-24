@@ -38,6 +38,8 @@ $bestand = @($bestandRoh | Where-Object { $_.Datum } | ForEach-Object {
   $z = [pscustomobject][ordered]@{ Titel = $_.Titel; Kino = $_.Kino; Land = $_.Land; 'Regisseur:in' = $_.'Regisseur:in'; Produktionsjahr = $_.Produktionsjahr; Datum = (ConvertTo-IsoText $_.Datum) }
   # Reihe (bisher nur Filmhaus) nur dort führen, wo sie bekannt ist, damit programm.json nicht anschwillt
   if ($_.PSObject.Properties['Reihe'] -and $_.Reihe) { $z | Add-Member Reihe $_.Reihe }
+  # Link zur Filmseite des Kinos nur fuer kommende Termine, fuer vergangene Tage braucht es ihn nicht mehr
+  if ($_.PSObject.Properties['Link'] -and $_.Link -and (ConvertTo-IsoText $_.Datum) -ge (Get-Heute).ToString('yyyy-MM-dd')) { $z | Add-Member Link $_.Link }
   $z
 })
 $heute = (Get-Heute).ToString('yyyy-MM-dd')
@@ -147,6 +149,8 @@ foreach ($e in $ergebnisse) {
         $bekannt[(Get-TitelSchluessel $titel)] = $zeile
       }
       if ($t.PSObject.Properties['Reihe'] -and $t.Reihe) { $zeile = $zeile.PSObject.Copy(); $zeile | Add-Member Reihe $t.Reihe -Force }
+      # Link zur Filmseite des Kinos, Kopie wie bei der Reihe, damit $bekannt unveraendert bleibt
+      if ($t.PSObject.Properties['Link'] -and $t.Link) { $zeile = $zeile.PSObject.Copy(); $zeile | Add-Member Link $t.Link -Force }
       $s = "$(Get-TitelSchluessel $zeile.Titel)|$($e.Kino)|$($t.Datum)"
       if ($entfernt.ContainsKey($s)) { $entfernt.Remove($s); $bestaetigt++ } else { $hinzu++ }
       $neu.Add($zeile)
@@ -160,10 +164,14 @@ foreach ($e in $ergebnisse) {
 }
 
 # Doppelte Zeilen (gleicher Film, gleiches Kino, gleicher Tag) entfernen
+# Hat die behaltene Zeile keinen Link zur Filmseite, die doppelte aber schon (z. B. bei Quellen, die nur ergaenzen),
+# wird der Link uebernommen.
 $gesehen = @{}
 $ergebnis = foreach ($z in $neu) {
   $s = "$($z.Titel)|$($z.Produktionsjahr)|$($z.Kino)|$($z.Datum)"
-  if (-not $gesehen.ContainsKey($s)) { $gesehen[$s] = $true; $z }
+  if (-not $gesehen.ContainsKey($s)) { $gesehen[$s] = $z; $z; continue }
+  $alt = $gesehen[$s]
+  if ($z.PSObject.Properties['Link'] -and $z.Link -and -not ($alt.PSObject.Properties['Link'] -and $alt.Link)) { $alt | Add-Member Link $z.Link -Force }
 }
 $ergebnis = @($ergebnis | Sort-Object Datum, Kino, Titel)
 

@@ -14,12 +14,15 @@ $script:CinecittaKinos = [ordered]@{
 
 function Read-CinecittaSeite([string]$Html) {
   $termine = New-Object System.Collections.Generic.List[object]
-  $titelTreffer = [regex]::Matches($Html, 'aria-label="Filminfos zu ([^"]+)"')
+  # Titel und Link zur Filmseite stehen im Knopf "Filminfos": aria-label="Filminfos zu <Titel>" href="/filme/<name>/"
+  $titelTreffer = [regex]::Matches($Html, 'aria-label="Filminfos zu ([^"]+)"(?:\s+href="([^"]+)")?')
   for ($i = 0; $i -lt $titelTreffer.Count; $i++) {
     $start = $titelTreffer[$i].Index
     $ende = if ($i + 1 -lt $titelTreffer.Count) { $titelTreffer[$i + 1].Index } else { $Html.Length }
     $block = $Html.Substring($start, $ende - $start)
     $titel = [System.Net.WebUtility]::HtmlDecode($titelTreffer[$i].Groups[1].Value).Trim()
+    $link = $titelTreffer[$i].Groups[2].Value
+    $link = if ($link) { 'https://www.cinecitta.de' + [System.Net.WebUtility]::HtmlDecode($link) } else { $null }
 
     foreach ($tab in [regex]::Matches($block, '(?s)<table[^>]*film-list-table.*?</table>')) {
       $t = $tab.Value
@@ -41,7 +44,7 @@ function Read-CinecittaSeite([string]$Html) {
             $performance = [regex]::Match($a.Groups[1].Value, 'performance=([A-Za-z0-9]+)').Groups[1].Value
             [pscustomobject]@{ Zeit = $a.Groups[2].Value; Stufe = $stufe; Performance = $performance }
           })
-          $termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j]; Center = $center; Vorstellungen = $vorstellungen })
+          $termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j]; Center = $center; Vorstellungen = $vorstellungen; Link = $link })
         }
       }
       foreach ($d in $tage) { $termine.Add([pscustomobject]@{ Titel = $null; Datum = $d; Center = $null }) } # nur fuer das Abfragefenster
@@ -109,7 +112,7 @@ function Get-CinecittaProgramme {
       $erg | Add-Member -NotePropertyName Vorstellungen -NotePropertyValue $einzeln
       $echt = $echt | Sort-Object Titel, Datum -Unique
       if (-not $echt) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }
-      foreach ($e in $echt) { $erg.Termine.Add([pscustomobject]@{ Titel = $e.Titel; Datum = $e.Datum }) }
+      foreach ($e in $echt) { $erg.Termine.Add([pscustomobject]@{ Titel = $e.Titel; Datum = $e.Datum; Link = $e.Link }) }
       $erg.Von = $fenster | Select-Object -First 1
       $erg.Bis = $fenster | Select-Object -Last 1
       $erg.Ok = $true

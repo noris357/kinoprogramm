@@ -11,6 +11,9 @@ function Get-UferpalastProgramm {
       $kopf = [regex]::Match($teil, '(?s)<h2 class="item-title">(.*?)</h2>')
       if (-not $kopf.Success) { continue }
       $titel = ConvertFrom-Html $kopf.Groups[1].Value
+      # Link zum Artikel des Films (index.php?view=article&id=...)
+      $pfad = [regex]::Match($teil, 'href="(/index\.php\?view=article[^"]+)"').Groups[1].Value
+      $link = if ($pfad) { 'https://www.uferpalast.de' + [System.Net.WebUtility]::HtmlDecode($pfad) } else { $null }
       foreach ($tab in [regex]::Matches($teil, '(?s)<table.*?</table>')) {
         $zeilen = @([regex]::Matches($tab.Value, '(?s)<tr.*?</tr>') | ForEach-Object { , @([regex]::Matches($_.Value, '(?s)<td[^>]*>(.*?)</td>') | ForEach-Object { ConvertFrom-Html $_.Groups[1].Value }) })
         if ($zeilen.Count -lt 2) { continue }
@@ -19,7 +22,7 @@ function Get-UferpalastProgramm {
           if (-not $tage[$j]) { continue }
           $fenster.Add($tage[$j])
           $spielt = $zeilen | Select-Object -Skip 1 | Where-Object { $j -lt $_.Count -and $_[$j] -match '\d{1,2}[:.]\d{2}' }
-          if ($spielt) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j] }) }
+          if ($spielt) { $erg.Termine.Add([pscustomobject]@{ Titel = $titel; Datum = $tage[$j]; Link = $link }) }
         }
       }
     }

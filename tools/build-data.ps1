@@ -331,6 +331,8 @@ foreach ($g in $gruppen.Values) {
 $termine = New-Object System.Collections.Generic.List[object]
 $reihen = New-Object System.Collections.Generic.List[string]
 $reiheIndex = @{}
+$filmLinks = New-Object System.Collections.Generic.List[string]
+$linkIndex = @{}
 $doppelt = @{}
 foreach ($z in $zeilen) {
   if (-not $kinoIndex.ContainsKey($z.Kino)) {
@@ -343,13 +345,20 @@ foreach ($z in $zeilen) {
   $s = "$f|$($kinoIndex[$z.Kino])|$d"
   if ($doppelt.ContainsKey($s)) { continue }
   $doppelt[$s] = $true
-  # Vierter Wert: Index der Reihe in "reihen" (bisher nur Filmhaus), sonst entfällt er
+  # Vierter Wert: Index der Reihe in "reihen" (bisher nur Filmhaus), fuenfter: Index des Links zur Filmseite des Kinos
+  # in "filmLinks" (nur kommende Termine). Fehlt beides, entfallen sie, fehlt nur die Reihe, steht dort null.
+  $r = $null; $l = $null
   if ($z.PSObject.Properties['Reihe'] -and $z.Reihe) {
     if (-not $reiheIndex.ContainsKey($z.Reihe)) { $reiheIndex[$z.Reihe] = $reihen.Count; $reihen.Add($z.Reihe) }
-    $termine.Add(@($f, $kinoIndex[$z.Kino], $d, $reiheIndex[$z.Reihe]))
-  } else {
-    $termine.Add(@($f, $kinoIndex[$z.Kino], $d))
+    $r = $reiheIndex[$z.Reihe]
   }
+  if ($z.PSObject.Properties['Link'] -and $z.Link) {
+    if (-not $linkIndex.ContainsKey($z.Link)) { $linkIndex[$z.Link] = $filmLinks.Count; $filmLinks.Add($z.Link) }
+    $l = $linkIndex[$z.Link]
+  }
+  if ($null -ne $l) { $termine.Add(@($f, $kinoIndex[$z.Kino], $d, $r, $l)) }
+  elseif ($null -ne $r) { $termine.Add(@($f, $kinoIndex[$z.Kino], $d, $r)) }
+  else { $termine.Add(@($f, $kinoIndex[$z.Kino], $d)) }
 }
 
 # ---------- Festivals aus Reihen erkennen ----------
@@ -358,7 +367,7 @@ foreach ($z in $zeilen) {
 # Von Hand gepflegte Festivals mit passendem Feld "reihe" haben auf der Website Vorrang.
 $erkannt = New-Object System.Collections.Generic.List[object]
 $festivalMuster = '(?i)filmtage|musiktage|kinotage|festival|filmfest|filmwoche|filmtag\b|cinema!\s*italia'
-foreach ($g in @($termine | Where-Object { $_.Count -gt 3 } | Group-Object { "$($_[1])|$($_[3])" })) {
+foreach ($g in @($termine | Where-Object { $_.Count -gt 3 -and $null -ne $_[3] } | Group-Object { "$($_[1])|$($_[3])" })) {
   $k = [int]$g.Group[0][1]
   foreach ($teil in ($reihen[[int]$g.Group[0][3]] -split '\s*\|\s*')) {
     if ($teil -notmatch $festivalMuster) { continue }
@@ -437,6 +446,7 @@ $daten = [ordered]@{
   luecke       = $luecke
   festivals    = $festivals
   reihen       = $reihen
+  filmLinks    = $filmLinks
   festivalsErkannt = $erkannt.ToArray()
 }
 

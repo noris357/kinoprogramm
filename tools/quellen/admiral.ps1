@@ -27,6 +27,8 @@ function Get-AdmiralProgramm {
         Datum = [TimeZoneInfo]::ConvertTime($beginn, $berlin).ToString('yyyy-MM-dd')
         Regie = $(if ($info -and $info.Regie) { $info.Regie } else { $null })
         Jahr  = $(if ($info) { $info.Jahr } else { $null })
+        # @id ist die Filmseite bei cineplex.de mit "#film" am Ende
+        Link  = ($m.Groups[2].Value -replace '#.*$', '')
       })
     }
     if (-not $erg.Termine.Count) { throw 'Keine Vorstellungen gefunden. Hat sich der Aufbau der Seite geaendert?' }

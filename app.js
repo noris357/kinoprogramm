@@ -110,8 +110,10 @@
       jahrzehnt: j > 1880 && j <= new Date().getFullYear() + 1 ? `${Math.floor(j / 10) * 10}er` : null,
     };
   });
-  // r: Index der Reihe in D.reihen (bisher nur Filmhaus), sonst undefined
-  const termine = D.termine.map(([f, k, d, r]) => ({ f, k, d, r }));
+  // r: Index der Reihe in D.reihen (bisher nur Filmhaus), sonst undefined oder null
+  // l: Index des Links zur Filmseite des Kinos in D.filmLinks (nur kommende Termine)
+  const termine = D.termine.map(([f, k, d, r, l]) => ({ f, k, d, r, l }));
+  const FILM_LINKS = D.filmLinks || [];
 
   const alleDaten = termine.map((t) => t.d).sort();
   const ERSTER = alleDaten[0];
@@ -2188,7 +2190,14 @@
     const f = filme[fid];
     const nachKino = new Map();
     const alleTage = [];
-    termine.filter((t) => t.f === fid).forEach((t) => { alleTage.push(t.d); if (!nachKino.has(t.k)) nachKino.set(t.k, []); nachKino.get(t.k).push(t.d); });
+    // Link je Kino und Tag: Filmseite des Kinos, sonst dessen Programmseite
+    const tagLink = new Map();
+    termine.filter((t) => t.f === fid).forEach((t) => {
+      alleTage.push(t.d);
+      if (!nachKino.has(t.k)) nachKino.set(t.k, []);
+      nachKino.get(t.k).push(t.d);
+      if (t.l != null && FILM_LINKS[t.l]) tagLink.set(`${t.k}|${t.d}`, FILM_LINKS[t.l]);
+    });
     alleTage.sort();
     const anzahlVorbei = alleTage.filter((d) => d < HEUTE).length;
     const hatKommend = alleTage.some((d) => d >= HEUTE);
@@ -2199,12 +2208,13 @@
       ds.sort();
       const sicht = ds.filter((d) => vorbeiSichtbar || d >= HEUTE);
       if (!sicht.length) return '';
-      const link = kinos[k].link;
       const chips = sicht.map((d) => {
         const klasse = d >= HEUTE ? 'kommend' : 'vorbei';
-        // Kommende Spieltage führen zur Programmseite des Kinos, sofern bekannt
+        // Kommende Spieltage führen zur Filmseite des Kinos, sonst zu dessen Programmseite, sofern bekannt
+        const film = tagLink.get(`${k}|${d}`);
+        const link = film || kinos[k].link;
         return d >= HEUTE && link
-          ? `<a class="chip ${klasse}" href="${esc(link)}" target="_blank" rel="noopener" title="${datum(d)}, Programm im Kino ansehen">${datumKurz(d)}</a>`
+          ? `<a class="chip ${klasse}" href="${esc(link)}" target="_blank" rel="noopener" title="${datum(d)}, ${film ? 'Film beim Kino ansehen' : 'Programm im Kino ansehen'}">${datumKurz(d)}</a>`
           : `<span class="chip ${klasse}" title="${datum(d)}">${datumKurz(d)}</span>`;
       }).join('');
       return `<div class="termin-gruppe"><h4>${esc(kinos[k].name)} <span class="meta">· ${sicht.length} ${sicht.length === 1 ? 'Tag' : 'Tage'}</span></h4><div class="chips">${chips}</div></div>`;

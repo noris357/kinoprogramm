@@ -43,7 +43,7 @@ function Get-CineamoProgramme([string]$Region) {
           $s = "$($info.Titel)|$d"
           if ($einmal.ContainsKey($s)) { continue }
           $einmal[$s] = $true
-          $erg.Termine.Add([pscustomobject]@{ Titel = $info.Titel; Datum = $d; Jahr = $info.Jahr })
+          $erg.Termine.Add([pscustomobject]@{ Titel = $info.Titel; Datum = $d; Jahr = $info.Jahr; Link = "https://www.cineamo.com/de-DE/filme/$name" })
         }
       }
       $alle = @($erg.Termine | ForEach-Object Datum | Sort-Object)
