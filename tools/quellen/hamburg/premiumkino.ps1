@@ -1,4 +1,4 @@
-# Ausleser fuer die Kinos der Plattform premiumkino.de in Hamburg (Astor Film Lounge HafenCity, Savoy).
+﻿# Ausleser fuer die Kinos der Plattform premiumkino.de in Hamburg (Astor Film Lounge HafenCity, Savoy).
 # Die Website laedt das ganze Programm aus https://backend.premiumkino.de/v1/de/<kennung>/program:
 #   movies[]       id, name, year, country, minutes
 #   performances[] movieId, cinemaDay (Spieltag), begin

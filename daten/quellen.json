@@ -91,6 +91,19 @@
     { "bezeichnung_in_excel": "CinemaxX Hamburg-Harburg", "programm_url": "https://www.cinemaxx.de/kinoprogramm/hamburg-harburg/jetzt-im-kino", "hinweis": "Hamburg" },
     { "bezeichnung_in_excel": "Holi Hamburg", "programm_url": "https://www.cinemaxx.de/kinoprogramm/holi-hamburg/jetzt-im-kino", "hinweis": "Hamburg, gehört zu CinemaxX" },
     { "bezeichnung_in_excel": "Astor Film Lounge HafenCity", "programm_url": "https://hamburg.premiumkino.de/", "hinweis": "Hamburg" },
-    { "bezeichnung_in_excel": "Savoy Filmtheater Hamburg", "programm_url": "https://savoy.premiumkino.de/", "hinweis": "Hamburg" }
+    { "bezeichnung_in_excel": "Savoy Filmtheater Hamburg", "programm_url": "https://savoy.premiumkino.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "UCI Hamburg-Mundsburg", "programm_url": "https://www.uci-kinowelt.de/kinoprogramm/hh-mundsburg/52/poster", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "UCI Hamburg-Wandsbek", "programm_url": "https://www.uci-kinowelt.de/kinoprogramm/hh-wandsbek-smart-city/54/poster", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Kinopolis HafenCity", "programm_url": "https://www.kinopolis.de/hh/programm", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Studio-Kino Hamburg", "programm_url": "https://www.studio-kino.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Elbe-Kino Hamburg", "programm_url": "https://www.elbe-kino.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Blankeneser Kino", "programm_url": "https://www.blankeneserkino.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Koralle-Kino Hamburg", "programm_url": "https://www.korallekino.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Abaton Hamburg", "programm_url": "https://www.abaton.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Zeise Kinos", "programm_url": "https://www.zeise.de/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "3001 Kino", "programm_url": "https://www.3001-kino.de/spielplan/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "B-Movie", "programm_url": "https://www.b-movie.de/programm/", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Metropolis Hamburg", "programm_url": "https://www.metropoliskino.de/kalender", "hinweis": "Hamburg" },
+    { "bezeichnung_in_excel": "Lichtmeß Kino", "programm_url": "https://lichtmess-kino.de/programm/", "hinweis": "Hamburg" }
   ]
 }

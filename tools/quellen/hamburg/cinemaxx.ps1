@@ -1,4 +1,4 @@
-# Ausleser fuer die CinemaxX-Kinos in Hamburg (Dammtor, Wandsbek, Harburg und das Holi, das zu CinemaxX gehoert).
+﻿# Ausleser fuer die CinemaxX-Kinos in Hamburg (Dammtor, Wandsbek, Harburg und das Holi, das zu CinemaxX gehoert).
 # Die Website laedt das Programm aus einer JSON-Schnittstelle:
 #   /api/microservice/showings/showingDates?cinemaId=<id>&minEmbargoLevel=2&forNextWeek=true   -> Spieltage
 #   /api/microservice/showings/cinemas/<id>/films?showingDate=<JJJJ-MM-TT>T00:00:00&...        -> Filme mit Vorstellungen

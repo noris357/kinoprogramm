@@ -170,3 +170,18 @@ function ConvertTo-IsoTag($Wert) {
   if ($Wert -is [datetime]) { return $Wert.ToString('yyyy-MM-dd') }
   return ([string]$Wert).Substring(0, 10)
 }
+
+# Wie Get-Seite, aber fuer Seiten in Latin-1 (ISO-8859-1) ohne Zeichensatzangabe, z. B. abaton.de
+function Get-SeiteLatin1([string]$Url) {
+  $antwort = Invoke-WebRequest -Uri $Url -UseBasicParsing -TimeoutSec 40 -UserAgent $script:UserAgent
+  Start-Sleep -Milliseconds 800
+  return [Text.Encoding]::GetEncoding(28591).GetString($antwort.RawContentStream.ToArray())
+}
+
+# Titel in Grossbuchstaben ("THE NEW WEST") in uebliche Schreibweise bringen, sonst unveraendert
+function ConvertFrom-Grossschrift([string]$Titel) {
+  if ($Titel -cmatch '\p{Ll}' -or $Titel -notmatch '\p{L}{3}') { return $Titel }
+  $t = (Get-Culture).TextInfo.ToTitleCase($Titel.ToLower())
+  # "Can'T" -> "Can't"
+  return [regex]::Replace($t, "(['’])(\p{Lu})\b", { param($m) $m.Groups[1].Value + $m.Groups[2].Value.ToLower() })
+}
