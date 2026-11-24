@@ -10,6 +10,8 @@ Regionen (`daten/regionen.json`): Nürnberg/Fürth/Erlangen (Daten in `daten/`, 
 `aktualisieren.ps1` und `build-data.ps1` nehmen `-Region hamburg`, Standard ist Nürnberg. Filmangaben
 (filminfos, wertungen, preise, personen, titel-korrekturen, ausschluss) sind für alle Regionen gemeinsam.
 Die Website wählt die Region über `?region=` oder die zuletzt gewählte (index.html).
+CinemaxX und UCI (Hamburg) sperren Abrufe aus der Cloud. Sie laufen nur lokal über `tools/lokal.ps1`
+(Windows-Aufgabe „Kinoprogramm lokal“, täglich 12:30, Protokoll `tools/lokal.log`), nicht im Workflow.
 
 - `index.html`, `style.css`, `app.js`: die Website, reines HTML/CSS/JavaScript ohne Build-Schritt
 - `data.js`: erzeugt von `tools/build-data.ps1`, nie von Hand bearbeiten
