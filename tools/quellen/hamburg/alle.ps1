@@ -3,6 +3,7 @@
 # Sie laufen deshalb nicht im automatischen Lauf. Die Ausleser bleiben fuer einen spaeteren lokalen Abruf erhalten.
 
 function Get-HamburgProgramme {
+  Get-CineamoProgramme hamburg     # CinemaxX Dammtor, Wandsbek, Harburg ueber cineamo.com (die eigene Schnittstelle ist gesperrt)
   Get-PremiumkinoProgramme         # Astor Film Lounge HafenCity und Savoy
   Get-KinopolisProgramm            # Kinopolis HafenCity
   Get-JansenProgramme              # Studio, Elbe, Blankeneser Kino, Koralle

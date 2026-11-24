@@ -356,6 +356,12 @@
                                        "name":  "Wim Wenders"
                                    }
                                ],
+                      "4348":  [
+                                   {
+                                       "id":  36588,
+                                       "name":  "Joe Wright"
+                                   }
+                               ],
                       "4484":  [
                                    {
                                        "id":  24380,
@@ -550,6 +556,12 @@
                                     {
                                         "id":  72493,
                                         "name":  "Francesco Stefani"
+                                    }
+                                ],
+                      "12781":  [
+                                    {
+                                        "id":  20869,
+                                        "name":  "Kurt Hoffmann"
                                     }
                                 ],
                       "13279":  [
@@ -1122,6 +1134,12 @@
                                          "name":  "Alfred Vohrer"
                                      }
                                  ],
+                      "245700":  [
+                                     {
+                                         "id":  65452,
+                                         "name":  "Mike Leigh"
+                                     }
+                                 ],
                       "246741":  [
                                      {
                                          "id":  55936,
@@ -1154,6 +1172,12 @@
                                      {
                                          "id":  50015,
                                          "name":  "Uwe Schrader"
+                                     }
+                                 ],
+                      "261103":  [
+                                     {
+                                         "id":  1304466,
+                                         "name":  "Alexs Stadermann"
                                      }
                                  ],
                       "266800":  [
@@ -1295,6 +1319,12 @@
                                          "name":  "Michael Schaerer"
                                      }
                                  ],
+                      "425218":  [
+                                     {
+                                         "id":  1163021,
+                                         "name":  "Ute von Münchow-Pohl"
+                                     }
+                                 ],
                       "433763":  [
                                      {
                                          "id":  1276771,
@@ -1317,6 +1347,16 @@
                                      {
                                          "id":  110601,
                                          "name":  "Pernille Fischer Christensen"
+                                     }
+                                 ],
+                      "487142":  [
+                                     {
+                                         "id":  1714760,
+                                         "name":  "Martin Stefaniak"
+                                     },
+                                     {
+                                         "id":  1923818,
+                                         "name":  "Julian Köberer"
                                      }
                                  ],
                       "516882":  [
@@ -1453,6 +1493,16 @@
                                          "name":  "Travis Knight"
                                      }
                                  ],
+                      "822653":  [
+                                     {
+                                         "id":  1252958,
+                                         "name":  "宮本幸裕"
+                                     },
+                                     {
+                                         "id":  555094,
+                                         "name":  "Akiyuki Simbo"
+                                     }
+                                 ],
                       "830721":  [
                                      {
                                          "id":  72467,
@@ -1494,6 +1544,9 @@
                                          "id":  3296561,
                                          "name":  "Noemi Schory"
                                      }
+                                 ],
+                      "901245":  [
+
                                  ],
                       "928358":  [
                                      {
@@ -2063,6 +2116,12 @@
                                           "name":  "Mike P. Nelson"
                                       }
                                   ],
+                      "1245252":  [
+                                      {
+                                          "id":  2342070,
+                                          "name":  "Oskar Nilsson"
+                                      }
+                                  ],
                       "1245399":  [
                                       {
                                           "id":  4538160,
@@ -2531,6 +2590,12 @@
                                           "name":  "John Hamburg"
                                       }
                                   ],
+                      "1400743":  [
+                                      {
+                                          "id":  1686838,
+                                          "name":  "Georgi M. Unkovski"
+                                      }
+                                  ],
                       "1400837":  [
                                       {
                                           "id":  1129908,
@@ -2595,6 +2660,16 @@
                                           "name":  "Lars Jessen"
                                       }
                                   ],
+                      "1418529":  [
+                                      {
+                                          "id":  1748348,
+                                          "name":  "Julia Lemke"
+                                      },
+                                      {
+                                          "id":  586229,
+                                          "name":  "Anna Koch"
+                                      }
+                                  ],
                       "1419383":  [
                                       {
                                           "id":  2337145,
@@ -2621,6 +2696,12 @@
                                       {
                                           "id":  1443615,
                                           "name":  "Javier Calvo"
+                                      }
+                                  ],
+                      "1422072":  [
+                                      {
+                                          "id":  73579,
+                                          "name":  "Benjamin Heisenberg"
                                       }
                                   ],
                       "1422407":  [
@@ -2727,6 +2808,12 @@
                                           "name":  "Padraic McKinley"
                                       }
                                   ],
+                      "1433854":  [
+                                      {
+                                          "id":  228632,
+                                          "name":  "Marcel Walz"
+                                      }
+                                  ],
                       "1437198":  [
                                       {
                                           "id":  1206119,
@@ -2823,16 +2910,34 @@
                                           "name":  "Kat Coiro"
                                       }
                                   ],
+                      "1457866":  [
+                                      {
+                                          "id":  7467,
+                                          "name":  "David Fincher"
+                                      }
+                                  ],
                       "1458099":  [
                                       {
                                           "id":  48312,
                                           "name":  "Noah Segan"
                                       }
                                   ],
+                      "1458914":  [
+                                      {
+                                          "id":  53708,
+                                          "name":  "Ira Sachs"
+                                      }
+                                  ],
                       "1459622":  [
                                       {
                                           "id":  1124437,
                                           "name":  "Philippe Béziat"
+                                      }
+                                  ],
+                      "1462322":  [
+                                      {
+                                          "id":  3270403,
+                                          "name":  "Francesco Sossai"
                                       }
                                   ],
                       "1465063":  [
@@ -2943,6 +3048,12 @@
                                       {
                                           "id":  16847,
                                           "name":  "Eli Roth"
+                                      }
+                                  ],
+                      "1480774":  [
+                                      {
+                                          "id":  1489740,
+                                          "name":  "Dario Aguirre"
                                       }
                                   ],
                       "1483101":  [
@@ -3343,6 +3454,12 @@
                                           "name":  "Sebastian Brameshuber"
                                       }
                                   ],
+                      "1599768":  [
+                                      {
+                                          "id":  5882839,
+                                          "name":  "Seemab Guul"
+                                      }
+                                  ],
                       "1599784":  [
                                       {
                                           "id":  1303917,
@@ -3573,6 +3690,12 @@
                                       {
                                           "id":  6148580,
                                           "name":  "Nepomuk Pfaff"
+                                      }
+                                  ],
+                      "1675748":  [
+                                      {
+                                          "id":  2040387,
+                                          "name":  "Götz Schauder"
                                       }
                                   ],
                       "1675931":  [
@@ -4331,6 +4454,15 @@
                                   "regiearbeiten":  18,
                                   "letterboxd":  "peter-farrelly"
                               },
+                     "7467":  {
+                                  "name":  "David Fincher",
+                                  "geprueft":  "2026-11-24",
+                                  "geboren":  1962,
+                                  "ort":  "Denver, Colorado, USA",
+                                  "foto":  "fotos/7467.jpg",
+                                  "regiearbeiten":  14,
+                                  "letterboxd":  "david-fincher"
+                              },
                      "7623":  {
                                   "name":  "Sam Raimi",
                                   "geprueft":  "2026-11-14",
@@ -4902,6 +5034,16 @@
                                    "regiearbeiten":  6,
                                    "letterboxd":  "vincent-paronnaud"
                                },
+                     "20869":  {
+                                   "name":  "Kurt Hoffmann",
+                                   "geprueft":  "2026-11-24",
+                                   "geboren":  1910,
+                                   "gestorben":  2001,
+                                   "ort":  "Freiburg im Breisgau, Germany",
+                                   "foto":  "fotos/20869.jpg",
+                                   "regiearbeiten":  46,
+                                   "letterboxd":  "kurt-hoffmann"
+                               },
                      "20907":  {
                                    "name":  "Antoine Fuqua",
                                    "geprueft":  "2026-11-14",
@@ -5124,6 +5266,15 @@
                                    "foto":  "fotos/34682.jpg",
                                    "regiearbeiten":  7,
                                    "letterboxd":  "jeremiah-s-chechik"
+                               },
+                     "36588":  {
+                                   "name":  "Joe Wright",
+                                   "geprueft":  "2026-11-24",
+                                   "geboren":  1972,
+                                   "ort":  "London, England, UK",
+                                   "foto":  "fotos/36588.jpg",
+                                   "regiearbeiten":  9,
+                                   "letterboxd":  "joe-wright"
                                },
                      "36619":  {
                                    "name":  "Padraic McKinley",
@@ -5391,6 +5542,15 @@
                                    "foto":  "fotos/52115.jpg",
                                    "regiearbeiten":  5,
                                    "letterboxd":  "scott-moore"
+                               },
+                     "53708":  {
+                                   "name":  "Ira Sachs",
+                                   "geprueft":  "2026-11-24",
+                                   "geboren":  1965,
+                                   "ort":  "Memphis, Tennessee, USA",
+                                   "foto":  "fotos/53708.jpg",
+                                   "regiearbeiten":  12,
+                                   "letterboxd":  "ira-sachs"
                                },
                      "53914":  {
                                    "name":  "Jean Eustache",
@@ -5668,6 +5828,15 @@
                                    "regiearbeiten":  17,
                                    "letterboxd":  "giuseppe-tornatore"
                                },
+                     "65452":  {
+                                   "name":  "Mike Leigh",
+                                   "geprueft":  "2026-11-24",
+                                   "geboren":  1943,
+                                   "ort":  "Salford, Greater Manchester, England, UK",
+                                   "foto":  "fotos/65452.jpg",
+                                   "regiearbeiten":  24,
+                                   "letterboxd":  "mike-leigh"
+                               },
                      "65460":  {
                                    "name":  "Georges Gachot",
                                    "geprueft":  "2026-11-24",
@@ -5770,6 +5939,15 @@
                                    "ort":  "Slagelse, Denmark",
                                    "regiearbeiten":  8,
                                    "letterboxd":  "karsten-kiilerich"
+                               },
+                     "73579":  {
+                                   "name":  "Benjamin Heisenberg",
+                                   "geprueft":  "2026-11-24",
+                                   "geboren":  1974,
+                                   "ort":  "Tübingen, Germany",
+                                   "foto":  "fotos/73579.jpg",
+                                   "regiearbeiten":  4,
+                                   "letterboxd":  "benjamin-heisenberg"
                                },
                      "74396":  {
                                    "name":  "Tomas Alfredson",
@@ -6267,6 +6445,15 @@
                                     "regiearbeiten":  7,
                                     "letterboxd":  "shirley-clarke"
                                 },
+                     "228632":  {
+                                    "name":  "Marcel Walz",
+                                    "geprueft":  "2026-11-24",
+                                    "geboren":  1986,
+                                    "ort":  "Nuremberg, Germany",
+                                    "foto":  "fotos/228632.jpg",
+                                    "regiearbeiten":  29,
+                                    "letterboxd":  "marcel-walz"
+                                },
                      "229571":  {
                                     "name":  "Massimiliano Bruno",
                                     "geprueft":  "2026-11-14",
@@ -6402,6 +6589,15 @@
                                     "regiearbeiten":  6,
                                     "letterboxd":  "jens-schanze"
                                 },
+                     "555094":  {
+                                    "name":  "Akiyuki Simbo",
+                                    "geprueft":  "2026-11-24",
+                                    "geboren":  1961,
+                                    "ort":  "Koori, Fukushima, Japan",
+                                    "foto":  "fotos/555094.jpg",
+                                    "regiearbeiten":  13,
+                                    "letterboxd":  ""
+                                },
                      "556711":  {
                                     "name":  "Hannes Holm",
                                     "geprueft":  "2026-11-14",
@@ -6470,6 +6666,12 @@
                                     "foto":  "fotos/584480.jpg",
                                     "regiearbeiten":  194,
                                     "letterboxd":  "eckhart-schmidt"
+                                },
+                     "586229":  {
+                                    "name":  "Anna Koch",
+                                    "geprueft":  "2026-11-24",
+                                    "regiearbeiten":  3,
+                                    "letterboxd":  "anna-koch"
                                 },
                      "587202":  {
                                     "name":  "Oliver Dieckmann",
@@ -6913,6 +7115,15 @@
                                      "regiearbeiten":  4,
                                      "letterboxd":  "sandra-prechtel"
                                  },
+                     "1163021":  {
+                                     "name":  "Ute von Münchow-Pohl",
+                                     "geprueft":  "2026-11-24",
+                                     "geboren":  1956,
+                                     "ort":  "Bremen, Germany",
+                                     "foto":  "fotos/1163021.jpg",
+                                     "regiearbeiten":  9,
+                                     "letterboxd":  "ute-von-munchow-pohl"
+                                 },
                      "1170106":  {
                                      "name":  "陳哲藝",
                                      "geprueft":  "2026-11-18",
@@ -7069,6 +7280,15 @@
                                      "ort":  "Hammersmith, London, England, UK",
                                      "foto":  "fotos/1252934.jpg",
                                      "regiearbeiten":  3,
+                                     "letterboxd":  ""
+                                 },
+                     "1252958":  {
+                                     "name":  "宮本幸裕",
+                                     "geprueft":  "2026-11-24",
+                                     "geboren":  1977,
+                                     "ort":  "Fukuoka Prefecture, Japan",
+                                     "foto":  "fotos/1252958.jpg",
+                                     "regiearbeiten":  5,
                                      "letterboxd":  ""
                                  },
                      "1261454":  {
@@ -7229,6 +7449,13 @@
                                      "foto":  "fotos/1303917.jpg",
                                      "regiearbeiten":  2,
                                      "letterboxd":  "faraz-shariat"
+                                 },
+                     "1304466":  {
+                                     "name":  "Alexs Stadermann",
+                                     "geprueft":  "2026-11-24",
+                                     "foto":  "fotos/1304466.jpg",
+                                     "regiearbeiten":  5,
+                                     "letterboxd":  "alexs-stadermann"
                                  },
                      "1323051":  {
                                      "name":  "Abhishek Pathak",
@@ -7482,6 +7709,14 @@
                                      "regiearbeiten":  2,
                                      "letterboxd":  "mette-tange"
                                  },
+                     "1489740":  {
+                                     "name":  "Dario Aguirre",
+                                     "geprueft":  "2026-11-24",
+                                     "ort":  "Guayaquil, Ecuador",
+                                     "foto":  "fotos/1489740.jpg",
+                                     "regiearbeiten":  4,
+                                     "letterboxd":  "dario-aguirre"
+                                 },
                      "1491592":  {
                                      "name":  "Daniel Chong",
                                      "geprueft":  "2026-11-14",
@@ -7670,6 +7905,13 @@
                                      "regiearbeiten":  2,
                                      "letterboxd":  "georgia-oakley"
                                  },
+                     "1686838":  {
+                                     "name":  "Georgi M. Unkovski",
+                                     "geprueft":  "2026-11-24",
+                                     "foto":  "fotos/1686838.jpg",
+                                     "regiearbeiten":  1,
+                                     "letterboxd":  "georgi-m-unkovski"
+                                 },
                      "1703687":  {
                                      "name":  "Louis Paxton",
                                      "geprueft":  "2026-11-14",
@@ -7684,6 +7926,12 @@
                                      "ort":  "Karlsruhe, Germany",
                                      "regiearbeiten":  2,
                                      "letterboxd":  "christian-hornung"
+                                 },
+                     "1714760":  {
+                                     "name":  "Martin Stefaniak",
+                                     "geprueft":  "2026-11-24",
+                                     "regiearbeiten":  0,
+                                     "letterboxd":  "martin-stefaniak"
                                  },
                      "1715755":  {
                                      "name":  "Marta György-Kessler",
@@ -7722,6 +7970,13 @@
                                      "foto":  "fotos/1731123.jpg",
                                      "regiearbeiten":  3,
                                      "letterboxd":  "helena-hufnagel"
+                                 },
+                     "1748348":  {
+                                     "name":  "Julia Lemke",
+                                     "geprueft":  "2026-11-24",
+                                     "geboren":  1978,
+                                     "regiearbeiten":  2,
+                                     "letterboxd":  "julia-lemke"
                                  },
                      "1760947":  {
                                      "name":  "Jordan Firstman",
@@ -7835,6 +8090,12 @@
                                      "regiearbeiten":  2,
                                      "letterboxd":  "randa-chahoud"
                                  },
+                     "1923818":  {
+                                     "name":  "Julian Köberer",
+                                     "geprueft":  "2026-11-24",
+                                     "regiearbeiten":  0,
+                                     "letterboxd":  "julian-koberer"
+                                 },
                      "1961098":  {
                                      "name":  "Maximilian Ahrens",
                                      "geprueft":  "2026-11-14",
@@ -7939,6 +8200,12 @@
                                      "geprueft":  "2026-11-24",
                                      "regiearbeiten":  3,
                                      "letterboxd":  "chuck-smith"
+                                 },
+                     "2040387":  {
+                                     "name":  "Götz Schauder",
+                                     "geprueft":  "2026-11-24",
+                                     "regiearbeiten":  1,
+                                     "letterboxd":  "gotz-schauder"
                                  },
                      "2044647":  {
                                      "name":  "Raitis Ābele",
@@ -8084,6 +8351,13 @@
                                      "foto":  "fotos/2337145.jpg",
                                      "regiearbeiten":  2,
                                      "letterboxd":  "mariko-minoguchi"
+                                 },
+                     "2342070":  {
+                                     "name":  "Oskar Nilsson",
+                                     "geprueft":  "2026-11-24",
+                                     "foto":  "fotos/2342070.jpg",
+                                     "regiearbeiten":  1,
+                                     "letterboxd":  "oskar-nilsson"
                                  },
                      "2345602":  {
                                      "name":  "Pierre le Gall",
@@ -8375,6 +8649,15 @@
                                      "geprueft":  "2026-11-23",
                                      "regiearbeiten":  1,
                                      "letterboxd":  "pablo-guarise"
+                                 },
+                     "3270403":  {
+                                     "name":  "Francesco Sossai",
+                                     "geprueft":  "2026-11-24",
+                                     "geboren":  1989,
+                                     "ort":  "Feltre, Belluno, Italy",
+                                     "foto":  "fotos/3270403.jpg",
+                                     "regiearbeiten":  2,
+                                     "letterboxd":  "francesco-sossai"
                                  },
                      "3288256":  {
                                      "name":  "Kani Lapuerta",
@@ -8690,6 +8973,12 @@
                                      "geprueft":  "2026-11-14",
                                      "regiearbeiten":  1,
                                      "letterboxd":  ""
+                                 },
+                     "5882839":  {
+                                     "name":  "Seemab Guul",
+                                     "geprueft":  "2026-11-24",
+                                     "regiearbeiten":  0,
+                                     "letterboxd":  "seemab-guul"
                                  },
                      "5940826":  {
                                      "name":  "Pepa Lubojacki",

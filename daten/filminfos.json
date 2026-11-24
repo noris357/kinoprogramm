@@ -642,6 +642,22 @@
                                             "nichtGefunden":  true,
                                             "geprueft":  "2026-11-06"
                                         },
+    "Augsburger Puppenkiste - Als der Weihnachtsmann vom Himmel fiel|2017":  {
+                                                                                 "tmdb":  487142,
+                                                                                 "titel":  "Augsburger Puppenkiste - Als der Weihnachtsmann vom Himmel fiel",
+                                                                                 "geprueft":  "2026-11-24",
+                                                                                 "stimmen":  2,
+                                                                                 "poster":  "plakate/487142.jpg",
+                                                                                 "imdb":  "tt7708734",
+                                                                                 "land":  "Deutschland",
+                                                                                 "regie":  "Martin Stefaniak, Julian Köberer",
+                                                                                 "kinostart":  "2017-12-03",
+                                                                                 "laufzeit":  60,
+                                                                                 "genres":  [
+                                                                                                "Familie"
+                                                                                            ],
+                                                                                 "jahr":  "2017"
+                                                                             },
     "Avengers: Doomsday|2026":  {
                                     "tmdb":  1003596,
                                     "titel":  "Avengers: Doomsday",
@@ -1916,6 +1932,25 @@
                                               ],
                                    "jahr":  "1954"
                                },
+    "Das fliegende Klassenzimmer|":  {
+                                         "tmdb":  12781,
+                                         "titel":  "Das fliegende Klassenzimmer",
+                                         "geprueft":  "2026-11-24",
+                                         "stimmen":  20,
+                                         "poster":  "plakate/12781.jpg",
+                                         "bewertung":  "7,7",
+                                         "imdb":  "tt0046986",
+                                         "land":  "Deutschland",
+                                         "regie":  "Kurt Hoffmann",
+                                         "kinostart":  "1954-09-02",
+                                         "laufzeit":  92,
+                                         "genres":  [
+                                                        "Familie",
+                                                        "Komödie",
+                                                        "Drama"
+                                                    ],
+                                         "jahr":  "1954"
+                                     },
     "Das Flüstern der Wälder|":  {
                                      "tmdb":  1309373,
                                      "titel":  "Das Flüstern der Wälder",
@@ -2289,6 +2324,10 @@
                                                           ],
                                                "jahr":  "2026"
                                            },
+    "Der atmo-Filmabend: YANUNI (The Amazon is a Woman)|":  {
+                                                                "nichtGefunden":  true,
+                                                                "geprueft":  "2026-11-24"
+                                                            },
     "Der Donnerstag|1964":  {
                                 "tmdb":  83217,
                                 "titel":  "Der Donnerstag",
@@ -2654,6 +2693,40 @@
                                                 ],
                                      "jahr":  "2026"
                                  },
+    "Der Prank - April, April|":  {
+                                      "tmdb":  1422072,
+                                      "titel":  "Der Prank - April, April!",
+                                      "geprueft":  "2026-11-24",
+                                      "stimmen":  3,
+                                      "poster":  "plakate/1422072.jpg",
+                                      "imdb":  "tt33041522",
+                                      "land":  "Schweiz, Deutschland",
+                                      "regie":  "Benjamin Heisenberg",
+                                      "kinostart":  "2025-03-13",
+                                      "laufzeit":  91,
+                                      "genres":  [
+                                                     "Familie",
+                                                     "Komödie",
+                                                     "Abenteuer"
+                                                 ],
+                                      "jahr":  "2025"
+                                  },
+    "Der Preis des Widerstands|":  {
+                                       "tmdb":  1675748,
+                                       "titel":  "Der Preis des Widerstands",
+                                       "geprueft":  "2026-11-24",
+                                       "stimmen":  0,
+                                       "poster":  "plakate/1675748.jpg",
+                                       "imdb":  "tt11423708",
+                                       "land":  "Deutschland",
+                                       "regie":  "Götz Schauder",
+                                       "kinostart":  "2026-11-26",
+                                       "laufzeit":  93,
+                                       "genres":  [
+                                                      "Dokumentarfilm"
+                                                  ],
+                                       "jahr":  "2026"
+                                   },
     "Der Punisher|1989":  {
                               "nichtGefunden":  true,
                               "geprueft":  "2026-11-06"
@@ -3536,6 +3609,25 @@
                                             ],
                                  "jahr":  "2026"
                              },
+    "DJ Ahmet|":  {
+                      "tmdb":  1400743,
+                      "titel":  "DJ Ahmet",
+                      "geprueft":  "2026-11-24",
+                      "stimmen":  48,
+                      "poster":  "plakate/1400743.jpg",
+                      "bewertung":  "6,9",
+                      "imdb":  "tt34964187",
+                      "land":  "Mazedonien, Tschechien, Serbien, Kroatien",
+                      "regie":  "Georgi M. Unkovski",
+                      "kinostart":  "2026-03-19",
+                      "laufzeit":  97,
+                      "genres":  [
+                                     "Drama",
+                                     "Musik",
+                                     "Komödie"
+                                 ],
+                      "jahr":  "2025"
+                  },
     "Dog of God|":  {
                         "tmdb":  1282280,
                         "titel":  "Dog of God",
@@ -4061,6 +4153,24 @@
                                                            ],
                                                 "jahr":  "2026"
                                             },
+    "Eine letzte Runde|":  {
+                               "tmdb":  1462322,
+                               "titel":  "Eine Letzte Runde",
+                               "geprueft":  "2026-11-24",
+                               "stimmen":  314,
+                               "poster":  "plakate/1462322.jpg",
+                               "bewertung":  "7,5",
+                               "imdb":  "tt36491632",
+                               "land":  "Italien, Deutschland",
+                               "regie":  "Francesco Sossai",
+                               "kinostart":  "2026-11-12",
+                               "laufzeit":  98,
+                               "genres":  [
+                                              "Drama",
+                                              "Komödie"
+                                          ],
+                               "jahr":  "2025"
+                           },
     "Eine Matrosengeschichte|":  {
                                      "tmdb":  1486475,
                                      "titel":  "Eine Matrosengeschichte",
@@ -4627,6 +4737,23 @@
                               ],
                    "jahr":  "2012"
                },
+    "Focker In-Law|":  {
+                           "tmdb":  1400336,
+                           "titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                           "geprueft":  "2026-11-24",
+                           "stimmen":  4,
+                           "poster":  "plakate/1400336.jpg",
+                           "imdb":  "tt34966140",
+                           "land":  "Vereinigte Staaten",
+                           "regie":  "John Hamburg",
+                           "kinostart":  "2026-11-26",
+                           "laufzeit":  105,
+                           "genres":  [
+                                          "Komödie",
+                                          "Liebesfilm"
+                                      ],
+                           "jahr":  "2026"
+                       },
     "Follies - Die Lust mit der Liebe|2025":  {
                                                   "tmdb":  1075525,
                                                   "titel":  "Follies",
@@ -5000,6 +5127,20 @@
                                                                                        ],
                                                                             "jahr":  "1974"
                                                                         },
+    "Ghost School|":  {
+                          "tmdb":  1599768,
+                          "titel":  "Ghost School",
+                          "geprueft":  "2026-11-24",
+                          "stimmen":  0,
+                          "land":  "Pakistan, Deutschland",
+                          "regie":  "Seemab Guul",
+                          "kinostart":  "2026-09-03",
+                          "laufzeit":  0,
+                          "genres":  [
+                                         "Drama"
+                                     ],
+                          "jahr":  "2026"
+                      },
     "Ghostbusters|1984":  {
                               "tmdb":  620,
                               "titel":  "Ghostbusters - Die Geisterjäger",
@@ -5838,6 +5979,10 @@
                                                           ],
                                                "jahr":  "2026"
                                            },
+    "Irans Frauen|":  {
+                          "nichtGefunden":  true,
+                          "geprueft":  "2026-11-24"
+                      },
     "Ist das Leben nicht schön?|1946":  {
                                             "tmdb":  1585,
                                             "titel":  "Ist das Leben nicht schön?",
@@ -7083,6 +7228,24 @@
                                    ],
                         "jahr":  "2026"
                     },
+    "Mr. Turner - Meister des Lichts|":  {
+                                             "tmdb":  245700,
+                                             "titel":  "Mr. Turner - Meister des Lichts",
+                                             "geprueft":  "2026-11-24",
+                                             "stimmen":  612,
+                                             "poster":  "plakate/245700.jpg",
+                                             "bewertung":  "6,6",
+                                             "imdb":  "tt2473794",
+                                             "land":  "Frankreich, Deutschland, Vereinigtes Königreich, Vereinigte Staaten",
+                                             "regie":  "Mike Leigh",
+                                             "kinostart":  "2014-11-05",
+                                             "laufzeit":  150,
+                                             "genres":  [
+                                                            "Historie",
+                                                            "Drama"
+                                                        ],
+                                             "jahr":  "2014"
+                                         },
     "Mumbo Jumbo|2026":  {
                              "tmdb":  1218067,
                              "titel":  "Mumbo Jumbo",
@@ -8178,6 +8341,24 @@
                                                                    ],
                                                         "jahr":  "2026"
                                                     },
+    "Pride|":  {
+                   "tmdb":  4348,
+                   "titel":  "Stolz und Vorurteil",
+                   "geprueft":  "2026-11-24",
+                   "stimmen":  9085,
+                   "poster":  "plakate/4348.jpg",
+                   "bewertung":  "8,0",
+                   "imdb":  "tt0414387",
+                   "land":  "Frankreich, Vereinigtes Königreich, Vereinigte Staaten",
+                   "regie":  "Joe Wright",
+                   "kinostart":  "2005-10-20",
+                   "laufzeit":  129,
+                   "genres":  [
+                                  "Drama",
+                                  "Liebesfilm"
+                              ],
+                   "jahr":  "2005"
+               },
     "Primetime|2026":  {
                            "tmdb":  1375441,
                            "titel":  "Primetime",
@@ -8209,6 +8390,26 @@
                                                                          "nichtGefunden":  true,
                                                                          "geprueft":  "2026-11-11"
                                                                      },
+    "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-|2026":  {
+                                                                              "tmdb":  822653,
+                                                                              "titel":  "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
+                                                                              "geprueft":  "2026-11-24",
+                                                                              "stimmen":  6,
+                                                                              "poster":  "plakate/822653.jpg",
+                                                                              "bewertung":  "8,0",
+                                                                              "imdb":  "tt14523706",
+                                                                              "land":  "Japan",
+                                                                              "regie":  "Yukihiro Miyamoto, Akiyuki Simbo",
+                                                                              "kinostart":  "2026-11-24",
+                                                                              "laufzeit":  120,
+                                                                              "genres":  [
+                                                                                             "Animation",
+                                                                                             "Drama",
+                                                                                             "Mystery",
+                                                                                             "Fantasy"
+                                                                                         ],
+                                                                              "jahr":  "2026"
+                                                                          },
     "Puella Magi Madoka Magica -Walpurgisnacht: Rising|2026":  {
                                                                    "nichtGefunden":  true,
                                                                    "geprueft":  "2026-11-06"
@@ -9671,6 +9872,23 @@
                                                                            ],
                                                                 "jahr":  "2025"
                                                             },
+    "The Man I Love|":  {
+                            "tmdb":  1458914,
+                            "titel":  "The Man I Love",
+                            "geprueft":  "2026-11-24",
+                            "stimmen":  0,
+                            "poster":  "plakate/1458914.jpg",
+                            "imdb":  "tt37522972",
+                            "land":  "Vereinigte Staaten, Frankreich",
+                            "regie":  "Ira Sachs",
+                            "kinostart":  "2027-04-08",
+                            "laufzeit":  95,
+                            "genres":  [
+                                           "Drama",
+                                           "Liebesfilm"
+                                       ],
+                            "jahr":  "2027"
+                        },
     "The Mastermind|2025":  {
                                 "tmdb":  1352624,
                                 "titel":  "The Mastermind",
@@ -10981,6 +11199,22 @@
                                                ],
                                     "jahr":  "2026"
                                 },
+    "Wir, die Wolfs|":  {
+                            "tmdb":  1480774,
+                            "titel":  "Wir, die Wolfs",
+                            "geprueft":  "2026-11-24",
+                            "stimmen":  0,
+                            "poster":  "plakate/1480774.jpg",
+                            "imdb":  "tt37211795",
+                            "land":  "Ecuador, Deutschland",
+                            "regie":  "Dario Aguirre",
+                            "kinostart":  "2026-01-22",
+                            "laufzeit":  98,
+                            "genres":  [
+                                           "Dokumentarfilm"
+                                       ],
+                            "jahr":  "2026"
+                        },
     "Wise Woman - Fünf Hebammen, Fünf Kulturen|2026":  {
                                                            "nichtGefunden":  true,
                                                            "geprueft":  "2026-11-06"
@@ -11104,6 +11338,22 @@
                                              ],
                                   "jahr":  "2026"
                               },
+    "Zirkuskind|":  {
+                        "tmdb":  1418529,
+                        "titel":  "Zirkuskind",
+                        "geprueft":  "2026-11-24",
+                        "stimmen":  1,
+                        "poster":  "plakate/1418529.jpg",
+                        "imdb":  "tt35449402",
+                        "land":  "Deutschland",
+                        "regie":  "Julia Lemke, Anna Koch",
+                        "kinostart":  "2025-10-16",
+                        "laufzeit":  86,
+                        "genres":  [
+                                       "Dokumentarfilm"
+                                   ],
+                        "jahr":  "2025"
+                    },
     "Zombie 2 - Day of the Dead|1985":  {
                                             "nichtGefunden":  true,
                                             "geprueft":  "2026-11-06"

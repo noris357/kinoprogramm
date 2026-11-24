@@ -6,8 +6,11 @@
 # Eine gespeicherte Seite kann veraltet sein. Deshalb werden Termine nur ergaenzt, nie entfernt.
 # Vergangene Tage uebernimmt der Abgleich ohnehin nicht.
 
+# Das regulaere Programm kommt automatisch ueber Cineamo (cineamo.ps1). Liegt keine gespeicherte Seite vor,
+# liefert diese Quelle gar nichts (kein Fehler), damit Cineamo allein das Zeitfenster bestimmt.
 function Get-CineplexAusEingang {
   $eingang = Join-Path (Resolve-Path "$PSScriptRoot/../..").Path 'eingang'
+  if (-not @(Get-ChildItem $eingang -Filter '*.htm*' -File -ErrorAction SilentlyContinue).Count) { return }
   $zuordnung = [ordered]@{ 'Cineplex Fürth' = 'Cineplex Fürth' }
   foreach ($center in $zuordnung.Keys) {
     $erg = New-KinoErgebnis $zuordnung[$center] 'eingang/ (gespeicherte Seite von cineplex.de)'
