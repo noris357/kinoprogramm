@@ -184,6 +184,7 @@ if ($Probelauf) { 'Probelauf: nichts gespeichert.'; return }
 $json = [ordered]@{ stand = $heute; zeilen = $ergebnis } | ConvertTo-Json -Depth 4
 [IO.File]::WriteAllText($bestandDatei, $json, $utf8)
 $lauf = [ordered]@{ abfragetag = $heute; kinos = $bericht; neueFilme = @($neueFilme.Keys | Sort-Object); ausgeschlossen = @($ausgeschlossen.Keys | Sort-Object) } | ConvertTo-Json -Depth 4
-[IO.File]::WriteAllText((Join-Path $datenOrdner 'letzter-lauf.json'), $lauf, $utf8)
+# Der Bericht gilt dem vollstaendigen Lauf. Ein Lauf nur mit einzelnen Kinos (-Ausleser) ueberschreibt ihn nicht.
+if (-not $Ausleser) { [IO.File]::WriteAllText((Join-Path $datenOrdner 'letzter-lauf.json'), $lauf, $utf8) }
 
 & (Join-Path $tools 'build-data.ps1') -Region $Region

@@ -52,7 +52,19 @@ jobs:
       - name: Kinoseiten auslesen und Daten abgleichen
         if: github.event_name != 'push' && env.NUR_AUSLASTUNG != 'true'
         shell: pwsh
+        env:
+          # Per Link freigegebener Google-Drive-Ordner mit gespeicherten Cineplex-Seiten (vom iPhone)
+          CINEPLEX_DRIVE_ORDNER: ${{ secrets.CINEPLEX_DRIVE_ORDNER }}
         run: ./tools/aktualisieren.ps1
+
+      - name: Cineplex Fuerth aus dem Drive-Ordner ergaenzen (taeglich)
+        if: github.event_name != 'push' && env.NUR_AUSLASTUNG == 'true'
+        # Sondervorstellungen und Vorverkauf aus der zuletzt hochgeladenen Seite, auch zwischen den Programmlaeufen
+        continue-on-error: true
+        shell: pwsh
+        env:
+          CINEPLEX_DRIVE_ORDNER: ${{ secrets.CINEPLEX_DRIVE_ORDNER }}
+        run: ./tools/aktualisieren.ps1 -Ausleser Get-CineplexAusEingang
 
       - name: Kinoseiten in Hamburg auslesen
         if: github.event_name != 'push' && env.NUR_AUSLASTUNG != 'true'

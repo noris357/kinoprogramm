@@ -12,6 +12,8 @@ Regionen (`daten/regionen.json`): Nürnberg/Fürth/Erlangen (Daten in `daten/`, 
 Die Website wählt die Region über `?region=` oder die zuletzt gewählte (index.html).
 CinemaxX und UCI (Hamburg) sperren Abrufe aus der Cloud. Sie laufen nur lokal über `tools/lokal.ps1`
 (Windows-Aufgabe „Kinoprogramm lokal“, täglich 12:30, Protokoll `tools/lokal.log`), nicht im Workflow.
+Cineplex Fürth und CinemaxX Hamburg kommen über cineamo.com. Cineplex Fürth ergänzend aus gespeicherten Seiten:
+`eingang/` (lokal) und ein per Link freigegebener Google-Drive-Ordner (Secret `CINEPLEX_DRIVE_ORDNER`, täglich geprüft).
 
 - `index.html`, `style.css`, `app.js`: die Website, reines HTML/CSS/JavaScript ohne Build-Schritt
 - `data.js`: erzeugt von `tools/build-data.ps1`, nie von Hand bearbeiten
