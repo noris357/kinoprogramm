@@ -40,7 +40,7 @@ jobs:
       NUR_AUSLASTUNG: ${{ github.event.schedule == '0 6 * * *' || inputs.nur_auslastung == true }}
     environment:
       name: github-pages
-      url: ${{ steps.veroeffentlichen.outputs.page_url }}
+      url: ${{ steps.veroeffentlichen.outputs.page_url || steps.veroeffentlichen2.outputs.page_url }}
     steps:
       - name: Repository holen
         uses: actions/checkout@v4
@@ -121,6 +121,18 @@ jobs:
         with:
           path: .
 
+      # GitHub findet das gerade hochgeladene Paket manchmal erst nach einigen Sekunden
+      # ("No artifacts named github-pages"). Dann nach einer Pause ein zweiter Versuch.
       - name: Website veröffentlichen
         id: veroeffentlichen
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Kurz warten vor dem zweiten Versuch
+        if: steps.veroeffentlichen.outcome == 'failure'
+        run: sleep 45
+
+      - name: Website veröffentlichen (zweiter Versuch)
+        id: veroeffentlichen2
+        if: steps.veroeffentlichen.outcome == 'failure'
         uses: actions/deploy-pages@v4
