@@ -290,6 +290,8 @@ foreach ($g in $gruppen.Values) {
   # Anzeigetitel: die haeufigste Variante, bei Gleichstand die, die dem deutschen TMDB-Titel entspricht
   $tmdbSchluessel = if ($g.Info -and $g.Info.titel) { Get-TitelSchluessel $g.Info.titel } else { '' }
   $titel = ($g.Varianten.GetEnumerator() | Sort-Object @{ Expression = { $_.Value }; Descending = $true }, @{ Expression = { (Get-TitelSchluessel $_.Key.Split('|')[0]) -ne $tmdbSchluessel } } | Select-Object -First 1).Key.Split('|')[0]
+  # Titel in fremder Schrift (z. B. Koreanisch "국제시장"): lateinischen Titel von TMDB nehmen, sofern vorhanden
+  if ((Test-FremdeSchrift $titel) -and $g.Info -and $g.Info.titel -and -not (Test-FremdeSchrift $g.Info.titel)) { $titel = [string]$g.Info.titel }
   $i = $g.Info
   $land = Get-EinheitlicheLaender $(if ($g.Land) { $g.Land } elseif ($i) { $i.land } else { $null })
   $regie = if ($g.Regie) { $g.Regie } elseif ($i) { $i.regie } else { $null }

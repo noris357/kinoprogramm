@@ -7,18 +7,18 @@
                       "fehler":  null,
                       "von":  "2026-11-24",
                       "bis":  "2027-06-24",
-                      "bestaetigt":  399,
+                      "bestaetigt":  396,
                       "neu":  43,
-                      "entfernt":  0
+                      "entfernt":  1
                   },
                   {
                       "kino":  "Meisengeige Nürnberg",
                       "ok":  true,
                       "fehler":  null,
                       "von":  "2026-11-24",
-                      "bis":  "2026-12-14",
+                      "bis":  "2026-12-15",
                       "bestaetigt":  4,
-                      "neu":  3,
+                      "neu":  34,
                       "entfernt":  0
                   },
                   {
@@ -28,7 +28,7 @@
                       "von":  "2026-11-24",
                       "bis":  "2026-12-14",
                       "bestaetigt":  5,
-                      "neu":  5,
+                      "neu":  34,
                       "entfernt":  0
                   },
                   {
@@ -38,7 +38,7 @@
                       "von":  "2026-11-24",
                       "bis":  "2027-01-04",
                       "bestaetigt":  22,
-                      "neu":  5,
+                      "neu":  35,
                       "entfernt":  0
                   },
                   {
@@ -94,11 +94,11 @@
                   {
                       "kino":  "Casablanca Nürnberg",
                       "ok":  true,
-                      "fehler":  "",
-                      "von":  "2026-11-19",
-                      "bis":  "2026-11-25",
-                      "bestaetigt":  5,
-                      "neu":  71,
+                      "fehler":  "Keine Zeile mit Vorstellungen an allen Tagen gefunden, Spalten nicht bestimmbar.",
+                      "von":  "2026-11-24",
+                      "bis":  "2026-11-24",
+                      "bestaetigt":  0,
+                      "neu":  67,
                       "entfernt":  0
                   },
                   {
@@ -107,7 +107,7 @@
                       "fehler":  null,
                       "von":  "2026-11-24",
                       "bis":  "2027-06-05",
-                      "bestaetigt":  166,
+                      "bestaetigt":  165,
                       "neu":  19,
                       "entfernt":  0
                   },
@@ -139,10 +139,12 @@
                            "2026 Silvesterkonzert der Berliner Philharmoniker",
                            "André Rieus Weihnachtskonzert 2026: Let it Snow",
                            "André Rieu\u0027s Weihnachtskonzert 2026: Let it Snow - CineSpecial",
+                           "Andrew Lloyd Webber\u0027s Starlight Express - Live On Stage",
                            "Berliner Philharmoniker LIVE: Das Silvesterkonzert 2026-27",
                            "Berliner Philharmoniker: Silvesterkonzert 2026",
                            "BTS WORLD TOUR \u0027ARIRANG\u0027 IN JAKARTA: LIVE VIEWING",
                            "BTS World Tour Arirang Jakarta: Live Viewing",
+                           "CineSpecial: Andrew Lloyd Webber’s Starlight Express - Live On Stage",
                            "Gaming im Kino - 3 Stunden",
                            "George Michael - The Faith Tour",
                            "Live aus der MET: Massenet: Manon",

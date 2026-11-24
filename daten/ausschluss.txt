@@ -39,3 +39,5 @@
 (?i)\bQuiz(nacht)?\b.*\bMonkey-Quiz\b|\bFilm ?quiz\b
 # Hamburg: Konzertabende im B-Movie
 (?i)^H(Ö|OE)RBAR\s*:
+# Musical-Aufzeichnungen
+(?i)\bStarlight Express\b

@@ -6,11 +6,10 @@
   const KLASSIKER_SCORE = 75;        // Score ab dem ein älterer Film als Klassiker gilt (oder Hauptpreis)
   const GEHEIMTIPP_SCORE = 80;       // Mindest-Score für den Geheimtipp
   const GEHEIMTIPP_MAX_TAGE = 3;     // höchstens so viele Spieltage in der Woche, in nur einem Kino
+  const GEHEIMTIPP_MAX_GESAMT = 8;   // höchstens so viele Spieltage über die ganze Laufzeit, in nur einem Kino überhaupt
   const NUR_EINMAL_SCORE = 70;       // Mindest-Score für "Nur einmal"
   const DAUERBRENNER_WOCHEN = 6;     // mindestens so viele Kinowochen am Stück
   const FILME_JE_RUBRIK = 3;         // höchstens so viele Filme je Rubrik
-  const NEU_WOCHE_BEGINNT = 2;       // "neu": Woche läuft ab diesem Wochentag sieben Tage (0 = Montag, 2 = Mittwoch, also Mittwoch bis Dienstag)
-  const NEU_KINOSTART_TOLERANZ = 14; // "neu": Kinostart liegt mehr Tage vor Wochenbeginn, dann nicht mehr neu
   const NEU_HOECHSTALTER = 1;        // "neu": Produktionsjahr höchstens so viele Jahre zurück, damit Wiederaufführungen nicht als Neustart zählen
   const OHNE_HIGHLIGHT = /^(Sneak Preview|Kult Sneak|Kurzfilmprogramm)$/;
 
@@ -256,7 +255,8 @@
   }
 
   // ---------- Fakten je Film und Grund-Zeile ----------
-  const donnerstagVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7)); // Kinowoche läuft Donnerstag bis Mittwoch
+  // Kinowoche läuft von Mittwoch bis Dienstag, Rückgabe ist der Mittwoch
+  const kinowocheVon = (s) => plusTage(s, -((wochentag(s) + 5) % 7));
   // Erfassungslücke (daten/luecke.json): Für einzeln geprüfte Filme zählen die Wochen der Lücke als Spielwochen,
   // damit "Wochen am Stück" nicht an fehlenden Daten abbricht. Für alle anderen Filme beginnt die Serie danach neu.
   const LUECKE = D.luecke || null;
@@ -264,7 +264,7 @@
   function mitLuecke(wochen, f) {
     if (!LUECKE || !f || !f.info.tmdb || !lueckeDurchgehend.has(Number(f.info.tmdb))) return wochen;
     const erg = new Set(wochen);
-    for (let w = donnerstagVon(LUECKE.von); w <= LUECKE.bis; w = plusTage(w, 7)) erg.add(w);
+    for (let w = kinowocheVon(LUECKE.von); w <= LUECKE.bis; w = plusTage(w, 7)) erg.add(w);
     return erg;
   }
   let faktenCache = null;
@@ -275,30 +275,30 @@
     const m = new Map();
     termine.forEach((t) => {
       let e = m.get(t.f);
-      if (!e) { e = { erster: t.d, tage: new Set(), kinos: new Set(), spaeter: false, wochen: new Set() }; m.set(t.f, e); }
+      if (!e) { e = { erster: t.d, tage: new Set(), kinos: new Set(), spaeter: false, wochen: new Set(), alleKinos: new Set(), alleTage: new Set() }; m.set(t.f, e); }
+      // Ueber die ganze Laufzeit (fuer den Geheimtipp): alle Kinos und alle Spieltage
+      e.alleKinos.add(t.k); e.alleTage.add(t.d);
       if (t.d < e.erster) e.erster = t.d;
       if (t.d >= HEUTE && t.d <= ende) { e.tage.add(t.d); e.kinos.add(t.k); }
       if (t.d > ende) e.spaeter = true;
-      e.wochen.add(donnerstagVon(t.d));
+      e.wochen.add(kinowocheVon(t.d));
     });
     // Kinowochen am Stück, rückwärts ab der aktuellen Kinowoche
     // Neu: deutscher Kinostart (TMDB) in der laufenden Woche. Ohne Kinostart: erster Termin überhaupt liegt in der laufenden Woche
     // und der Film ist kein alter Film in Wiederaufführung
-    const neuAb = plusTage(HEUTE, -((wochentag(HEUTE) + 7 - NEU_WOCHE_BEGINNT) % 7));
+    const neuAb = kinowocheVon(HEUTE);   // laufende Kinowoche, Mittwoch bis Dienstag
     const neuBis = plusTage(neuAb, 6);
     const diesesJahr = Number(HEUTE.slice(0, 4));
     m.forEach((e, id) => {
       const wochen = mitLuecke(e.wochen, filme[id]);
-      let w = donnerstagVon(HEUTE), n = 0;
+      let w = kinowocheVon(HEUTE), n = 0;
       while (wochen.has(w)) { n++; w = plusTage(w, -7); }
       e.serie = n;
       const jahr = parseInt(filme[id].jahr, 10);
       const ks = filme[id].info && filme[id].info.kinostart;
       if (ks) {
-        // Deutscher Kinostart laut TMDB: neu, wenn er in der laufenden Woche liegt. Lag er davor, aber höchstens
-        // NEU_KINOSTART_TOLERANZ Tage vor Wochenbeginn, zählt es noch, wenn der erste erfasste Termin in dieser Woche liegt.
-        e.neu = (String(ks) >= neuAb && String(ks) <= neuBis)
-          || (String(ks) < neuAb && String(ks) >= plusTage(neuAb, -NEU_KINOSTART_TOLERANZ) && e.erster >= neuAb && e.erster <= neuBis);
+        // Deutscher Kinostart laut TMDB: neu nur, wenn er in der laufenden Kinowoche liegt
+        e.neu = String(ks) >= neuAb && String(ks) <= neuBis;
       } else {
         e.neu = e.erster >= neuAb && e.erster <= neuBis && (!jahr || diesesJahr - jahr <= NEU_HOECHSTALTER);
       }
@@ -483,7 +483,8 @@
       }))],
       // Blickt über die sieben Tage hinaus und zeigt deshalb alle betroffenen Filme, unabhängig von den anderen Rubriken
       ['Schnell vergriffen', vorverkaufText(), vorverkaufFilme(daten), vorverkaufKarte],
-      ['Geheimtipp', 'Hoher Score, aber nur in einem Kino und an wenigen Tagen.', nimm(alle.filter((h) => (h.f.bewertung ?? -1) >= GEHEIMTIPP_SCORE && fk.get(h.f.id).kinos.size === 1 && fk.get(h.f.id).tage.size <= GEHEIMTIPP_MAX_TAGE))],
+      // Geheimtipp: über die ganze Laufzeit nur in einem Kino und an wenigen Tagen, keine Filme, die schon lange oder breit liefen
+      ['Geheimtipp', 'Hoher Score, aber bisher nur in einem Kino und an wenigen Tagen.', nimm(alle.filter((h) => { const e = fk.get(h.f.id); return (h.f.bewertung ?? -1) >= GEHEIMTIPP_SCORE && e.alleKinos.size === 1 && e.tage.size <= GEHEIMTIPP_MAX_TAGE && e.alleTage.size <= GEHEIMTIPP_MAX_GESAMT; }))],
       ['Nur einmal', 'Nur ein Spieltag in dieser Woche und danach kein Termin mehr.', nimm(alle.filter((h) => (h.f.bewertung ?? -1) >= NUR_EINMAL_SCORE && fk.get(h.f.id).tage.size === 1 && !fk.get(h.f.id).spaeter))],
       ['Ausgezeichnet', 'Laufende Filme mit einem Hauptpreis.', nimm(alle.filter(hatPreis))],
       ['Dauerbrenner', 'Seit vielen Kinowochen am Stück im Programm.', nimm(alle.filter((h) => fk.get(h.f.id).serie >= DAUERBRENNER_WOCHEN)
@@ -509,12 +510,14 @@
     daten.forEach((t) => { if (!proTag.has(t.d)) proTag.set(t.d, new Set()); proTag.get(t.d).add(t.f); });
     const chanceIds = new Set(letzteChance(daten).sicher.map((e) => e.f.id));
 
-    // Ganze Woche: heute bis einschließlich Sonntag der aktuellen ISO-Woche (vergangene Tage zählen nicht)
-    const sonntag = plusTage(montagVon(HEUTE), 6);
+    // Ganze Woche: heute bis einschließlich Dienstag der laufenden Kinowoche (Mittwoch bis Dienstag), vergangene Tage zählen nicht
+    // Am Dienstag (letzter Tag der Kinowoche) gehört die folgende Kinowoche mit dazu
+    let wochenEnde = plusTage(kinowocheVon(HEUTE), 6);
+    if (wochenEnde === HEUTE) wochenEnde = plusTage(wochenEnde, 7);
     const ganzeWoche = zustand.tag === 'woche';
     const wochenFilme = new Set();
-    daten.forEach((t) => { if (t.d >= HEUTE && t.d <= sonntag) wochenFilme.add(t.f); });
-    const wochenKnopf = `<button class="tag" data-tag="woche" aria-pressed="${ganzeWoche}"><small>KW ${kalenderwoche(HEUTE)}</small><b>${wochenFilme.size} ${wochenFilme.size === 1 ? 'Film' : 'Filme'}</b></button>`;
+    daten.forEach((t) => { if (t.d >= HEUTE && t.d <= wochenEnde) wochenFilme.add(t.f); });
+    const wochenKnopf = `<button class="tag" data-tag="woche" aria-pressed="${ganzeWoche}"><small>Kinowoche</small><b>${wochenFilme.size} ${wochenFilme.size === 1 ? 'Film' : 'Filme'}</b></button>`;
 
     const knoepfe = wochenKnopf + Array.from({ length: 8 }, (_, i) => plusTage(HEUTE, i)).map((d, i) => {
       const n = proTag.get(d)?.size || 0;
@@ -522,7 +525,7 @@
       return `<button class="tag" data-tag="${d}" aria-pressed="${d === zustand.tag}"><small>${oben} · ${datumKurz(d)}</small><b>${n} ${n === 1 ? 'Film' : 'Filme'}</b></button>`;
     }).join('');
 
-    const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= sonntag) : daten.filter((t) => t.d === zustand.tag);
+    const amTag = ganzeWoche ? daten.filter((t) => t.d >= HEUTE && t.d <= wochenEnde) : daten.filter((t) => t.d === zustand.tag);
     // Sortierung für beide Ansichten immer nach Score, Filme ohne Score am Ende, bei Gleichstand alphabetisch
     const filmOrdnung = (a, b) => (b.genau ?? -1) - (a.genau ?? -1) || a.titel.localeCompare(b.titel, 'de');
     // Festival je Film (Ansicht nach Film) und je Film und Kino (Ansicht nach Kino), erstes passendes zählt
@@ -565,7 +568,7 @@
         <label class="tag-wahl">Anderer Tag<input type="date" id="tag-wahl" value="${ganzeWoche ? HEUTE : zustand.tag}" min="${ERSTER}" max="${LETZTER}"></label>
       </div>
       <div class="ansicht-kopf">
-        <h2>${ganzeWoche ? `KW ${kalenderwoche(HEUTE)} · ${datumKurz(HEUTE)} bis ${datumKurz(sonntag)}` : fmtVoll.format(parse(zustand.tag))}</h2>
+        <h2>${ganzeWoche ? `Kinowoche · ${datumKurz(HEUTE)} bis ${datumKurz(wochenEnde)}` : fmtVoll.format(parse(zustand.tag))}</h2>
         <div class="steuerung">
           <label class="haken"><input type="checkbox" id="nur-neu" ${zustand.nurNeu ? 'checked' : ''}> Start diese Woche</label>
           <div class="umschalter" role="group" aria-label="Gruppierung">
@@ -1270,17 +1273,17 @@
     const ziel = rahmen.querySelector('.flaeche'), tip = rahmen.querySelector('.tooltip');
     const jeFilm = new Map();
     daten.forEach((t) => { if (!jeFilm.has(t.f)) jeFilm.set(t.f, []); jeFilm.get(t.f).push(t); });
-    const ersteWoche = donnerstagVon(PROJEKT_START) < PROJEKT_START ? plusTage(donnerstagVon(PROJEKT_START), 7) : donnerstagVon(PROJEKT_START);
+    const ersteWoche = kinowocheVon(PROJEKT_START) < PROJEKT_START ? plusTage(kinowocheVon(PROJEKT_START), 7) : kinowocheVon(PROJEKT_START);
     const KINOS = ['1 Kino', '2–4 Kinos', '5 und mehr', 'erst später bei uns'];
     const LAUF = ['1 Woche, dann abgesetzt', '2–3 Wochen, dann abgesetzt', '4 und mehr Wochen, abgesetzt', 'läuft noch'];
     const filmeListe = [];
     jeFilm.forEach((ts, fid) => {
       const f = filme[fid], ks = f.info.kinostart && String(f.info.kinostart);
       if (!ks || istSneak(f) || istKurzfilm(f)) return;
-      const sw = donnerstagVon(ks);
+      const sw = kinowocheVon(ks);
       if (sw < ersteWoche || ks > HEUTE) return;
-      const kinosStart = new Set(ts.filter((t) => donnerstagVon(t.d) === sw).map((t) => t.k)).size;
-      const wochen = new Set(ts.filter((t) => t.d >= sw && t.d <= HEUTE).map((t) => donnerstagVon(t.d)));
+      const kinosStart = new Set(ts.filter((t) => kinowocheVon(t.d) === sw).map((t) => t.k)).size;
+      const wochen = new Set(ts.filter((t) => t.d >= sw && t.d <= HEUTE).map((t) => kinowocheVon(t.d)));
       let n = 0;
       for (let w = sw; wochen.has(w); w = plusTage(w, 7)) n++;
       const laeuft = ts.some((t) => t.d >= HEUTE);
@@ -1912,7 +1915,7 @@
       e.filme.add(t.f);
       e.tageJeFilm.set(t.f, (e.tageJeFilm.get(t.f) || 0) + 1);
       if (!e.wochenJeFilm.has(t.f)) e.wochenJeFilm.set(t.f, new Set());
-      e.wochenJeFilm.get(t.f).add(donnerstagVon(t.d));
+      e.wochenJeFilm.get(t.f).add(kinowocheVon(t.d));
       if (!e.ersterJeFilm.has(t.f) || t.d < e.ersterJeFilm.get(t.f)) e.ersterJeFilm.set(t.f, t.d);
       e.wochentage[wochentag(t.d)]++;
       if (!kinosJeFilm.has(t.f)) kinosJeFilm.set(t.f, new Set());
@@ -2140,8 +2143,6 @@
   }
 
   // ---------- Filmdetails ----------
-  // Kinowoche läuft von Donnerstag bis Mittwoch, Rückgabe ist der Donnerstag
-  const kinowocheVon = (s) => plusTage(s, -((wochentag(s) + 4) % 7));
 
   // Zeile "Im Kino seit ..." mit der Zahl zusammenhängender Kinowochen (leer bei Überraschungsfilmen)
   function laufzeitZeile(f, tage) {
@@ -2283,7 +2284,7 @@
       if (t.d < e.erster) e.erster = t.d;
       if (t.d >= HEUTE) e.laeuft = true;
       if (t.d >= PROJEKT_START && t.d <= HEUTE) {
-        e.tage++; e.kinos.add(t.k); e.wochen.add(donnerstagVon(t.d)); e.jeKino.set(t.k, (e.jeKino.get(t.k) || 0) + 1);
+        e.tage++; e.kinos.add(t.k); e.wochen.add(kinowocheVon(t.d)); e.jeKino.set(t.k, (e.jeKino.get(t.k) || 0) + 1);
       }
     });
     return [...m.values()].map((e) => {

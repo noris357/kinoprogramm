@@ -28,7 +28,7 @@ Cineplex Fürth und CinemaxX Hamburg kommen über cineamo.com. Cineplex Fürth e
 - `tools/aktualisieren.ps1`: liest die Kinoseiten aus (`tools/quellen/*.ps1`) und gleicht mit dem Bestand ab
 - `tools/tmdb.ps1`, `tools/mdblist.ps1`, `tools/preise.ps1`: Zusatzdaten
 - `tools/auslastung.ps1`: Auslastungsstufen der Cinecitta-Gruppe nach `daten/auslastung.json` (Rubrik „Schnell vergriffen“)
-- `.github/workflows/aktualisieren.yml`: wöchentlicher Lauf mittwochs, täglicher Lauf nur für die Auslastung, Veröffentlichung
+- `.github/workflows/aktualisieren.yml`: Programmlauf täglich morgens, zusätzlich dienstags abends und donnerstags nachmittags, Veröffentlichung
 
 ## Regeln
 

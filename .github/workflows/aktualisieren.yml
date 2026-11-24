@@ -1,18 +1,18 @@
-# Aktualisiert das Kinoprogramm jeden Mittwochvormittag und veroeffentlicht die Website auf GitHub Pages.
+# Aktualisiert das Kinoprogramm jeden Morgen und veroeffentlicht die Website auf GitHub Pages.
 # Manuell starten: im Repository unter "Actions" > "Kinoprogramm aktualisieren" > "Run workflow".
 # Bei jedem Hochladen von Aenderungen (push) wird die Website ohne neuen Abruf veroeffentlicht.
-# Zusaetzlich liest ein taeglicher Lauf nur die Auslastung der Cinecitta-Vorstellungen (tools/auslastung.ps1).
+# Jeder geplante Lauf liest das ganze Programm und die Auslastung. Ein Handstart mit Haken liest nur die Auslastung.
 
 name: Kinoprogramm aktualisieren
 
 on:
   schedule:
-    # Mittwoch 09:00 UTC = 10:00 Uhr Winterzeit, 11:00 Uhr Sommerzeit. GitHub startet geplante Laeufe oft etwas spaeter.
-    - cron: '0 9 * * 3'
+    # Taeglich 06:00 UTC = 7 Uhr Winterzeit, 8 Uhr Sommerzeit. GitHub startet geplante Laeufe oft etwas spaeter.
+    - cron: '0 6 * * *'
+    # Dienstag 17:00 UTC = 18 Uhr Winterzeit: die Cinecitta-Gruppe stellt die neue Woche meist dienstags online
+    - cron: '0 17 * * 2'
     # Donnerstag 14:00 UTC = 15 Uhr Winterzeit: Casablanca und Lamm-Lichtspiele veroeffentlichen ihre Woche erst donnerstags
     - cron: '0 14 * * 4'
-    # Taeglich 06:00 UTC = 7 Uhr Winterzeit, 8 Uhr Sommerzeit: nur Auslastung
-    - cron: '0 6 * * *'
   workflow_dispatch:
     inputs:
       nur_auslastung:
@@ -36,8 +36,8 @@ jobs:
     # Fest auf Ubuntu 24.04, weil ubuntu-latest waehrend der Umstellung auf Ubuntu 26.04 keine Runner bekam (11.11.2026)
     runs-on: ubuntu-24.04
     env:
-      # Taeglicher Lauf oder Handstart mit Haken: nur Auslastung, kein Programmabruf
-      NUR_AUSLASTUNG: ${{ github.event.schedule == '0 6 * * *' || inputs.nur_auslastung == true }}
+      # Nur beim Handstart mit Haken: nur Auslastung, kein Programmabruf
+      NUR_AUSLASTUNG: ${{ inputs.nur_auslastung == true }}
     environment:
       name: github-pages
       url: ${{ steps.veroeffentlichen.outputs.page_url || steps.veroeffentlichen2.outputs.page_url }}
