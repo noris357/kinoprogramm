@@ -1,200 +1,193 @@
 {
-    "abfragetag":  "2026-11-24",
-    "kinos":  [
-                  {
-                      "kino":  "CinemaxX Hamburg-Dammtor",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-11-29",
-                      "bestaetigt":  12,
-                      "neu":  14,
-                      "entfernt":  1
-                  },
-                  {
-                      "kino":  "CinemaxX Hamburg-Wandsbek",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-11-28",
-                      "bestaetigt":  7,
-                      "neu":  7,
-                      "entfernt":  1
-                  },
-                  {
-                      "kino":  "CinemaxX Hamburg-Harburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-11-29",
-                      "bestaetigt":  13,
-                      "neu":  11,
-                      "entfernt":  1
-                  },
-                  {
-                      "kino":  "Astor Film Lounge HafenCity",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2027-06-22",
-                      "bestaetigt":  63,
-                      "neu":  5,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Savoy Filmtheater Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2027-01-25",
-                      "bestaetigt":  72,
-                      "neu":  3,
-                      "entfernt":  1
-                  },
-                  {
-                      "kino":  "Kinopolis HafenCity",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-11-30",
-                      "bestaetigt":  96,
-                      "neu":  35,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Studio-Kino Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-19",
-                      "bestaetigt":  51,
-                      "neu":  6,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Elbe-Kino Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-02",
-                      "bestaetigt":  13,
-                      "neu":  2,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Blankeneser Kino",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-02",
-                      "bestaetigt":  37,
-                      "neu":  3,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Koralle-Kino Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-02",
-                      "bestaetigt":  52,
-                      "neu":  10,
-                      "entfernt":  1
-                  },
-                  {
-                      "kino":  "Abaton Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-02",
-                      "bestaetigt":  19,
-                      "neu":  106,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Zeise Kinos",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2027-02-02",
-                      "bestaetigt":  137,
-                      "neu":  12,
-                      "entfernt":  8
-                  },
-                  {
-                      "kino":  "3001 Kino",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-27",
-                      "bestaetigt":  35,
-                      "neu":  2,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "B-Movie",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-11-29",
-                      "bestaetigt":  5,
-                      "neu":  1,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Metropolis Hamburg",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-12-30",
-                      "bestaetigt":  93,
-                      "neu":  3,
-                      "entfernt":  0
-                  },
-                  {
-                      "kino":  "Lichtmeß Kino",
-                      "ok":  true,
-                      "fehler":  null,
-                      "von":  "2026-11-24",
-                      "bis":  "2026-11-26",
-                      "bestaetigt":  2,
-                      "neu":  1,
-                      "entfernt":  0
-                  }
-              ],
-    "neueFilme":  [
-                      "Das fliegende Klassenzimmer",
-                      "Der atmo-Filmabend: YANUNI (The Amazon is a Woman)",
-                      "Der Prank - April, April",
-                      "Der Preis des Widerstands",
-                      "DJ Ahmet",
-                      "Eine letzte Runde",
-                      "Ghost School",
-                      "Irans Frauen",
-                      "Mr. Turner - Meister des Lichts",
-                      "Pride",
-                      "Wir, die Wolfs",
-                      "Zirkuskind"
-                  ],
-    "ausgeschlossen":  [
-                           "1. Hamburger Filmquiz",
-                           "Abaton-Filmquiz",
-                           "Alice im Wunderland - Wheeldon (Royal Ballet \u0026 Opera 2026/27)",
-                           "Berliner Philharmoniker - Live im Kino 2026/27: Silvesterkonzert",
-                           "Cosi fan tutte - Mozart (Royal Ballet \u0026 Opera 2026/27 live)",
-                           "Der Nussknacker - Tschaikowsky (Royal Ballet \u0026 Opera 2026/27)",
-                           "Die große Quiznacht by Monkey-Quiz (Savoy)",
-                           "Film Quiz #5 by Monkey-Quiz (Savoy)",
-                           "Götterdämmerung - Wagner (Royal Ballet \u0026 Opera 2026/27 live)",
-                           "HÖRBAR : Hamburg Free-Improv Community",
-                           "HÖRBAR : Hörbar Exchanges 5",
-                           "La fanciulla del west - Puccini (MET 2026/27)",
-                           "Manon - Massenet (MET 2026/27)",
-                           "Otello - Verdi (MET 2026/27)",
-                           "Parsifal - Wagner (MET 2026/27)",
-                           "Romeo und Julia - Prokofjew (Royal Ballet \u0026 Opera 2026/27)",
-                           "Samson et Dalila - Saint-Saens (MET 2026/27)",
-                           "Schwanensee - Tschaikowsky (Royal Ballet \u0026 Opera 2026/27 live)",
-                           "Tosca - Puccini (Royal Ballet \u0026 Opera 2026/27 live)"
-                       ]
+  "abfragetag": "2026-11-24",
+  "kinos": [
+    {
+      "kino": "3001 Kino",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-27",
+      "bestaetigt": 35,
+      "neu": 2,
+      "entfernt": 0
+    },
+    {
+      "kino": "Abaton Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-02",
+      "bestaetigt": 109,
+      "neu": 16,
+      "entfernt": 0
+    },
+    {
+      "kino": "Astor Film Lounge HafenCity",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2027-06-22",
+      "bestaetigt": 63,
+      "neu": 4,
+      "entfernt": 0
+    },
+    {
+      "kino": "B-Movie",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-11-29",
+      "bestaetigt": 5,
+      "neu": 1,
+      "entfernt": 0
+    },
+    {
+      "kino": "Blankeneser Kino",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-02",
+      "bestaetigt": 37,
+      "neu": 3,
+      "entfernt": 0
+    },
+    {
+      "kino": "CinemaxX Hamburg-Dammtor",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-01",
+      "bestaetigt": 13,
+      "neu": 60,
+      "entfernt": 0
+    },
+    {
+      "kino": "CinemaxX Hamburg-Harburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-01",
+      "bestaetigt": 14,
+      "neu": 68,
+      "entfernt": 0
+    },
+    {
+      "kino": "CinemaxX Hamburg-Wandsbek",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-01",
+      "bestaetigt": 8,
+      "neu": 51,
+      "entfernt": 0
+    },
+    {
+      "kino": "Elbe-Kino Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-02",
+      "bestaetigt": 13,
+      "neu": 2,
+      "entfernt": 0
+    },
+    {
+      "kino": "Kinopolis HafenCity",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-11-30",
+      "bestaetigt": 111,
+      "neu": 18,
+      "entfernt": 0
+    },
+    {
+      "kino": "Koralle-Kino Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-02",
+      "bestaetigt": 54,
+      "neu": 8,
+      "entfernt": 0
+    },
+    {
+      "kino": "Lichtmeß Kino",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-11-26",
+      "bestaetigt": 2,
+      "neu": 1,
+      "entfernt": 0
+    },
+    {
+      "kino": "Metropolis Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-30",
+      "bestaetigt": 93,
+      "neu": 3,
+      "entfernt": 0
+    },
+    {
+      "kino": "Savoy Filmtheater Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2027-01-25",
+      "bestaetigt": 72,
+      "neu": 2,
+      "entfernt": 0
+    },
+    {
+      "kino": "Studio-Kino Hamburg",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2026-12-19",
+      "bestaetigt": 52,
+      "neu": 5,
+      "entfernt": 0
+    },
+    {
+      "kino": "Zeise Kinos",
+      "ok": true,
+      "fehler": null,
+      "von": "2026-11-24",
+      "bis": "2027-02-02",
+      "bestaetigt": 140,
+      "neu": 14,
+      "entfernt": 0
+    }
+  ],
+  "neueFilme": [
+    "Janosch – Komm, wir finden einen Schatz",
+    "Krimizeit",
+    "Love Likes Coincidences 3",
+    "Yeh Prem Mol Liya"
+  ],
+  "ausgeschlossen": [
+    "1. Hamburger Filmquiz",
+    "Abaton-Filmquiz",
+    "Alice im Wunderland - Wheeldon (Royal Ballet & Opera 2026/27)",
+    "Andrew Lloyd Webber's Starlight Express",
+    "Berliner Philharmoniker - Live im Kino 2026/27: Silvesterkonzert",
+    "Cosi fan tutte - Mozart (Royal Ballet & Opera 2026/27 live)",
+    "Der Nussknacker - Tschaikowsky (Royal Ballet & Opera 2026/27)",
+    "Die große Quiznacht by Monkey-Quiz (Savoy)",
+    "Film Quiz #5 by Monkey-Quiz (Savoy)",
+    "Götterdämmerung - Wagner (Royal Ballet & Opera 2026/27 live)",
+    "HÖRBAR : Hamburg Free-Improv Community",
+    "HÖRBAR : Hörbar Exchanges 5",
+    "La fanciulla del west - Puccini (MET 2026/27)",
+    "Manon - Massenet (MET 2026/27)",
+    "Otello - Verdi (MET 2026/27)",
+    "Parsifal - Wagner (MET 2026/27)",
+    "Romeo und Julia - Prokofjew (Royal Ballet & Opera 2026/27)",
+    "Samson et Dalila - Saint-Saens (MET 2026/27)",
+    "Schwanensee - Tschaikowsky (Royal Ballet & Opera 2026/27 live)",
+    "Tosca - Puccini (Royal Ballet & Opera 2026/27 live)"
+  ]
 }

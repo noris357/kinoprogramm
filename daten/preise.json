@@ -105,6 +105,28 @@
       "jahr": 1986
     }
   ],
+  "654": [
+    {
+      "preis": "oscar",
+      "kategorie": "Bestes Originaldrehbuch",
+      "jahr": 1955
+    },
+    {
+      "preis": "oscar",
+      "kategorie": "Beste Regie",
+      "jahr": 1955
+    },
+    {
+      "preis": "oscar",
+      "kategorie": "Bester Hauptdarsteller",
+      "jahr": 1955
+    },
+    {
+      "preis": "oscar",
+      "kategorie": "Bester Film",
+      "jahr": 1955
+    }
+  ],
   "875": [
     {
       "preis": "oscar",
@@ -143,6 +165,18 @@
       "preis": "oscar",
       "kategorie": "Bester Hauptdarsteller",
       "jahr": 2002
+    }
+  ],
+  "2769": [
+    {
+      "preis": "oscar",
+      "kategorie": "Bestes Originaldrehbuch",
+      "jahr": 1952
+    },
+    {
+      "preis": "oscar",
+      "kategorie": "Bester Film",
+      "jahr": 1952
     }
   ],
   "9281": [
@@ -237,6 +271,13 @@
       "preis": "tokio",
       "kategorie": "Tokyo Grand Prix",
       "jahr": 2024
+    }
+  ],
+  "1401459": [
+    {
+      "preis": "palme",
+      "kategorie": "Goldene Palme",
+      "jahr": 2026
     }
   ],
   "1432596": [
