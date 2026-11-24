@@ -1,5 +1,5 @@
 {
-    "stand":  "2026-11-23",
+    "stand":  "2026-11-24",
     "zeilen":  [
                    {
                        "Titel":  "Die Blutgräfin",
@@ -1542,6 +1542,246 @@
                        "Datum":  "2026-11-24"
                    },
                    {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Emil und die Detektive",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "David Dietl",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Geister",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Fatih Akin",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Puella Magi Madoka Magica Der Film - Walpurgisnacht: Rising",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Das Geheimnis der gestohlenen Maske",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Nancy Mac Granaky-Quaye",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Emil und die Detektive",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "David Dietl",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "How to Rob a Bank",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Puella Magi Madoka Magica Der Film - Walpurgisnacht: Rising",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Ramayana: Rise of a Legend",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Indien",
+                       "Regisseur:in":  "Nitesh Tiwari",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Street Fighter",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Kitao Sakurai",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Verity - Dunkle Geheimnisse",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Michael Showalter",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-24"
+                   },
+                   {
                        "Titel":  "Der Regenbogenfisch",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Deutschland, Schweiz",
@@ -2320,6 +2560,254 @@
                        "Datum":  "2026-11-25"
                    },
                    {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Emil und die Detektive",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "David Dietl",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Geister",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Fatih Akin",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "How to Rob a Bank",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Emil und die Detektive",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "David Dietl",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Geister",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Fatih Akin",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "How to Rob a Bank",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Street Fighter",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Kitao Sakurai",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Verity - Dunkle Geheimnisse",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Michael Showalter",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-25"
+                   },
+                   {
                        "Titel":  "Der Regenbogenfisch",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Deutschland, Schweiz",
@@ -2771,6 +3259,246 @@
                        "Datum":  "2026-11-26"
                    },
                    {
+                       "Titel":  "Brute 1986",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Brute 1986",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-26"
+                   },
+                   {
                        "Titel":  "Der Regenbogenfisch",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Deutschland, Schweiz",
@@ -3208,6 +3936,262 @@
                    {
                        "Titel":  "Wildwood",
                        "Kino":  "Studio-Kino Hamburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Cosmic Samson",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "How to Rob a Bank",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Parkway Drive - Home",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Ask Tesadüfleri Sever 3",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-27"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
                        "Land":  "USA, Großbritannien, Kanada",
                        "Regisseur:in":  "Travis Knight",
                        "Produktionsjahr":  2026,
@@ -3795,6 +4779,238 @@
                    {
                        "Titel":  "Wildwood",
                        "Kino":  "Studio-Kino Hamburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Geister",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Fatih Akin",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Parkway Drive - Home",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-28"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
                        "Land":  "USA, Großbritannien, Kanada",
                        "Regisseur:in":  "Travis Knight",
                        "Produktionsjahr":  2026,
@@ -4397,6 +5613,286 @@
                    },
                    {
                        "Titel":  "Asterix und das Königreich Nubien",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Frankreich",
+                       "Regisseur:in":  "Alexandre Heboyan",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Die Biene Maja - Der Kinofilm",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Festtagsspaß mit Peppa - Das Kinoerlebnis",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Asterix und das Königreich Nubien",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Frankreich",
+                       "Regisseur:in":  "Alexandre Heboyan",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Der frechste Troll der Welt",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Jan Rahbek",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Die Biene Maja - Der Kinofilm",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Emil und die Detektive",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "David Dietl",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Festtagsspaß mit Peppa - Das Kinoerlebnis",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "How to Rob a Bank",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-29"
+                   },
+                   {
+                       "Titel":  "Asterix und das Königreich Nubien",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Frankreich",
                        "Regisseur:in":  "Alexandre Heboyan",
@@ -4735,6 +6231,214 @@
                        "Datum":  "2026-11-30"
                    },
                    {
+                       "Titel":  "Das gewisse Etwas",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Marc Rothemund",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Emil und die Detektive",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "David Dietl",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Überraschungspremiere",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Das gewisse Etwas",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Marc Rothemund",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Überraschungspremiere",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-11-30"
+                   },
+                   {
                        "Titel":  "Der Regenbogenfisch",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Deutschland, Schweiz",
@@ -5003,6 +6707,230 @@
                        "Kino":  "Studio-Kino Hamburg",
                        "Land":  "Großbritannien, USA",
                        "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Liebe braucht keine Ferien",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Nancy Meyers",
+                       "Produktionsjahr":  2006,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Liebe braucht keine Ferien",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Nancy Meyers",
+                       "Produktionsjahr":  2006,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "QuizKino Live",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-01"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
                        "Produktionsjahr":  2026,
                        "Datum":  "2026-12-01"
                    },
@@ -5329,6 +7257,222 @@
                        "Datum":  "2026-12-02"
                    },
                    {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "QuizKino Live",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Shaun das Schaf - Spuk im Kürbisfeld",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien",
+                       "Regisseur:in":  "Steve Cox, Matthew Walker",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Wild Horse Nine",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Großbritannien, USA",
+                       "Regisseur:in":  "Martin McDonagh",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Clayface",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "James Watkins",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Der Perfekte Urlaub",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Bora Dagtekin",
+                       "Produktionsjahr":  2025,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Der Regenbogenfisch",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland, Schweiz",
+                       "Regisseur:in":  "Florian Moch",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Die Tribute von Panem - Sunrise on the Reaping",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Francis Lawrence",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Ebenezer - Eine Weihnachtsgeschichte",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Ti West",
+                       "Produktionsjahr":  "2026",
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Godzilla Minus Zero",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Japan",
+                       "Regisseur:in":  "Takashi Yamazaki",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Hokum",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "I Play Rocky",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Peter Farrelly",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Julenissens verksted",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Lieblingsmenschen",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Deutschland",
+                       "Regisseur:in":  "Helena Hufnagel",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Meine Frau, unsere Schwiegertochter und ich",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "John Hamburg",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Other Mommy",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Rob Savage",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "The Further Mis-Adventures of Cliff Booth",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Wie verhext",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  "Fawn Veerasunthorn, Jason Hand, Josie Trinidad",
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
+                       "Titel":  "Wildwood",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA, Großbritannien, Kanada",
+                       "Regisseur:in":  "Travis Knight",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-02"
+                   },
+                   {
                        "Titel":  "Der Regenbogenfisch",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Deutschland, Schweiz",
@@ -5511,6 +7655,38 @@
                        "Datum":  "2026-12-04"
                    },
                    {
+                       "Titel":  "Dune",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2021,
+                       "Datum":  "2026-12-04"
+                   },
+                   {
+                       "Titel":  "Dune: Part Two",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2023,
+                       "Datum":  "2026-12-04"
+                   },
+                   {
+                       "Titel":  "Dune",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2021,
+                       "Datum":  "2026-12-04"
+                   },
+                   {
+                       "Titel":  "Dune: Part Two",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2023,
+                       "Datum":  "2026-12-04"
+                   },
+                   {
                        "Titel":  "Sneak Preview",
                        "Kino":  "Zeise Kinos",
                        "Land":  "?",
@@ -5591,6 +7767,54 @@
                        "Land":  "USA",
                        "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
                        "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-05"
+                   },
+                   {
+                       "Titel":  "Dune",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2021,
+                       "Datum":  "2026-12-05"
+                   },
+                   {
+                       "Titel":  "Dune: Part Two",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2023,
+                       "Datum":  "2026-12-05"
+                   },
+                   {
+                       "Titel":  "Tabaluga \u0026 Leo - Der Weihnachtsfilm",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-05"
+                   },
+                   {
+                       "Titel":  "Dune",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2021,
+                       "Datum":  "2026-12-05"
+                   },
+                   {
+                       "Titel":  "Dune: Part Two",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2023,
+                       "Datum":  "2026-12-05"
+                   },
+                   {
+                       "Titel":  "Tabaluga \u0026 Leo - Der Weihnachtsfilm",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
                        "Datum":  "2026-12-05"
                    },
                    {
@@ -5697,6 +7921,22 @@
                        "Land":  "USA",
                        "Regisseur:in":  "Nathan Fielder Lance Oppenheim",
                        "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-06"
+                   },
+                   {
+                       "Titel":  "Der Kater mit Hut",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2026-12-06"
+                   },
+                   {
+                       "Titel":  "Der Kater mit Hut",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
                        "Datum":  "2026-12-06"
                    },
                    {
@@ -6182,6 +8422,30 @@
                        "Datum":  "2026-12-15"
                    },
                    {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-15"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-15"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-15"
+                   },
+                   {
                        "Titel":  "Broken English",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -6250,6 +8514,38 @@
                    {
                        "Titel":  "Dune: Part Three",
                        "Kino":  "Studio-Kino Hamburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-16"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-16"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-16"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-16"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
                        "Land":  "USA",
                        "Regisseur:in":  "Denis Villeneuve",
                        "Produktionsjahr":  2026,
@@ -6331,6 +8627,38 @@
                        "Datum":  "2026-12-17"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-17"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-17"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-17"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-17"
+                   },
+                   {
                        "Titel":  "Emil und die Detektive",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Deutschland",
@@ -6384,6 +8712,38 @@
                    {
                        "Titel":  "Dune: Part Three",
                        "Kino":  "Savoy Filmtheater Hamburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-18"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-18"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-18"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-18"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
                        "Land":  "USA",
                        "Regisseur:in":  "Denis Villeneuve",
                        "Produktionsjahr":  2026,
@@ -6483,6 +8843,38 @@
                        "Datum":  "2026-12-19"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-19"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-19"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-19"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-19"
+                   },
+                   {
                        "Titel":  "Asterix und das Königreich Nubien",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Frankreich",
@@ -6558,6 +8950,38 @@
                        "Datum":  "2026-12-20"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-20"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-20"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-20"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-20"
+                   },
+                   {
                        "Titel":  "Auf der Suche nach der Weihnachtswerkstatt",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -6611,6 +9035,38 @@
                    {
                        "Titel":  "Dune: Part Three",
                        "Kino":  "Savoy Filmtheater Hamburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-21"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-21"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-21"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-21"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
                        "Land":  "USA",
                        "Regisseur:in":  "Denis Villeneuve",
                        "Produktionsjahr":  2026,
@@ -6716,6 +9172,38 @@
                        "Datum":  "2026-12-22"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-22"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-22"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-22"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-22"
+                   },
+                   {
                        "Titel":  "Auf der Suche nach der Weihnachtswerkstatt",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -6782,6 +9270,38 @@
                        "Datum":  "2026-12-23"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-23"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-23"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-23"
+                   },
+                   {
+                       "Titel":  "Dune: Part Three",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-23"
+                   },
+                   {
                        "Titel":  "Asterix und das Königreich Nubien",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Frankreich",
@@ -6838,6 +9358,22 @@
                        "Datum":  "2026-12-24"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-24"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-24"
+                   },
+                   {
                        "Titel":  "Dune: Part Three",
                        "Kino":  "Astor Film Lounge HafenCity",
                        "Land":  "USA",
@@ -6885,6 +9421,22 @@
                        "Kino":  "Savoy Filmtheater Hamburg",
                        "Land":  "USA",
                        "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-25"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-25"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
                        "Produktionsjahr":  2026,
                        "Datum":  "2026-12-25"
                    },
@@ -6964,6 +9516,22 @@
                        "Datum":  "2026-12-26"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-26"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-26"
+                   },
+                   {
                        "Titel":  "Auf der Suche nach der Weihnachtswerkstatt",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -7029,6 +9597,22 @@
                        "Datum":  "2026-12-27"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-27"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-27"
+                   },
+                   {
                        "Titel":  "Hamburg. In bunt. Eine Stadt in Farbfilmen 1935 -1965",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -7067,6 +9651,22 @@
                        "Kino":  "Savoy Filmtheater Hamburg",
                        "Land":  "USA",
                        "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-28"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-28"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
                        "Produktionsjahr":  2026,
                        "Datum":  "2026-12-28"
                    },
@@ -7125,6 +9725,22 @@
                        "Kino":  "Savoy Filmtheater Hamburg",
                        "Land":  "USA",
                        "Regisseur:in":  "Denis Villeneuve",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-29"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-29"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
                        "Produktionsjahr":  2026,
                        "Datum":  "2026-12-29"
                    },
@@ -7195,6 +9811,22 @@
                        "Datum":  "2026-12-30"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-30"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-30"
+                   },
+                   {
                        "Titel":  "Asterix und das Königreich Nubien",
                        "Kino":  "Zeise Kinos",
                        "Land":  "Frankreich",
@@ -7219,6 +9851,22 @@
                        "Datum":  "2026-12-30"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-31"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2026-12-31"
+                   },
+                   {
                        "Titel":  "Hamburg. In bunt. Eine Stadt in Farbfilmen 1935 -1965",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -7233,6 +9881,22 @@
                        "Regisseur:in":  "Paweł Pawlikowski",
                        "Produktionsjahr":  2026,
                        "Datum":  "2026-12-31"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-01"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-01"
                    },
                    {
                        "Titel":  "Das Neinhorn",
@@ -7259,6 +9923,38 @@
                        "Datum":  "2027-01-01"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-02"
+                   },
+                   {
+                       "Titel":  "Winterabenteuer mit Pettersson und Findus",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2027-01-02"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-02"
+                   },
+                   {
+                       "Titel":  "Winterabenteuer mit Pettersson und Findus",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2027-01-02"
+                   },
+                   {
                        "Titel":  "Das Neinhorn",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -7283,6 +9979,22 @@
                        "Datum":  "2027-01-03"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-03"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-03"
+                   },
+                   {
                        "Titel":  "Das Neinhorn",
                        "Kino":  "Zeise Kinos",
                        "Land":  null,
@@ -7299,12 +10011,60 @@
                        "Datum":  "2027-01-03"
                    },
                    {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-04"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-04"
+                   },
+                   {
                        "Titel":  "Lieblingsmenschen",
                        "Kino":  "Astor Film Lounge HafenCity",
                        "Land":  "Deutschland",
                        "Regisseur:in":  "Helena Hufnagel",
                        "Produktionsjahr":  2026,
                        "Datum":  "2027-01-05"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-05"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-05"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-06"
+                   },
+                   {
+                       "Titel":  "Avengers: Doomsday",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "USA",
+                       "Regisseur:in":  "Joe Russo, Anthony Russo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-06"
                    },
                    {
                        "Titel":  "Das Neinhorn",
@@ -7345,6 +10105,22 @@
                        "Regisseur:in":  null,
                        "Produktionsjahr":  null,
                        "Datum":  "2027-01-11"
+                   },
+                   {
+                       "Titel":  "La bola negra",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  "Spanien, Frankreich",
+                       "Regisseur:in":  "Javier Ambrossi, Javier Calvo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-12"
+                   },
+                   {
+                       "Titel":  "La bola negra",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  "Spanien, Frankreich",
+                       "Regisseur:in":  "Javier Ambrossi, Javier Calvo",
+                       "Produktionsjahr":  2026,
+                       "Datum":  "2027-01-12"
                    },
                    {
                        "Titel":  "Vaterland",
@@ -7457,6 +10233,38 @@
                        "Regisseur:in":  null,
                        "Produktionsjahr":  null,
                        "Datum":  "2027-02-02"
+                   },
+                   {
+                       "Titel":  "Feuerwehrmann Sam - Tierische Helden",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2027-02-06"
+                   },
+                   {
+                       "Titel":  "Feuerwehrmann Sam - Tierische Helden",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2027-02-06"
+                   },
+                   {
+                       "Titel":  "Die Häschenschule - Jagd nach dem goldenen Ei",
+                       "Kino":  "UCI Hamburg-Mundsburg",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2027-03-06"
+                   },
+                   {
+                       "Titel":  "Die Häschenschule - Jagd nach dem goldenen Ei",
+                       "Kino":  "UCI Hamburg-Wandsbek",
+                       "Land":  null,
+                       "Regisseur:in":  null,
+                       "Produktionsjahr":  null,
+                       "Datum":  "2027-03-06"
                    }
                ]
 }

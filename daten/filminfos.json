@@ -458,6 +458,10 @@
                                                                 ],
                                                      "jahr":  "2026"
                                                  },
+    "Ask Tesadüfleri Sever 3|":  {
+                                     "nichtGefunden":  true,
+                                     "geprueft":  "2026-11-24"
+                                 },
     "Asphalt|1929":  {
                          "tmdb":  55584,
                          "titel":  "Asphalt",
@@ -1270,6 +1274,22 @@
                                                   ],
                                        "jahr":  "2026"
                                    },
+    "Brute 1986|":  {
+                        "tmdb":  1433854,
+                        "titel":  "Brute 1986",
+                        "geprueft":  "2026-11-24",
+                        "stimmen":  0,
+                        "poster":  "plakate/1433854.jpg",
+                        "imdb":  "tt35716526",
+                        "land":  "Vereinigte Staaten",
+                        "regie":  "Marcel Walz",
+                        "kinostart":  "2026-11-26",
+                        "laufzeit":  84,
+                        "genres":  [
+                                       "Horror"
+                                   ],
+                        "jahr":  "2026"
+                    },
     "Bücher! Bücher! Bücher!|":  {
                                      "tmdb":  1040206,
                                      "titel":  "Bücher",
@@ -2919,6 +2939,24 @@
                                              ],
                                   "jahr":  "2026"
                               },
+    "Die Biene Maja - Der Kinofilm|":  {
+                                           "tmdb":  261103,
+                                           "titel":  "Die Biene Maja - Der Kinofilm",
+                                           "geprueft":  "2026-11-24",
+                                           "stimmen":  196,
+                                           "poster":  "plakate/261103.jpg",
+                                           "bewertung":  "6,2",
+                                           "imdb":  "tt3336368",
+                                           "land":  "Deutschland, Australien",
+                                           "regie":  "Alexs Stadermann",
+                                           "kinostart":  "2014-09-11",
+                                           "laufzeit":  78,
+                                           "genres":  [
+                                                          "Familie",
+                                                          "Animation"
+                                                      ],
+                                           "jahr":  "2014"
+                                       },
     "Die Blutgräfin|2026":  {
                                 "tmdb":  1251608,
                                 "titel":  "Die Blutgräfin",
@@ -3048,6 +3086,24 @@
                                                           ],
                                                "jahr":  "1966"
                                            },
+    "Die Häschenschule - Jagd nach dem goldenen Ei|":  {
+                                                           "tmdb":  425218,
+                                                           "titel":  "Die Häschenschule – Jagd nach dem Goldenen Ei",
+                                                           "geprueft":  "2026-11-24",
+                                                           "stimmen":  26,
+                                                           "poster":  "plakate/425218.jpg",
+                                                           "bewertung":  "5,9",
+                                                           "imdb":  "tt5029776",
+                                                           "land":  "Deutschland",
+                                                           "regie":  "Ute von Münchow-Pohl",
+                                                           "kinostart":  "2017-03-16",
+                                                           "laufzeit":  79,
+                                                           "genres":  [
+                                                                          "Animation",
+                                                                          "Familie"
+                                                                      ],
+                                                           "jahr":  "2017"
+                                                       },
     "Die Ironie des Schicksals, oder: Genieße dein Bad!|":  {
                                                                 "tmdb":  43430,
                                                                 "titel":  "Die Ironie des Schicksals, oder Genieße Dein Bad!",
@@ -4441,6 +4497,20 @@
                                                                       ],
                                                            "jahr":  "2026"
                                                        },
+    "Feuerwehrmann Sam - Tierische Helden|":  {
+                                                  "tmdb":  1245252,
+                                                  "titel":  "Feuerwehrmann Sam – Tierische Helden",
+                                                  "geprueft":  "2026-11-24",
+                                                  "stimmen":  0,
+                                                  "poster":  "plakate/1245252.jpg",
+                                                  "regie":  "Oskar Nilsson",
+                                                  "kinostart":  "2024-02-08",
+                                                  "laufzeit":  50,
+                                                  "genres":  [
+
+                                                             ],
+                                                  "jahr":  "2024"
+                                              },
     "Finding Connection|":  {
                                 "tmdb":  1624471,
                                 "titel":  "Finding Connection",
@@ -5883,6 +5953,23 @@
                                       ],
                            "jahr":  "2026"
                        },
+    "Julenissens verksted|":  {
+                                  "tmdb":  1578318,
+                                  "titel":  "Auf der Suche nach der Weihnachtswerkstatt",
+                                  "geprueft":  "2026-11-24",
+                                  "stimmen":  1,
+                                  "poster":  "plakate/1578318.jpg",
+                                  "imdb":  "tt41475646",
+                                  "regie":  "Rasmus A. Sivertsen, Mette Tange",
+                                  "kinostart":  "2026-11-26",
+                                  "laufzeit":  75,
+                                  "genres":  [
+                                                 "Komödie",
+                                                 "Familie",
+                                                 "Animation"
+                                             ],
+                                  "jahr":  "2026"
+                              },
     "Junkies of Dreaming - Mahler 3 Currentzis|2026":  {
                                                            "tmdb":  1646767,
                                                            "titel":  "Junkies of Dreaming - Mahler 3 Currentzis",
@@ -8183,6 +8270,10 @@
                                                ],
                                     "jahr":  "2025"
                                 },
+    "QuizKino Live|":  {
+                           "nichtGefunden":  true,
+                           "geprueft":  "2026-11-24"
+                       },
     "Quizzzamerie - das Kneipenquiz|":  {
                                             "nichtGefunden":  true,
                                             "geprueft":  "2026-11-06"
@@ -9109,6 +9200,10 @@
                               ],
                    "jahr":  "1995"
                },
+    "Tabaluga \u0026 Leo - Der Weihnachtsfilm|":  {
+                                                      "nichtGefunden":  true,
+                                                      "geprueft":  "2026-11-24"
+                                                  },
     "Tafiti - Ab durch die Wüste|":  {
                                          "tmdb":  1437198,
                                          "titel":  "Tafiti – Ab durch die Wüste",
@@ -9390,6 +9485,24 @@
                                       ],
                            "jahr":  "2025"
                        },
+    "The Further Mis-Adventures of Cliff Booth|":  {
+                                                       "tmdb":  1457866,
+                                                       "titel":  "THE FURTHER MIS-ADVENTURES OF CLIFF BOOTH",
+                                                       "geprueft":  "2026-11-24",
+                                                       "stimmen":  0,
+                                                       "poster":  "plakate/1457866.jpg",
+                                                       "imdb":  "tt36408401",
+                                                       "land":  "Vereinigte Staaten",
+                                                       "regie":  "David Fincher",
+                                                       "kinostart":  "2026-11-25",
+                                                       "laufzeit":  120,
+                                                       "genres":  [
+                                                                      "Komödie",
+                                                                      "Drama",
+                                                                      "Thriller"
+                                                                  ],
+                                                       "jahr":  "2026"
+                                                   },
     "The Invite|":  {
                         "tmdb":  950028,
                         "titel":  "The Invite",
@@ -10082,6 +10195,10 @@
                                      ],
                           "jahr":  "2026"
                       },
+    "Überraschungspremiere|":  {
+                                   "nichtGefunden":  true,
+                                   "geprueft":  "2026-11-24"
+                               },
     "Uļa|2026":  {
                      "tmdb":  1490241,
                      "titel":  "Uļa",
@@ -10813,6 +10930,21 @@
     "Willy Wonka und die Schokoladenfabrik|1971":  {
                                                        "nichtGefunden":  true,
                                                        "geprueft":  "2026-11-24"
+                                                   },
+    "Winterabenteuer mit Pettersson und Findus|":  {
+                                                       "tmdb":  901245,
+                                                       "titel":  "Winterabenteuer mit Pettersson und Findus",
+                                                       "geprueft":  "2026-11-24",
+                                                       "stimmen":  0,
+                                                       "poster":  "plakate/901245.jpg",
+                                                       "imdb":  "tt39105372",
+                                                       "kinostart":  "2022-06-02",
+                                                       "laufzeit":  60,
+                                                       "genres":  [
+                                                                      "Familie",
+                                                                      "Animation"
+                                                                  ],
+                                                       "jahr":  "2022"
                                                    },
     "Wir Kinder Aus Bullerbü|":  {
                                      "tmdb":  21394,
