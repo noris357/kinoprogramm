@@ -69,6 +69,10 @@ function Get-BereinigterTitel([string]$Titel) {
 
 function Get-BereinigterTitelOhneKorrektur([string]$Titel) {
   $t = $Titel.Trim()
+  # "Originaltitel | deutscher Titel" (Filmhaus, z. B. "Tre Ciotole | Drei Abschiede"): deutschen Teil nehmen.
+  # Steht hinter dem Strich ein Vorfilm ("Why Worry? | Vorfilm: Harvest Hands"), den Teil davor.
+  # Der senkrechte Strich trennt sonst intern Titel und Jahr.
+  if ($t -match '^(.+?)\s+\|\s+(.+)$') { $t = if ($Matches[2] -match '(?i)^Vor(film|programm)\b') { $Matches[1].Trim() } else { $Matches[2].Trim() } }
   # Ueberraschungsfilme einheitlich: alte Filme (Review, Kult, Retro) -> "Kult Sneak", neue Filme -> "Sneak Preview"
   if ($t -match '(?i)\bsneak\b|überraschungs(film|preview)') {
     # Ganzes Wort pruefen: "Preview" enthaelt sonst auch "review"

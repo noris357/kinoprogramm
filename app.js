@@ -2227,7 +2227,9 @@
     const zurueckAuswertung = auswertung ? `<button type="button" class="zurueck-film zurueck-auswertung" data-zurueck-auswertung>← Zurück zur ${auswertung}</button>` : '';
     // Genres laut TMDB und Festivals, auf denen der Film bei uns lief oder läuft
     const genreZeile = (f.info.genres || []).length ? `<div class="meta">${f.info.genres.map(esc).join(', ')}</div>` : '';
-    const festivals = [...new Set(termine.filter((t) => t.f === fid).map(festivalVon).filter(Boolean))];
+    // Nur Festivals, auf denen der Film heute oder später noch läuft. Ist das Festival vorbei, entfällt das Abzeichen,
+    // auch wenn der Film danach regulär weiterläuft.
+    const festivals = [...new Set(termine.filter((t) => t.f === fid && t.d >= HEUTE).map(festivalVon).filter(Boolean))];
     const festZeile = festivals.length ? `<div class="fd-festivals"><span class="meta">Festival</span> ${festivals.map(festivalAbzeichen).join(' ')}</div>` : '';
     $('#fd-inhalt').innerHTML = `${zurueckAuswertung}<div class="dialog-kopf">${plakat(f, 'gross')}<div><h2 id="fd-titel">${esc(f.titel)}</h2>${pokale(f)}${wertung(f)}<div class="meta">${filmMeta(f, true)}</div>${genreZeile}${festZeile}${laufzeitZeile(f, alleTage)}${grundZeile(f)}${preisListe(f)}<div id="fd-gesehen">${gesehenKnopf(f)}</div><p class="meta">Gold markiert kommende Tage, grau vergangene.</p></div></div>${knopf}<div id="fd-termine">${gruppenHtml()}</div>`;
     const knopfEl = $('#fd-inhalt .vorbei-knopf');

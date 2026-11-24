@@ -193,11 +193,9 @@ $mdb = @{}
 if (Test-Path $wertungsDatei) { (Get-Content $wertungsDatei -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $mdb[$_.Name] = $_.Value } }
 
 # Rohwerte je Film sammeln
-$wertRoh = @{}   # Gruppen-ID -> @{ quelle = @{ wert; stimmen } }
-foreach ($g in $gruppen.Values) {
-  if (-not $g.Info -or -not $g.Info.tmdb) { continue }
+function Get-Quellwerte($Info) {
   $q = @{}
-  $m = $mdb[[string]$g.Info.tmdb]
+  $m = $mdb[[string]$Info.tmdb]
   if ($m -and $m.quellen) {
     foreach ($p in $m.quellen.PSObject.Properties) {
       if (-not $gewichte.ContainsKey($p.Name)) { continue }
@@ -208,26 +206,40 @@ foreach ($g in $gruppen.Values) {
     }
   }
   # TMDB-Wertung aus filminfos.json, falls MDBList sie nicht liefert
-  if (-not $q.ContainsKey('tmdb') -and $g.Info.bewertung) {
-    $q['tmdb'] = @{ wert = 10 * [double](([string]$g.Info.bewertung).Replace(',', '.')); stimmen = $(if ($g.Info.stimmen) { [double]$g.Info.stimmen } else { $null }) }
+  if (-not $q.ContainsKey('tmdb') -and $Info.bewertung) {
+    $q['tmdb'] = @{ wert = 10 * [double](([string]$Info.bewertung).Replace(',', '.')); stimmen = $(if ($Info.stimmen) { [double]$Info.stimmen } else { $null }) }
   }
+  $q
+}
+$wertRoh = @{}   # Gruppen-ID -> @{ quelle = @{ wert; stimmen } }
+foreach ($g in $gruppen.Values) {
+  if (-not $g.Info -or -not $g.Info.tmdb) { continue }
+  $q = Get-Quellwerte $g.Info
   if ($q.Count) { $wertRoh[$g.Id] = $q }
 }
+# Bezugsgruppe fuer Mittelwert und Streuung: alle Filme aller Regionen (filminfos.json, je TMDB-ID einmal).
+# So bekommt ein Film in jeder Region denselben Score.
+$bezugRoh = @{}
+foreach ($i in $infos.Values) {
+  if (-not $i -or $i.nichtGefunden -or -not $i.tmdb -or $bezugRoh.ContainsKey([string]$i.tmdb)) { continue }
+  $q = Get-Quellwerte $i
+  if ($q.Count) { $bezugRoh[[string]$i.tmdb] = $q }
+}
 
-# Kennzahlen je Quelle ueber alle Filme
+# Kennzahlen je Quelle ueber alle Filme der Bezugsgruppe
 $statistik = @{}
 foreach ($quellName in $gewichte.Keys) {
-  $werte = @($wertRoh.Values | Where-Object { $_.ContainsKey($quellName) } | ForEach-Object { $_[$quellName].wert })
+  $werte = @($bezugRoh.Values | Where-Object { $_.ContainsKey($quellName) } | ForEach-Object { $_[$quellName].wert })
   if ($werte.Count -lt 10) { continue }   # zu wenige Filme fuer eine verlaessliche Verteilung
   $mittel = ($werte | Measure-Object -Average).Average
-  # Daempfung: (Stimmen * Wert + k * Mittel) / (Stimmen + k)
+  # Daempfung: (Stimmen * Wert + k * Mittel) / (Stimmen + k), fuer die Bezugsgruppe und die Filme der Region
   $k = $daempfung[$quellName]
-  foreach ($film in $wertRoh.Values) {
+  foreach ($film in @($bezugRoh.Values) + @($wertRoh.Values)) {
     if (-not $film.ContainsKey($quellName)) { continue }
     $e = $film[$quellName]
     $e.angepasst = if ($k -and $null -ne $e.stimmen) { ($e.stimmen * $e.wert + $k * $mittel) / ($e.stimmen + $k) } else { $e.wert }
   }
-  $angepasst = @($wertRoh.Values | Where-Object { $_.ContainsKey($quellName) } | ForEach-Object { $_[$quellName].angepasst })
+  $angepasst = @($bezugRoh.Values | Where-Object { $_.ContainsKey($quellName) } | ForEach-Object { $_[$quellName].angepasst })
   $m2 = ($angepasst | Measure-Object -Average).Average
   $sd = [math]::Sqrt((($angepasst | ForEach-Object { ($_ - $m2) * ($_ - $m2) } | Measure-Object -Sum).Sum) / [math]::Max(1, $angepasst.Count - 1))
   # Mindeststreuung: bei eng streuenden Quellen wuerden kleine Unterschiede sonst zu grossen z-Werten

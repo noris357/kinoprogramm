@@ -504,17 +504,8 @@
                                                    "jahr":  "2026"
                                                },
     "Astero | Vorprogramm: Die Abenteuer des Villar|1929":  {
-                                                                "tmdb":  1714193,
-                                                                "titel":  "Asteroid",
-                                                                "geprueft":  "2026-11-21",
-                                                                "stimmen":  0,
-                                                                "imdb":  "tt43552499",
-                                                                "regie":  "Ryan Smith",
-                                                                "kinostart":  "",
-                                                                "laufzeit":  0,
-                                                                "genres":  [
-
-                                                                           ]
+                                                                "nichtGefunden":  true,
+                                                                "geprueft":  "2026-11-24"
                                                             },
     "Astrid Lindgren - Die Menschheit hat den Verstand verloren|":  {
                                                                         "tmdb":  1494498,
@@ -1668,8 +1659,21 @@
                                           "jahr":  "1948"
                                       },
     "Come ti muovi, sbagli | Immer Verkehrt|2025":  {
-                                                        "nichtGefunden":  true,
-                                                        "geprueft":  "2026-11-18"
+                                                        "tmdb":  1520507,
+                                                        "titel":  "Come ti muovi, sbagli",
+                                                        "geprueft":  "2026-11-24",
+                                                        "stimmen":  21,
+                                                        "poster":  "plakate/1520507.jpg",
+                                                        "bewertung":  "5,8",
+                                                        "imdb":  "tt34730492",
+                                                        "land":  "Italien",
+                                                        "regie":  "Gianni Di Gregorio",
+                                                        "kinostart":  "",
+                                                        "laufzeit":  97,
+                                                        "genres":  [
+                                                                       "Komödie"
+                                                                   ],
+                                                        "jahr":  "2025"
                                                     },
     "Comédie-Française|2026":  {
                                    "tmdb":  1496491,
@@ -2843,8 +2847,21 @@
                                          "jahr":  "2026"
                                      },
     "Der Tempel zur goldenen Halle | Mishima - Ein Leben in vier Kapiteln|1958":  {
-                                                                                      "nichtGefunden":  true,
-                                                                                      "geprueft":  "2026-11-06"
+                                                                                      "tmdb":  27064,
+                                                                                      "titel":  "Mishima - Ein Leben in vier Kapiteln",
+                                                                                      "geprueft":  "2026-11-24",
+                                                                                      "stimmen":  386,
+                                                                                      "poster":  "plakate/27064.jpg",
+                                                                                      "bewertung":  "7,8",
+                                                                                      "imdb":  "tt0089603",
+                                                                                      "land":  "Japan, Vereinigte Staaten",
+                                                                                      "regie":  "Paul Schrader",
+                                                                                      "kinostart":  "1985-10-31",
+                                                                                      "laufzeit":  120,
+                                                                                      "genres":  [
+                                                                                                     "Drama"
+                                                                                                 ],
+                                                                                      "jahr":  "1985"
                                                                                   },
     "Der Tempel zur goldenen Halle|1958":  {
                                                "nichtGefunden":  true,
@@ -5180,8 +5197,21 @@
                         "geprueft":  "2026-11-24"
                     },
     "Gioia mia | Mein Sommer mit Nonna|2025":  {
-                                                   "nichtGefunden":  true,
-                                                   "geprueft":  "2026-11-18"
+                                                   "tmdb":  1510325,
+                                                   "titel":  "Mein Sommer bei Nonna",
+                                                   "geprueft":  "2026-11-24",
+                                                   "stimmen":  92,
+                                                   "poster":  "plakate/1510325.jpg",
+                                                   "bewertung":  "6,5",
+                                                   "imdb":  "tt36454256",
+                                                   "land":  "Italien",
+                                                   "regie":  "Margherita Spampinato",
+                                                   "kinostart":  "",
+                                                   "laufzeit":  92,
+                                                   "genres":  [
+                                                                  "Drama"
+                                                              ],
+                                                   "jahr":  "2025"
                                                },
     "Glaube|2026":  {
                         "tmdb":  1443576,
@@ -5820,8 +5850,22 @@
                                            "jahr":  "2026"
                                        },
     "Il Bene Comune | Gut für Alle|2025":  {
-                                               "nichtGefunden":  true,
-                                               "geprueft":  "2026-11-18"
+                                               "tmdb":  1493024,
+                                               "titel":  "Il Bene Comune",
+                                               "geprueft":  "2026-11-24",
+                                               "stimmen":  51,
+                                               "poster":  "plakate/1493024.jpg",
+                                               "bewertung":  "6,2",
+                                               "imdb":  "tt35994346",
+                                               "land":  "Italien",
+                                               "regie":  "Rocco Papaleo",
+                                               "kinostart":  "",
+                                               "laufzeit":  103,
+                                               "genres":  [
+                                                              "Komödie",
+                                                              "Drama"
+                                                          ],
+                                               "jahr":  "2026"
                                            },
     "Il Gaucho|1964":  {
                            "tmdb":  186630,
@@ -6288,7 +6332,7 @@
                                   },
     "Kiki Kolympari | Twelve Stills Forward|":  {
                                                     "nichtGefunden":  true,
-                                                    "geprueft":  "2026-11-18"
+                                                    "geprueft":  "2026-11-24"
                                                 },
     "Kinderzaubershow|":  {
                               "nichtGefunden":  true,
@@ -6477,8 +6521,22 @@
                              "jahr":  "2026"
                          },
     "La vita da grandi | Das Leben als Erwachsene|2025":  {
-                                                              "nichtGefunden":  true,
-                                                              "geprueft":  "2026-11-18"
+                                                              "tmdb":  1421309,
+                                                              "titel":  "La vita da grandi",
+                                                              "geprueft":  "2026-11-24",
+                                                              "stimmen":  119,
+                                                              "poster":  "plakate/1421309.jpg",
+                                                              "bewertung":  "7,1",
+                                                              "imdb":  "tt30064085",
+                                                              "land":  "Italien",
+                                                              "regie":  "Greta Scarano",
+                                                              "kinostart":  "",
+                                                              "laufzeit":  95,
+                                                              "genres":  [
+                                                                             "Komödie",
+                                                                             "Drama"
+                                                                         ],
+                                                              "jahr":  "2025"
                                                           },
     "Lachtara. Longing (Eröffnungsfilm)|2026":  {
                                                     "nichtGefunden":  true,
@@ -10297,13 +10355,23 @@
                                          ],
                               "jahr":  "2001"
                           },
-    "Tre Ciotole | Drei Abscheide|2025":  {
-                                              "nichtGefunden":  true,
-                                              "geprueft":  "2026-11-18"
-                                          },
     "Tre Ciotole | Drei Abschiede|2025":  {
-                                              "nichtGefunden":  true,
-                                              "geprueft":  "2026-11-23"
+                                              "tmdb":  1433339,
+                                              "titel":  "Tre ciotole",
+                                              "geprueft":  "2026-11-24",
+                                              "stimmen":  126,
+                                              "poster":  "plakate/1433339.jpg",
+                                              "bewertung":  "7,1",
+                                              "imdb":  "tt35705184",
+                                              "land":  "Italien, Spanien",
+                                              "regie":  "Isabel Coixet",
+                                              "kinostart":  "",
+                                              "laufzeit":  122,
+                                              "genres":  [
+                                                             "Drama",
+                                                             "Liebesfilm"
+                                                         ],
+                                              "jahr":  "2025"
                                           },
     "Tribute von Panem - The Ballad of Songbirds \u0026 Snakes|":  {
                                                                        "nichtGefunden":  true,
@@ -10954,8 +11022,21 @@
                         "jahr":  "2006"
                     },
     "Why Worry? | Vorfilm: Harvest Hands|":  {
-                                                 "nichtGefunden":  true,
-                                                 "geprueft":  "2026-11-18"
+                                                 "tmdb":  41348,
+                                                 "titel":  "Lieber krank als sorgenfrei",
+                                                 "geprueft":  "2026-11-24",
+                                                 "stimmen":  49,
+                                                 "poster":  "plakate/41348.jpg",
+                                                 "bewertung":  "6,5",
+                                                 "imdb":  "tt0014611",
+                                                 "land":  "Vereinigte Staaten",
+                                                 "regie":  "Fred C. Newmeyer, Sam Taylor",
+                                                 "kinostart":  "1925-10-30",
+                                                 "laufzeit":  63,
+                                                 "genres":  [
+                                                                "Komödie"
+                                                            ],
+                                                 "jahr":  "1923"
                                              },
     "Wicked: Teil 2|2025":  {
                                 "tmdb":  967941,

@@ -146,6 +146,16 @@ foreach ($k in $offen) {
       $treffer = @($suche.results) | Where-Object { Test-Treffer $_ $titel $jahr } | Select-Object -First 1
       if ($treffer) { $id = $treffer.id; break }
     }
+    # "Originaltitel | deutscher Titel" (Filmhaus): zusaetzlich mit dem Originaltitel suchen und pruefen
+    $original = if ("$($z.Titel)" -match '^(.+?)\s+\|\s+.+$') { $Matches[1].Trim() } else { $null }
+    if (-not $id -and $original) {
+      foreach ($v in @(@{ query = $original; year = $jahr }, @{ query = $original })) {
+        if (-not $v.year) { $v.Remove('year') }
+        $suche = Invoke-Tmdb 'search/movie' $v
+        $treffer = @($suche.results) | Where-Object { Test-Treffer $_ $original $jahr } | Select-Object -First 1
+        if ($treffer) { $id = $treffer.id; break }
+      }
+    }
     # Gleicher Titel, aber anderes Jahr (z. B. falsches Jahr im Bestand): nur wenn genau ein solcher Film existiert
     if (-not $id) {
       $exakt = @($alleTreffer | Where-Object { Test-Treffer $_ $titel 0 } | Where-Object { (Get-LockererSchluessel $_.title) -eq (Get-LockererSchluessel $titel) -or (Get-LockererSchluessel $_.original_title) -eq (Get-LockererSchluessel $titel) } | ForEach-Object id | Select-Object -Unique)
