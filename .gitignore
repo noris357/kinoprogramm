@@ -7,3 +7,5 @@ artifact.html
 
 # Gespeicherte fremde Kinoseiten (Cineplex) nur lokal auswerten, nicht veroeffentlichen
 eingang/
+# Protokoll des lokalen Laufs (tools/lokal.ps1)
+tools/lokal.log

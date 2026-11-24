@@ -12,7 +12,8 @@
 
 #   -Region hamburg liest die Kinos einer anderen Region (siehe daten/regionen.json), Standard ist nuernberg.
 
-param([switch]$Probelauf, [string]$Region = 'nuernberg')
+#   -Ausleser Get-HamburgLokal liest nur die Kinos dieser Funktion (z. B. die lokal abgerufenen), die uebrigen Kinos bleiben unveraendert.
+param([switch]$Probelauf, [string]$Region = 'nuernberg', [string]$Ausleser = '')
 
 $tools = $PSScriptRoot
 . (Join-Path $tools 'gemeinsam.ps1')
@@ -91,7 +92,7 @@ $bestand = @($bestand | Where-Object { -not (Test-Ausgeschlossen $_.Titel) })
 $ausDemBestand = $vorherBestand - $bestand.Count
 
 # ---------- Kinoseiten auslesen ----------
-$roh = @(& $regionInfo.ausleser)   # Liste der Ausleser der Region, z. B. Get-AlleProgramme in tools/quellen/alle.ps1
+$roh = @(& $(if ($Ausleser) { $Ausleser } else { $regionInfo.ausleser }))   # Liste der Ausleser der Region, z. B. Get-AlleProgramme in tools/quellen/alle.ps1
 
 # Mehrere Quellen fuer dasselbe Kino zusammenfuehren
 $ergebnisse = foreach ($g in $roh | Group-Object Kino) {

@@ -13,3 +13,9 @@ function Get-HamburgProgramme {
   Get-MetropolisHamburgProgramm
   Get-LichtmessProgramm
 }
+
+# Lokal auf dem eigenen Rechner (tools/lokal.ps1), weil die Seiten Abrufe aus der Cloud sperren
+function Get-HamburgLokal {
+  Get-CinemaxxProgramme            # CinemaxX Dammtor, Wandsbek, Harburg und Holi
+  Get-UciProgramme                 # UCI Mundsburg und Wandsbek
+}
