@@ -114,6 +114,23 @@
     ],
     "jahr": "2026"
   },
+  "A-Men to That|": {
+    "tmdb": 1612287,
+    "titel": "A-Men to That",
+    "geprueft": "2026-11-25",
+    "stimmen": 1,
+    "poster": "plakate/1612287.jpg",
+    "imdb": "tt31315283",
+    "land": "Schweden, Estland, Vereinigte Staaten",
+    "regie": "Rafael Edholm",
+    "kinostart": "",
+    "laufzeit": 85,
+    "genres": [
+      "Musik",
+      "Komödie"
+    ],
+    "jahr": "2026"
+  },
   "Ab nach Rio|2009": {
     "tmdb": 1589880,
     "titel": "Ab nach Rio - Die Guggenheim Akte",
@@ -5385,6 +5402,22 @@
     ],
     "jahr": "2026"
   },
+  "Hail Mary|2026": {
+    "tmdb": 1551385,
+    "titel": "Hail Mary",
+    "geprueft": "2026-11-25",
+    "stimmen": 0,
+    "poster": "plakate/1551385.jpg",
+    "imdb": "tt38495111",
+    "regie": "Zachary Fields, Carter Coleman, Dylan Stanley",
+    "kinostart": "",
+    "laufzeit": 8,
+    "genres": [
+      "Horror",
+      "Komödie"
+    ],
+    "jahr": "2025"
+  },
   "Halloween - Die Nacht des Grauens|1978": {
     "tmdb": 948,
     "titel": "Halloween - Die Nacht des Grauens",
@@ -5903,6 +5936,22 @@
     "laufzeit": 95,
     "genres": [
       "Drama"
+    ],
+    "jahr": "2026"
+  },
+  "Im Umkreis des Paradieses|": {
+    "tmdb": 1616181,
+    "titel": "Im Umkreis des Paradieses",
+    "geprueft": "2026-11-25",
+    "stimmen": 0,
+    "poster": "plakate/1616181.jpg",
+    "imdb": "tt39368109",
+    "land": "Deutschland",
+    "regie": "Yulia Lokshina",
+    "kinostart": "2026-12-03",
+    "laufzeit": 120,
+    "genres": [
+      "Dokumentarfilm"
     ],
     "jahr": "2026"
   },
@@ -8386,6 +8435,22 @@
   "Podiumsdiskussion|": {
     "nichtGefunden": true,
     "geprueft": "2026-11-24"
+  },
+  "Poetry Slam|": {
+    "tmdb": 1611633,
+    "titel": "Poetry Slam",
+    "geprueft": "2026-11-25",
+    "stimmen": 0,
+    "poster": "plakate/1611633.jpg",
+    "land": "Italien",
+    "regie": "Niccolò Venerandi",
+    "kinostart": "",
+    "laufzeit": 9,
+    "genres": [
+      "Komödie",
+      "Drama"
+    ],
+    "jahr": "2025"
   },
   "Possible Love|2026": {
     "tmdb": 1483525,

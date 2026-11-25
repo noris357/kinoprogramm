@@ -14318,6 +14318,15 @@
       }
     }
   },
+  "1551385": {
+    "geprueft": "2026-11-25",
+    "quellen": {
+      "imdb": {
+        "wert": 74.0,
+        "stimmen": 6
+      }
+    }
+  },
   "1553200": {
     "geprueft": "2026-11-06",
     "quellen": {
@@ -14921,6 +14930,23 @@
       }
     }
   },
+  "1611633": {
+    "geprueft": "2026-11-25",
+    "quellen": {}
+  },
+  "1612287": {
+    "geprueft": "2026-11-25",
+    "quellen": {
+      "imdb": {
+        "wert": 61.0,
+        "stimmen": 67
+      },
+      "tmdb": {
+        "wert": 50.0,
+        "stimmen": 1
+      }
+    }
+  },
   "1616153": {
     "geprueft": "2026-11-06",
     "quellen": {
@@ -14939,6 +14965,23 @@
       "letterboxd": {
         "wert": 74.0,
         "stimmen": 845
+      }
+    }
+  },
+  "1616181": {
+    "geprueft": "2026-11-25",
+    "quellen": {
+      "imdb": {
+        "wert": 69.0,
+        "stimmen": 29
+      },
+      "trakt": {
+        "wert": 100.0,
+        "stimmen": 1
+      },
+      "letterboxd": {
+        "wert": 68.0,
+        "stimmen": 250
       }
     }
   },

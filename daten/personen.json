@@ -3322,6 +3322,20 @@
         "name": "Γιώργος Γεωργόπουλος"
       }
     ],
+    "1551385": [
+      {
+        "id": 5708182,
+        "name": "Zachary Fields"
+      },
+      {
+        "id": 5708183,
+        "name": "Carter Coleman"
+      },
+      {
+        "id": 5708185,
+        "name": "Dylan Stanley"
+      }
+    ],
     "1553200": [
       {
         "id": 1145368,
@@ -3554,10 +3568,28 @@
         "name": "Marta György-Kessler"
       }
     ],
+    "1611633": [
+      {
+        "id": 5924393,
+        "name": "Niccolò Venerandi"
+      }
+    ],
+    "1612287": [
+      {
+        "id": 119336,
+        "name": "Rafael Edholm"
+      }
+    ],
     "1616153": [
       {
         "id": 1339287,
         "name": "Sabine Lidl"
+      }
+    ],
+    "1616181": [
+      {
+        "id": 2722910,
+        "name": "Yulia Lokshina"
       }
     ],
     "1616833": [
@@ -6394,6 +6426,15 @@
       "regiearbeiten": 8,
       "letterboxd": "greta-schiller"
     },
+    "119336": {
+      "name": "Rafael Edholm",
+      "geprueft": "2026-11-25",
+      "geboren": 1966,
+      "ort": "Stockholm, Sweden",
+      "foto": "fotos/119336.jpg",
+      "regiearbeiten": 4,
+      "letterboxd": ""
+    },
     "120135": {
       "name": "Rocco Papaleo",
       "geprueft": "2026-11-24",
@@ -8639,6 +8680,12 @@
       "regiearbeiten": 1,
       "letterboxd": "francois-narboux"
     },
+    "2722910": {
+      "name": "Yulia Lokshina",
+      "geprueft": "2026-11-25",
+      "regiearbeiten": 2,
+      "letterboxd": ""
+    },
     "2748921": {
       "name": "Marie Limkilde",
       "geprueft": "2026-11-14",
@@ -9103,6 +9150,24 @@
       "regiearbeiten": 2,
       "letterboxd": "ines-reinisch"
     },
+    "5708182": {
+      "name": "Zachary Fields",
+      "geprueft": "2026-11-25",
+      "regiearbeiten": 0,
+      "letterboxd": ""
+    },
+    "5708183": {
+      "name": "Carter Coleman",
+      "geprueft": "2026-11-25",
+      "regiearbeiten": 0,
+      "letterboxd": ""
+    },
+    "5708185": {
+      "name": "Dylan Stanley",
+      "geprueft": "2026-11-25",
+      "regiearbeiten": 0,
+      "letterboxd": ""
+    },
     "5755834": {
       "name": "Tilda Casey Furubrink",
       "geprueft": "2026-11-24",
@@ -9126,6 +9191,12 @@
       "geprueft": "2026-11-24",
       "regiearbeiten": 0,
       "letterboxd": "seemab-guul"
+    },
+    "5924393": {
+      "name": "Niccolò Venerandi",
+      "geprueft": "2026-11-25",
+      "regiearbeiten": 0,
+      "letterboxd": ""
     },
     "5940826": {
       "name": "Pepa Lubojacki",

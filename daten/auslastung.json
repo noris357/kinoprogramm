@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-24",
+  "stand": "2026-11-25",
   "vorstellungen": [
     {
       "Kino": "Cinecitta Nürnberg",
@@ -8,6 +8,14 @@
       "Zeit": "20:30",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=00ACA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Die Tribute von Panem  - Sunrise on the Reaping",
+      "Datum": "2026-12-01",
+      "Zeit": "18:40",
+      "Stufe": "wenige",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=AB2DA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",
