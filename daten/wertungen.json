@@ -2144,6 +2144,23 @@
       }
     }
   },
+  "4541": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 63.0,
+        "stimmen": 150
+      },
+      "trakt": {
+        "wert": 60.0,
+        "stimmen": 4
+      },
+      "tmdb": {
+        "wert": 55.0,
+        "stimmen": 4
+      }
+    }
+  },
   "4925": {
     "geprueft": "2026-11-12",
     "quellen": {
@@ -3683,6 +3700,43 @@
       }
     }
   },
+  "23439": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 69.0,
+        "stimmen": 17929
+      },
+      "metacritic": {
+        "wert": 75.0,
+        "stimmen": 8
+      },
+      "metacriticuser": {
+        "wert": 71.0,
+        "stimmen": 11
+      },
+      "trakt": {
+        "wert": 67.0,
+        "stimmen": 466
+      },
+      "tomatoes": {
+        "wert": 83.0,
+        "stimmen": 53
+      },
+      "popcorn": {
+        "wert": 74.0,
+        "stimmen": 329
+      },
+      "tmdb": {
+        "wert": 67.0,
+        "stimmen": 392
+      },
+      "letterboxd": {
+        "wert": 70.0,
+        "stimmen": 27401
+      }
+    }
+  },
   "24188": {
     "geprueft": "2026-11-24",
     "quellen": {
@@ -3778,6 +3832,39 @@
       "letterboxd": {
         "wert": 80.0,
         "stimmen": 48737
+      }
+    }
+  },
+  "26990": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 49.0,
+        "stimmen": 3562
+      },
+      "metacritic": {
+        "wert": 32.0,
+        "stimmen": 22
+      },
+      "trakt": {
+        "wert": 62.0,
+        "stimmen": 156
+      },
+      "tomatoes": {
+        "wert": 19.0,
+        "stimmen": 58
+      },
+      "popcorn": {
+        "wert": 52.0,
+        "stimmen": 1004
+      },
+      "tmdb": {
+        "wert": 53.0,
+        "stimmen": 51
+      },
+      "letterboxd": {
+        "wert": 58.0,
+        "stimmen": 1688
       }
     }
   },
@@ -8424,6 +8511,10 @@
   },
   "1075525": {
     "geprueft": "2026-11-24",
+    "quellen": {}
+  },
+  "1075981": {
+    "geprueft": "2026-11-26",
     "quellen": {}
   },
   "1082543": {

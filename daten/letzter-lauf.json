@@ -37,8 +37,8 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2027-06-24",
-      "bestaetigt": 308,
-      "neu": 48,
+      "bestaetigt": 310,
+      "neu": 29,
       "entfernt": 0
     },
     {
@@ -47,9 +47,9 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-02",
-      "bestaetigt": 73,
-      "neu": 15,
-      "entfernt": 5
+      "bestaetigt": 46,
+      "neu": 39,
+      "entfernt": 32
     },
     {
       "kino": "CineStar Erlangen",
@@ -57,9 +57,9 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2027-06-05",
-      "bestaetigt": 138,
-      "neu": 13,
-      "entfernt": 2
+      "bestaetigt": 140,
+      "neu": 11,
+      "entfernt": 0
     },
     {
       "kino": "Filmhaus Nürnberg",
@@ -68,7 +68,7 @@
       "von": "2026-11-26",
       "bis": "2027-01-10",
       "bestaetigt": 211,
-      "neu": 7,
+      "neu": 9,
       "entfernt": 0
     },
     {
@@ -98,7 +98,7 @@
       "von": "2026-11-26",
       "bis": "2027-01-04",
       "bestaetigt": 43,
-      "neu": 4,
+      "neu": 3,
       "entfernt": 0
     },
     {
@@ -118,7 +118,7 @@
       "von": "2026-11-26",
       "bis": "2026-12-18",
       "bestaetigt": 25,
-      "neu": 4,
+      "neu": 3,
       "entfernt": 0
     },
     {
@@ -132,7 +132,19 @@
       "entfernt": 0
     }
   ],
-  "neueFilme": [],
+  "neueFilme": [
+    "Agnes & Amir",
+    "Ausstellungseröffnung",
+    "Curly Burly",
+    "Emil and the Detectives",
+    "Kombiführung",
+    "PAW Patrol: The Dino Movie",
+    "Shaun the Sheep: The Beast of Mossy Bottom",
+    "The Holiday",
+    "The Hunger Games: Sunrise on the Reaping",
+    "The Perfect Holiday",
+    "Visitation"
+  ],
   "ausgeschlossen": [
     "André Rieu's Weihnachtskonzert 2026: Let it Snow - CineSpecial",
     "Andrew Lloyd Webber's Starlight Express - Live On Stage",

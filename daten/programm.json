@@ -74873,6 +74873,15 @@
       "Link": "https://www.cinecitta.de/filme/wildwood/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-26",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Auf Der Suche Nach Der Weihnachtswerkstatt",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -74952,6 +74961,24 @@
       "Produktionsjahr": 2026,
       "Datum": "2026-11-26",
       "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
+    },
+    {
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-26",
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
+    },
+    {
+      "Titel": "The Perfect Holiday",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-26",
+      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Wie verhext",
@@ -75850,6 +75877,15 @@
       "Link": "https://www.cinecitta.de/filme/wildwood/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Auf Der Suche Nach Der Weihnachtswerkstatt",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -75857,15 +75893,6 @@
       "Produktionsjahr": null,
       "Datum": "2026-11-27",
       "Link": "https://www.cineamo.com/de-DE/filme/julenissens-verksted"
-    },
-    {
-      "Titel": "Der Perfekte Urlaub",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Bora Dagtekin",
-      "Produktionsjahr": 2025,
-      "Datum": "2026-11-27",
-      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Der Regenbogenfisch",
@@ -75877,15 +75904,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/der-regenbogenfisch"
     },
     {
-      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Francis Lawrence",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-27",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
-    },
-    {
       "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -75893,6 +75911,15 @@
       "Produktionsjahr": "2026",
       "Datum": "2026-11-27",
       "Link": "https://www.cineamo.com/de-DE/filme/ebenezer"
+    },
+    {
+      "Titel": "Focker In-Law",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27",
+      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
     },
     {
       "Titel": "How to Rob a Bank",
@@ -75913,33 +75940,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/i-play-rocky"
     },
     {
-      "Titel": "Liebe braucht keine Ferien",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Nancy Meyers",
-      "Produktionsjahr": 2006,
-      "Datum": "2026-11-27",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-holiday"
-    },
-    {
-      "Titel": "Lieblingsmenschen",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Helena Hufnagel",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-27",
-      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
-    },
-    {
-      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "John Hamburg",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-27",
-      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
-    },
-    {
       "Titel": "Other Mommy",
       "Kino": "Cineplex Fürth",
       "Land": "USA",
@@ -75947,6 +75947,33 @@
       "Produktionsjahr": 2026,
       "Datum": "2026-11-27",
       "Link": "https://www.cineamo.com/de-DE/filme/other-mommy"
+    },
+    {
+      "Titel": "The Holiday",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27",
+      "Link": "https://www.cineamo.com/de-DE/filme/the-holiday"
+    },
+    {
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27",
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
+    },
+    {
+      "Titel": "The Perfect Holiday",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-27",
+      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Wie verhext",
@@ -76983,6 +77010,15 @@
       "Link": "https://www.cinecitta.de/filme/wildwood/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Als der Weihnachtsmann vom Himmel fiel",
       "Kino": "Cineplex Fürth",
       "Land": "Deutschland",
@@ -77010,15 +77046,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/bibi-blocksberg-die-total-verhexte-zeitreise"
     },
     {
-      "Titel": "Der Perfekte Urlaub",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Bora Dagtekin",
-      "Produktionsjahr": 2025,
-      "Datum": "2026-11-28",
-      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
-    },
-    {
       "Titel": "Der Regenbogenfisch",
       "Kino": "Cineplex Fürth",
       "Land": "Deutschland, Schweiz",
@@ -77026,15 +77053,6 @@
       "Produktionsjahr": 2026,
       "Datum": "2026-11-28",
       "Link": "https://www.cineamo.com/de-DE/filme/der-regenbogenfisch"
-    },
-    {
-      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Francis Lawrence",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-28",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
     },
     {
       "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
@@ -77055,13 +77073,13 @@
       "Link": "https://www.cineamo.com/de-DE/filme/festive-fun-with-peppa"
     },
     {
-      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Titel": "Focker In-Law",
       "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Volker Schlöndorff",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-28",
-      "Link": "https://www.cineamo.com/de-DE/filme/heimsuchung-eine-jahrhundertgeschichte"
+      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
     },
     {
       "Titel": "How to Rob a Bank",
@@ -77091,24 +77109,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/kommissar-jennerwein-hochsaison"
     },
     {
-      "Titel": "Lieblingsmenschen",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Helena Hufnagel",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-28",
-      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
-    },
-    {
-      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "John Hamburg",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-28",
-      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
-    },
-    {
       "Titel": "Other Mommy",
       "Kino": "Cineplex Fürth",
       "Land": "USA",
@@ -77118,13 +77118,40 @@
       "Link": "https://www.cineamo.com/de-DE/filme/other-mommy"
     },
     {
-      "Titel": "Shaun das Schaf - Spuk im Kürbisfeld",
+      "Titel": "Shaun the Sheep: The Beast of Mossy Bottom",
       "Kino": "Cineplex Fürth",
-      "Land": "Großbritannien",
-      "Regisseur:in": "Steve Cox, Matthew Walker",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-28",
       "Link": "https://www.cineamo.com/de-DE/filme/shaun-the-sheep-the-beast-of-mossy-bottom"
+    },
+    {
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28",
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
+    },
+    {
+      "Titel": "The Perfect Holiday",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28",
+      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
+    },
+    {
+      "Titel": "Visitation",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-28",
+      "Link": "https://www.cineamo.com/de-DE/filme/heimsuchung-eine-jahrhundertgeschichte"
     },
     {
       "Titel": "Wie verhext",
@@ -78311,6 +78338,15 @@
       "Link": "https://www.cinecitta.de/filme/wildwood/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-29",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Als der Weihnachtsmann vom Himmel fiel",
       "Kino": "Cineplex Fürth",
       "Land": "Deutschland",
@@ -78338,22 +78374,13 @@
       "Link": "https://www.cineamo.com/de-DE/filme/julenissens-verksted"
     },
     {
-      "Titel": "Der frechste Troll der Welt",
+      "Titel": "Curly Burly",
       "Kino": "Cineplex Fürth",
       "Land": null,
-      "Regisseur:in": "Jan Rahbek",
-      "Produktionsjahr": 2026,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-29",
       "Link": "https://www.cineamo.com/de-DE/filme/kroelle-boelle"
-    },
-    {
-      "Titel": "Der Perfekte Urlaub",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Bora Dagtekin",
-      "Produktionsjahr": 2025,
-      "Datum": "2026-11-29",
-      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Der Regenbogenfisch",
@@ -78365,15 +78392,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/der-regenbogenfisch"
     },
     {
-      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Francis Lawrence",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-29",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
-    },
-    {
       "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -78383,11 +78401,11 @@
       "Link": "https://www.cineamo.com/de-DE/filme/ebenezer"
     },
     {
-      "Titel": "Emil und die Detektive",
+      "Titel": "Emil and the Detectives",
       "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "David Dietl",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-29",
       "Link": "https://www.cineamo.com/de-DE/filme/emil-und-die-detektive"
     },
@@ -78399,6 +78417,15 @@
       "Produktionsjahr": 2026,
       "Datum": "2026-11-29",
       "Link": "https://www.cineamo.com/de-DE/filme/festive-fun-with-peppa"
+    },
+    {
+      "Titel": "Focker In-Law",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-29",
+      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
     },
     {
       "Titel": "I Play Rocky",
@@ -78419,24 +78446,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/kommissar-jennerwein-hochsaison"
     },
     {
-      "Titel": "Lieblingsmenschen",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Helena Hufnagel",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-29",
-      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
-    },
-    {
-      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "John Hamburg",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-29",
-      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
-    },
-    {
       "Titel": "Monster Mia",
       "Kino": "Cineplex Fürth",
       "Land": "Deutschland, Spanien, Österreich",
@@ -78446,13 +78455,31 @@
       "Link": "https://www.cineamo.com/de-DE/filme/monster-mia"
     },
     {
-      "Titel": "Paw Patrol: Der Dino Film",
+      "Titel": "PAW Patrol: The Dino Movie",
       "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Cal Brunker",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-29",
       "Link": "https://www.cineamo.com/de-DE/filme/paw-patrol-the-dino-movie"
+    },
+    {
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-29",
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
+    },
+    {
+      "Titel": "The Perfect Holiday",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-29",
+      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Wie verhext",
@@ -79437,6 +79464,15 @@
       "Link": "https://www.cinecitta.de/filme/wildwood/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-11-30",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Auf Der Suche Nach Der Weihnachtswerkstatt",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -79455,15 +79491,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/der-regenbogenfisch"
     },
     {
-      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Francis Lawrence",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-11-30",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
-    },
-    {
       "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -79473,13 +79500,13 @@
       "Link": "https://www.cineamo.com/de-DE/filme/ebenezer"
     },
     {
-      "Titel": "Heimsuchung - Eine Jahrhundertgeschichte",
+      "Titel": "Focker In-Law",
       "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Volker Schlöndorff",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-30",
-      "Link": "https://www.cineamo.com/de-DE/filme/heimsuchung-eine-jahrhundertgeschichte"
+      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
     },
     {
       "Titel": "I Play Rocky",
@@ -79491,31 +79518,31 @@
       "Link": "https://www.cineamo.com/de-DE/filme/i-play-rocky"
     },
     {
-      "Titel": "Liebe braucht keine Ferien",
+      "Titel": "The Holiday",
       "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Nancy Meyers",
-      "Produktionsjahr": 2006,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-30",
       "Link": "https://www.cineamo.com/de-DE/filme/the-holiday"
     },
     {
-      "Titel": "Lieblingsmenschen",
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
       "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Helena Hufnagel",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-30",
-      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
     },
     {
-      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Titel": "Visitation",
       "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "John Hamburg",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-11-30",
-      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
+      "Link": "https://www.cineamo.com/de-DE/filme/heimsuchung-eine-jahrhundertgeschichte"
     },
     {
       "Titel": "Wie verhext",
@@ -80347,6 +80374,15 @@
       "Link": "https://www.cinecitta.de/filme/wildwood/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-01",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Auf Der Suche Nach Der Weihnachtswerkstatt",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -80354,15 +80390,6 @@
       "Produktionsjahr": null,
       "Datum": "2026-12-01",
       "Link": "https://www.cineamo.com/de-DE/filme/julenissens-verksted"
-    },
-    {
-      "Titel": "Der Perfekte Urlaub",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Bora Dagtekin",
-      "Produktionsjahr": 2025,
-      "Datum": "2026-12-01",
-      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Der Regenbogenfisch",
@@ -80374,15 +80401,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/der-regenbogenfisch"
     },
     {
-      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Francis Lawrence",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-12-01",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
-    },
-    {
       "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -80390,6 +80408,15 @@
       "Produktionsjahr": "2026",
       "Datum": "2026-12-01",
       "Link": "https://www.cineamo.com/de-DE/filme/ebenezer"
+    },
+    {
+      "Titel": "Focker In-Law",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-01",
+      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
     },
     {
       "Titel": "I Play Rocky",
@@ -80401,31 +80428,31 @@
       "Link": "https://www.cineamo.com/de-DE/filme/i-play-rocky"
     },
     {
-      "Titel": "Liebe braucht keine Ferien",
+      "Titel": "The Holiday",
       "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Nancy Meyers",
-      "Produktionsjahr": 2006,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-12-01",
       "Link": "https://www.cineamo.com/de-DE/filme/the-holiday"
     },
     {
-      "Titel": "Lieblingsmenschen",
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
       "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Helena Hufnagel",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-12-01",
-      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
     },
     {
-      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Titel": "The Perfect Holiday",
       "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "John Hamburg",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-12-01",
-      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
+      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Wie verhext",
@@ -81050,6 +81077,15 @@
       "Link": "https://www.cinecitta.de/filme/ein-talent-fuers-morden/"
     },
     {
+      "Titel": "Eiserne Wildnis - Heart Of The Beast",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": "USA",
+      "Regisseur:in": "David Ayer",
+      "Produktionsjahr": 2026,
+      "Datum": "2026-12-02",
+      "Link": "https://www.cinecitta.de/filme/eiserne-wildnis-heart-of-the-beast/"
+    },
+    {
       "Titel": "Emil und die Detektive",
       "Kino": "Cinecitta Nürnberg",
       "Land": "Deutschland",
@@ -81302,6 +81338,15 @@
       "Link": "https://www.cinecitta.de/filme/you-can-see-everything/"
     },
     {
+      "Titel": "Agnes & Amir",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-02",
+      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+    },
+    {
       "Titel": "Auf Der Suche Nach Der Weihnachtswerkstatt",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -81309,15 +81354,6 @@
       "Produktionsjahr": null,
       "Datum": "2026-12-02",
       "Link": "https://www.cineamo.com/de-DE/filme/julenissens-verksted"
-    },
-    {
-      "Titel": "Der Perfekte Urlaub",
-      "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Bora Dagtekin",
-      "Produktionsjahr": 2025,
-      "Datum": "2026-12-02",
-      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Der Regenbogenfisch",
@@ -81329,15 +81365,6 @@
       "Link": "https://www.cineamo.com/de-DE/filme/der-regenbogenfisch"
     },
     {
-      "Titel": "Die Tribute von Panem - Sunrise on the Reaping",
-      "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "Francis Lawrence",
-      "Produktionsjahr": 2026,
-      "Datum": "2026-12-02",
-      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
-    },
-    {
       "Titel": "Ebenezer - Eine Weihnachtsgeschichte",
       "Kino": "Cineplex Fürth",
       "Land": null,
@@ -81345,6 +81372,15 @@
       "Produktionsjahr": "2026",
       "Datum": "2026-12-02",
       "Link": "https://www.cineamo.com/de-DE/filme/ebenezer"
+    },
+    {
+      "Titel": "Focker In-Law",
+      "Kino": "Cineplex Fürth",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-02",
+      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
     },
     {
       "Titel": "I Play Rocky",
@@ -81356,22 +81392,22 @@
       "Link": "https://www.cineamo.com/de-DE/filme/i-play-rocky"
     },
     {
-      "Titel": "Lieblingsmenschen",
+      "Titel": "The Hunger Games: Sunrise on the Reaping",
       "Kino": "Cineplex Fürth",
-      "Land": "Deutschland",
-      "Regisseur:in": "Helena Hufnagel",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-12-02",
-      "Link": "https://www.cineamo.com/de-DE/filme/lieblingsmenschen-die-aussergewoehnliche-freundschaft-von-agnes-amir"
+      "Link": "https://www.cineamo.com/de-DE/filme/the-hunger-games-sunrise-on-the-reaping"
     },
     {
-      "Titel": "Meine Frau, unsere Schwiegertochter und ich",
+      "Titel": "The Perfect Holiday",
       "Kino": "Cineplex Fürth",
-      "Land": "USA",
-      "Regisseur:in": "John Hamburg",
-      "Produktionsjahr": 2026,
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
       "Datum": "2026-12-02",
-      "Link": "https://www.cineamo.com/de-DE/filme/focker-in-law"
+      "Link": "https://www.cineamo.com/de-DE/filme/der-perfekte-urlaub"
     },
     {
       "Titel": "Wie verhext",
@@ -81908,6 +81944,16 @@
       "Link": "https://www.kunstkulturquartier.de/filmhaus/programm/fh-programm-detail/453821/2026-12-03/15-00"
     },
     {
+      "Titel": "Ausstellungseröffnung",
+      "Kino": "Filmhaus Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-04",
+      "Reihe": "Bildzauber",
+      "Link": "https://www.kunstkulturquartier.de/filmhaus/programm/fh-programm-detail/479832/2026-12-04/19-00"
+    },
+    {
       "Titel": "Barrio Triste",
       "Kino": "Filmhaus Nürnberg",
       "Land": null,
@@ -82257,6 +82303,16 @@
       "Datum": "2026-12-06",
       "Reihe": "Neustart",
       "Link": "https://www.kunstkulturquartier.de/filmhaus/programm/fh-programm-detail/469382/2026-11-26/19-00"
+    },
+    {
+      "Titel": "Kombiführung",
+      "Kino": "Filmhaus Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-06",
+      "Reihe": "Kunst ist ein Spiel, das Spaß macht – Spielzeug in der Nürnberger Kunst",
+      "Link": "https://www.kunstkulturquartier.de/filmhaus/programm/fh-programm-detail/476107/2026-12-06/15-00"
     },
     {
       "Titel": "La vita da grandi | Das Leben als Erwachsene",
@@ -85093,6 +85149,15 @@
       "Link": "https://www.cinecitta.de/filme/avengers-doomsday/"
     },
     {
+      "Titel": "Das Neinhorn",
+      "Kino": "Cinecitta Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2026-12-27",
+      "Link": "https://www.cinecitta.de/filme/das-neinhorn/"
+    },
+    {
       "Titel": "Dune: Part Three",
       "Kino": "Cinecitta Nürnberg",
       "Land": "USA",
@@ -85735,6 +85800,16 @@
       "Datum": "2027-01-10",
       "Reihe": "Bildzauber",
       "Link": "https://www.kunstkulturquartier.de/filmhaus/programm/fh-programm-detail/473682/2026-12-04/19-00"
+    },
+    {
+      "Titel": "Kombiführung",
+      "Kino": "Filmhaus Nürnberg",
+      "Land": null,
+      "Regisseur:in": null,
+      "Produktionsjahr": null,
+      "Datum": "2027-01-10",
+      "Reihe": "Kunst ist ein Spiel, das Spaß macht – Spielzeug in der Nürnberger Kunst",
+      "Link": "https://www.kunstkulturquartier.de/filmhaus/programm/fh-programm-detail/476107/2026-12-06/15-00"
     },
     {
       "Titel": "Kurzfilmnacht mit Egersdörfer und Schleindl",

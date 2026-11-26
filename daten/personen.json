@@ -374,6 +374,12 @@
         "name": "Édouard Molinaro"
       }
     ],
+    "4541": [
+      {
+        "id": 37861,
+        "name": "Milton Rosmer"
+      }
+    ],
     "4925": [
       {
         "id": 13776,
@@ -676,6 +682,12 @@
         "name": "Lasse Hallström"
       }
     ],
+    "23439": [
+      {
+        "id": 102429,
+        "name": "Roger Corman"
+      }
+    ],
     "24188": [
       {
         "id": 57641,
@@ -692,6 +704,12 @@
       {
         "id": 16544,
         "name": "Ted Kotcheff"
+      }
+    ],
+    "26990": [
+      {
+        "id": 302339,
+        "name": "Lance Rivera"
       }
     ],
     "27064": [
@@ -1812,6 +1830,12 @@
       {
         "id": 1539858,
         "name": "Dominic Cooke"
+      }
+    ],
+    "1075981": [
+      {
+        "id": 1545927,
+        "name": "Nicolas Pesce"
       }
     ],
     "1082543": [
@@ -5447,6 +5471,16 @@
       "regiearbeiten": 43,
       "letterboxd": "matti-geschonneck"
     },
+    "37861": {
+      "name": "Milton Rosmer",
+      "geprueft": "2026-11-26",
+      "geboren": 1881,
+      "gestorben": 1971,
+      "ort": "Southport, Lancashire, England, UK",
+      "foto": "fotos/37861.jpg",
+      "regiearbeiten": 13,
+      "letterboxd": ""
+    },
     "38585": {
       "name": "Marino Girolami",
       "geprueft": "2026-11-14",
@@ -6343,6 +6377,16 @@
       "regiearbeiten": 7,
       "letterboxd": "paul-king"
     },
+    "102429": {
+      "name": "Roger Corman",
+      "geprueft": "2026-11-26",
+      "geboren": 1926,
+      "gestorben": 2024,
+      "ort": "Detroit, Michigan, USA",
+      "foto": "fotos/102429.jpg",
+      "regiearbeiten": 35,
+      "letterboxd": ""
+    },
     "106751": {
       "name": "Charles Philip Moore",
       "geprueft": "2026-11-14",
@@ -6745,6 +6789,14 @@
       "geboren": 1950,
       "ort": "Berlin, Germany",
       "regiearbeiten": 24,
+      "letterboxd": ""
+    },
+    "302339": {
+      "name": "Lance Rivera",
+      "geprueft": "2026-11-26",
+      "ort": "Brooklyn, New York, USA",
+      "foto": "fotos/302339.jpg",
+      "regiearbeiten": 4,
       "letterboxd": ""
     },
     "544752": {
@@ -7979,6 +8031,15 @@
       "foto": "fotos/1539858.jpg",
       "regiearbeiten": 3,
       "letterboxd": "dominic-cooke"
+    },
+    "1545927": {
+      "name": "Nicolas Pesce",
+      "geprueft": "2026-11-26",
+      "geboren": 1990,
+      "ort": "New York City, New York, USA",
+      "foto": "fotos/1545927.jpg",
+      "regiearbeiten": 3,
+      "letterboxd": ""
     },
     "1548355": {
       "name": "Cyril Dion",

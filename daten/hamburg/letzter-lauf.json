@@ -7,8 +7,8 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-27",
-      "bestaetigt": 29,
-      "neu": 4,
+      "bestaetigt": 30,
+      "neu": 3,
       "entfernt": 0
     },
     {
@@ -18,7 +18,7 @@
       "von": "2026-11-26",
       "bis": "2026-12-06",
       "bestaetigt": 83,
-      "neu": 15,
+      "neu": 17,
       "entfernt": 0
     },
     {
@@ -28,7 +28,7 @@
       "von": "2026-11-26",
       "bis": "2027-06-22",
       "bestaetigt": 53,
-      "neu": 5,
+      "neu": 4,
       "entfernt": 0
     },
     {
@@ -57,9 +57,9 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-02",
-      "bestaetigt": 46,
+      "bestaetigt": 45,
       "neu": 28,
-      "entfernt": 7
+      "entfernt": 21
     },
     {
       "kino": "CinemaxX Hamburg-Harburg",
@@ -67,9 +67,9 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-02",
-      "bestaetigt": 50,
-      "neu": 31,
-      "entfernt": 10
+      "bestaetigt": 43,
+      "neu": 35,
+      "entfernt": 28
     },
     {
       "kino": "CinemaxX Hamburg-Wandsbek",
@@ -77,9 +77,9 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-02",
-      "bestaetigt": 36,
-      "neu": 19,
-      "entfernt": 6
+      "bestaetigt": 19,
+      "neu": 35,
+      "entfernt": 29
     },
     {
       "kino": "Elbe-Kino Hamburg",
@@ -97,8 +97,8 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-02",
-      "bestaetigt": 91,
-      "neu": 32,
+      "bestaetigt": 107,
+      "neu": 16,
       "entfernt": 0
     },
     {
@@ -107,8 +107,8 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-09",
-      "bestaetigt": 40,
-      "neu": 28,
+      "bestaetigt": 62,
+      "neu": 6,
       "entfernt": 0
     },
     {
@@ -138,7 +138,7 @@
       "von": "2026-11-26",
       "bis": "2027-01-25",
       "bestaetigt": 68,
-      "neu": 3,
+      "neu": 5,
       "entfernt": 0
     },
     {
@@ -147,8 +147,8 @@
       "fehler": null,
       "von": "2026-11-26",
       "bis": "2026-12-19",
-      "bestaetigt": 42,
-      "neu": 6,
+      "bestaetigt": 43,
+      "neu": 5,
       "entfernt": 0
     },
     {
@@ -156,24 +156,15 @@
       "ok": true,
       "fehler": null,
       "von": "2026-11-26",
-      "bis": "2027-04-28",
-      "bestaetigt": 80,
-      "neu": 67,
-      "entfernt": 0
+      "bis": "2027-02-02",
+      "bestaetigt": 135,
+      "neu": 9,
+      "entfernt": 3
     }
   ],
   "neueFilme": [
-    "Aşk Tesadüfleri Sever 3",
-    "Ausser Atem",
-    "Club Kid",
-    "Coffee and Cinema - In Bewegung",
-    "Die Ideen",
-    "Ein Weihnachtsfest für Teddy",
-    "Hamburg. In bunt. Eine Stadt in Farbfilmen 1935 -1965",
-    "Kevin allein in New York",
-    "Musk",
-    "Ohne Wahrheit",
-    "Zwischen den Welten"
+    "Die Verfluchten",
+    "Extended Version"
   ],
   "ausgeschlossen": [
     "Abaton-Filmquiz",
