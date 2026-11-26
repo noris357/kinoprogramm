@@ -84,6 +84,12 @@
         "name": "Martin Scorsese"
       }
     ],
+    "269": [
+      {
+        "id": 3776,
+        "name": "Jean-Luc Godard"
+      }
+    ],
     "271": [
       {
         "id": 3849,
@@ -1523,6 +1529,12 @@
         "name": "Akiyuki Simbo"
       }
     ],
+    "830228": [
+      {
+        "id": 2788765,
+        "name": "Yusuf Yesilöz"
+      }
+    ],
     "830721": [
       {
         "id": 72467,
@@ -1698,6 +1710,12 @@
         "name": "Anthony Russo"
       }
     ],
+    "1012183": [
+      {
+        "id": 3662421,
+        "name": "Ilka Sparringa"
+      }
+    ],
     "1013822": [
       {
         "id": 5091,
@@ -1708,6 +1726,12 @@
       {
         "id": 2428134,
         "name": "Valery Carnoy"
+      }
+    ],
+    "1020969": [
+      {
+        "id": 1311556,
+        "name": "Andrea Eckerbom"
       }
     ],
     "1029880": [
@@ -3975,6 +3999,12 @@
         "name": "Lance Oppenheim"
       }
     ],
+    "1767269": [
+      {
+        "id": 1136410,
+        "name": "Fabian Stumm"
+      }
+    ],
     "1778515": [],
     "1786076": [
       {
@@ -4350,6 +4380,16 @@
       "foto": "fotos/3451.jpg",
       "regiearbeiten": 23,
       "letterboxd": "mel-stuart"
+    },
+    "3776": {
+      "name": "Jean-Luc Godard",
+      "geprueft": "2026-11-26",
+      "geboren": 1930,
+      "gestorben": 2022,
+      "ort": "Paris, France",
+      "foto": "fotos/3776.jpg",
+      "regiearbeiten": 80,
+      "letterboxd": ""
     },
     "3849": {
       "name": "Tage Danielsson",
@@ -7233,6 +7273,15 @@
       "regiearbeiten": 5,
       "letterboxd": "rob-savage"
     },
+    "1136410": {
+      "name": "Fabian Stumm",
+      "geprueft": "2026-11-26",
+      "geboren": 1981,
+      "ort": "Koblenz, Rhineland-Palatinate, West Germany [now Germany]",
+      "foto": "fotos/1136410.jpg",
+      "regiearbeiten": 2,
+      "letterboxd": ""
+    },
     "1139242": {
       "name": "Jan Schmidt-Garre",
       "geprueft": "2026-11-14",
@@ -7631,6 +7680,12 @@
       "foto": "fotos/1304466.jpg",
       "regiearbeiten": 5,
       "letterboxd": "alexs-stadermann"
+    },
+    "1311556": {
+      "name": "Andrea Eckerbom",
+      "geprueft": "2026-11-26",
+      "regiearbeiten": 2,
+      "letterboxd": ""
     },
     "1323051": {
       "name": "Abhishek Pathak",
@@ -8692,6 +8747,12 @@
       "regiearbeiten": 1,
       "letterboxd": "marie-limkilde"
     },
+    "2788765": {
+      "name": "Yusuf Yesilöz",
+      "geprueft": "2026-11-26",
+      "regiearbeiten": 3,
+      "letterboxd": ""
+    },
     "2807817": {
       "name": "Akinola Davies Jr.",
       "geprueft": "2026-11-14",
@@ -8903,6 +8964,12 @@
       "foto": "fotos/3557564.jpg",
       "regiearbeiten": 1,
       "letterboxd": "camille-almeras"
+    },
+    "3662421": {
+      "name": "Ilka Sparringa",
+      "geprueft": "2026-11-26",
+      "regiearbeiten": 1,
+      "letterboxd": ""
     },
     "3662751": {
       "name": "Sébastien Vaniček",

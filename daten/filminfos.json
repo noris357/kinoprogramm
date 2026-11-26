@@ -479,6 +479,23 @@
     "nichtGefunden": true,
     "geprueft": "2026-11-24"
   },
+  "Aşk Tesadüfleri Sever 3|2026": {
+    "tmdb": 1608012,
+    "titel": "Aşk Tesadüfleri Sever 3",
+    "geprueft": "2026-11-26",
+    "stimmen": 0,
+    "poster": "plakate/1608012.jpg",
+    "imdb": "tt43641159",
+    "land": "Türkei",
+    "regie": "Ipek Sorak",
+    "kinostart": "2026-11-26",
+    "laufzeit": 123,
+    "genres": [
+      "Drama",
+      "Liebesfilm"
+    ],
+    "jahr": "2026"
+  },
   "Asphalt|1929": {
     "tmdb": 55584,
     "titel": "Asphalt",
@@ -663,6 +680,25 @@
       "Familie"
     ],
     "jahr": "2017"
+  },
+  "Ausser Atem|": {
+    "tmdb": 269,
+    "titel": "Außer Atem",
+    "geprueft": "2026-11-26",
+    "stimmen": 2130,
+    "poster": "plakate/269.jpg",
+    "bewertung": "7,5",
+    "imdb": "tt0053472",
+    "land": "Frankreich",
+    "regie": "Jean-Luc Godard",
+    "kinostart": "1960-07-05",
+    "laufzeit": 87,
+    "genres": [
+      "Drama",
+      "Krimi",
+      "Liebesfilm"
+    ],
+    "jahr": "1960"
   },
   "Avengers: Doomsday|2026": {
     "tmdb": 1003596,
@@ -1668,6 +1704,10 @@
       "Drama"
     ],
     "jahr": "1948"
+  },
+  "Coffee and Cinema - In Bewegung|": {
+    "nichtGefunden": true,
+    "geprueft": "2026-11-26"
   },
   "Come ti muovi, sbagli | Immer Verkehrt|2025": {
     "tmdb": 1520507,
@@ -3203,6 +3243,22 @@
     ],
     "jahr": "2017"
   },
+  "Die Ideen|": {
+    "tmdb": 1767269,
+    "titel": "Die Ideen",
+    "geprueft": "2026-11-26",
+    "stimmen": 0,
+    "poster": "plakate/1767269.jpg",
+    "imdb": "tt39334900",
+    "land": "Deutschland",
+    "regie": "Fabian Stumm",
+    "kinostart": "2027-01-28",
+    "laufzeit": 110,
+    "genres": [
+      "Drama"
+    ],
+    "jahr": "2027"
+  },
   "Die Ironie des Schicksals, oder: Genieße dein Bad!|": {
     "tmdb": 43430,
     "titel": "Die Ironie des Schicksals, oder Genieße Dein Bad!",
@@ -4112,6 +4168,25 @@
       "Komödie"
     ],
     "jahr": "1987"
+  },
+  "Ein Weihnachtsfest für Teddy|": {
+    "tmdb": 1020969,
+    "titel": "Ein Weihnachtsfest für Teddy",
+    "geprueft": "2026-11-26",
+    "stimmen": 57,
+    "poster": "plakate/1020969.jpg",
+    "bewertung": "6,9",
+    "imdb": "tt21054736",
+    "land": "Norwegen",
+    "regie": "Andrea Eckerbom",
+    "kinostart": "2022-11-17",
+    "laufzeit": 76,
+    "genres": [
+      "Familie",
+      "Abenteuer",
+      "Fantasy"
+    ],
+    "jahr": "2022"
   },
   "Einar Schleef - Ich habe kein Deutschland gefunden|2026": {
     "tmdb": 1616868,
@@ -7931,6 +8006,23 @@
     "nichtGefunden": true,
     "geprueft": "2026-11-11"
   },
+  "Ohne Wahrheit|": {
+    "tmdb": 1012183,
+    "titel": "Ohne Wahrheit",
+    "geprueft": "2026-11-26",
+    "stimmen": 0,
+    "poster": "plakate/1012183.jpg",
+    "imdb": "tt12464300",
+    "land": "Deutschland",
+    "regie": "Ilka Sparringa",
+    "kinostart": "2026-10-29",
+    "laufzeit": 133,
+    "genres": [
+      "Thriller",
+      "Krimi"
+    ],
+    "jahr": "2026"
+  },
   "OM: Chapter 1 - Udhiram|": {
     "tmdb": 1384528,
     "titel": "Om Chapter 1: Udhiram - The Blood Wood",
@@ -11639,6 +11731,22 @@
       "Komödie"
     ],
     "jahr": "1974"
+  },
+  "Zwischen den Welten|": {
+    "tmdb": 830228,
+    "titel": "Zwischen den Welten",
+    "geprueft": "2026-11-26",
+    "stimmen": 0,
+    "poster": "plakate/830228.jpg",
+    "imdb": "tt1341310",
+    "land": "Schweiz",
+    "regie": "Yusuf Yesilöz",
+    "kinostart": "",
+    "laufzeit": 54,
+    "genres": [
+      "Dokumentarfilm"
+    ],
+    "jahr": "2006"
   },
   "국제시장|2014": {
     "tmdb": 313108,

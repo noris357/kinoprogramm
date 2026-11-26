@@ -1,6 +1,14 @@
 {
-  "stand": "2026-11-25",
+  "stand": "2026-11-26",
   "vorstellungen": [
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Andrew Lloyd Webber's Starlight Express - Live On Stage",
+      "Datum": "2026-11-26",
+      "Zeit": "18:00",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=3B2CA000023CPICFBA&language=de"
+    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "Parkway Drive - Home",
@@ -72,6 +80,14 @@
       "Zeit": "21:25",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=236BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Manhatten Deluxe Erlangen",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-17",
+      "Zeit": "20:15",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=70000000014CPICFBA&page=seatingplan&performance=77ABA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",

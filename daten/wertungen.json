@@ -505,6 +505,43 @@
       }
     }
   },
+  "269": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 76.0,
+        "stimmen": 97036
+      },
+      "metacritic": {
+        "wert": 96.0,
+        "stimmen": 24
+      },
+      "metacriticuser": {
+        "wert": 75.0,
+        "stimmen": 27
+      },
+      "trakt": {
+        "wert": 72.0,
+        "stimmen": 2106
+      },
+      "tomatoes": {
+        "wert": 95.0,
+        "stimmen": 78
+      },
+      "popcorn": {
+        "wert": 89.0,
+        "stimmen": 25000
+      },
+      "tmdb": {
+        "wert": 74.0,
+        "stimmen": 2129
+      },
+      "letterboxd": {
+        "wert": 78.0,
+        "stimmen": 331751
+      }
+    }
+  },
   "271": {
     "geprueft": "2026-11-18",
     "quellen": {
@@ -7354,6 +7391,10 @@
       }
     }
   },
+  "830228": {
+    "geprueft": "2026-11-26",
+    "quellen": {}
+  },
   "830721": {
     "geprueft": "2026-11-24",
     "quellen": {
@@ -7998,6 +8039,15 @@
       }
     }
   },
+  "1012183": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 90.0,
+        "stimmen": 84
+      }
+    }
+  },
   "1013822": {
     "geprueft": "2026-11-12",
     "quellen": {
@@ -8045,6 +8095,31 @@
       "letterboxd": {
         "wert": 72.0,
         "stimmen": 6600
+      }
+    }
+  },
+  "1020969": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 61.0,
+        "stimmen": 736
+      },
+      "trakt": {
+        "wert": 61.0,
+        "stimmen": 88
+      },
+      "popcorn": {
+        "wert": 64.0,
+        "stimmen": 50
+      },
+      "tmdb": {
+        "wert": 68.0,
+        "stimmen": 57
+      },
+      "letterboxd": {
+        "wert": 62.0,
+        "stimmen": 860
       }
     }
   },
@@ -15618,6 +15693,15 @@
       "letterboxd": {
         "wert": 92.0,
         "stimmen": 974191
+      }
+    }
+  },
+  "1767269": {
+    "geprueft": "2026-11-26",
+    "quellen": {
+      "imdb": {
+        "wert": 80.0,
+        "stimmen": 11
       }
     }
   },
