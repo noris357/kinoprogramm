@@ -52,6 +52,7 @@ $landCode = @{
   'Jordanien'='JO'; 'Irak'='IQ'; 'Syrien'='SY'; 'Armenien'='AM'; 'Aserbaidschan'='AZ'; 'Kasachstan'='KZ'; 'Belarus'='BY'
   'Bosnien und Herzegowina'='BA'; 'Montenegro'='ME'; 'Malta'='MT'; 'Pakistan'='PK'; 'Bangladesch'='BD'; 'Nepal'='NP'
   'Mongolei'='MN'; 'Uruguay'='UY'; 'Venezuela'='VE'; 'Bolivien'='BO'; 'Ecuador'='EC'; 'Paraguay'='PY'; 'Costa Rica'='CR'
+  'Jamaika'='JM'
   'UdSSR'=$null; 'Niederländische Antillen'=$null; 'Jugoslawien'=$null; 'Tschechoslowakei'=$null; 'DDR'=$null
 }
 # Schreibweisen und Kuerzel aus Bestand und TMDB auf die einheitlichen Namen abbilden
@@ -60,10 +61,15 @@ $landAlias = @{
   'Vereinigtes Königreich'='Großbritannien'; 'UK'='Großbritannien'; 'GB'='Großbritannien'; 'England'='Großbritannien'
   'Turkey'='Türkei'; 'It'='Italien'; 'BRD'='Deutschland'; 'IE'='Irland'; 'AF'='Afghanistan'; 'GE'='Georgien'
   'Kap Verde'='Kapverden'; 'Palästinensische Autonomiegebiete'='Palästina'; 'Mazedonien'='Nordmazedonien'
+  # Englische Schreibweise wie in filminfos.json; Jamaika fehlte in $landCode
+  'Jamaica'='Jamaika'
   # Das typografische Apostroph beendet in PowerShell auch Texte in einfachen Hochkommas, daher als Zeichencode
   ("Côte d$([char]0x2019)Ivoire")='Elfenbeinküste'; "Côte d'Ivoire"='Elfenbeinküste'; 'Volksrepublik China'='China'
   'Russische Föderation'='Russland'; 'Korea'='Südkorea'; 'Republik Korea'='Südkorea'; 'Weißrussland'='Belarus'
   'Tschechische Republik'='Tschechien'; 'Holland'='Niederlande'
+  # Kurzform der alten Bundesrepublik und Laenderkuerzel, die im Bestand als Text auftauchen
+  'BR Deutschland'='Deutschland'; 'CR'='Costa Rica'
+  'East Germany'='DDR'; 'Soviet Union'='UdSSR'
 }
 $unbekannteLaender = @{}
 function Get-EinheitlicheLaender([string]$Text) {
