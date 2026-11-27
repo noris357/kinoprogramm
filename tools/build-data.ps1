@@ -68,7 +68,7 @@ $landAlias = @{
   'Russische Föderation'='Russland'; 'Korea'='Südkorea'; 'Republik Korea'='Südkorea'; 'Weißrussland'='Belarus'
   'Tschechische Republik'='Tschechien'; 'Holland'='Niederlande'
   # Kurzform der alten Bundesrepublik und Laenderkuerzel, die im Bestand als Text auftauchen
-  'BR Deutschland'='Deutschland'; 'CR'='Costa Rica'
+  'BR Deutschland'='Deutschland'
   'East Germany'='DDR'; 'Soviet Union'='UdSSR'
 }
 $unbekannteLaender = @{}
