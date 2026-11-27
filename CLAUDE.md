@@ -45,3 +45,8 @@ Cineplex Fürth und CinemaxX Hamburg kommen über cineamo.com. Cineplex Fürth e
 
 Offene Issues mit dem Label `claude` sind Aufträge. Je Issue ein eigener Branch `claude/issue-<nummer>` und ein Pull Request mit `Closes #<nummer>`.
 Nie direkt auf `main` pushen und nie selbst mergen. Die Besitzerin oder der Besitzer prüft und merged.
+
+Ein Lauf auf dem Server (Claude Code, Kostenbremse 1,50 USD je Issue) bearbeitet offene Issues mit Label `claude` täglich um 20 Uhr.
+Ergebnis ist immer ein Pull Request gegen `main` mit `Closes #<nummer>` auf dem Branch `claude/issue-<nummer>`.
+Braucht der Lauf eine Entscheidung, ändert er nichts, kommentiert das Issue und setzt das Label `claude-frage`.
+Gemerged wird nie automatisch.
