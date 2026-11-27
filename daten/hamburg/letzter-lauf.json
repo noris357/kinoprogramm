@@ -1,13 +1,13 @@
 {
-  "abfragetag": "2026-11-26",
+  "abfragetag": "2026-11-27",
   "kinos": [
     {
       "kino": "3001 Kino",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-27",
-      "bestaetigt": 30,
+      "bestaetigt": 27,
       "neu": 3,
       "entfernt": 0
     },
@@ -15,39 +15,39 @@
       "kino": "Abaton Hamburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-06",
-      "bestaetigt": 83,
-      "neu": 17,
+      "bestaetigt": 71,
+      "neu": 14,
       "entfernt": 0
     },
     {
       "kino": "Astor Film Lounge HafenCity",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2027-06-22",
-      "bestaetigt": 53,
-      "neu": 4,
+      "bestaetigt": 48,
+      "neu": 5,
       "entfernt": 0
     },
     {
       "kino": "B-Movie",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-11-29",
       "bestaetigt": 3,
-      "neu": 2,
+      "neu": 0,
       "entfernt": 0
     },
     {
       "kino": "Blankeneser Kino",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-23",
-      "bestaetigt": 31,
+      "bestaetigt": 27,
       "neu": 4,
       "entfernt": 0
     },
@@ -55,39 +55,39 @@
       "kino": "CinemaxX Hamburg-Dammtor",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-02",
-      "bestaetigt": 45,
-      "neu": 28,
-      "entfernt": 21
+      "bestaetigt": 53,
+      "neu": 13,
+      "entfernt": 5
     },
     {
       "kino": "CinemaxX Hamburg-Harburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-02",
-      "bestaetigt": 43,
-      "neu": 35,
-      "entfernt": 28
+      "bestaetigt": 53,
+      "neu": 18,
+      "entfernt": 5
     },
     {
       "kino": "CinemaxX Hamburg-Wandsbek",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-02",
-      "bestaetigt": 19,
-      "neu": 35,
-      "entfernt": 29
+      "bestaetigt": 36,
+      "neu": 13,
+      "entfernt": 5
     },
     {
       "kino": "Elbe-Kino Hamburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-02",
-      "bestaetigt": 10,
+      "bestaetigt": 9,
       "neu": 1,
       "entfernt": 0
     },
@@ -95,39 +95,39 @@
       "kino": "Kinopolis HafenCity",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
-      "bis": "2026-12-02",
-      "bestaetigt": 107,
-      "neu": 16,
+      "von": "2026-11-27",
+      "bis": "2026-12-03",
+      "bestaetigt": 90,
+      "neu": 18,
       "entfernt": 0
     },
     {
       "kino": "Koralle-Kino Hamburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-09",
-      "bestaetigt": 62,
-      "neu": 6,
+      "bestaetigt": 55,
+      "neu": 7,
       "entfernt": 0
     },
     {
       "kino": "Lichtmeß Kino",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-11-26",
       "bestaetigt": 0,
-      "neu": 1,
+      "neu": 0,
       "entfernt": 0
     },
     {
       "kino": "Metropolis Hamburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-30",
-      "bestaetigt": 88,
+      "bestaetigt": 85,
       "neu": 4,
       "entfernt": 0
     },
@@ -135,19 +135,19 @@
       "kino": "Savoy Filmtheater Hamburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2027-01-25",
       "bestaetigt": 68,
-      "neu": 5,
+      "neu": 2,
       "entfernt": 0
     },
     {
       "kino": "Studio-Kino Hamburg",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2026-12-19",
-      "bestaetigt": 43,
+      "bestaetigt": 38,
       "neu": 5,
       "entfernt": 0
     },
@@ -155,16 +155,15 @@
       "kino": "Zeise Kinos",
       "ok": true,
       "fehler": null,
-      "von": "2026-11-26",
+      "von": "2026-11-27",
       "bis": "2027-02-02",
-      "bestaetigt": 135,
-      "neu": 9,
-      "entfernt": 3
+      "bestaetigt": 128,
+      "neu": 7,
+      "entfernt": 2
     }
   ],
   "neueFilme": [
-    "Die Verfluchten",
-    "Extended Version"
+    "2 Aile Arasinda (türk.)"
   ],
   "ausgeschlossen": [
     "Abaton-Filmquiz",

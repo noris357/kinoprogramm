@@ -1,22 +1,6 @@
 {
-  "stand": "2026-11-26",
+  "stand": "2026-11-27",
   "vorstellungen": [
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Andrew Lloyd Webber's Starlight Express - Live On Stage",
-      "Datum": "2026-11-26",
-      "Zeit": "18:00",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=3B2CA000023CPICFBA&language=de"
-    },
-    {
-      "Kino": "Cinecitta Nürnberg",
-      "Titel": "Parkway Drive - Home",
-      "Datum": "2026-11-26",
-      "Zeit": "20:30",
-      "Stufe": "hoch",
-      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=00ACA000023CPICFBA&language=de"
-    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "You Can See Everything",
