@@ -540,6 +540,12 @@
         "name": "Gene Saks"
       }
     ],
+    "11368": [
+      {
+        "id": 1223,
+        "name": "Joel Coen"
+      }
+    ],
     "11681": [
       {
         "id": 25317,
@@ -1838,6 +1844,12 @@
         "name": "Nicolas Pesce"
       }
     ],
+    "1078446": [
+      {
+        "id": 76927,
+        "name": "Tommy Wirkola"
+      }
+    ],
     "1082543": [
       {
         "id": 1574577,
@@ -2246,6 +2258,12 @@
         "name": "David Freyne"
       }
     ],
+    "1260649": [
+      {
+        "id": 51851,
+        "name": "Jake Kasdan"
+      }
+    ],
     "1261032": [
       {
         "id": 1479226,
@@ -2620,6 +2638,18 @@
       {
         "id": 1670825,
         "name": "Rajkumar Periasamy"
+      }
+    ],
+    "1384758": [
+      {
+        "id": 5718,
+        "name": "John Donkin"
+      }
+    ],
+    "1391239": [
+      {
+        "id": 44735,
+        "name": "Jesse Eisenberg"
       }
     ],
     "1396056": [
@@ -3914,6 +3944,7 @@
         "name": "Artur Wierzbicki"
       }
     ],
+    "1707785": [],
     "1712441": [
       {
         "id": 109140,
@@ -4240,6 +4271,15 @@
       "regiearbeiten": 12,
       "letterboxd": "john-mctiernan"
     },
+    "1223": {
+      "name": "Joel Coen",
+      "geprueft": "2026-11-28",
+      "geboren": 1954,
+      "ort": "Minneapolis, Minnesota, USA",
+      "foto": "fotos/1223.jpg",
+      "regiearbeiten": 21,
+      "letterboxd": ""
+    },
     "1269": {
       "name": "Kevin Costner",
       "geprueft": "2026-11-14",
@@ -4554,6 +4594,13 @@
       "foto": "fotos/5714.jpg",
       "regiearbeiten": 8,
       "letterboxd": "carlos-saldanha"
+    },
+    "5718": {
+      "name": "John Donkin",
+      "geprueft": "2026-11-28",
+      "foto": "fotos/5718.jpg",
+      "regiearbeiten": 1,
+      "letterboxd": ""
     },
     "5970": {
       "name": "Pier Paolo Pasolini",
@@ -5545,6 +5592,15 @@
       "regiearbeiten": 22,
       "letterboxd": "takashi-yamazaki"
     },
+    "44735": {
+      "name": "Jesse Eisenberg",
+      "geprueft": "2026-11-28",
+      "geboren": 1983,
+      "ort": "New York City, New York, USA",
+      "foto": "fotos/44735.jpg",
+      "regiearbeiten": 2,
+      "letterboxd": ""
+    },
     "45052": {
       "name": "Anton Corbijn",
       "geprueft": "2026-11-14",
@@ -5704,6 +5760,15 @@
       "foto": "fotos/51634.jpg",
       "regiearbeiten": 24,
       "letterboxd": "hermine-huntgeburth"
+    },
+    "51851": {
+      "name": "Jake Kasdan",
+      "geprueft": "2026-11-28",
+      "geboren": 1974,
+      "ort": "Detroit, Michigan, USA",
+      "foto": "fotos/51851.jpg",
+      "regiearbeiten": 9,
+      "letterboxd": ""
     },
     "52114": {
       "name": "Jon Lucas",
@@ -6161,6 +6226,15 @@
       "ort": "Carhaix, Brittany, France",
       "foto": "fotos/76910.jpg",
       "regiearbeiten": 20,
+      "letterboxd": ""
+    },
+    "76927": {
+      "name": "Tommy Wirkola",
+      "geprueft": "2026-11-28",
+      "geboren": 1979,
+      "ort": "Alta, Norway",
+      "foto": "fotos/76927.jpg",
+      "regiearbeiten": 11,
       "letterboxd": ""
     },
     "77131": {

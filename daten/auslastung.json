@@ -1,6 +1,14 @@
 {
-  "stand": "2026-11-27",
+  "stand": "2026-11-28",
   "vorstellungen": [
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Andrew Lloyd Webber's Starlight Express - Live On Stage",
+      "Datum": "2026-11-29",
+      "Zeit": "11:00",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=4B2CA000023CPICFBA&language=de"
+    },
     {
       "Kino": "Cinecitta Nürnberg",
       "Titel": "You Can See Everything",
@@ -24,6 +32,14 @@
       "Zeit": "19:00",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=73BAA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-16",
+      "Zeit": "00:00",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=D46BA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",
@@ -72,6 +88,14 @@
       "Zeit": "20:45",
       "Stufe": "hoch",
       "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=756BA000023CPICFBA&language=de"
+    },
+    {
+      "Kino": "Cinecitta Nürnberg",
+      "Titel": "Avengers: Doomsday",
+      "Datum": "2026-12-19",
+      "Zeit": "14:30",
+      "Stufe": "hoch",
+      "Link": "https://iframe.cineorder.cinecitta.de/landingpage?center=30000000014CPICFBA&page=seatingplan&performance=156BA000023CPICFBA&language=de"
     },
     {
       "Kino": "Cinecitta Nürnberg",

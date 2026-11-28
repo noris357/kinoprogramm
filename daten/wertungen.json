@@ -2966,6 +2966,43 @@
       }
     }
   },
+  "11368": {
+    "geprueft": "2026-11-28",
+    "quellen": {
+      "imdb": {
+        "wert": 75.0,
+        "stimmen": 115925
+      },
+      "metacritic": {
+        "wert": 84.0,
+        "stimmen": 33
+      },
+      "metacriticuser": {
+        "wert": 77.0,
+        "stimmen": 146
+      },
+      "trakt": {
+        "wert": 73.0,
+        "stimmen": 2779
+      },
+      "tomatoes": {
+        "wert": 94.0,
+        "stimmen": 108
+      },
+      "popcorn": {
+        "wert": 88.0,
+        "stimmen": 25000
+      },
+      "tmdb": {
+        "wert": 72.0,
+        "stimmen": 1727
+      },
+      "letterboxd": {
+        "wert": 78.0,
+        "stimmen": 212624
+      }
+    }
+  },
   "11681": {
     "geprueft": "2026-11-06",
     "quellen": {
@@ -3289,11 +3326,11 @@
     }
   },
   "14231": {
-    "geprueft": "2026-11-06",
+    "geprueft": "2026-11-28",
     "quellen": {
       "imdb": {
         "wert": 70.0,
-        "stimmen": 1150
+        "stimmen": 1156
       },
       "trakt": {
         "wert": 71.0,
@@ -8517,6 +8554,15 @@
     "geprueft": "2026-11-26",
     "quellen": {}
   },
+  "1078446": {
+    "geprueft": "2026-11-28",
+    "quellen": {
+      "trakt": {
+        "wert": 67.0,
+        "stimmen": 14
+      }
+    }
+  },
   "1082543": {
     "geprueft": "2026-11-24",
     "quellen": {
@@ -10199,6 +10245,15 @@
       }
     }
   },
+  "1260649": {
+    "geprueft": "2026-11-28",
+    "quellen": {
+      "trakt": {
+        "wert": 68.0,
+        "stimmen": 56
+      }
+    }
+  },
   "1261032": {
     "geprueft": "2026-11-24",
     "quellen": {
@@ -11826,6 +11881,40 @@
       "letterboxd": {
         "wert": 58.0,
         "stimmen": 16460
+      }
+    }
+  },
+  "1384758": {
+    "geprueft": "2026-11-28",
+    "quellen": {
+      "trakt": {
+        "wert": 79.0,
+        "stimmen": 28
+      }
+    }
+  },
+  "1391239": {
+    "geprueft": "2026-11-28",
+    "quellen": {
+      "imdb": {
+        "wert": 78.0,
+        "stimmen": 867
+      },
+      "metacritic": {
+        "wert": 76.0,
+        "stimmen": 23
+      },
+      "trakt": {
+        "wert": 80.0,
+        "stimmen": 24
+      },
+      "tomatoes": {
+        "wert": 90.0,
+        "stimmen": 83
+      },
+      "letterboxd": {
+        "wert": 82.0,
+        "stimmen": 15754
       }
     }
   },
@@ -14686,15 +14775,15 @@
     }
   },
   "1564324": {
-    "geprueft": "2026-11-06",
+    "geprueft": "2026-11-28",
     "quellen": {
       "imdb": {
         "wert": 70.0,
-        "stimmen": 167
+        "stimmen": 175
       },
       "trakt": {
-        "wert": 73.0,
-        "stimmen": 9
+        "wert": 72.0,
+        "stimmen": 10
       },
       "tmdb": {
         "wert": 71.0,
@@ -14702,7 +14791,7 @@
       },
       "letterboxd": {
         "wert": 68.0,
-        "stimmen": 690
+        "stimmen": 760
       }
     }
   },
@@ -15590,6 +15679,10 @@
   },
   "1707378": {
     "geprueft": "2026-11-18",
+    "quellen": {}
+  },
+  "1707785": {
+    "geprueft": "2026-11-28",
     "quellen": {}
   },
   "1712441": {
