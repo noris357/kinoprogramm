@@ -1,61 +1,61 @@
 {
-  "hinweis": "Automatisch aus den Reihen des Filmhauses erkannt (tools/build-data.ps1), nicht von Hand bearbeiten. Zum Bestätigen oder Ergänzen einen Eintrag mit gleichem Feld reihe in festivals.json anlegen.",
-  "festivals": [
-    {
-      "id": "auto-französische-filmwoche-2026",
-      "name": "Französische Filmwoche",
-      "ausgabe": "Französische Filmwoche",
-      "art": "Länderfokus",
-      "von": "2026-11-23",
-      "bis": "2026-11-25",
-      "sicher": true,
-      "kinos": [
-        "Metropolis Hamburg"
-      ],
-      "reihe": "Französische Filmwoche",
-      "automatisch": true
-    },
-    {
-      "id": "auto-20-unerhört-musikfilmfestival-2026",
-      "name": "UNERHÖRT! Musikfilmfestival",
-      "ausgabe": "20. UNERHÖRT! Musikfilmfestival",
-      "art": "Thema",
-      "von": "2026-11-25",
-      "bis": "2026-11-29",
-      "sicher": true,
-      "kinos": [
-        "Metropolis Hamburg"
-      ],
-      "reihe": "20. UNERHÖRT! Musikfilmfestival",
-      "automatisch": true
-    },
-    {
-      "id": "auto-internationaler-kurzfilmtag-2026",
-      "name": "Internationaler Kurzfilmtag",
-      "ausgabe": "Internationaler Kurzfilmtag",
-      "art": "Thema",
-      "von": "2026-12-18",
-      "bis": "2026-12-18",
-      "sicher": true,
-      "kinos": [
-        "Metropolis Hamburg"
-      ],
-      "reihe": "Internationaler Kurzfilmtag",
-      "automatisch": true
-    },
-    {
-      "id": "auto-koreanisches-filmfest-2026",
-      "name": "Koreanisches Filmfest",
-      "ausgabe": "Koreanisches Filmfest",
-      "art": "Länderfokus",
-      "von": "2026-12-04",
-      "bis": "2026-12-06",
-      "sicher": true,
-      "kinos": [
-        "Metropolis Hamburg"
-      ],
-      "reihe": "Koreanisches Filmfest",
-      "automatisch": true
-    }
-  ]
+    "hinweis":  "Automatisch aus den Reihen des Filmhauses erkannt (tools/build-data.ps1), nicht von Hand bearbeiten. Zum Bestätigen oder Ergänzen einen Eintrag mit gleichem Feld reihe in festivals.json anlegen.",
+    "festivals":  [
+                      {
+                          "id":  "auto-französische-filmwoche-2026",
+                          "name":  "Französische Filmwoche",
+                          "ausgabe":  "Französische Filmwoche",
+                          "art":  "Länderfokus",
+                          "von":  "2026-11-23",
+                          "bis":  "2026-11-25",
+                          "sicher":  true,
+                          "kinos":  [
+                                        "Metropolis Hamburg"
+                                    ],
+                          "reihe":  "Französische Filmwoche",
+                          "automatisch":  true
+                      },
+                      {
+                          "id":  "auto-20-unerhört-musikfilmfestival-2026",
+                          "name":  "UNERHÖRT! Musikfilmfestival",
+                          "ausgabe":  "20. UNERHÖRT! Musikfilmfestival",
+                          "art":  "Thema",
+                          "von":  "2026-11-25",
+                          "bis":  "2026-11-29",
+                          "sicher":  true,
+                          "kinos":  [
+                                        "Metropolis Hamburg"
+                                    ],
+                          "reihe":  "20. UNERHÖRT! Musikfilmfestival",
+                          "automatisch":  true
+                      },
+                      {
+                          "id":  "auto-koreanisches-filmfest-2026",
+                          "name":  "Koreanisches Filmfest",
+                          "ausgabe":  "Koreanisches Filmfest",
+                          "art":  "Länderfokus",
+                          "von":  "2026-12-04",
+                          "bis":  "2026-12-06",
+                          "sicher":  true,
+                          "kinos":  [
+                                        "Metropolis Hamburg"
+                                    ],
+                          "reihe":  "Koreanisches Filmfest",
+                          "automatisch":  true
+                      },
+                      {
+                          "id":  "auto-internationaler-kurzfilmtag-2026",
+                          "name":  "Internationaler Kurzfilmtag",
+                          "ausgabe":  "Internationaler Kurzfilmtag",
+                          "art":  "Thema",
+                          "von":  "2026-12-18",
+                          "bis":  "2026-12-18",
+                          "sicher":  true,
+                          "kinos":  [
+                                        "Metropolis Hamburg"
+                                    ],
+                          "reihe":  "Internationaler Kurzfilmtag",
+                          "automatisch":  true
+                      }
+                  ]
 }
